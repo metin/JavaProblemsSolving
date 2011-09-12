@@ -11,7 +11,7 @@
 
     <script type="text/javascript">
         $(function(){
-            $("#menu_container li").click(function(){
+/*            $("#menu_container li").click(function(){
                 $("#menu_container li").removeClass('current');
                 $(this).addClass('current');
                 $('ul.submenu').hide();
@@ -21,13 +21,7 @@
                 $("#submenu_container li").removeClass('current');
                 $(this).addClass('current');
             });
-
-            // $("#submenu_container li a").click(function(){
-            //     alert($(this).attr('href'));
-            //     $('#content').html($(this).attr('href'));
-            //     getPage();
-            // });
-
+*/
             //Check if url hash value exists (for bookmark)
             $.history.init(pageload);
             $('a[rel=ajax]').click(function () {
@@ -48,11 +42,25 @@
         }
                  
         function getPage() {
-            var page = document.location.hash.replace(/^.*#/, '');
+            
             //alert(page);
+            var parts = document.location.hash.split("#");
+            
+            if(parts.length < 3)
+                return;
             //generate the parameter for the php script
             $('#loading').show();
-            $.get(page)
+
+            $("#menu_container li").removeClass('current');
+            $("#menu_container #"+parts[1]).addClass('current');
+
+            $('ul.submenu').hide();
+            $("#"+parts[1]+"_sub").show();
+
+            $("#submenu_container li").removeClass('current');
+            $("a[href='#"+parts[1]+"#"+parts[2] +"']").parent().addClass('current');
+
+            $.get(parts[1]+"/"+parts[2]+".html")
             .success(function(data) { 
                 $('#content').html(data);
             })
@@ -78,11 +86,11 @@
 
         <div id="menu_container">
             <ul id="menu">
-                <li class="current" id="home_menu">
+                <li class="current" id="home">
                     <a href="/~my67/cs602"> Home </a>
                 </li>
-                <li id='chapter_1'>
-                   <a href="#"> Chapter 1 </a>
+                <li id='chapter1'>
+                   <a href="#chapter1#hw1"> Chapter 1 </a>
                 </li>
             </ul>
             <div id="loading">
@@ -90,37 +98,34 @@
             </div>
         </div>
         <div id="submenu_container">
-            <ul class="submenu" id="home_menu_sub">
+            <ul class="submenu" id="home_sub">
                 <li class="current">
-                    <a href="#aboutme.html" rel='ajax'> About Me </a>
+                    <a href="#home#aboutme" rel='ajax'> About Me </a>
                 </li>
                 <li id="home_tab_2">
-                    <a href="#aboutclass.html" rel='ajax'> About Class </a>
+                    <a href="#home#aboutclass" rel='ajax'> About Class </a>
                 </li>
             </ul>
 
-            <ul class="submenu" id="chapter_1_sub" style='display:none'>
+            <ul class="submenu" id="chapter1_sub" style='display:none'>
                 <li class="current">
-                    <a href="#"> Assignment1 </a>
-                </li>
-                <li>
-                    <a href="#"> Assignment2 </a>
+                    <a href="#chapter1#hw1"> Assignment 1 </a>
                 </li>
             </ul>
         </div>
 
 
-        <div style="background-color:#f1f1f1;min-height:600px;">
-            <div class="grid_12" id="content">
-<h2>
-About Me
-</h2>
-<p>
-My name is Metin Yorulmaz
-</p>
-<p>
-I am a Graduate Student at Computer Science Department.
-</p>
+        <div style="background-color:#f1f1f1;min-height:600px;padding-left:20px;">
+            <div class="grid_12" id="content" style="padding-top:20px;">
+                <h2>
+                About Me
+                </h2>
+                <p>
+                My name is Metin Yorulmaz
+                </p>
+                <p>
+                I am a Graduate Student at NJIT.
+                </p>
             </div>
         </div>
 

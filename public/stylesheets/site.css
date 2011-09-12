@@ -30,6 +30,7 @@ a:active
 p, ul
 {
     margin-bottom: 20px;
+    margin-left: 20px;
     line-height: 1.6em;
 }
 
@@ -243,7 +244,7 @@ p, ul
 ----------------------------------------------------------*/
 h1, h2, h3, h4, h5, h6
 {
-    font-size: 1.5em;
+    font-size: 1.2em;
     color: #000;
 }
 
