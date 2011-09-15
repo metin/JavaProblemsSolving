@@ -271,6 +271,11 @@ h5, h6
     font-size: 1em;
 }
 
+h5.sub
+{
+    padding-top:20px;
+    padding-bottom:10px;
+}
 /* this rule styles <h2> tags that are the 
 first child of the left and right table columns */
 .rightColumn > h1, .rightColumn > h2, .leftColumn > h1, .leftColumn > h2
@@ -302,3 +307,20 @@ first child of the left and right table columns */
 }
 
 
+table.timesheet
+{
+    border:1px solid #ffeeee;
+}
+table.timesheet td
+{
+   padding:2px;
+   border:1px solid #334455;
+}
+
+table.timesheet th
+{
+   padding:2px;
+   font-weight:bold;
+   text-align:center;
+   border:1px solid #334455;
+}
