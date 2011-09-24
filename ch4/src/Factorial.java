@@ -13,11 +13,12 @@ public class Factorial extends Applet implements ActionListener
         
         GridBagConstraints c = new GridBagConstraints();
         txtNum = new TextField();
-        txtNum.setSize(200, 30);
+        txtNum.setSize(400, 30);
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
         c.gridy = 0;
         c.ipadx = 30;
+        c.weightx = 2;
         add(txtNum, c);
         
         c = new GridBagConstraints();
@@ -30,6 +31,7 @@ public class Factorial extends Applet implements ActionListener
 
         c = new GridBagConstraints();
         lblResult = new Label("Result:");
+        lblResult.setSize(200, 30);
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
         c.gridy = 1;

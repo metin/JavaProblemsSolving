@@ -96,7 +96,6 @@ public class Average extends Applet implements ActionListener
     	  try{
 	    	  InputStream in = url.openStream();
 	    	  BufferedReader bf = new BufferedReader(new InputStreamReader(in));
-	    	  
 	    	  numberStream = new StringBuffer();
 	    	  while((line = bf.readLine()) != null){
 	    		  numberStream.append(line + "\n");
