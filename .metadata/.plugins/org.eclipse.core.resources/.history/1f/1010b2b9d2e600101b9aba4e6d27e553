@@ -1,0 +1,12 @@
+import java.awt.*;
+import java.applet.*;
+import java.awt.event.*;
+
+@SuppressWarnings("serial")
+public class StudentEmail extends Applet implements ActionListener
+{
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+}

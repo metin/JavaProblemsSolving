@@ -1,0 +1,79 @@
+import java.awt.*;
+import java.applet.*;
+import java.awt.event.*;
+
+@SuppressWarnings("serial")
+public class Average extends Applet implements ActionListener
+{
+	TextField txtNum;
+	Label lblResult;
+	TextArea txtArea;
+    public void init() {
+        GridBagLayout Layout = new GridBagLayout();
+        setLayout (Layout);
+        
+        GridBagConstraints c = new GridBagConstraints();
+        txtNum = new TextField();
+        txtNum.setSize(200, 30);
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridx = 0;
+        c.gridy = 0;
+        c.ipadx = 30;
+        add(txtNum, c);
+        
+        c = new GridBagConstraints();
+        Button btn = new Button("Calculate");
+        c.fill = GridBagConstraints.HORIZONTAL;
+        add(btn, c);
+        c.gridx = 1;
+        c.gridy = 0;
+        c.ipady = 50;
+        btn.addActionListener(this);
+
+        c = new GridBagConstraints();
+
+        txtArea = new TextArea(100, 100);
+        txtArea.setEditable(false);
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridx = 0;
+        c.gridy = 1;
+        c.gridwidth = 2;
+        c.insets = new Insets(10,0,0,0); 
+        add(txtArea, c);   
+    }
+
+    public void actionPerformed(ActionEvent evt)
+    {	
+    	try{
+	    	if(isValidInput()){
+	    		int val = calculate();
+		    	lblResult.setText("Result:"+Integer.toString(val));
+	    	}else{
+	    		lblResult.setText("Error:Not valit input");
+	    	}
+    	}
+    	catch (NumberFormatException nfe)
+        {
+    		lblResult.setText("Error:Colud not calculate.");
+        }
+    }
+    
+
+    private int calculate()
+    {	
+    	int result = 1;
+    	int val = Integer.parseInt(txtNum.getText());
+    	while(val > 0){
+    		result *= val--;
+    	}
+    	return result;
+    }
+    
+    private boolean isValidInput()
+    {
+    	String val = txtNum.getText();
+    	if(val == null || val.isEmpty())
+    		return false;
+    	return true;
+    }
+}

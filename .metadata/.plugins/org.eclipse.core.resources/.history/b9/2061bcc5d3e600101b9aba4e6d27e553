@@ -1,0 +1,34 @@
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
+
+
+public class StudentEmail
+{
+	public static void main(String[] args) {
+		if(args.length != 2)
+		{
+			System.out.println("Usage:");
+			System.out.println("java StudentEmail src.txt dest.txt");
+			System.exit(1);
+		}
+		
+		for (String arg : args) {
+			System.out.println(arg);
+		}
+		converFile(args[0], args[1]);
+	}
+	
+	public static void converFile(String srcFile, String destFile)
+	{
+
+  	  InputStream in = url.openStream();
+  	  BufferedReader bf = new BufferedReader(new InputStreamReader(in));
+  	  numberStream = new StringBuffer();
+  	  while((line = bf.readLine()) != null){
+  		  numberStream.append(line + "\n");
+  	  }
+  	  txtNumbers.append(numberStream.toString());	
+	}
+}

@@ -1,0 +1,13 @@
+
+
+public class StudentEmail
+{
+	public static void main(String[] args) {
+		if(args.length != 2)
+		{
+			System.out.println("Usage:");
+			System.out.println("Usage:");
+		}
+
+	}
+}

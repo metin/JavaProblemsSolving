@@ -1,0 +1,19 @@
+
+
+public class StudentEmail
+{
+	public static void main(String[] args) {
+		if(args.length != 2)
+		{
+			System.out.println("Usage:");
+			System.out.println("java StudentEmail src.txt dest.txt");
+			System.exit(1);
+		}
+		
+		for (String arg : args) {
+			System.out.println(arg);
+		}
+	}
+	
+	public 
+}

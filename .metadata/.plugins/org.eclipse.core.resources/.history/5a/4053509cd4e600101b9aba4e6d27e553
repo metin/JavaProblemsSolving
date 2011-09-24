@@ -1,0 +1,65 @@
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+
+
+
+public class StudentEmail
+{
+	public static void main(String[] args) {
+		if(args.length != 2)
+		{
+			System.out.println("Usage:");
+			System.out.println("java StudentEmail src.txt dest.txt");
+			System.exit(1);
+		}
+		
+		for (String arg : args) {
+			System.out.println(arg);
+		}
+		converFile(args[0], args[1]);
+	}
+	
+	public static void converFile(String srcFile, String destFile)
+	{
+		try{
+			  FileInputStream fstream = new FileInputStream(srcFile);
+			  DataInputStream in = new DataInputStream(fstream);
+			  BufferedReader br = new BufferedReader(new InputStreamReader(in));
+			  String strLine;
+			  while ((strLine = br.readLine()) != null)   {
+				  System.out.println (strLine);
+			  }
+			  in.close();
+		}catch (Exception e){//Catch exception if any
+			System.err.println("Error: " + e.getMessage());
+		}
+	}
+	
+	public static ArrayList<Student> loadStudents(){
+		 ArrayList<Student> students = new ArrayList<Student>();
+		 return students;
+	}
+}
+
+
+class Student{
+	
+	public String firstName, lastName, ssn; 
+	public Student(){
+		
+	}
+	public Student(String fName, String lName, String socialn){
+		firstName = fName;
+		lastName = lName; 
+		ssn = socialn; 
+	}
+	
+	public String generateEmail(){
+		return firstName;
+		
+	}
+}
