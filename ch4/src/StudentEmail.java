@@ -7,17 +7,17 @@ public class StudentEmail
 		if(args.length != 2)
 		{
 			System.out.println("Usage:");
-			System.out.println("java StudentEmail src.txt dest.txt");
+			System.out.println("java StudentEmail students.txt studentemail.txt");
 			System.exit(1);
 		}
 		
 		for (String arg : args) {
 			System.out.println(arg);
 		}
-		converFile(args[0], args[1]);
+		convertFile(args[0], args[1]);
 	}
 	
-	public static void converFile(String srcFile, String destFile)
+	public static void convertFile(String srcFile, String destFile)
 	{
 		ArrayList<Student> students = loadStudents(srcFile);
 		createEmailsFile(destFile, students);
@@ -71,8 +71,8 @@ class Student{
 	}
 	
 	public String generateEmail(){
-		String email = firstName.substring(0, 1);
-		email += lastName.substring(0, 1);
+		String email = firstName.substring(0, 1).toLowerCase();
+		email += lastName.substring(0, 1).toLowerCase();
 		email += ssn.substring(ssn.length()-4);
 		email += "@se.depaul.edu";
 		return email;

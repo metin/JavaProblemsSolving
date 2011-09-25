@@ -42,6 +42,10 @@ public class Average extends Applet implements ActionListener
         c.gridx = 0;c.gridy = 2;
         c.insets = new Insets(10,0,0,0); 
         add(txtResult, c);   
+        String paramFile = getParameter("FILENAME");
+        if (!paramFile.isEmpty())
+        	numberSourceFile = paramFile;
+        
         readFile();
     }
 
@@ -57,7 +61,8 @@ public class Average extends Applet implements ActionListener
     	}
     	catch (NumberFormatException nfe)
         {
-    		
+    		txtResult.append(numberSourceFile+" contains invalid data.");
+    		txtResult.append("\n");
         }
     }
     
@@ -103,7 +108,7 @@ public class Average extends Applet implements ActionListener
 	    	  txtNumbers.append(numberStream.toString());
     	  }
     	  catch(IOException e){
-    		  txtResult.append("Could not read file.");
+    		  txtResult.append("\nCould not read file " + numberSourceFile);
     	  }
     }
 }
