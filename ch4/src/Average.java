@@ -43,8 +43,8 @@ public class Average extends Applet implements ActionListener
         c.insets = new Insets(10,0,0,0); 
         add(txtResult, c);   
         String paramFile = getParameter("FILENAME");
-        if (!paramFile.isEmpty())
-        	numberSourceFile = paramFile;
+        if (paramFile != null)
+            numberSourceFile = paramFile;
         
         readFile();
     }
@@ -63,6 +63,13 @@ public class Average extends Applet implements ActionListener
         {
     		txtResult.append(numberSourceFile+" contains invalid data.");
     		txtResult.append("\n");
+            // txtResult.append(nfe.getMessage());
+            // txtResult.append("\n");
+            // StackTraceElement[] ste = nfe.getStackTrace();
+            // for(int i=0; i < ste.length; i++){
+            //     txtResult.append(ste[i].toString());        
+            //     txtResult.append("\n");
+            //}
         }
     }
     
@@ -86,7 +93,8 @@ public class Average extends Applet implements ActionListener
 		String[] vals = txtNumbers.getText().split("\n");
 		ArrayList<Integer> numbers = new ArrayList<Integer>();
 		for(int i=0; i<vals.length; i++)
-			numbers.add(Integer.parseInt(vals[i]));
+            if(!vals[i].isEmpty())
+			 numbers.add(Integer.parseInt(vals[i]));
 		return numbers; 
     }
 

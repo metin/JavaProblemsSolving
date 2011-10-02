@@ -1,4 +1,7 @@
-.metadata
-.classpath
-.project
-.settings
+/**/metadata/**/*
+/./**/metadata/**/*
+./**/metadata/**/*
+**/metadata/**/*
+*/metadata/**/*
+metadata/**/*
+/**/metadata/*

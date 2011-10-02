@@ -1,0 +1,88 @@
+import java.awt.*;
+import java.applet.*;
+import java.awt.event.*;
+import java.util.*;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
+
+@SuppressWarnings("serial")
+public class DigitalClock extends Applet implements Runnable
+{
+	protected Thread clockThread = null;
+	protected Font font = new Font("Monospaced", Font.BOLD, 48);
+	protected Color color = Color.GREEN;
+	protected Panel timePanel = new Panel(new BorderLayout());
+	protected Panel datePanel = new Panel(new BorderLayout());
+	Panel left,right;
+	int xold=0,yold=0;
+	Dimension size;	
+	public void init() {
+		int i;
+
+		GridLayout over = new GridLayout(1,2);
+		GridLayout cpad = new GridLayout(2,2);
+
+		left = new Panel(cpad);
+		right = new Panel();
+		right.setBackground(Color.blue);
+		setLayout(over);
+		add(left);
+		add(right);
+
+		// set left to contain cpad
+
+		// left.setLayout(cpad);
+		for (i=1;i<5;i++) {
+			Button phonepad = new Button(""+(char)(i+64));
+			left.add (phonepad);
+		}
+	}
+	
+	public void start()
+	{
+		if(clockThread == null){
+			clockThread = new Thread(this);
+			clockThread.start();
+		}
+	}
+	public void stop()
+	{
+		clockThread = null;
+	}
+	
+
+	public void run(){
+		while(Thread.currentThread() == clockThread){
+			validate();
+			repaint();
+			
+			try{
+				Thread.currentThread();
+				Thread.sleep(1000);
+			}catch (InterruptedException e) {
+				// TODO: handle exception
+			}
+		}
+	}
+	
+	public void paint(Graphics g){
+		Calendar calendar = Calendar.getInstance();
+		int hour = calendar.get(Calendar.HOUR_OF_DAY);
+		int minute = calendar.get(Calendar.MINUTE);
+		int second = calendar.get(Calendar.SECOND);
+//		timePanel.repaint();
+//		Graphics gTime = timePanel.getGraphics();
+//		gTime.setFont(font);
+//		gTime.setColor(color);
+//		gTime.drawString(hour + ":" + minute + ":" + second, 10, 60);
+
+        Graphics sub = right.getGraphics();
+        Dimension size = getSize();
+        sub.setColor(Color.green);
+        sub.fillRect(40,40,size.width/2 - 81, size.height - 81);
+		sub.drawString(hour + ":" + minute + ":" + second, 10, 60);
+		
+		validate();
+	}
+}

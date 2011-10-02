@@ -1,0 +1,15 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <APPLET code="ex54.DigitalClock.class" WIDTH=250 HEIGHT=200>
+ 		<param name="FONT" value="Tahoma">
+ 		<param name="COLOR" value="5,30,50">
+ 		<param name="SIZE" value="40">
+ 		<param name="BORDER_COLOR" value="BLACK">
+    </APPLET>
+</body>
+</html>
