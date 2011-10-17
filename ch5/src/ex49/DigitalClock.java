@@ -6,7 +6,7 @@ import java.util.*;
 public class DigitalClock extends Applet implements Runnable
 {
 	protected Thread clockThread = null;
-	protected Font font = new Font("Monospaced", Font.BOLD, 40);
+	protected Font font = new Font("Monospaced", Font.BOLD, 35);
 	protected Color color = Color.BLACK;
 	protected Font dateFont = new Font("Monospaced", Font.BOLD, 25);
 

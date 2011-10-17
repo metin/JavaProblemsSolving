@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="17" version="2.0">
+<workbench progressCount="26" version="2.0">
 <workbenchAdvisor/>
-<window height="863" maximized="true" width="1416" x="366" y="63">
+<window height="802" width="908" x="4" y="22">
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
 <itemSize x="160"/>
 </perspectiveBar>
-<coolbarLayout locked="0">
+<coolbarLayout>
 <coolItem id="group.file" itemType="typeGroupMarker"/>
-<coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="122" y="22"/>
+<coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="233" y="22"/>
 <coolItem id="additions" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="129" y="22"/>
 <coolItem id="org.eclipse.jdt.ui.JavaElementCreationActionSet" itemType="typeToolBarContribution" x="76" y="22"/>
-<coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="76" y="22"/>
-<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="107" y="22"/>
+<coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="122" y="22"/>
+<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="130" y="22"/>
 <coolItem id="org.eclipse.wst.xml.ui.perspective.NewFileToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.wst.xml.ui.design.DesignToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
@@ -33,17 +33,27 @@
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 <part id="1"/>
+<part id="2"/>
+<part id="3"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DigitalClock.java" partName="DigitalClock.java" path="C:/Users/Metin/Dropbox/NJIT/CS602/Sources/ch5/src/DigitalClock.java" title="DigitalClock.java" tooltip="ch5/src/DigitalClock.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch5/src/DigitalClock.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1458" selectionTopPixel="271"/>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="BouncingBall.java" partName="BouncingBall.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch5b/ex52/BouncingBall.java" title="BouncingBall.java" tooltip="ch5b/ex52/BouncingBall.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch5b/ex52/BouncingBall.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="4335" selectionOffset="0" selectionTopPixel="184"/>
 </editor>
-<editor id="org.eclipse.ui.DefaultTextEditor" name="AppletClient.html" partName="AppletClient.html" path="C:/Users/Metin/Dropbox/NJIT/CS602/Sources/ch5/src/AppletClient.html" title="AppletClient.html" tooltip="ch5/src/AppletClient.html" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch5/src/AppletClient.html"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="224" selectionTopPixel="0"/>
+<editor id="org.eclipse.ui.DefaultTextEditor" name="AppletClient.html" partName="AppletClient.html" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch5b/AppletClient.html" title="AppletClient.html" tooltip="ch5b/AppletClient.html" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch5b/AppletClient.html"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="231" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="package-info.java" partName="package-info.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch5b/ex52/package-info.java" title="package-info.java" tooltip="ch5b/ex52/package-info.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch5b/ex52/package-info.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="279" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ShowMyBase.java" partName="ShowMyBase.java" path="C:/Users/Metin/Dropbox/NJIT/CS602/Sources/ch5b/ex53/ShowMyBase.java" title="ShowMyBase.java" tooltip="ch5b/ex53/ShowMyBase.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch5b/ex53/ShowMyBase.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="125" selectionTopPixel="22"/>
 </editor>
 </editors>
 <views>
@@ -57,13 +67,12 @@
 </viewState>
 </view>
 <view id="org.eclipse.jdt.ui.PackageExplorer" partName="Package Explorer">
-<viewState group_libraries="1" layout="2" linkWithEditor="0" rootMode="1" workingSetName="Aggregate for window 1315760991963">
+<viewState group_libraries="1" layout="2" linkWithEditor="0" rootMode="1" workingSetName="">
 <customFilters userDefinedPatternsEnabled="false">
 <xmlDefinedFilters>
 <child filterId="org.eclipse.jdt.ui.PackageExplorer.LibraryFilter" isEnabled="false"/>
 <child filterId="org.eclipse.jdt.ui.PackageExplorer.LocalTypesFilter" isEnabled="false"/>
 <child filterId="org.eclipse.jdt.ui.PackageExplorer.StaticsFilter" isEnabled="false"/>
-<child filterId="org.eclipse.pde.ui.ExternalPluginLibrariesFilter1" isEnabled="true"/>
 <child filterId="org.eclipse.jdt.ui.PackageExplorer.ClosedProjectsFilter" isEnabled="false"/>
 <child filterId="org.eclipse.jdt.ui.PackageExplorer.NonSharedProjectsFilter" isEnabled="false"/>
 <child filterId="org.eclipse.jdt.ui.PackageExplorer.NonJavaElementFilter" isEnabled="false"/>
@@ -79,19 +88,20 @@
 <child filterId="org.eclipse.jdt.ui.PackageExplorer.NonPublicFilter" isEnabled="false"/>
 <child filterId="org.eclipse.jdt.ui.PackageExplorer_patternFilterId_.*" isEnabled="true"/>
 <child filterId="org.eclipse.jdt.ui.PackageExplorer.EmptyLibraryContainerFilter" isEnabled="true"/>
-<child filterId="org.eclipse.pde.ui.BinaryProjectFilter1" isEnabled="false"/>
 <child filterId="org.eclipse.jdt.ui.PackageExplorer.SyntheticMembersFilter" isEnabled="true"/>
+<child filterId="org.eclipse.mylyn.java.ui.MembersFilter" isEnabled="false"/>
+<child filterId="org.eclipse.m2e.MavenModuleFilter" isEnabled="false"/>
 </xmlDefinedFilters>
 </customFilters>
 </viewState>
-</view>
-<view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
-<viewState/>
 </view>
 </views>
 <perspectives activePart="org.eclipse.jdt.ui.CompilationUnitEditor" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.jdt.internal.ui.JavaPerspectiveFactory" id="org.eclipse.jdt.ui.JavaPerspective" label="Java"/>
+<alwaysOnActionSet id="org.eclipse.mylyn.context.ui.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.mylyn.doc.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.mylyn.tasks.ui.navigation"/>
 <alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
 <alwaysOnActionSet id="org.eclipse.search.searchActionSet"/>
 <alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.annotationNavigation"/>
@@ -100,6 +110,7 @@
 <alwaysOnActionSet id="org.eclipse.ui.externaltools.ExternalToolsSet"/>
 <alwaysOnActionSet id="org.eclipse.ui.actionSet.keyBindings"/>
 <alwaysOnActionSet id="org.eclipse.ui.actionSet.openFiles"/>
+<alwaysOnActionSet id="org.eclipse.wb.core.ui.actionset"/>
 <alwaysOnActionSet id="org.eclipse.debug.ui.launchActionSet"/>
 <alwaysOnActionSet id="org.eclipse.jdt.ui.JavaActionSet"/>
 <alwaysOnActionSet id="org.eclipse.jdt.ui.JavaElementCreationActionSet"/>
@@ -107,6 +118,7 @@
 <alwaysOnActionSet id="org.eclipse.debug.ui.breakpointActionSet"/>
 <alwaysOnActionSet id="org.eclipse.jdt.debug.ui.JDTDebugActionSet"/>
 <alwaysOnActionSet id="org.eclipse.jdt.junit.JUnitActionSet"/>
+<alwaysOnActionSet id="org.eclipse.egit.ui.navigation"/>
 <show_view_action id="org.eclipse.jdt.ui.PackageExplorer"/>
 <show_view_action id="org.eclipse.jdt.ui.TypeHierarchy"/>
 <show_view_action id="org.eclipse.jdt.ui.SourceView"/>
@@ -145,7 +157,6 @@
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
 <view id="org.eclipse.jdt.ui.PackageExplorer"/>
 <view id="org.eclipse.ui.views.ResourceNavigator"/>
-<view id="org.eclipse.ui.views.ContentOutline"/>
 <fastViewBars/>
 <layout>
 <mainWindow>
@@ -172,7 +183,7 @@
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.25" ratioLeft="250" ratioRight="750" relationship="2" relative="left"/>
+<info part="org.eclipse.ui.editorss" ratio="0.17391305" ratioLeft="156" ratioRight="741" relationship="2" relative="left"/>
 <info folder="true" part="bottom" ratio="0.74570817" ratioLeft="695" ratioRight="237" relationship="4" relative="org.eclipse.ui.editorss">
 <folder appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="LabelNotFound"/>
@@ -186,21 +197,17 @@
 </folder>
 </info>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@29a046" ratio="0.7493333" ratioLeft="562" ratioRight="188" relationship="2" relative="org.eclipse.ui.editorss">
-<folder activePageID="org.eclipse.mylyn.tasks.ui.views.tasks" appearance="2" expanded="2">
+<folder appearance="2" expanded="2">
 <page content="org.eclipse.mylyn.tasks.ui.views.tasks" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-</presentation>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
 <info folder="true" part="right" ratio="0.49896908" ratioLeft="242" ratioRight="243" relationship="4" relative="org.eclipse.ui.internal.ViewStack@29a046">
-<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">
-<page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.ui.views.ContentOutline" label="LabelNotFound"/>
 <page content="org.eclipse.ui.texteditor.TemplatesView" label="LabelNotFound"/>
 <page content="org.eclipse.ant.ui.views.AntView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-</presentation>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
 </mainWindow>
@@ -210,175 +217,172 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch4/src/Average.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch4/src/StudentEmail.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/ch4/src/test.txt"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/ch4/src/AppletClient.html"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/ch4/src/students.txt"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch4/src/myprog/single/Average.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch4/src/myprog/single/Factorial.java"/>
-<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" uri="file:/C:/Users/Metin/Dropbox/NJIT/CS633_DistributedSystems/Assignment2/src/AppletClient.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/ch4/src/myprog/single/test1.txt"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/ch4/src/dest1.txt"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch4/src/myprog/single/StudentEmail.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch4/src/Factorial.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/ch4/src/AppletClient.html"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch4/src/StudentEmail.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/ch4/src/students.txt"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch4/src/myprog/single/Factorial.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch4/src/myprog/single/StudentEmail.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch5/src/DigitalClock.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch5/src/ex49/DigitalClock.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/ch5/src/AppletClient.html"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch5/src/ex54/DigitalClock.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch5b/ex52/BouncingBall.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/ch5b/AppletClient.html"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch5b/ex52/test.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/ch5b/AppletClient.html"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch5b/ex52/package-info.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch5b/ex52/test.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch5/src/ex49/DigitalClock.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch4/src/Average.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch5b/ex53/ShowMyBase.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/ch5b/AppletClient.html"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch5b/ex52/BouncingBall.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch5b/ex52/package-info.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch5b/ex53/ShowMyBase.java"/>
 </editors>
-<item historyLabel="StudentEmail.java" index="1">
-<position info="not_deleted" x="1544" y="0"/>
+<item historyLabel="BouncingBall.java" index="3">
+<position info="not_deleted" x="2244" y="0"/>
 </item>
-<item historyLabel="Factorial.java" index="6">
-<position info="not_deleted" x="363" y="0"/>
+<item historyLabel="BouncingBall.java" index="3">
+<position info="not_deleted" x="2115" y="0"/>
 </item>
-<item historyLabel="AppletClient.html" index="3">
-<position info="not_deleted" x="299" y="0"/>
+<item historyLabel="BouncingBall.java" index="3">
+<position info="not_deleted" x="2182" y="0"/>
 </item>
-<item historyLabel="Average.java" index="0">
-<position info="not_deleted" x="621" y="0"/>
+<item historyLabel="BouncingBall.java" index="3">
+<position info="not_deleted" x="2241" y="0"/>
 </item>
-<item historyLabel="AppletClient.java" index="7">
-<position info="not_deleted" x="1744" y="24"/>
+<item historyLabel="BouncingBall.java" index="3">
+<position info="not_deleted" x="2426" y="0"/>
 </item>
-<item historyLabel="Average.java" index="5">
-<position info="not_deleted" x="1461" y="0"/>
+<item historyLabel="BouncingBall.java" index="3">
+<position info="not_deleted" x="2363" y="0"/>
 </item>
-<item historyLabel="AppletClient.html" index="3">
-<position info="not_deleted" x="260" y="0"/>
+<item historyLabel="BouncingBall.java" index="3">
+<position info="not_deleted" x="2403" y="0"/>
 </item>
-<item historyLabel="AppletClient.java" index="7">
-<position info="not_deleted" x="1744" y="24"/>
+<item historyLabel="BouncingBall.java" index="3">
+<position info="not_deleted" x="2396" y="0"/>
 </item>
-<item historyLabel="Average.java" index="5">
-<position info="not_deleted" x="1407" y="0"/>
-</item>
-<item historyLabel="AppletClient.java" index="7">
-<position info="not_deleted" x="1744" y="24"/>
-</item>
-<item historyLabel="AppletClient.html" index="3">
-<position info="not_deleted" x="260" y="0"/>
-</item>
-<item historyLabel="Average.java" index="0">
-<position info="not_deleted" x="1182" y="0"/>
-</item>
-<item historyLabel="AppletClient.html" index="3">
-<position info="not_deleted" x="239" y="8"/>
-</item>
-<item historyLabel="Average.java" index="0">
-<position info="not_deleted" x="1307" y="0"/>
-</item>
-<item historyLabel="AppletClient.html" index="3">
-<position info="not_deleted" x="260" y="0"/>
-</item>
-<item historyLabel="Average.java" index="0">
-<position info="not_deleted" x="2734" y="0"/>
-</item>
-<item historyLabel="test.txt" index="2">
-<position info="not_deleted" x="34" y="0"/>
-</item>
-<item historyLabel="Average.java" index="0">
-<position info="not_deleted" x="1307" y="0"/>
-</item>
-<item historyLabel="StudentEmail.java" index="1">
-<position info="not_deleted" x="1544" y="0"/>
-</item>
-<item historyLabel="StudentEmail.java" index="1">
-<position info="not_deleted" x="1838" y="0"/>
-</item>
-<item historyLabel="test1.txt" index="8">
-<position info="not_deleted" x="31" y="0"/>
-</item>
-<item historyLabel="dest1.txt" index="9">
-<position/>
-</item>
-<item historyLabel="test1.txt" index="8">
-<position info="not_deleted" x="31" y="0"/>
-</item>
-<item historyLabel="StudentEmail.java" index="1">
-<position info="not_deleted" x="1875" y="0"/>
-</item>
-<item historyLabel="students.txt" index="4">
-<position info="not_deleted" x="72" y="0"/>
-</item>
-<item historyLabel="dest1.txt" index="9">
-<position/>
-</item>
-<item historyLabel="students.txt" index="4">
-<position info="not_deleted" x="72" y="0"/>
-</item>
-<item historyLabel="dest1.txt" index="9">
+<item historyLabel="AppletClient.html" index="4">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="students.txt" index="4">
-<position info="not_deleted" x="94" y="0"/>
+<item historyLabel="AppletClient.html" index="1">
+<position info="not_deleted" x="189" y="0"/>
 </item>
-<item historyLabel="StudentEmail.java" index="1">
-<position info="not_deleted" x="999" y="0"/>
+<item historyLabel="AppletClient.html" index="4">
+<position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="students.txt" index="4">
-<position info="not_deleted" x="94" y="0"/>
+<item historyLabel="DigitalClock.java" index="2">
+<position info="not_deleted" x="144" y="0"/>
 </item>
-<item historyLabel="StudentEmail.java" index="1">
-<position info="not_deleted" x="1782" y="199"/>
+<item historyLabel="AppletClient.html" index="4">
+<position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="StudentEmail.java" index="10">
-<position info="not_deleted" x="1708" y="0"/>
+<item historyLabel="DigitalClock.java" index="0">
+<position info="not_deleted" x="680" y="0"/>
 </item>
-<item historyLabel="StudentEmail.java" index="1">
-<position info="not_deleted" x="1484" y="0"/>
+<item historyLabel="AppletClient.html" index="4">
+<position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="Average.java" index="0">
-<position info="not_deleted" x="2438" y="0"/>
+<item historyLabel="BouncingBall.java" index="3">
+<position info="not_deleted" x="2396" y="0"/>
 </item>
-<item historyLabel="Factorial.java" index="11">
-<position info="not_deleted" x="166" y="0"/>
+<item historyLabel="AppletClient.html" index="4">
+<position info="not_deleted" x="202" y="0"/>
+</item>
+<item historyLabel="BouncingBall.java" index="3">
+<position info="not_deleted" x="1372" y="5"/>
+</item>
+<item historyLabel="AppletClient.html" index="4">
+<position info="not_deleted" x="202" y="0"/>
+</item>
+<item historyLabel="BouncingBall.java" index="3">
+<position info="not_deleted" x="1372" y="5"/>
+</item>
+<item historyLabel="AppletClient.html" index="4">
+<position info="not_deleted" x="7" y="0"/>
+</item>
+<item historyLabel="BouncingBall.java" index="3">
+<position info="not_deleted" x="578" y="0"/>
+</item>
+<item historyLabel="test.java" index="5">
+<position info="not_deleted" x="32" y="30"/>
+</item>
+<item historyLabel="BouncingBall.java" index="3">
+<position info="not_deleted" x="578" y="0"/>
+</item>
+<item historyLabel="AppletClient.html" index="6">
+<position/>
+</item>
+<item historyLabel="BouncingBall.java" index="3">
+<position info="not_deleted" x="958" y="0"/>
+</item>
+<item historyLabel="BouncingBall.java" index="3">
+<position info="not_deleted" x="580" y="0"/>
+</item>
+<item historyLabel="package-info.java" index="7">
+<position info="not_deleted" x="279" y="0"/>
+</item>
+<item historyLabel="test.java" index="8">
+<position info="not_deleted" x="32" y="30"/>
+</item>
+<item historyLabel="package-info.java" index="7">
+<position info="not_deleted" x="237" y="0"/>
+</item>
+<item historyLabel="BouncingBall.java" index="3">
+<position info="not_deleted" x="643" y="0"/>
+</item>
+<item historyLabel="package-info.java" index="7">
+<position info="not_deleted" x="145" y="0"/>
+</item>
+<item historyLabel="AppletClient.html" index="6">
+<position/>
+</item>
+<item historyLabel="BouncingBall.java" index="3">
+<position info="not_deleted" x="88" y="101"/>
+</item>
+<item historyLabel="package-info.java" index="7">
+<position info="not_deleted" x="169" y="0"/>
+</item>
+<item historyLabel="BouncingBall.java" index="3">
+<position info="not_deleted" x="88" y="101"/>
+</item>
+<item historyLabel="BouncingBall.java" index="3">
+<position info="not_deleted" x="1254" y="0"/>
+</item>
+<item historyLabel="DigitalClock.java" index="9">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="BouncingBall.java" index="3">
+<position info="not_deleted" x="1254" y="0"/>
+</item>
+<item historyLabel="Average.java" index="10">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="AppletClient.html" index="6">
+<position info="not_deleted" x="229" y="0"/>
+</item>
+<item historyLabel="ShowMyBase.java" index="11">
+<position info="not_deleted" x="1856" y="0"/>
+</item>
+<item historyLabel="ShowMyBase.java" index="11">
+<position/>
+</item>
+<item historyLabel="ShowMyBase.java" index="11">
+<position info="not_deleted" x="1089" y="0"/>
+</item>
+<item historyLabel="ShowMyBase.java" index="11">
+<position info="not_deleted" x="1946" y="0"/>
 </item>
 <item historyLabel="AppletClient.html" index="12">
-<position info="not_deleted" x="260" y="0"/>
+<position info="not_deleted" x="332" y="0"/>
 </item>
-<item historyLabel="StudentEmail.java" index="13">
-<position info="not_deleted" x="1484" y="0"/>
+<item historyLabel="BouncingBall.java" index="13">
+<position info="not_deleted" x="1254" y="0"/>
 </item>
-<item historyLabel="students.txt" index="14">
-<position info="not_deleted" x="94" y="0"/>
+<item historyLabel="package-info.java" index="14">
+<position info="not_deleted" x="0" y="279"/>
 </item>
-<item historyLabel="Factorial.java" index="15">
-<position info="not_deleted" x="363" y="0"/>
+<item historyLabel="BouncingBall.java" index="13">
+<position info="not_deleted" x="1998" y="5"/>
 </item>
-<item historyLabel="StudentEmail.java" index="16">
-<position info="not_deleted" x="1708" y="0"/>
-</item>
-<item historyLabel="DigitalClock.java" index="17">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="DigitalClock.java" index="17">
-<position info="not_deleted" x="1262" y="0"/>
-</item>
-<item historyLabel="DigitalClock.java" index="17">
-<position info="not_deleted" x="2111" y="0"/>
-</item>
-<item historyLabel="DigitalClock.java" index="17">
-<position info="not_deleted" x="1594" y="0"/>
-</item>
-<item historyLabel="AppletClient.html" index="18">
-<position info="not_deleted" x="224" y="0"/>
-</item>
-<item historyLabel="DigitalClock.java" index="17">
-<position info="not_deleted" x="1594" y="0"/>
-</item>
-<item historyLabel="DigitalClock.java" index="17">
-<position info="not_deleted" x="1406" y="0"/>
-</item>
-<item historyLabel="DigitalClock.java" index="17">
-<position info="not_deleted" x="1262" y="0"/>
-</item>
-<item active="true" historyLabel="DigitalClock.java" index="17">
-<position info="not_deleted" x="1274" y="0"/>
+<item active="true" historyLabel="ShowMyBase.java" index="15">
+<position/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -388,6 +392,7 @@
 <trimLayout>
 <trimArea IMemento.internal.id="128">
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
+<trimItem IMemento.internal.id="org.eclipse.mylyn.tasks.ui.trim.container"/>
 </trimArea>
 <trimArea IMemento.internal.id="1024">
 <trimItem IMemento.internal.id="org.eclise.ui.internal.FastViewBar"/>
@@ -397,11 +402,38 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Average.java" tooltip="ch4/src/Average.java">
+<persistable path="/ch4/src/Average.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DigitalClock.java" tooltip="ch5/src/ex49/DigitalClock.java">
+<persistable path="/ch5/src/ex49/DigitalClock.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="package-info.java" tooltip="ch5b/ex52/package-info.java">
+<persistable path="/ch5b/ex52/package-info.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="test.java" tooltip="ch5b/ex52/test.java">
+<persistable path="/ch5b/ex52/test.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="AppletClient.html" tooltip="ch5b/AppletClient.html">
+<persistable path="/ch5b/AppletClient.html"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="BouncingBall.java" tooltip="ch5b/ex52/BouncingBall.java">
+<persistable path="/ch5b/ex52/BouncingBall.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MainClass.java" tooltip="ch5/src/MainClass.java">
+<persistable path="/ch5/src/MainClass.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DigitalClock.java" tooltip="ch5/src/ex54/DigitalClock.java">
+<persistable path="/ch5/src/ex54/DigitalClock.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DigitalClock.java" tooltip="ch5/src/chapter5/DigitalClock.java">
+<persistable path="/ch5/src/chapter5/DigitalClock.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Average.java" tooltip="ch4/src/myprog/single/Average.java">
+<persistable path="/ch4/src/myprog/single/Average.java"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="AppletClient.html" tooltip="ch5/src/AppletClient.html">
 <persistable path="/ch5/src/AppletClient.html"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DigitalClock.java" tooltip="ch5/src/DigitalClock.java">
-<persistable path="/ch5/src/DigitalClock.java"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="StudentEmail.java" tooltip="ch4/src/myprog/single/StudentEmail.java">
 <persistable path="/ch4/src/myprog/single/StudentEmail.java"/>
@@ -414,30 +446,6 @@
 </file>
 <file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AppletClient.java" tooltip="C:\Users\Metin\Dropbox\NJIT\CS633_DistributedSystems\Assignment2\src\AppletClient.java">
 <persistable uri="file:/C:/Users/Metin/Dropbox/NJIT/CS633_DistributedSystems/Assignment2/src/AppletClient.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Factorial.java" tooltip="ch4/src/myprog/single/Factorial.java">
-<persistable path="/ch4/src/myprog/single/Factorial.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CopyOfAverage.java" tooltip="ch4/src/CopyOfAverage.java">
-<persistable path="/ch4/src/CopyOfAverage.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="students.txt" tooltip="ch4/src/students.txt">
-<persistable path="/ch4/src/students.txt"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="asdasd.java" tooltip="ch4/src/asdasd.java">
-<persistable path="/ch4/src/asdasd.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Factorial.java" tooltip="ch4/src/chapter4/Factorial.java">
-<persistable path="/ch4/src/chapter4/Factorial.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="s2.java" tooltip="ch4/src/chapter4/s2.java">
-<persistable path="/ch4/src/chapter4/s2.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="StudentEmail.java" tooltip="ch4/src/StudentEmail.java">
-<persistable path="/ch4/src/StudentEmail.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="HelloFromNJIT.java" tooltip="ch3/HelloFromNJIT.java">
-<persistable path="/ch3/HelloFromNJIT.java"/>
 </file>
 </mruList>
 </workbench>
