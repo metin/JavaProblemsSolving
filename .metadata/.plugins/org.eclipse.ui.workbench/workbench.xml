@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="26" version="2.0">
+<workbench progressCount="19" version="2.0">
 <workbenchAdvisor/>
-<window height="802" width="908" x="4" y="22">
+<window height="1018" maximized="true" width="1800" x="4" y="37">
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
 <itemSize x="160"/>
 </perspectiveBar>
 <coolbarLayout>
 <coolItem id="group.file" itemType="typeGroupMarker"/>
-<coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="233" y="22"/>
+<coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="0" y="22"/>
 <coolItem id="additions" itemType="typeGroupMarker"/>
-<coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="129" y="22"/>
-<coolItem id="org.eclipse.jdt.ui.JavaElementCreationActionSet" itemType="typeToolBarContribution" x="76" y="22"/>
-<coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="122" y="22"/>
-<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="130" y="22"/>
+<coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="0" y="22"/>
+<coolItem id="org.eclipse.jdt.ui.JavaElementCreationActionSet" itemType="typeToolBarContribution" x="0" y="22"/>
+<coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="0" y="22"/>
+<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="0" y="22"/>
 <coolItem id="org.eclipse.wst.xml.ui.perspective.NewFileToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.wst.xml.ui.design.DesignToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
-<coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="190" y="22"/>
+<coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="152" y="22"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.jdt.ui.ClassFileEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.ui.DefaultTextEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
-<coolItem id="org.eclipse.ui.browser.editor" itemType="typePlaceholder" x="-1" y="-1"/>
+<coolItem id="org.eclipse.ui.browser.editor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="group.help" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
@@ -35,36 +36,148 @@
 <part id="1"/>
 <part id="2"/>
 <part id="3"/>
+<part id="4"/>
+<part id="5"/>
+<part id="6"/>
+<part id="7"/>
+<part id="8"/>
+<part id="9"/>
+<part id="10"/>
+<part id="11"/>
+<part id="12"/>
+<part id="13"/>
+<part id="14"/>
+<part id="15"/>
+<part id="16"/>
+<part id="17"/>
+<part id="18"/>
+<part id="19"/>
+<part id="20"/>
+</presentation>
+</folder>
+</info>
+<info part="org.eclipse.ui.internal.EditorStack@420b5e3d" ratio="0.74317294" ratioLeft="1143" ratioRight="395" relationship="2" relative="DefaultEditorWorkbook">
+<folder appearance="1" expanded="2">
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="BouncingBall.java" partName="BouncingBall.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch5b/ex52/BouncingBall.java" title="BouncingBall.java" tooltip="ch5b/ex52/BouncingBall.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch5b/ex52/BouncingBall.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="4335" selectionOffset="0" selectionTopPixel="184"/>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Calculator.java" partName="Calculator.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch8/ex85/Calculator.java" title="Calculator.java" tooltip="ch8/ex85/Calculator.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch8/ex85/Calculator.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1812" selectionTopPixel="488"/>
 </editor>
-<editor id="org.eclipse.ui.DefaultTextEditor" name="AppletClient.html" partName="AppletClient.html" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch5b/AppletClient.html" title="AppletClient.html" tooltip="ch5b/AppletClient.html" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch5b/AppletClient.html"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="231" selectionTopPixel="0"/>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Calculation.java" partName="Calculation.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch8/ex85/Calculation.java" title="Calculation.java" tooltip="ch8/ex85/Calculation.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch8/ex85/Calculation.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="13" selectionTopPixel="0"/>
 </editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="package-info.java" partName="package-info.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch5b/ex52/package-info.java" title="package-info.java" tooltip="ch5b/ex52/package-info.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch5b/ex52/package-info.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="279" selectionOffset="0" selectionTopPixel="0"/>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="BaseOperation.java" partName="BaseOperation.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch8/ex85/BaseOperation.java" title="BaseOperation.java" tooltip="ch8/ex85/BaseOperation.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch8/ex85/BaseOperation.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="166" selectionTopPixel="0"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ShowMyBase.java" partName="ShowMyBase.java" path="C:/Users/Metin/Dropbox/NJIT/CS602/Sources/ch5b/ex53/ShowMyBase.java" title="ShowMyBase.java" tooltip="ch5b/ex53/ShowMyBase.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch5b/ex53/ShowMyBase.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="125" selectionTopPixel="22"/>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CalculatorTest.java" partName="CalculatorTest.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch8/ex85/CalculatorTest.java" title="CalculatorTest.java" tooltip="ch8/ex85/CalculatorTest.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch8/ex85/CalculatorTest.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="143" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Add.java" partName="Add.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch8/ex85/Add.java" title="Add.java" tooltip="ch8/ex85/Add.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch8/ex85/Add.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="176" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Multiply.java" partName="Multiply.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch8/ex85/Multiply.java" title="Multiply.java" tooltip="ch8/ex85/Multiply.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch8/ex85/Multiply.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="184" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Subtract.java" partName="Subtract.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch8/ex85/Subtract.java" title="Subtract.java" tooltip="ch8/ex85/Subtract.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch8/ex85/Subtract.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="184" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Divide.java" partName="Divide.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch8/ex85/Divide.java" title="Divide.java" tooltip="ch8/ex85/Divide.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch8/ex85/Divide.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="180" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Zipper.java" partName="Zipper.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch8/ex87/Zipper.java" title="Zipper.java" tooltip="ch8/ex87/Zipper.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch8/ex87/Zipper.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="33" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="UnZipper.java" partName="UnZipper.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch8/ex87/UnZipper.java" title="UnZipper.java" tooltip="ch8/ex87/UnZipper.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch8/ex87/UnZipper.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="327" selectionTopPixel="0"/>
+</editor>
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ZipUnzipTest.java" partName="ZipUnzipTest.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch8/ex87/ZipUnzipTest.java" title="ZipUnzipTest.java" tooltip="ch8/ex87/ZipUnzipTest.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch8/ex87/ZipUnzipTest.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="133" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Zip.java" partName="Zip.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch8/ex87/Zip.java" title="Zip.java" tooltip="ch8/ex87/Zip.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch8/ex87/Zip.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="14" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="UnZip.java" partName="UnZip.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch8/ex87/UnZip.java" title="UnZip.java" tooltip="ch8/ex87/UnZip.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch8/ex87/UnZip.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="279" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="GZipCompressor.java" partName="GZipCompressor.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch8/ex87/GZipCompressor.java" title="GZipCompressor.java" tooltip="ch8/ex87/GZipCompressor.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch8/ex87/GZipCompressor.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="555" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ZipCompressor.java" partName="ZipCompressor.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch8/ex87/ZipCompressor.java" title="ZipCompressor.java" tooltip="ch8/ex87/ZipCompressor.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch8/ex87/ZipCompressor.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="394" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CompressorFactory.java" partName="CompressorFactory.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch8/ex87/CompressorFactory.java" title="CompressorFactory.java" tooltip="ch8/ex87/CompressorFactory.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch8/ex87/CompressorFactory.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="343" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Compressor.java" partName="Compressor.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch8/ex87/Compressor.java" title="Compressor.java" tooltip="ch8/ex87/Compressor.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch8/ex87/Compressor.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="153" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DeCompressor.java" partName="DeCompressor.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch8/ex87/DeCompressor.java" title="DeCompressor.java" tooltip="ch8/ex87/DeCompressor.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch8/ex87/DeCompressor.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="157" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DeCompressorFactory.java" partName="DeCompressorFactory.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch8/ex87/DeCompressorFactory.java" title="DeCompressorFactory.java" tooltip="ch8/ex87/DeCompressorFactory.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch8/ex87/DeCompressorFactory.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="198" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="GZipDeCompressor.java" partName="GZipDeCompressor.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch8/ex87/GZipDeCompressor.java" title="GZipDeCompressor.java" tooltip="ch8/ex87/GZipDeCompressor.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch8/ex87/GZipDeCompressor.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="344" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ZipDeCompressor.java" partName="ZipDeCompressor.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch8/ex87/ZipDeCompressor.java" title="ZipDeCompressor.java" tooltip="ch8/ex87/ZipDeCompressor.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch8/ex87/ZipDeCompressor.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="358" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.ui.DefaultTextEditor" name="AppletClient.html" partName="AppletClient.html" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch8/AppletClient.html" title="AppletClient.html" tooltip="ch8/AppletClient.html" workbook="org.eclipse.ui.internal.EditorStack@420b5e3d">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch8/AppletClient.html"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="273" selectionTopPixel="0"/>
+</editor>
+<editor focus="true" id="org.eclipse.ui.DefaultTextEditor" name="test.txt" partName="test.txt" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch8/test.txt" title="test.txt" tooltip="ch8/test.txt" workbook="org.eclipse.ui.internal.EditorStack@420b5e3d">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch8/test.txt"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="20" selectionTopPixel="0"/>
 </editor>
 </editors>
 <views>
+<view id="org.eclipse.jdt.junit.ResultView" partName="JUnit">
+<viewState failuresOnly="false" layout="1" orientation="2" ratio="500" scroll="true" time="true"/>
+</view>
 <view id="org.eclipse.ui.views.ResourceNavigator" partName="Navigator">
 <viewState LINK_NAVIGATOR_TO_EDITOR="0" sorter="1">
 <filters>&#x0A;<filter element="*.class" isEnabled="false"/>
 <filter element=".*" isEnabled="false"/>
 </filters>
-<selection>&#x0A;<element path="/ch4"/>
+<expanded>&#x0A;<element path="/midterms"/>
+</expanded>
+<selection>&#x0A;<element path="/midterms/midterm1"/>
 </selection>
 </viewState>
+</view>
+<view id="org.eclipse.debug.ui.DebugView" partName="Debug">
+<viewState/>
+</view>
+<view id="org.eclipse.ui.console.ConsoleView" partName="Console">
+<viewState/>
 </view>
 <view id="org.eclipse.jdt.ui.PackageExplorer" partName="Package Explorer">
 <viewState group_libraries="1" layout="2" linkWithEditor="0" rootMode="1" workingSetName="">
@@ -96,7 +209,7 @@
 </viewState>
 </view>
 </views>
-<perspectives activePart="org.eclipse.jdt.ui.CompilationUnitEditor" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
+<perspectives activePart="org.eclipse.jdt.ui.PackageExplorer" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.jdt.internal.ui.JavaPerspectiveFactory" id="org.eclipse.jdt.ui.JavaPerspective" label="Java"/>
 <alwaysOnActionSet id="org.eclipse.mylyn.context.ui.actionSet"/>
@@ -119,6 +232,7 @@
 <alwaysOnActionSet id="org.eclipse.jdt.debug.ui.JDTDebugActionSet"/>
 <alwaysOnActionSet id="org.eclipse.jdt.junit.JUnitActionSet"/>
 <alwaysOnActionSet id="org.eclipse.egit.ui.navigation"/>
+<alwaysOnActionSet id="org.eclipse.debug.ui.debugActionSet"/>
 <show_view_action id="org.eclipse.jdt.ui.PackageExplorer"/>
 <show_view_action id="org.eclipse.jdt.ui.TypeHierarchy"/>
 <show_view_action id="org.eclipse.jdt.ui.SourceView"/>
@@ -157,21 +271,30 @@
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
 <view id="org.eclipse.jdt.ui.PackageExplorer"/>
 <view id="org.eclipse.ui.views.ResourceNavigator"/>
-<fastViewBars/>
+<view id="org.eclipse.jdt.junit.ResultView"/>
+<fastViewBars>
+<fastViewBar fastViewLocation="1024" id="bottom" orientation="256" selectedTabId="org.eclipse.pde.runtime.LogView" style="0">
+<fastViews>
+<view id="org.eclipse.ui.console.ConsoleView" ratio="0.3"/>
+<view id="org.eclipse.debug.ui.DebugView" ratio="0.3"/>
+</fastViews>
+</fastViewBar>
+</fastViewBars>
 <layout>
 <mainWindow>
 <info folder="true" part="left">
 <folder activePageID="org.eclipse.jdt.ui.PackageExplorer" appearance="2" expanded="2">
 <page content="org.eclipse.jdt.ui.PackageExplorer" label="Package Explorer"/>
 <page content="org.eclipse.ui.views.ResourceNavigator" label="Navigator"/>
+<page content="org.eclipse.jdt.junit.ResultView" label="JUnit"/>
 <page content="org.eclipse.jdt.ui.TypeHierarchy" label="LabelNotFound"/>
 <page content="org.eclipse.ui.navigator.ProjectExplorer" label="LabelNotFound"/>
-<page content="org.eclipse.jdt.junit.ResultView" label="LabelNotFound"/>
 <page content="org.eclipse.wb.core.StructureView" label="LabelNotFound"/>
 <page content="org.eclipse.wb.core.PaletteView" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 <part id="1"/>
+<part id="2"/>
 </presentation>
 </folder>
 </info>
@@ -183,7 +306,7 @@
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.17391305" ratioLeft="156" ratioRight="741" relationship="2" relative="left"/>
+<info part="org.eclipse.ui.editorss" ratio="0.19107611" ratioLeft="364" ratioRight="1541" relationship="2" relative="left"/>
 <info folder="true" part="bottom" ratio="0.74570817" ratioLeft="695" ratioRight="237" relationship="4" relative="org.eclipse.ui.editorss">
 <folder appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="LabelNotFound"/>
@@ -193,6 +316,10 @@
 <page content="org.eclipse.search.ui.views.SearchView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.BookmarkView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.ProgressView" label="LabelNotFound"/>
+<page content="org.eclipse.debug.ui.DebugView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.console.ConsoleView:Console View #1" label="LabelNotFound"/>
+<page content="org.eclipse.pde.runtime.LogView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.console.ConsoleView:Console View #2" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
@@ -217,172 +344,169 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch5/src/ex49/DigitalClock.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/ch5/src/AppletClient.html"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch5/src/ex54/DigitalClock.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch5b/ex52/BouncingBall.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/ch5b/AppletClient.html"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch5b/ex52/test.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/ch5b/AppletClient.html"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch5b/ex52/package-info.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch5b/ex52/test.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch5/src/ex49/DigitalClock.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch4/src/Average.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch5b/ex53/ShowMyBase.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/ch5b/AppletClient.html"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch5b/ex52/BouncingBall.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch5b/ex52/package-info.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch5b/ex53/ShowMyBase.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch8/ex87/Zipper.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch8/ex87/Zip.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch8/ex87/GZipCompressor.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch8/ex87/ZipCompressor.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch8/ex87/CompressorFactory.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch8/ex87/Compressor.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch8/ex87/ZipUnzipTest.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch8/ex87/UnZipper.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch8/ex87/DeCompressor.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch8/ex87/DeCompressorFactory.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch8/ex87/GZipDeCompressor.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch8/ex87/ZipDeCompressor.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch8/ex87/UnZip.java"/>
 </editors>
-<item historyLabel="BouncingBall.java" index="3">
-<position info="not_deleted" x="2244" y="0"/>
+<item historyLabel="CompressorFactory.java" index="4">
+<position info="not_deleted" x="343" y="0"/>
 </item>
-<item historyLabel="BouncingBall.java" index="3">
-<position info="not_deleted" x="2115" y="0"/>
-</item>
-<item historyLabel="BouncingBall.java" index="3">
-<position info="not_deleted" x="2182" y="0"/>
-</item>
-<item historyLabel="BouncingBall.java" index="3">
-<position info="not_deleted" x="2241" y="0"/>
-</item>
-<item historyLabel="BouncingBall.java" index="3">
-<position info="not_deleted" x="2426" y="0"/>
-</item>
-<item historyLabel="BouncingBall.java" index="3">
-<position info="not_deleted" x="2363" y="0"/>
-</item>
-<item historyLabel="BouncingBall.java" index="3">
-<position info="not_deleted" x="2403" y="0"/>
-</item>
-<item historyLabel="BouncingBall.java" index="3">
-<position info="not_deleted" x="2396" y="0"/>
-</item>
-<item historyLabel="AppletClient.html" index="4">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="AppletClient.html" index="1">
-<position info="not_deleted" x="189" y="0"/>
-</item>
-<item historyLabel="AppletClient.html" index="4">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="DigitalClock.java" index="2">
-<position info="not_deleted" x="144" y="0"/>
-</item>
-<item historyLabel="AppletClient.html" index="4">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="DigitalClock.java" index="0">
-<position info="not_deleted" x="680" y="0"/>
-</item>
-<item historyLabel="AppletClient.html" index="4">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="BouncingBall.java" index="3">
-<position info="not_deleted" x="2396" y="0"/>
-</item>
-<item historyLabel="AppletClient.html" index="4">
-<position info="not_deleted" x="202" y="0"/>
-</item>
-<item historyLabel="BouncingBall.java" index="3">
-<position info="not_deleted" x="1372" y="5"/>
-</item>
-<item historyLabel="AppletClient.html" index="4">
-<position info="not_deleted" x="202" y="0"/>
-</item>
-<item historyLabel="BouncingBall.java" index="3">
-<position info="not_deleted" x="1372" y="5"/>
-</item>
-<item historyLabel="AppletClient.html" index="4">
-<position info="not_deleted" x="7" y="0"/>
-</item>
-<item historyLabel="BouncingBall.java" index="3">
-<position info="not_deleted" x="578" y="0"/>
-</item>
-<item historyLabel="test.java" index="5">
-<position info="not_deleted" x="32" y="30"/>
-</item>
-<item historyLabel="BouncingBall.java" index="3">
-<position info="not_deleted" x="578" y="0"/>
-</item>
-<item historyLabel="AppletClient.html" index="6">
+<item historyLabel="GZipCompressor.java" index="2">
 <position/>
 </item>
-<item historyLabel="BouncingBall.java" index="3">
-<position info="not_deleted" x="958" y="0"/>
+<item historyLabel="ZipCompressor.java" index="3">
+<position info="not_deleted" x="394" y="0"/>
 </item>
-<item historyLabel="BouncingBall.java" index="3">
-<position info="not_deleted" x="580" y="0"/>
+<item historyLabel="GZipCompressor.java" index="2">
+<position info="not_deleted" x="555" y="0"/>
 </item>
-<item historyLabel="package-info.java" index="7">
+<item historyLabel="Compressor.java" index="5">
+<position info="not_deleted" x="153" y="0"/>
+</item>
+<item historyLabel="ZipUnzipTest.java" index="6">
+<position info="not_deleted" x="133" y="0"/>
+</item>
+<item historyLabel="Zipper.java" index="0">
+<position info="not_deleted" x="33" y="0"/>
+</item>
+<item historyLabel="UnZipper.java" index="7">
+<position/>
+</item>
+<item historyLabel="DeCompressor.java" index="8">
+<position info="not_deleted" x="157" y="0"/>
+</item>
+<item historyLabel="UnZipper.java" index="7">
+<position info="not_deleted" x="609" y="0"/>
+</item>
+<item historyLabel="DeCompressor.java" index="8">
+<position info="not_deleted" x="157" y="0"/>
+</item>
+<item historyLabel="DeCompressorFactory.java" index="9">
+<position info="not_deleted" x="355" y="0"/>
+</item>
+<item historyLabel="GZipDeCompressor.java" index="10">
+<position info="not_deleted" x="163" y="0"/>
+</item>
+<item historyLabel="Zipper.java" index="0">
+<position info="not_deleted" x="33" y="0"/>
+</item>
+<item historyLabel="ZipDeCompressor.java" index="11">
+<position info="not_deleted" x="130" y="0"/>
+</item>
+<item historyLabel="UnZipper.java" index="7">
+<position info="not_deleted" x="609" y="0"/>
+</item>
+<item historyLabel="ZipDeCompressor.java" index="11">
+<position info="not_deleted" x="745" y="0"/>
+</item>
+<item historyLabel="UnZipper.java" index="7">
+<position info="not_deleted" x="609" y="0"/>
+</item>
+<item historyLabel="CompressorFactory.java" index="4">
+<position info="not_deleted" x="343" y="0"/>
+</item>
+<item historyLabel="ZipCompressor.java" index="3">
+<position info="not_deleted" x="394" y="0"/>
+</item>
+<item historyLabel="Zip.java" index="1">
+<position info="not_deleted" x="206" y="0"/>
+</item>
+<item historyLabel="Zipper.java" index="0">
+<position info="not_deleted" x="33" y="0"/>
+</item>
+<item historyLabel="UnZipper.java" index="7">
+<position info="not_deleted" x="399" y="0"/>
+</item>
+<item historyLabel="DeCompressorFactory.java" index="9">
+<position info="not_deleted" x="115" y="0"/>
+</item>
+<item historyLabel="UnZipper.java" index="7">
+<position info="not_deleted" x="399" y="0"/>
+</item>
+<item historyLabel="UnZipper.java" index="7">
+<position info="not_deleted" x="428" y="0"/>
+</item>
+<item historyLabel="UnZipper.java" index="7">
+<position info="not_deleted" x="592" y="0"/>
+</item>
+<item historyLabel="UnZipper.java" index="7">
+<position info="not_deleted" x="605" y="0"/>
+</item>
+<item historyLabel="UnZipper.java" index="7">
+<position info="not_deleted" x="546" y="11"/>
+</item>
+<item historyLabel="UnZip.java" index="12">
+<position/>
+</item>
+<item historyLabel="Zip.java" index="1">
+<position info="not_deleted" x="114" y="88"/>
+</item>
+<item historyLabel="UnZip.java" index="12">
+<position info="not_deleted" x="313" y="0"/>
+</item>
+<item historyLabel="GZipDeCompressor.java" index="10">
+<position info="not_deleted" x="271" y="0"/>
+</item>
+<item historyLabel="ZipDeCompressor.java" index="11">
+<position info="not_deleted" x="750" y="0"/>
+</item>
+<item historyLabel="GZipDeCompressor.java" index="10">
+<position info="not_deleted" x="271" y="0"/>
+</item>
+<item historyLabel="GZipDeCompressor.java" index="10">
+<position info="not_deleted" x="344" y="0"/>
+</item>
+<item historyLabel="DeCompressorFactory.java" index="9">
+<position info="not_deleted" x="115" y="0"/>
+</item>
+<item historyLabel="UnZip.java" index="12">
+<position info="not_deleted" x="313" y="0"/>
+</item>
+<item historyLabel="UnZipper.java" index="7">
+<position info="not_deleted" x="222" y="0"/>
+</item>
+<item historyLabel="UnZip.java" index="12">
+<position info="not_deleted" x="313" y="0"/>
+</item>
+<item historyLabel="DeCompressorFactory.java" index="9">
+<position info="not_deleted" x="115" y="0"/>
+</item>
+<item historyLabel="UnZip.java" index="12">
 <position info="not_deleted" x="279" y="0"/>
 </item>
-<item historyLabel="test.java" index="8">
-<position info="not_deleted" x="32" y="30"/>
+<item historyLabel="UnZipper.java" index="7">
+<position info="not_deleted" x="432" y="0"/>
 </item>
-<item historyLabel="package-info.java" index="7">
-<position info="not_deleted" x="237" y="0"/>
+<item historyLabel="DeCompressorFactory.java" index="9">
+<position info="not_deleted" x="198" y="0"/>
 </item>
-<item historyLabel="BouncingBall.java" index="3">
-<position info="not_deleted" x="643" y="0"/>
+<item historyLabel="ZipDeCompressor.java" index="11">
+<position info="not_deleted" x="539" y="0"/>
 </item>
-<item historyLabel="package-info.java" index="7">
-<position info="not_deleted" x="145" y="0"/>
+<item historyLabel="DeCompressorFactory.java" index="9">
+<position info="not_deleted" x="198" y="0"/>
 </item>
-<item historyLabel="AppletClient.html" index="6">
-<position/>
+<item historyLabel="UnZipper.java" index="7">
+<position info="not_deleted" x="327" y="0"/>
 </item>
-<item historyLabel="BouncingBall.java" index="3">
-<position info="not_deleted" x="88" y="101"/>
+<item historyLabel="Zip.java" index="1">
+<position info="not_deleted" x="14" y="0"/>
 </item>
-<item historyLabel="package-info.java" index="7">
-<position info="not_deleted" x="169" y="0"/>
+<item historyLabel="ZipDeCompressor.java" index="11">
+<position info="not_deleted" x="358" y="0"/>
 </item>
-<item historyLabel="BouncingBall.java" index="3">
-<position info="not_deleted" x="88" y="101"/>
-</item>
-<item historyLabel="BouncingBall.java" index="3">
-<position info="not_deleted" x="1254" y="0"/>
-</item>
-<item historyLabel="DigitalClock.java" index="9">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="BouncingBall.java" index="3">
-<position info="not_deleted" x="1254" y="0"/>
-</item>
-<item historyLabel="Average.java" index="10">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="AppletClient.html" index="6">
-<position info="not_deleted" x="229" y="0"/>
-</item>
-<item historyLabel="ShowMyBase.java" index="11">
-<position info="not_deleted" x="1856" y="0"/>
-</item>
-<item historyLabel="ShowMyBase.java" index="11">
-<position/>
-</item>
-<item historyLabel="ShowMyBase.java" index="11">
-<position info="not_deleted" x="1089" y="0"/>
-</item>
-<item historyLabel="ShowMyBase.java" index="11">
-<position info="not_deleted" x="1946" y="0"/>
-</item>
-<item historyLabel="AppletClient.html" index="12">
-<position info="not_deleted" x="332" y="0"/>
-</item>
-<item historyLabel="BouncingBall.java" index="13">
-<position info="not_deleted" x="1254" y="0"/>
-</item>
-<item historyLabel="package-info.java" index="14">
-<position info="not_deleted" x="0" y="279"/>
-</item>
-<item historyLabel="BouncingBall.java" index="13">
-<position info="not_deleted" x="1998" y="5"/>
-</item>
-<item active="true" historyLabel="ShowMyBase.java" index="15">
-<position/>
+<item active="true" historyLabel="ZipUnzipTest.java" index="6">
+<position info="not_deleted" x="133" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -390,62 +514,59 @@
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
-<trimArea IMemento.internal.id="128">
-<trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
-<trimItem IMemento.internal.id="org.eclipse.mylyn.tasks.ui.trim.container"/>
-</trimArea>
 <trimArea IMemento.internal.id="1024">
 <trimItem IMemento.internal.id="org.eclise.ui.internal.FastViewBar"/>
 <trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
+<trimItem IMemento.internal.id="bottom"/>
 </trimArea>
 </trimLayout>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Average.java" tooltip="ch4/src/Average.java">
-<persistable path="/ch4/src/Average.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ZipDeCompressor.java" tooltip="ch8/ex87/ZipDeCompressor.java">
+<persistable path="/ch8/ex87/ZipDeCompressor.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DigitalClock.java" tooltip="ch5/src/ex49/DigitalClock.java">
-<persistable path="/ch5/src/ex49/DigitalClock.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="GZipDeCompressor.java" tooltip="ch8/ex87/GZipDeCompressor.java">
+<persistable path="/ch8/ex87/GZipDeCompressor.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="package-info.java" tooltip="ch5b/ex52/package-info.java">
-<persistable path="/ch5b/ex52/package-info.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DeCompressorFactory.java" tooltip="ch8/ex87/DeCompressorFactory.java">
+<persistable path="/ch8/ex87/DeCompressorFactory.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="test.java" tooltip="ch5b/ex52/test.java">
-<persistable path="/ch5b/ex52/test.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DeCompressor.java" tooltip="ch8/ex87/DeCompressor.java">
+<persistable path="/ch8/ex87/DeCompressor.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="AppletClient.html" tooltip="ch5b/AppletClient.html">
-<persistable path="/ch5b/AppletClient.html"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="StaticAlgoFactory.java" tooltip="ch7/ex76/StaticAlgoFactory.java">
+<persistable path="/ch7/ex76/StaticAlgoFactory.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="BouncingBall.java" tooltip="ch5b/ex52/BouncingBall.java">
-<persistable path="/ch5b/ex52/BouncingBall.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Compressor.java" tooltip="ch8/ex87/Compressor.java">
+<persistable path="/ch8/ex87/Compressor.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MainClass.java" tooltip="ch5/src/MainClass.java">
-<persistable path="/ch5/src/MainClass.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Comressor.java" tooltip="ch8/ex87/Comressor.java">
+<persistable path="/ch8/ex87/Comressor.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DigitalClock.java" tooltip="ch5/src/ex54/DigitalClock.java">
-<persistable path="/ch5/src/ex54/DigitalClock.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CompressorFactory.java" tooltip="ch8/ex87/CompressorFactory.java">
+<persistable path="/ch8/ex87/CompressorFactory.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DigitalClock.java" tooltip="ch5/src/chapter5/DigitalClock.java">
-<persistable path="/ch5/src/chapter5/DigitalClock.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ZipCompressor.java" tooltip="ch8/ex87/ZipCompressor.java">
+<persistable path="/ch8/ex87/ZipCompressor.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Average.java" tooltip="ch4/src/myprog/single/Average.java">
-<persistable path="/ch4/src/myprog/single/Average.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="GZipCompressor.java" tooltip="ch8/ex87/GZipCompressor.java">
+<persistable path="/ch8/ex87/GZipCompressor.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="AppletClient.html" tooltip="ch5/src/AppletClient.html">
-<persistable path="/ch5/src/AppletClient.html"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="UnZip.java" tooltip="ch8/ex87/UnZip.java">
+<persistable path="/ch8/ex87/UnZip.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="StudentEmail.java" tooltip="ch4/src/myprog/single/StudentEmail.java">
-<persistable path="/ch4/src/myprog/single/StudentEmail.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Zip.java" tooltip="ch8/ex87/Zip.java">
+<persistable path="/ch8/ex87/Zip.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="dest1.txt" tooltip="ch4/src/dest1.txt">
-<persistable path="/ch4/src/dest1.txt"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ZipUnzipTest.java" tooltip="ch8/ex87/ZipUnzipTest.java">
+<persistable path="/ch8/ex87/ZipUnzipTest.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="test1.txt" tooltip="ch4/src/myprog/single/test1.txt">
-<persistable path="/ch4/src/myprog/single/test1.txt"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="test.txt" tooltip="ch8/test.txt">
+<persistable path="/ch8/test.txt"/>
 </file>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AppletClient.java" tooltip="C:\Users\Metin\Dropbox\NJIT\CS633_DistributedSystems\Assignment2\src\AppletClient.java">
-<persistable uri="file:/C:/Users/Metin/Dropbox/NJIT/CS633_DistributedSystems/Assignment2/src/AppletClient.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="UnZipper.java" tooltip="ch8/ex87/UnZipper.java">
+<persistable path="/ch8/ex87/UnZipper.java"/>
 </file>
 </mruList>
 </workbench>

@@ -1,3 +1,5 @@
-#Wed Oct 05 20:42:36 EDT 2011
+#Sun Oct 16 21:00:02 EDT 2011
 PLUGINS_NOT_ACTIVATED_ON_STARTUP=org.eclipse.m2e.discovery;
 eclipse.preferences.version=1
+perspectiveBarVisible=false
+coolBarVisible=false
