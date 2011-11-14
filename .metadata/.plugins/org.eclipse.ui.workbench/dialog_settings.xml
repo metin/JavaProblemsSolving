@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="WorkbenchPreferenceDialogSettings">
-		<item value="173" key="DIALOG_Y_ORIGIN"/>
+		<item value="19" key="DIALOG_Y_ORIGIN"/>
 		<item value="649" key="DIALOG_X_ORIGIN"/>
 	</section>
 	<section name="ShowViewDialog">
 		<item value="555" key="DIALOG_WIDTH"/>
 		<item value="org.eclipse.pde.runtime.LogView" key="ShowViewDialog.STORE_SELECTED_VIEW_ID"/>
-		<item value="253" key="DIALOG_Y_ORIGIN"/>
+		<item value="153" key="DIALOG_Y_ORIGIN"/>
 		<item value="484" key="DIALOG_X_ORIGIN"/>
 		<item value="593" key="DIALOG_HEIGHT"/>
 		<item value="1|Lucida Grande|11.0|0|COCOA|1|LucidaGrande" key="DIALOG_FONT_NAME"/>

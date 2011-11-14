@@ -1,0 +1,22 @@
+javac scribble3/*.java
+javac draw1/*.java
+javac draw2/*.java
+javac draw3/*.java
+javac draw4/*.java
+
+jar cvf drawingpad.jar draw1/ draw2/ draw3/ draw4/ scribble3/
+
+keytool -genkey -keyalg rsa -alias drawingpad
+keytool -export -alias drawingpad -file drawingp.crt
+
+jarsigner drawingpad.jar drawingpad
+cd 
+jarsigner -verify drawingpad.jar
+
+
+keytool -selfcert
+keytool -selfcert -alias drawingpad
+jarsigner drawingpad.jar drawingpad
+appletviewer AppletClient.html
+
+

@@ -1,19 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="junit.framework.Test"/>
-<fullyQualifiedTypeName name="junit.framework.TestSuite"/>
-<fullyQualifiedTypeName name="ex63.IStack"/>
-<fullyQualifiedTypeName name="ex65.Stack"/>
-<fullyQualifiedTypeName name="java.util.NoSuchElementException"/>
-<fullyQualifiedTypeName name="java.lang.CloneNotSupportedException"/>
-<fullyQualifiedTypeName name="java.lang.Cloneable"/>
-<fullyQualifiedTypeName name="java.lang.Comparable"/>
-<fullyQualifiedTypeName name="java.lang.Iterable"/>
-<fullyQualifiedTypeName name="java.util.Iterator"/>
-<fullyQualifiedTypeName name="javax.swing.JTextField"/>
-<fullyQualifiedTypeName name="javax.swing.JList"/>
-<fullyQualifiedTypeName name="javax.swing.JLabel"/>
-<fullyQualifiedTypeName name="java.awt.Color"/>
 <fullyQualifiedTypeName name="java.awt.TextArea"/>
 <fullyQualifiedTypeName name="java.awt.Button"/>
 <fullyQualifiedTypeName name="java.awt.GridLayout"/>
@@ -44,7 +30,6 @@
 <fullyQualifiedTypeName name="ex85.BaseOperation"/>
 <fullyQualifiedTypeName name="ex85.Subtract"/>
 <fullyQualifiedTypeName name="javax.swing.JPanel"/>
-<fullyQualifiedTypeName name="java.awt.BorderLayout"/>
 <fullyQualifiedTypeName name="java.io.BufferedInputStream"/>
 <fullyQualifiedTypeName name="java.util.zip.ZipOutputStream"/>
 <fullyQualifiedTypeName name="java.util.Enumeration"/>
@@ -60,4 +45,19 @@
 <fullyQualifiedTypeName name="ex87.DeCompressor"/>
 <fullyQualifiedTypeName name="ex87.DeCompressorFactory"/>
 <fullyQualifiedTypeName name="java.io.IOException"/>
+<fullyQualifiedTypeName name="java.applet.Applet"/>
+<fullyQualifiedTypeName name="javax.swing.event.ChangeListener"/>
+<fullyQualifiedTypeName name="javax.swing.event.ChangeEvent"/>
+<fullyQualifiedTypeName name="java.awt.BorderLayout"/>
+<fullyQualifiedTypeName name="java.awt.Color"/>
+<fullyQualifiedTypeName name="scribble3.Stroke"/>
+<fullyQualifiedTypeName name="java.awt.Stroke"/>
+<fullyQualifiedTypeName name="draw4.DrawingPad"/>
+<fullyQualifiedTypeName name="scribble3.ScribbleCanvas"/>
+<fullyQualifiedTypeName name="java.awt.BasicStroke"/>
+<fullyQualifiedTypeName name="draw1.TwoEndsTool"/>
+<fullyQualifiedTypeName name="java.awt.Point"/>
+<fullyQualifiedTypeName name="draw2.TwoEndsShapeTool"/>
+<fullyQualifiedTypeName name="java.security.AccessController"/>
+<fullyQualifiedTypeName name="java.security.PrivilegedAction"/>
 </qualifiedTypeNameHistroy>
