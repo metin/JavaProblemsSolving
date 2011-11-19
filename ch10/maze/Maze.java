@@ -61,6 +61,7 @@ public class Maze implements Cloneable {
       }
     }
   }
+ 
 
   public void draw(Graphics g) {
     if (dim == null) {
@@ -82,8 +83,9 @@ public class Maze implements Cloneable {
 
           if (debug) {
             System.out.println("Maze.Draw(): Room " + room.getRoomNumber()
-                + " location: " + location.x + ", " + location.y);
+                + " location: " + location.x + ", " + location.y + "  ROOM COUNT:" + rooms.size());
           }
+          
 
           room.draw(g, dx + location.x * ROOM_SIZE,
               dy + location.y * ROOM_SIZE, ROOM_SIZE, ROOM_SIZE);
@@ -143,28 +145,24 @@ public class Maze implements Cloneable {
           room = (Room) rooms.get(i);
           Point location = room.getLocation();
           if (location != null) {
-            for (Direction dir = Direction.first(); dir != null; dir = dir
-                .next()) {
+            for (Direction dir = Direction.first(); dir != null; dir = dir.next()) {
               MapSite side = room.getSide(dir);
               if (side instanceof Door) {
                 Door door = (Door) side;
                 Room otherSide = door.otherSideFrom(room);
+
                 if (otherSide != null && otherSide.getLocation() == null) {
                   if (dir == Direction.NORTH) {
-                    otherSide
-                        .setLocation(new Point(location.x, location.y - 1));
+                    otherSide.setLocation(new Point(location.x, location.y - 1));
                     minY = Math.min(minY, location.y - 1);
                   } else if (dir == Direction.EAST) {
-                    otherSide
-                        .setLocation(new Point(location.x + 1, location.y));
+                    otherSide.setLocation(new Point(location.x + 1, location.y));
                     maxX = Math.max(maxX, location.x + 1);
                   } else if (dir == Direction.SOUTH) {
-                    otherSide
-                        .setLocation(new Point(location.x, location.y + 1));
+                    otherSide.setLocation(new Point(location.x, location.y + 1));
                     maxY = Math.max(maxY, location.y + 1);
                   } else {
-                    otherSide
-                        .setLocation(new Point(location.x - 1, location.y));
+                    otherSide.setLocation(new Point(location.x - 1, location.y));
                     minX = Math.min(minX, location.x - 1);
                   }
                   changed = true;
@@ -220,12 +218,13 @@ public class Maze implements Cloneable {
   protected Point offset;
   protected Room curRoom = null;
   protected Stack moves = new Stack();
+  protected Direction lastDirection;
 
   protected Component view;
 
-  private static final int ROOM_SIZE = 40;
-  private static final int WALL_THICKNESS = 6;
-  private static final int MARGIN = 20;
+  private static final int ROOM_SIZE = 60;
+  private static final int WALL_THICKNESS = 10;
+  private static final int MARGIN = 30;
 
   private static final boolean debug = true;
 
@@ -242,6 +241,10 @@ public class Maze implements Cloneable {
     frame.setVisible(true);
   }
 
+  protected void addToComponent(Panel panel) {
+    panel.add(new Maze.MazePanel(this));
+  }
+  
   public static class MazePanel extends JPanel {
 
     public MazePanel(Maze maze) {
@@ -299,25 +302,34 @@ public class Maze implements Cloneable {
       case KeyEvent.VK_UP:
         System.out.println("Up key");
         command = new MazeMoveCommand(maze, Direction.NORTH);
+        maze.lastDirection = Direction.NORTH;
         break;
       case KeyEvent.VK_DOWN:
         System.out.println("Down key");
         command = new MazeMoveCommand(maze, Direction.SOUTH);
-        maze.move(Direction.SOUTH);
+        maze.lastDirection = Direction.SOUTH;
         break;
       case KeyEvent.VK_LEFT:
         System.out.println("Left key");
         command = new MazeMoveCommand(maze, Direction.WEST);
+        maze.lastDirection = Direction.WEST;
         break;
       case KeyEvent.VK_RIGHT:
         System.out.println("Right key");
         command = new MazeMoveCommand(maze, Direction.EAST);
+        maze.lastDirection = Direction.EAST;
+        break;
+      case KeyEvent.VK_ENTER:
+        System.out.println("Enter key");
+        MapSite side = maze.curRoom.getSide(maze.lastDirection);
+        command = new MazeDoorCommand(side);
         break;
       default:
         System.out.println("Key press ignored");
       }
       if (command != null) {
         maze.doCommand(command);
+        maze.view.repaint();
       }
     }
 
