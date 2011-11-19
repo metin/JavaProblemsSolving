@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="14" version="2.0">
+<workbench progressCount="10" version="2.0">
 <workbenchAdvisor/>
 <window height="774" maximized="true" width="1916" x="4" y="22">
 <fastViewData fastViewLocation="1024"/>
@@ -22,7 +22,7 @@
 <coolItem id="org.eclipse.jdt.ui.ClassFileEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.ui.DefaultTextEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.ui.browser.editor" itemType="typePlaceholder" x="-1" y="-1"/>
-<coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typePlaceholder" x="-1" y="-1"/>
+<coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="group.help" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
 </coolbarLayout>
@@ -31,10 +31,136 @@
 <editorArea activeWorkbook="DefaultEditorWorkbook">
 <info part="DefaultEditorWorkbook">
 <folder appearance="1" expanded="2">
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+<part id="2"/>
+<part id="3"/>
+<part id="4"/>
+<part id="5"/>
+<part id="6"/>
+<part id="7"/>
+<part id="8"/>
+<part id="9"/>
+<part id="10"/>
+<part id="11"/>
+<part id="12"/>
+<part id="13"/>
+<part id="14"/>
+<part id="15"/>
+<part id="16"/>
+<part id="17"/>
+<part id="18"/>
+<part id="19"/>
+<part id="20"/>
+<part id="21"/>
+<part id="22"/>
+<part id="23"/>
+<part id="24"/>
+</presentation>
 </folder>
 </info>
 </editorArea>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="StudentEntry.java" partName="StudentEntry.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch10/adapter/StudentEntry.java" title="StudentEntry.java" tooltip="ch10/adapter/StudentEntry.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch10/adapter/StudentEntry.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="9" selectionOffset="5118" selectionTopPixel="844"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="StudentEntry2.java" partName="StudentEntry2.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch10/adapter/StudentEntry2.java" title="StudentEntry2.java" tooltip="ch10/adapter/StudentEntry2.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch10/adapter/StudentEntry2.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="9" selectionOffset="4931" selectionTopPixel="768"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Main.java" partName="Main.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch10/adapter/Main.java" title="Main.java" tooltip="ch10/adapter/Main.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch10/adapter/Main.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2647" selectionTopPixel="929"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Table.java" partName="Table.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch10/adapter/Table.java" title="Table.java" tooltip="ch10/adapter/Table.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch10/adapter/Table.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="304"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TableEntry.java" partName="TableEntry.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch10/adapter/TableEntry.java" title="TableEntry.java" tooltip="ch10/adapter/TableEntry.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch10/adapter/TableEntry.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="377" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MailEntry.java" partName="MailEntry.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch10/mail/gui/MailEntry.java" title="MailEntry.java" tooltip="ch10/mail/gui/MailEntry.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch10/mail/gui/MailEntry.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="9" selectionOffset="3450" selectionTopPixel="1454"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Main.java" partName="Main.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch10/mail/gui/Main.java" title="Main.java" tooltip="ch10/mail/gui/Main.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch10/mail/gui/Main.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Main.java" partName="Main.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch10/mail/Main.java" title="Main.java" tooltip="ch10/mail/Main.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch10/mail/Main.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="777"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MailFolder.java" partName="MailFolder.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch10/mail/MailFolder.java" title="MailFolder.java" tooltip="ch10/mail/MailFolder.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch10/mail/MailFolder.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MailboxItem.java" partName="MailboxItem.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch10/mail/MailboxItem.java" title="MailboxItem.java" tooltip="ch10/mail/MailboxItem.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch10/mail/MailboxItem.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Maze.java" partName="Maze.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch10/maze/Maze.java" title="Maze.java" tooltip="ch10/maze/Maze.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch10/maze/Maze.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1914" selectionTopPixel="1035"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MazeBuilder.java" partName="MazeBuilder.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch10/maze/MazeBuilder.java" title="MazeBuilder.java" tooltip="ch10/maze/MazeBuilder.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch10/maze/MazeBuilder.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="5" selectionOffset="900" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AudioUtility.java" partName="AudioUtility.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch10/util/AudioUtility.java" title="AudioUtility.java" tooltip="ch10/util/AudioUtility.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch10/util/AudioUtility.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TestAudio.java" partName="TestAudio.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch10/test/TestAudio.java" title="TestAudio.java" tooltip="ch10/test/TestAudio.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch10/test/TestAudio.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AddressGen.java" partName="AddressGen.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch10/test/AddressGen.java" title="AddressGen.java" tooltip="ch10/test/AddressGen.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch10/test/AddressGen.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SnowWhiteDoor.java" partName="SnowWhiteDoor.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch10/maze/snow/SnowWhiteDoor.java" title="SnowWhiteDoor.java" tooltip="ch10/maze/snow/SnowWhiteDoor.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch10/maze/snow/SnowWhiteDoor.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SnowWhiteMazeFactory.java" partName="SnowWhiteMazeFactory.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch10/maze/snow/SnowWhiteMazeFactory.java" title="SnowWhiteMazeFactory.java" tooltip="ch10/maze/snow/SnowWhiteMazeFactory.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch10/maze/snow/SnowWhiteMazeFactory.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SnowWhiteMazeGameCreator.java" partName="SnowWhiteMazeGameCreator.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch10/maze/snow/SnowWhiteMazeGameCreator.java" title="SnowWhiteMazeGameCreator.java" tooltip="ch10/maze/snow/SnowWhiteMazeGameCreator.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch10/maze/snow/SnowWhiteMazeGameCreator.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Command.java" partName="Command.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch10/maze/Command.java" title="Command.java" tooltip="ch10/maze/Command.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch10/maze/Command.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Direction.java" partName="Direction.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch10/maze/Direction.java" title="Direction.java" tooltip="ch10/maze/Direction.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch10/maze/Direction.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="659"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FactoryMazeBuilder.java" partName="FactoryMazeBuilder.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch10/maze/FactoryMazeBuilder.java" title="FactoryMazeBuilder.java" tooltip="ch10/maze/FactoryMazeBuilder.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch10/maze/FactoryMazeBuilder.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="329"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MapSite.java" partName="MapSite.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch10/maze/MapSite.java" title="MapSite.java" tooltip="ch10/maze/MapSite.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch10/maze/MapSite.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MazeFactory.java" partName="MazeFactory.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch10/maze/MazeFactory.java" title="MazeFactory.java" tooltip="ch10/maze/MazeFactory.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch10/maze/MazeFactory.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MazeGameCreator.java" partName="MazeGameCreator.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch10/maze/MazeGameCreator.java" title="MazeGameCreator.java" tooltip="ch10/maze/MazeGameCreator.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch10/maze/MazeGameCreator.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="1334"/>
+</editor>
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="UndoableMazeGame.java" partName="UndoableMazeGame.java" path="/Users/metin/Dropbox/NJIT/CS602/Sources/ch10/maze/UndoableMazeGame.java" title="UndoableMazeGame.java" tooltip="ch10/maze/UndoableMazeGame.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ch10/maze/UndoableMazeGame.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="7" selectionOffset="1920" selectionTopPixel="315"/>
+</editor>
 </editors>
 <views>
 <view id="org.eclipse.search.ui.views.SearchView" partName="Search">
@@ -45,21 +171,21 @@
 </view>
 <view id="org.eclipse.ui.views.ResourceNavigator" partName="Navigator">
 <viewState LINK_NAVIGATOR_TO_EDITOR="0" sorter="1">
-<filters>
-<filter element="*.class" isEnabled="false"/>
+<filters>&#x0A;<filter element="*.class" isEnabled="false"/>
 <filter element=".*" isEnabled="false"/>
 </filters>
-<expanded>
-<element path="/ch9"/>
+<expanded>&#x0A;<element path="/ch9"/>
 <element path="/ch9/draw4"/>
 <element path="/midterms"/>
 </expanded>
-<selection>
-<element path="/ch9/draw4/TestThickness.java"/>
+<selection>&#x0A;<element path="/ch9/draw4/TestThickness.java"/>
 </selection>
 </viewState>
 </view>
 <view id="org.eclipse.debug.ui.DebugView" partName="Debug">
+<viewState/>
+</view>
+<view id="org.eclipse.ui.console.ConsoleView" partName="Console">
 <viewState/>
 </view>
 <view id="org.eclipse.jdt.ui.PackageExplorer" partName="Package Explorer">
@@ -92,7 +218,7 @@
 </viewState>
 </view>
 </views>
-<perspectives activePart="org.eclipse.jdt.ui.PackageExplorer" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
+<perspectives activePart="org.eclipse.jdt.ui.CompilationUnitEditor" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.jdt.internal.ui.JavaPerspectiveFactory" id="org.eclipse.jdt.ui.JavaPerspective" label="Java"/>
 <alwaysOnActionSet id="org.eclipse.mylyn.context.ui.actionSet"/>
@@ -159,6 +285,7 @@
 <fastViews>
 <view id="org.eclipse.debug.ui.DebugView" ratio="0.3"/>
 <view id="org.eclipse.search.ui.views.SearchView" ratio="0.3"/>
+<view id="org.eclipse.ui.console.ConsoleView" ratio="0.3"/>
 </fastViews>
 </fastViewBar>
 </fastViewBars>
@@ -223,15 +350,168 @@
 </perspective>
 </perspectives>
 <workingSets/>
-<navigationHistory/>
+<navigationHistory>
+<editors>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch10/adapter/StudentEntry.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch10/adapter/StudentEntry2.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch10/adapter/Main.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch10/adapter/Table.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch10/adapter/TableEntry.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch10/mail/gui/MailEntry.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch10/mail/gui/Main.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch10/mail/Main.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch10/mail/MailFolder.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch10/mail/MailboxItem.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch10/maze/Maze.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch10/maze/MazeBuilder.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch10/util/AudioUtility.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch10/test/TestAudio.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch10/test/AddressGen.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch10/maze/snow/SnowWhiteDoor.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch10/maze/snow/SnowWhiteMazeFactory.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch10/maze/snow/SnowWhiteMazeGameCreator.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch10/maze/Command.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch10/maze/Direction.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch10/maze/FactoryMazeBuilder.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch10/maze/MapSite.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch10/maze/MazeFactory.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch10/maze/MazeGameCreator.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch10/maze/UndoableMazeGame.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch10/maze/Wall.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ch10/maze/UniversalMazeFactory.java"/>
+</editors>
+<item historyLabel="StudentEntry.java" index="0">
+<position info="not_deleted" x="5118" y="9"/>
+</item>
+<item historyLabel="StudentEntry2.java" index="1">
+<position info="not_deleted" x="4931" y="9"/>
+</item>
+<item historyLabel="StudentEntry.java" index="0">
+<position info="not_deleted" x="5118" y="9"/>
+</item>
+<item historyLabel="Main.java" index="2">
+<position info="not_deleted" x="2647" y="0"/>
+</item>
+<item historyLabel="StudentEntry2.java" index="1">
+<position info="not_deleted" x="4931" y="9"/>
+</item>
+<item historyLabel="StudentEntry.java" index="0">
+<position info="not_deleted" x="5118" y="9"/>
+</item>
+<item historyLabel="StudentEntry2.java" index="1">
+<position info="not_deleted" x="4931" y="9"/>
+</item>
+<item historyLabel="StudentEntry.java" index="0">
+<position info="not_deleted" x="5118" y="9"/>
+</item>
+<item historyLabel="StudentEntry2.java" index="1">
+<position info="not_deleted" x="4931" y="9"/>
+</item>
+<item historyLabel="StudentEntry.java" index="0">
+<position info="not_deleted" x="5118" y="9"/>
+</item>
+<item historyLabel="StudentEntry2.java" index="1">
+<position info="not_deleted" x="4931" y="9"/>
+</item>
+<item historyLabel="Table.java" index="3">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="TableEntry.java" index="4">
+<position info="not_deleted" x="377" y="0"/>
+</item>
+<item historyLabel="MailEntry.java" index="5">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="MailEntry.java" index="5">
+<position info="not_deleted" x="3351" y="9"/>
+</item>
+<item historyLabel="MailEntry.java" index="5">
+<position info="not_deleted" x="3450" y="9"/>
+</item>
+<item historyLabel="Main.java" index="6">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="Main.java" index="7">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="MailFolder.java" index="8">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="MailboxItem.java" index="9">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="MailFolder.java" index="8">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="Maze.java" index="10">
+<position info="not_deleted" x="599" y="0"/>
+</item>
+<item historyLabel="MazeBuilder.java" index="11">
+<position info="not_deleted" x="900" y="5"/>
+</item>
+<item historyLabel="AudioUtility.java" index="12">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="TestAudio.java" index="13">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="AddressGen.java" index="14">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="SnowWhiteDoor.java" index="15">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="SnowWhiteMazeFactory.java" index="16">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="SnowWhiteMazeGameCreator.java" index="17">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="Command.java" index="18">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="Direction.java" index="19">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="FactoryMazeBuilder.java" index="20">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="MapSite.java" index="21">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="Maze.java" index="10">
+<position info="not_deleted" x="1914" y="0"/>
+</item>
+<item historyLabel="MazeBuilder.java" index="11">
+<position info="not_deleted" x="900" y="5"/>
+</item>
+<item historyLabel="MazeFactory.java" index="22">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="MazeGameCreator.java" index="23">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="UndoableMazeGame.java" index="24">
+<position info="not_deleted" x="246" y="0"/>
+</item>
+<item historyLabel="Wall.java" index="25">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="UniversalMazeFactory.java" index="26">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="Wall.java" index="25">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item active="true" historyLabel="UndoableMazeGame.java" index="24">
+<position info="not_deleted" x="246" y="0"/>
+</item>
+</navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
-<trimArea IMemento.internal.id="16384">
-<trimItem IMemento.internal.id="left"/>
-</trimArea>
 <trimArea IMemento.internal.id="1024">
 <trimItem IMemento.internal.id="org.eclise.ui.internal.FastViewBar"/>
 <trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
@@ -241,50 +521,50 @@
 </trimLayout>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TwoEndsTool.java" tooltip="ch9/draw1/TwoEndsTool.java">
-<persistable path="/ch9/draw1/TwoEndsTool.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="UniversalMazeFactory.java" tooltip="ch10/maze/UniversalMazeFactory.java">
+<persistable path="/ch10/maze/UniversalMazeFactory.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TestThickness.java" tooltip="ch9/draw4/TestThickness.java">
-<persistable path="/ch9/draw4/TestThickness.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Wall.java" tooltip="ch10/maze/Wall.java">
+<persistable path="/ch10/maze/Wall.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TestEraser.java" tooltip="ch9/draw4/TestEraser.java">
-<persistable path="/ch9/draw4/TestEraser.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="UndoableMazeGame.java" tooltip="ch10/maze/UndoableMazeGame.java">
+<persistable path="/ch10/maze/UndoableMazeGame.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Eraser.java" tooltip="ch9/draw4/Eraser.java">
-<persistable path="/ch9/draw4/Eraser.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MazeGameCreator.java" tooltip="ch10/maze/MazeGameCreator.java">
+<persistable path="/ch10/maze/MazeGameCreator.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DrawingPad.java" tooltip="ch9/draw4/DrawingPad.java">
-<persistable path="/ch9/draw4/DrawingPad.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MazeFactory.java" tooltip="ch10/maze/MazeFactory.java">
+<persistable path="/ch10/maze/MazeFactory.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="KeyboardDrawingCanvasListener.java" tooltip="ch9/draw3/KeyboardDrawingCanvasListener.java">
-<persistable path="/ch9/draw3/KeyboardDrawingCanvasListener.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MapSite.java" tooltip="ch10/maze/MapSite.java">
+<persistable path="/ch10/maze/MapSite.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="KeyboardDrawingCanvas.java" tooltip="ch9/draw3/KeyboardDrawingCanvas.java">
-<persistable path="/ch9/draw3/KeyboardDrawingCanvas.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FactoryMazeBuilder.java" tooltip="ch10/maze/FactoryMazeBuilder.java">
+<persistable path="/ch10/maze/FactoryMazeBuilder.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DrawingPad.java" tooltip="ch9/draw3/DrawingPad.java">
-<persistable path="/ch9/draw3/DrawingPad.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Direction.java" tooltip="ch10/maze/Direction.java">
+<persistable path="/ch10/maze/Direction.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TwoEndsShapeTool.java" tooltip="ch9/draw2/TwoEndsShapeTool.java">
-<persistable path="/ch9/draw2/TwoEndsShapeTool.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Command.java" tooltip="ch10/maze/Command.java">
+<persistable path="/ch10/maze/Command.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FilledRectangleShape.java" tooltip="ch9/draw2/FilledRectangleShape.java">
-<persistable path="/ch9/draw2/FilledRectangleShape.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SnowWhiteMazeGameCreator.java" tooltip="ch10/maze/snow/SnowWhiteMazeGameCreator.java">
+<persistable path="/ch10/maze/snow/SnowWhiteMazeGameCreator.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FilledOvalShape.java" tooltip="ch9/draw2/FilledOvalShape.java">
-<persistable path="/ch9/draw2/FilledOvalShape.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SnowWhiteMazeFactory.java" tooltip="ch10/maze/snow/SnowWhiteMazeFactory.java">
+<persistable path="/ch10/maze/snow/SnowWhiteMazeFactory.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DrawingPad.java" tooltip="ch9/draw2/DrawingPad.java">
-<persistable path="/ch9/draw2/DrawingPad.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SnowWhiteDoor.java" tooltip="ch10/maze/snow/SnowWhiteDoor.java">
+<persistable path="/ch10/maze/snow/SnowWhiteDoor.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ToolKit.java" tooltip="ch9/draw1/ToolKit.java">
-<persistable path="/ch9/draw1/ToolKit.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AddressGen.java" tooltip="ch10/test/AddressGen.java">
+<persistable path="/ch10/test/AddressGen.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="RectangleShape.java" tooltip="ch9/draw1/RectangleShape.java">
-<persistable path="/ch9/draw1/RectangleShape.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TestAudio.java" tooltip="ch10/test/TestAudio.java">
+<persistable path="/ch10/test/TestAudio.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="OvalShape.java" tooltip="ch9/draw1/OvalShape.java">
-<persistable path="/ch9/draw1/OvalShape.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AudioUtility.java" tooltip="ch10/util/AudioUtility.java">
+<persistable path="/ch10/util/AudioUtility.java"/>
 </file>
 </mruList>
 </workbench>
