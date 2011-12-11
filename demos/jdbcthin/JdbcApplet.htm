@@ -1,0 +1,27 @@
+<html>
+<head>
+<title>JDBC applet</title>
+</head>
+<body>
+
+<h1>JDBC applet</h1>
+
+This page contains an example of an applet that uses the Thin JDBC
+driver to connect to Oracle.<p>
+
+The source code for the applet is in <a
+href="JdbcApplet.java">JdbcApplet.java</a>.  Please check carefully
+the driver class name and the connect string in the code.<p>
+
+The Applet tag in this file contains a CODEBASE entry that must be set
+to point to a directory containing the Java classes from the Thin JDBC
+distribution *and* the compiled JdbcApplet.class.<p>
+
+As distributed it will *not* work because the ojdbc5.jar are not
+in this directory.<p>
+
+<hr>
+<applet codebase="." archive="ojdbc5.jar"
+code="JdbcApplet.class" width=500 height=200>
+</applet>
+<hr>
