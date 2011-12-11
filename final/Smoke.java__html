@@ -1,0 +1,368 @@
+<!doctype html public "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Smoke.java - smoke effects, a simple but vivid effect - Source Codes Reader - HackChina.com </title>
+<META NAME="description" CONTENT="Smoke.java - smoke effects, a simple but vivid effect Search and download  open source project / source codes from HackChina.com ">
+<META NAME="keywords" CONTENT="Smoke.java - smoke effects, a simple but vivid effect, source codes, opensource, c++, python, java, perl, visual C++, c#, visual basic, javascript, c language, programming, download ">
+<link href="/style3.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/misc.js"></script>
+<!--<SCRIPT type="text/javascript" src="/ipen.js"></SCRIPT>-->
+
+</head>
+
+<body >
+
+	<div class="div_shell"> 
+		<div style="float:left;margin-top:0px;"> 
+		  <a href="http://www.hackchina.com/en/">Welcome to <font color=red>HackChina</font>.com!</a> 
+		</div> 
+		<div style="float:center;margin-top:4px;margin-right:100px;"> 
+	 
+		</div> 
+	 
+		<div style="float:right;margin-top:-1px;"> 
+			<!--
+			<a href="#" onClick="bookmarksite('HackChina SourceCodes Searching and Downloading', 'http://www.hackchina.com/en');"> 
+			<img src="/images/bookmark.gif" width="15" height="17" border="0" /> 
+			&nbsp;Bookmark HackChina</a>   lang=en
+			-->
+			<span>Language/语言:</span>&nbsp;&nbsp;<a href="http://www.hackchina.com/en/" onclick="window.location.href = window.location.href.replace(/hackchina.com/i, 'hackchina.com/en');return false;"><img border=0 src="/images/country_icons_large/us.png" width=28></a>  
+			&nbsp;&nbsp;<a href="http://www.hackchina.com" onclick="window.location.href = window.location.href.replace(/en\//i, '');return false;"><img border=0 src="/images/country_icons_large/cn.png" width=28></a>  
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+		</div> 
+	 
+	</div> 
+
+	<div class="div_shell">
+		<center>
+		 <table width=700>
+		 <tr>
+		 <td align=center>
+		 <a href="http://www.HackChina.com/en/" target="_top" style='text-decoration:none'>
+		 <img border=0 src="/images/logo.png">
+		 <!--<font style='font-size:50px;color:#336699'><b>HackChina</b></font><font style='font-size:50px;color:#ff0000'>.com</font>-->
+		 </a>
+		 </td>
+		 </tr>
+		 <tr><td align=center>
+			 <a href="http://www.hackchina.com" style='text-decoration:none;'><font style='font-size:16px;color:#fdba05;'>Open Source Projects Search Engine</font></a>
+		 </td>
+		 </tr>
+		 </table>
+
+		<div class="header_bar">
+			<form id="ipForm"  name="ipForm" class="query_form" action="/" method="get" target="_top">
+					<input value="en" type="hidden" id="lang" name="lang">
+					<input  value="" type="text" id="q" name="q" size="80"  style="color:#999999;padding-top: 2px;" onfocus="style.color='#555';if(value=='Please input keyword') {value='';style.color='#555';}" onblur="if (value=='') {value='Please input keyword';style.color='#999999';}"/>
+					&nbsp;&nbsp;
+					<input type="submit" value="    Search    " style="height:20px;text-align:center;" />
+					&nbsp;&nbsp;
+					<!--<input type="submit" value="xxx" style="height:20px;text-align:center;" onclick="this.form.action='/traceroute.php';return check_ipdomain(this.form.q);"/>-->
+					</div>
+			</form>
+		</div>
+
+		 </center>
+	</div>
+
+<script>
+//set the default value of query input box
+if (document.ipForm.q.value == '') {
+	document.ipForm.q.value= 'Please input keyword';
+}
+</script>
+
+<link rel="stylesheet" title="Sunburst" href="/libs/highlight/styles/sunburst.css">
+<script type="text/javascript" src="/libs/highlight/highlight.pack.js"></script>
+<script type="text/javascript">
+	hljs.initHighlightingOnLoad();
+</script>
+
+
+
+<div class="div_shell">
+
+	<div style='width:1000px;margin-left:auto;margin-right:auto;'>
+	
+		<div style='width:800px;margin-left:auto;margin-right:auto;' align=center>		
+			<span align=center style="font-size: 16px;color: #FF6531;"><b>Smoke.java</b> in Smoke.rar</span>
+		</div>
+		<br>
+		<div style='width:800px;margin-left:auto;margin-right:auto;' align=center>		
+			<a href="/en/cont/22474"><span align=center style="font-size: 16px;color: green;font-weight:bold;">smoke effects, a simple but vivid effect...</span>Original Link</a>
+		</div>
+
+<center>
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-3136121685834333";
+/* hackchina_read_top_banner */
+google_ad_slot = "4258756120";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</center>
+
+		<br>
+		<div style='width:800px;margin-left:auto;margin-right:auto;' align=left>		
+			
+		</div>
+		
+
+		<div style='width:800px;margin-left:auto;margin-right:auto;' align=left>		
+			<pre><code class="java">// 程序：烟粒子
+// 范例文件：Smoke.java
+
+import java.applet.*;
+import java.awt.*;
+
+public class Smoke extends Applet implements Runnable
+<span>{</span>
+   final int Max = 1000;
+   sparticle p[]; 
+   int AppletWidth,AppletHeight,XCenter,YCenter;
+   Image        OffScreen;
+   Graphics     drawOffScreen;
+   Thread pThread;
+
+   public void init()
+   <span>{</span>
+      setBackground(Color.black); 
+
+      AppletWidth = getSize().width;
+      AppletHeight = getSize().height;
+
+      p = new sparticle[Max];
+      for(int i=0; i&lt;Max; i++)
+         p[i] = new sparticle(AppletWidth, AppletHeight);
+      
+      OffScreen     = createImage(AppletWidth,AppletHeight);
+      drawOffScreen = OffScreen.getGraphics();
+   <span>}</span>
+
+   public void start()
+   <span>{</span>
+      pThread = new Thread(this);
+      pThread.start();
+   <span>}</span>
+
+   public void stop()
+   <span>{</span>
+      pThread = null;
+   <span>}</span>
+ 
+   public void update(Graphics g)
+   <span>{</span>
+       paint(g);
+   <span>}</span>
+
+   public void paint(Graphics g)
+   <span>{</span>
+      g.drawImage(OffScreen,0,0,this);
+   <span>}</span>
+
+   public void run()
+   <span>{</span>
+      int i, speriod = 10, wperiod = 0, c = 255;
+      double Wx = 0.0; 
+
+
+      while(true)
+      <span>{</span>
+         drawOffScreen.clearRect(0,0,AppletWidth,AppletHeight);
+
+         for(i=0; i &lt; Max; i++)
+         <span>{</span>
+            drawOffScreen.setColor(new Color(p[i].color, p[i].color, p[i].color));
+            drawOffScreen.fillOval((int)p[i].X,(int)p[i].Y,3,3);
+            p[i].X += p[i].Vx + Wx; 
+            p[i].Y -= p[i].Vy;
+
+            if(p[i].Y &lt; AppletHeight/2)
+               p[i].color -= 10; 
+ 
+            if(p[i].color &lt; 0) 
+               p[i].reset(AppletWidth,AppletHeight);
+          <span>}</span>
+
+         if(wperiod &gt; 0)
+            wperiod--;
+         else if(wperiod == 0)
+         <span>{</span>
+            speriod--;
+            Wx =0;
+            if(speriod == 0)
+            <span>{</span>
+               Wx = Math.random()*3 - Math.random()*3; 
+               wperiod = (int)(Math.random()*10+1); 
+               speriod = (int)(Math.random()*10+1); 
+            <span>}</span>
+         <span>}</span>
+         
+         repaint();
+ 
+         try <span>{</span>
+             Thread.sleep(200);
+         <span>}</span>
+         catch (InterruptedException e) <span>{</span> <span>}</span>
+      <span>}</span>
+   <span>}</span>
+    
+   public void wind()
+   <span>{</span>
+      
+   <span>}</span>
+<span>}</span>
+
+class sparticle
+<span>{</span>
+   double X,Y;      
+   double Vx,Vy;   
+   int color;    
+
+
+   public sparticle(int w, int h)
+   <span>{</span>
+      reset(w, h);
+   <span>}</span>
+
+
+   public void reset(int w, int h)
+   <span>{</span>
+      X = w / 2;
+      Y = h;
+      Vx = Math.random()-Math.random();
+      Vy = Math.random() * 3 + 1;
+      color = 255;
+   <span>}</span>
+<span>}</span>
+ ...</code></pre>
+
+
+<center>
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-3136121685834333";
+/* hackchina_read_top_banner */
+google_ad_slot = "4258756120";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</center>
+
+
+		</div>
+
+		<br>
+
+		<div style='width:800px;margin-left:auto;margin-right:auto;' align=left>	
+			<span align=center style="font-size: 14px;color: green;font-weight:bold;">Project Files:</span>
+			<table><tr><td width=300>Name</td><td width=80>Size</td><td>Date</td></tr>
+<tr><td><img border=0 src='/images/file_icons/java.png'>&nbsp;<a href='/en/r/22474/Smoke.java__html'>Smoke.java</a></td><td>2.54 kB</td><td>20-05-03 08:59</td></tr>
+</table>
+...
+		</div>
+	
+		<div style='width:800px;margin-left:auto;margin-right:auto;' align=left>	
+			<span align=center style="font-size: 14px;color: green;font-weight:bold;">Related Items:</span><br>
+			
+
+<center>
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-3136121685834333";
+/* hackchina_keywords_links */
+google_ad_slot = "3582571946";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</center>
+
+
+		</div>
+	</div>
+
+</div>
+
+
+<center>
+<table>
+<tr><td align=center>
+
+
+</td></tr>
+</table>
+
+
+</center>
+
+<br>
+
+<br>
+
+
+<br>
+
+
+
+<br><br>
+<div class="div_shell">
+
+<center>
+<div style='width:80%;clear:both;border-top:1px #b6b6b6 solid;line-height:25px;font-size:12px;text-align:center;color:#666;margin-top:20px;'>
+		Links:
+		 
+		<br>
+		<a href="mailto:support@hackchina.com">Contact us</a> | <a href="mailto:support@hackchina.com">Your Ads here</a>
+		<br>
+		 &copy; 2010 HackChina.com Dev by HackChina Team &nbsp; Elapsed:1.786ms<span></span>
+	</div>
+</center>
+
+</div>
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1833997-35']);
+  _gaq.push(['_setDomainName', '.hackchina.com']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+<!-- Start of StatCounter Code -->
+<script type="text/javascript">
+var sc_project=6026211; 
+var sc_invisible=1; 
+var sc_security="fd8e2a12"; 
+</script>
+
+<script type="text/javascript"
+src="http://www.statcounter.com/counter/counter.js"></script><noscript><div
+class="statcounter"><a title="tumblr visitor"
+href="http://www.statcounter.com/tumblr/"
+target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/6026211/0/fd8e2a12/1/"
+alt="tumblr visitor" ></a></div></noscript>
+<!-- End of StatCounter Code -->
+
+
+</body>
+</html>
