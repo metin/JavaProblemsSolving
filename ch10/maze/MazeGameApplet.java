@@ -27,7 +27,4 @@ public class MazeGameApplet extends Applet{
     maze.setCurrentRoom(8);
     maze.addToComponent(this);
   }
-
-
-
 }

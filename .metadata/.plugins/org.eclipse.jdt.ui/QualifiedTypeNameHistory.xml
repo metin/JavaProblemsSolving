@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.awt.TextArea"/>
-<fullyQualifiedTypeName name="java.awt.Button"/>
-<fullyQualifiedTypeName name="java.awt.GridLayout"/>
-<fullyQualifiedTypeName name="java.awt.TextField"/>
 <fullyQualifiedTypeName name="java.awt.Panel"/>
 <fullyQualifiedTypeName name="javax.swing.BorderFactory"/>
 <fullyQualifiedTypeName name="javax.swing.JButton"/>
@@ -45,7 +41,6 @@
 <fullyQualifiedTypeName name="ex87.DeCompressor"/>
 <fullyQualifiedTypeName name="ex87.DeCompressorFactory"/>
 <fullyQualifiedTypeName name="java.io.IOException"/>
-<fullyQualifiedTypeName name="java.applet.Applet"/>
 <fullyQualifiedTypeName name="javax.swing.event.ChangeListener"/>
 <fullyQualifiedTypeName name="javax.swing.event.ChangeEvent"/>
 <fullyQualifiedTypeName name="java.awt.BorderLayout"/>
@@ -60,4 +55,9 @@
 <fullyQualifiedTypeName name="draw2.TwoEndsShapeTool"/>
 <fullyQualifiedTypeName name="java.security.AccessController"/>
 <fullyQualifiedTypeName name="java.security.PrivilegedAction"/>
+<fullyQualifiedTypeName name="sun.reflect.ReflectionFactory.GetReflectionFactoryAction"/>
+<fullyQualifiedTypeName name="spaceinvaders.Board"/>
+<fullyQualifiedTypeName name="javax.swing.ImageIcon"/>
+<fullyQualifiedTypeName name="java.applet.Applet"/>
+<fullyQualifiedTypeName name="spaceinvaders.Shot"/>
 </qualifiedTypeNameHistroy>

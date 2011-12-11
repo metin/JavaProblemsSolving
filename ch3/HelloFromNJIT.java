@@ -35,6 +35,7 @@ public class HelloFromNJIT extends Applet implements ActionListener
         g.setColor(new Color(255, 215, 0));
         g.drawString("Current Image:"+currentImage, 40, 25);
         g.drawImage(im, 20, 60, 200, 200, this);
+       
     }
     
     public void actionPerformed(ActionEvent evt)

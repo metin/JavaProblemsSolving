@@ -8,7 +8,6 @@ import java.net.*;
 
 import javax.swing.*;
 
-import sun.tools.tree.DoStatement;
 
 public class Calculator extends Applet
 {

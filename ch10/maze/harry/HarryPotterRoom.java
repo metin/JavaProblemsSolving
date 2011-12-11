@@ -25,6 +25,7 @@ class HarryPotterRoom extends Room {
     if (inroom) { 
       g.setColor(PLAYER_COLOR);
       g.fillOval(x + w / 2 - 5, y + h / 2 - 5, 10, 10); 
+      g.drawOval(x + w / 2 - 10, y + h / 2 - 10, 20, 20); 
     }
   }
 

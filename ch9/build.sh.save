@@ -4,14 +4,15 @@ javac draw2/*.java
 javac draw3/*.java
 javac draw4/*.java
 
-jar cvf drawingpad.jar draw1/ draw2/ draw3/ draw4/ scribble3/
+jar cvf maze.jar maze/ util/
 
-keytool -genkey -keyalg rsa -alias drawingpad
-keytool -export -alias drawingpad -file drawingp.crt
+keytool -genkey -keyalg rsa -alias maze
+keytool -export -alias maze -file maze.crt
+keytool -selfcert -alias maze
 
-jarsigner drawingpad.jar drawingpad
+jarsigner maze.jar maze
 cd 
-jarsigner -verify drawingpad.jar
+jarsigner -verify maze.jar
 
 
 keytool -selfcert

@@ -25,8 +25,6 @@ public class MazeGameCreator {
 
     Door door12 = makeDoor(room1, room2);
     Door door23 = makeDoor(room2, room3);
-    //Door door34 = makeDoor(room3, room3);
-    //Door door45 = makeDoor(room5, room5);
     
     room1.setSide(Direction.NORTH, makeWall());
     room1.setSide(Direction.EAST, makeWall());
@@ -89,7 +87,6 @@ public class MazeGameCreator {
     room10.setSide(Direction.SOUTH, makeWall());
     room10.setSide(Direction.WEST, makeWall());
 
-    
     Room room11 = makeRoom(11); 
     Room room12 = makeRoom(12); 
     Room room13 = makeRoom(13); 
@@ -164,8 +161,6 @@ public class MazeGameCreator {
 
     door12.setOpen(true); 
     door23.setOpen(false); 
-//    door34.setOpen(true); 
-//    door45.setOpen(true); 
     door67.setOpen(false); 
     door78.setOpen(true); 
     door910.setOpen(true); 
@@ -187,8 +182,6 @@ public class MazeGameCreator {
     room13.setSide(Direction.NORTH, door1318);
     room18.setSide(Direction.SOUTH, door1318);
 
-
-
     Door door510 = makeDoor(room5, room10);
     room5.setSide(Direction.NORTH, door510);
     room10.setSide(Direction.SOUTH, door510);
@@ -201,7 +194,6 @@ public class MazeGameCreator {
     door712.setOpen(true); 
     door1318.setOpen(true); 
 
-    
     maze.addRoom(room1);
     maze.addRoom(room2);
     maze.addRoom(room3);
