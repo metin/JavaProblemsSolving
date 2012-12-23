@@ -1,0 +1,693 @@
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>CS602 - Java Programming - Metin Yorulmaz</title>
+    <link href="public/stylesheets/reset.css" rel="stylesheet" type="text/css" />
+    <link href="public/stylesheets/960.css" rel="stylesheet" type="text/css" />
+    <link href="public/stylesheets/site.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    
+    <div class="container_12">
+        
+        <div class="grid_12">
+            <div id="header">
+                CS602 - Java Programming
+            </div>
+        </div>
+
+        <div class="grid_12">
+            <div id="menu_container">
+                <ul id="menu">
+                    <li>
+                       <a href="chapter1/assignment1.html"> Chapter 1 </a>
+                    </li>
+                    <li>
+                       <a href="chapter3.html"> Chapter 3 </a>
+                    </li>
+                    <li>
+                       <a href="chapter4_1.html"> Chapter 4 </a>
+                    </li>
+                    <li>
+                       <a href="chapter5a_4.9.html"> Chapter 5a </a>
+                    </li>
+                    <li>
+                       <a href="chapter5b_5.2.html"> Chapter 5b </a>
+                    </li>
+                    <li>
+                       <a href="chapter6_6.3.html"> Chapter 6 </a>
+                    </li>
+                    <li>
+                       <a href="chapter7_7.6.html"> Chapter 7 </a>
+                    </li>
+                    <li>
+                       <a href="chapter8_8.5.html"> Chapter 8 </a>
+                    </li>
+                    <li>
+                       <a href="chapter9.html"> Chapter 9 </a>
+                    </li>
+                    <li>
+                       <a href="chapter10.html"> Chapter 10 </a>
+                    </li>
+                    <li class="current">
+                       <a href="midterm1.html"> Exams </a>
+                    </li>
+                    <li>
+                       <a href="final.html"> Project </a>
+                    </li>
+                </ul>
+            </div>
+            <div id="submenu_container">
+                <ul class="submenu">
+                    <li class="">
+                        <a href="midterm1.html"> Midterm 1 </a>
+                    </li>
+                    <li class="current">
+                        <a href="midterm2.html"> Midterm 2 </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid_12" id="content" style="background-color:#f1f1f1;">
+            <br/>
+            <p>
+                Space Invaders.
+                <ul>
+                    <li>
+                        Changed code to make it work as an applet.
+                    </li>
+                    <li>
+                        Added sounds.
+                    </li>
+                </ul>
+
+                <p>
+                    Almost all classes were modified to pass applet in the constructor method. This was required to be able to find images to represent different type of object.
+                </p>
+
+                <p>
+                    Attached keyboard listener instance to the applet instead of the panel created by Board class.
+                </p>
+            </p>
+            <br/>
+            <br/>
+
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre class="csharpcode">
+<span class="kwrd">&lt;</span><span class="html">APPLET</span>  <span class="attr">codebase</span><span class="kwrd">="midterm2/"</span> <span class="attr">code</span><span class="kwrd">="spaceinvaders.SpaceInvadersApplet.class"</span> <span class="attr">archive</span><span class="kwrd">='spaceinvaders.jar'</span> <span class="attr">WIDTH</span>=<span class="attr">358</span> <span class="attr">HEIGHT</span>=<span class="attr">350</span><span class="kwrd">&gt;</span>
+
+<span class="kwrd">&lt;/</span><span class="html">APPLET</span><span class="kwrd">&gt;</span></pre>
+
+<APPLET  codebase="midterm2/" code="spaceinvaders.SpaceInvadersApplet.class" archive='spaceinvaders.jar' WIDTH=358 HEIGHT=350>
+
+</APPLET>
+
+
+<br/>
+
+
+<img src='midterm2/sequence.png'/>
+<br/>
+<a href='midterm2/sequence.pdf'>Download as PDF</a>
+
+
+<br/>
+            <h5 class="sub">II. Source Code</h5>
+            
+            <br/>
+            <h6>SpaceInvadersApplet.java</h6>
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre class="csharpcode">
+package spaceinvaders;
+
+import java.applet.Applet;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+
+
+<span class="kwrd">public</span> <span class="kwrd">class</span> SpaceInvadersApplet extends Applet implements Commons {
+
+    <span class="kwrd">public</span> SpaceInvadersApplet()
+    {
+      setLayout(<span class="kwrd">new</span> BorderLayout());
+    }
+    
+    <span class="kwrd">public</span> <span class="kwrd">void</span> init(){
+      Board b = <span class="kwrd">new</span> Board(<span class="kwrd">this</span>);
+      Dimension d = <span class="kwrd">new</span> Dimension(BOARD_WIDTH, BOARD_HEIGTH);
+      b.setSize(d);
+      setFocusable(<span class="kwrd">true</span>);
+      add(b, BorderLayout.CENTER);
+      
+    }
+
+}</pre>
+
+            <br/>
+            <h6>Sprite.java</h6>
+            <p>
+                Changed to add sound reladed methods. Also added getImageByName to get image via applet.
+            </p>
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre class="csharpcode">
+package spaceinvaders;
+
+import java.applet.Applet;
+import java.applet.AudioClip;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+
+<span class="kwrd">public</span> <span class="kwrd">class</span> Sprite {
+
+        <span class="kwrd">private</span> boolean visible;
+        <span class="kwrd">private</span> Image image;
+        <span class="kwrd">protected</span> <span class="kwrd">int</span> x;
+        <span class="kwrd">protected</span> <span class="kwrd">int</span> y;
+        <span class="kwrd">protected</span> boolean dying;
+        <span class="kwrd">protected</span> <span class="kwrd">int</span> dx;
+        <span class="kwrd">protected</span> Applet container;
+        <span class="kwrd">protected</span> AudioClip dyingSound = <span class="kwrd">null</span>;
+        <span class="kwrd">protected</span> AudioClip newSound = <span class="kwrd">null</span>;
+        
+        <span class="kwrd">public</span> Sprite() {
+            visible = <span class="kwrd">true</span>;
+        }
+        
+        <span class="kwrd">public</span> Sprite(Applet applet){
+          <span class="kwrd">this</span>.container = applet;
+          visible = <span class="kwrd">true</span>;
+        }
+        <span class="kwrd">public</span> <span class="kwrd">void</span> die() {
+            visible = <span class="kwrd">false</span>;
+        }
+
+        <span class="kwrd">public</span> boolean isVisible() {
+            <span class="kwrd">return</span> visible;
+        }
+
+        <span class="kwrd">protected</span> <span class="kwrd">void</span> setVisible(boolean visible) {
+            <span class="kwrd">this</span>.visible = visible;
+        }
+
+        <span class="kwrd">public</span> <span class="kwrd">void</span> setImage(Image image) {
+            <span class="kwrd">this</span>.image = image;
+        }
+
+        <span class="kwrd">public</span> Image getImage() {
+            <span class="kwrd">return</span> image;
+        }
+
+        <span class="kwrd">public</span> <span class="kwrd">void</span> setX(<span class="kwrd">int</span> x) {
+            <span class="kwrd">this</span>.x = x;
+        }
+
+        <span class="kwrd">public</span> <span class="kwrd">void</span> setY(<span class="kwrd">int</span> y) {
+            <span class="kwrd">this</span>.y = y;
+        }
+        <span class="kwrd">public</span> <span class="kwrd">int</span> getY() {
+            <span class="kwrd">return</span> y;
+        }
+
+        <span class="kwrd">public</span> <span class="kwrd">int</span> getX() {
+            <span class="kwrd">return</span> x;
+        }
+
+        <span class="kwrd">public</span> <span class="kwrd">void</span> setDying(boolean dying) {
+            <span class="kwrd">this</span>.dying = dying;
+            <span class="kwrd">if</span>(dyingSound != <span class="kwrd">null</span> &amp;&amp; dying)
+              dyingSound.play();
+        }
+
+        <span class="kwrd">public</span> boolean isDying() {
+            <span class="kwrd">return</span> <span class="kwrd">this</span>.dying;
+        }
+        <span class="kwrd">public</span> ImageIcon getImageByName(String img){
+          <span class="kwrd">return</span> <span class="kwrd">new</span> ImageIcon(<span class="kwrd">this</span>.container.getImage(<span class="kwrd">this</span>.container.getCodeBase(), img));
+        }
+        
+        <span class="kwrd">public</span> boolean hasDyingSound(){
+          <span class="kwrd">return</span> dyingSound != <span class="kwrd">null</span>;
+        }
+        
+        <span class="kwrd">public</span> boolean hasInitiationSound(){
+          <span class="kwrd">return</span> newSound != <span class="kwrd">null</span>;
+        }
+                
+        <span class="kwrd">public</span> <span class="kwrd">void</span> afterCreated(){
+          <span class="kwrd">if</span>(newSound != <span class="kwrd">null</span>)
+            newSound.play();
+        }
+}</pre>
+
+
+
+            <br/>
+            <h6>AudioUtility.java</h6>
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre class="csharpcode">
+package spaceinvaders;
+
+import java.applet.*;
+import java.net.*;
+
+<span class="kwrd">public</span> <span class="kwrd">class</span> AudioUtility {
+
+  <span class="kwrd">public</span> <span class="kwrd">static</span> final AudioClip getAudioClip(String filename) {
+    <span class="kwrd">if</span> (filename != <span class="kwrd">null</span>) {
+      <span class="kwrd">try</span> {
+        <span class="kwrd">return</span> Applet.newAudioClip(<span class="kwrd">new</span> URL(<span class="str">"http://harp.njit.edu/~my67/cs602/chapter10/"</span> + filename));
+      } <span class="kwrd">catch</span> (MalformedURLException e) {
+        System.err.println(e.getMessage());
+      }
+    }
+    <span class="kwrd">return</span> <span class="kwrd">null</span>;
+  }
+
+}
+</pre>
+
+
+
+
+            <br/>
+            <h6>Board.java</h6>
+Added getImageByName to gett images.</br>
+Changed constuctor, passed current applet.</br>
+
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre class="csharpcode">
+package spaceinvaders;
+
+import java.applet.Applet;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
+import java.awt.Toolkit;
+import java.awt.<span class="kwrd">event</span>.KeyAdapter;
+import java.awt.<span class="kwrd">event</span>.KeyEvent;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Random;
+
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+
+
+<span class="kwrd">public</span> <span class="kwrd">class</span> Board extends JPanel implements Runnable, Commons { 
+
+    <span class="kwrd">private</span> Dimension d;
+    <span class="kwrd">private</span> ArrayList aliens;
+    <span class="kwrd">private</span> Player player;
+    <span class="kwrd">private</span> Shot shot;
+
+    <span class="kwrd">private</span> <span class="kwrd">int</span> alienX = 150;
+    <span class="kwrd">private</span> <span class="kwrd">int</span> alienY = 5;
+    <span class="kwrd">private</span> <span class="kwrd">int</span> direction = -1;
+    <span class="kwrd">private</span> <span class="kwrd">int</span> deaths = 0;
+
+    <span class="kwrd">private</span> boolean ingame = <span class="kwrd">true</span>;
+    <span class="kwrd">private</span> final String expl = <span class="str">"spacepix/explosion.png"</span>;
+    <span class="kwrd">private</span> final String alienpix = <span class="str">"spacepix/alien.png"</span>;
+    <span class="kwrd">private</span> String message = <span class="str">"Game Over"</span>;
+
+    <span class="kwrd">private</span> Thread animator;
+    <span class="kwrd">private</span> Applet applet;
+    <span class="kwrd">public</span> Board(Applet container) 
+    {
+        <span class="kwrd">this</span>.applet = container;
+        container.addKeyListener(<span class="kwrd">new</span> TAdapter());
+        <span class="rem">//setFocusable(true);</span>
+        d = <span class="kwrd">new</span> Dimension(BOARD_WIDTH, BOARD_HEIGTH);
+        setBackground(Color.black);
+
+        gameInit();
+        setDoubleBuffered(<span class="kwrd">true</span>);
+    }
+
+    <span class="kwrd">public</span> <span class="kwrd">void</span> addNotify() {
+        super.addNotify();
+        gameInit();
+    }
+
+    <span class="kwrd">public</span> <span class="kwrd">void</span> gameInit() {
+
+        aliens = <span class="kwrd">new</span> ArrayList();
+        System.<span class="kwrd">out</span>.println(<span class="kwrd">this</span>.applet.getDocumentBase());
+        
+        ImageIcon ii = getImageByName(alienpix);
+
+        <span class="kwrd">for</span> (<span class="kwrd">int</span> i=0; i &lt; 4; i++) {
+            <span class="kwrd">for</span> (<span class="kwrd">int</span> j=0; j &lt; 6; j++) {
+                Alien alien = <span class="kwrd">new</span> Alien(alienX + 18*j, alienY + 18*i, <span class="kwrd">this</span>.applet);
+                alien.setImage(ii.getImage());
+                aliens.add(alien);
+            }
+        }
+
+        player = <span class="kwrd">new</span> Player(<span class="kwrd">this</span>.applet);
+        shot = <span class="kwrd">new</span> Shot(<span class="kwrd">this</span>.applet);
+
+        <span class="kwrd">if</span> (animator == <span class="kwrd">null</span> || !ingame) {
+            animator = <span class="kwrd">new</span> Thread(<span class="kwrd">this</span>);
+            animator.start();
+        }
+    }
+
+    <span class="kwrd">public</span> <span class="kwrd">void</span> drawAliens(Graphics g) 
+    {
+        Iterator it = aliens.iterator();
+
+        <span class="kwrd">while</span> (it.hasNext()) {
+            Alien alien = (Alien) it.next();
+
+            <span class="kwrd">if</span> (alien.isVisible()) {
+                g.drawImage(alien.getImage(), alien.getX(), alien.getY(), <span class="kwrd">this</span>);
+            }
+
+            <span class="kwrd">if</span> (alien.isDying()) {
+                alien.die();
+            }
+        }
+    }
+
+    <span class="kwrd">public</span> <span class="kwrd">void</span> drawPlayer(Graphics g) {
+
+        <span class="kwrd">if</span> (player.isVisible()) {
+            g.drawImage(player.getImage(), player.getX(), player.getY(), <span class="kwrd">this</span>);
+        }
+
+        <span class="kwrd">if</span> (player.isDying()) {
+            player.die();
+            ingame = <span class="kwrd">false</span>;
+        }
+    }
+
+    <span class="kwrd">public</span> <span class="kwrd">void</span> drawShot(Graphics g) {
+        <span class="kwrd">if</span> (shot.isVisible())
+            g.drawImage(shot.getImage(), shot.getX(), shot.getY(), <span class="kwrd">this</span>);
+    }
+
+    <span class="kwrd">public</span> <span class="kwrd">void</span> drawBombing(Graphics g) {
+
+        Iterator i3 = aliens.iterator();
+
+        <span class="kwrd">while</span> (i3.hasNext()) {
+            Alien a = (Alien) i3.next();
+
+            Alien.Bomb b = a.getBomb();
+
+            <span class="kwrd">if</span> (!b.isDestroyed()) {
+                g.drawImage(b.getImage(), b.getX(), b.getY(), <span class="kwrd">this</span>); 
+            }
+        }
+    }
+
+    <span class="kwrd">public</span> <span class="kwrd">void</span> paint(Graphics g)
+    {
+      super.paint(g);
+
+      g.setColor(Color.black);
+      g.fillRect(0, 0, d.width, d.height);
+      g.setColor(Color.green);   
+
+      <span class="kwrd">if</span> (ingame) {
+
+        g.drawLine(0, GROUND, BOARD_WIDTH, GROUND);
+        drawAliens(g);
+        drawPlayer(g);
+        drawShot(g);
+        drawBombing(g);
+      }
+
+      Toolkit.getDefaultToolkit().sync();
+      g.dispose();
+    }
+
+    <span class="kwrd">public</span> <span class="kwrd">void</span> gameOver()
+    {
+
+        Graphics g = <span class="kwrd">this</span>.getGraphics();
+
+        g.setColor(Color.black);
+        g.fillRect(0, 0, BOARD_WIDTH, BOARD_HEIGTH);
+
+        g.setColor(<span class="kwrd">new</span> Color(0, 32, 48));
+        g.fillRect(50, BOARD_WIDTH/2 - 30, BOARD_WIDTH-100, 50);
+        g.setColor(Color.white);
+        g.drawRect(50, BOARD_WIDTH/2 - 30, BOARD_WIDTH-100, 50);
+
+        Font small = <span class="kwrd">new</span> Font(<span class="str">"Helvetica"</span>, Font.BOLD, 14);
+        FontMetrics metr = <span class="kwrd">this</span>.getFontMetrics(small);
+
+        g.setColor(Color.white);
+        g.setFont(small);
+        g.drawString(message, (BOARD_WIDTH - metr.stringWidth(message))/2, 
+            BOARD_WIDTH/2);
+    }
+    
+    <span class="kwrd">public</span> ImageIcon getImageByName(String img){
+      <span class="kwrd">return</span> <span class="kwrd">new</span> ImageIcon(<span class="kwrd">this</span>.applet.getImage(<span class="kwrd">this</span>.applet.getCodeBase(), img));
+    }
+    <span class="kwrd">public</span> <span class="kwrd">void</span> animationCycle()  {
+
+        <span class="kwrd">if</span> (deaths == NUMBER_OF_ALIENS_TO_DESTROY) {
+            ingame = <span class="kwrd">false</span>;
+            message = <span class="str">"Game won!"</span>;
+        }
+
+        <span class="rem">// player</span>
+
+        player.act();
+
+        <span class="rem">// shot</span>
+        <span class="kwrd">if</span> (shot.isVisible()) {
+            Iterator it = aliens.iterator();
+            <span class="kwrd">int</span> shotX = shot.getX();
+            <span class="kwrd">int</span> shotY = shot.getY();
+
+            <span class="kwrd">while</span> (it.hasNext()) {
+                Alien alien = (Alien) it.next();
+                <span class="kwrd">int</span> alienX = alien.getX();
+                <span class="kwrd">int</span> alienY = alien.getY();
+
+                <span class="kwrd">if</span> (alien.isVisible() &amp;&amp; shot.isVisible()) {
+                    <span class="kwrd">if</span> (shotX &gt;= (alienX) &amp;&amp; 
+                        shotX &lt;= (alienX + ALIEN_WIDTH) &amp;&amp;
+                        shotY &gt;= (alienY) &amp;&amp;
+                        shotY &lt;= (alienY+ALIEN_HEIGHT) ) {
+<span class="rem">//                            ImageIcon ii = </span>
+<span class="rem">//                                new ImageIcon(getClass().getResource(expl));</span>
+                            ImageIcon ii = getImageByName(expl);
+
+                            alien.setImage(ii.getImage());
+                            alien.setDying(<span class="kwrd">true</span>);
+                            deaths++;
+                            shot.die();
+                        }
+                }
+            }
+
+            <span class="kwrd">int</span> y = shot.getY();
+            y -= 4;
+            <span class="kwrd">if</span> (y &lt; 0)
+                shot.die();
+            <span class="kwrd">else</span> shot.setY(y);
+        }
+
+        <span class="rem">// aliens</span>
+
+         Iterator it1 = aliens.iterator();
+
+         <span class="kwrd">while</span> (it1.hasNext()) {
+             Alien a1 = (Alien) it1.next();
+             <span class="kwrd">int</span> x = a1.getX();
+
+             <span class="kwrd">if</span> (x  &gt;= BOARD_WIDTH - BORDER_RIGHT &amp;&amp; direction != -1) {
+                 direction = -1;
+                 Iterator i1 = aliens.iterator();
+                 <span class="kwrd">while</span> (i1.hasNext()) {
+                     Alien a2 = (Alien) i1.next();
+                     a2.setY(a2.getY() + GO_DOWN);
+                 }
+             }
+
+            <span class="kwrd">if</span> (x &lt;= BORDER_LEFT &amp;&amp; direction != 1) {
+                direction = 1;
+
+                Iterator i2 = aliens.iterator();
+                <span class="kwrd">while</span> (i2.hasNext()) {
+                    Alien a = (Alien)i2.next();
+                    a.setY(a.getY() + GO_DOWN);
+                }
+            }
+        }
+
+
+        Iterator it = aliens.iterator();
+
+        <span class="kwrd">while</span> (it.hasNext()) {
+            Alien alien = (Alien) it.next();
+            <span class="kwrd">if</span> (alien.isVisible()) {
+
+                <span class="kwrd">int</span> y = alien.getY();
+
+                <span class="kwrd">if</span> (y &gt; GROUND - ALIEN_HEIGHT) {
+                    ingame = <span class="kwrd">false</span>;
+                    message = <span class="str">"Invasion!"</span>;
+                }
+
+                alien.act(direction);
+            }
+        }
+
+        <span class="rem">// bombs</span>
+
+        Iterator i3 = aliens.iterator();
+        Random generator = <span class="kwrd">new</span> Random();
+
+        <span class="kwrd">while</span> (i3.hasNext()) {
+            <span class="kwrd">int</span> shot = generator.nextInt(15);
+            Alien a = (Alien) i3.next();
+            Alien.Bomb b = a.getBomb();
+            <span class="kwrd">if</span> (shot == CHANCE &amp;&amp; a.isVisible() &amp;&amp; b.isDestroyed()) {
+
+                b.setDestroyed(<span class="kwrd">false</span>);
+                b.setX(a.getX());
+                b.setY(a.getY());   
+            }
+
+            <span class="kwrd">int</span> bombX = b.getX();
+            <span class="kwrd">int</span> bombY = b.getY();
+            <span class="kwrd">int</span> playerX = player.getX();
+            <span class="kwrd">int</span> playerY = player.getY();
+
+            <span class="kwrd">if</span> (player.isVisible() &amp;&amp; !b.isDestroyed()) {
+                <span class="kwrd">if</span> ( bombX &gt;= (playerX) &amp;&amp; 
+                    bombX &lt;= (playerX+PLAYER_WIDTH) &amp;&amp;
+                    bombY &gt;= (playerY) &amp;&amp; 
+                    bombY &lt;= (playerY+PLAYER_HEIGHT) ) {
+<span class="rem">//                        ImageIcon ii = </span>
+<span class="rem">//                            new ImageIcon(this.getClass().getResource(expl));</span>
+                        ImageIcon ii = getImageByName(expl);
+
+                        player.setImage(ii.getImage());
+                        player.setDying(<span class="kwrd">true</span>);
+                        b.setDestroyed(<span class="kwrd">true</span>);;
+                    }
+            }
+
+            <span class="kwrd">if</span> (!b.isDestroyed()) {
+                b.setY(b.getY() + 1);   
+                <span class="kwrd">if</span> (b.getY() &gt;= GROUND - BOMB_HEIGHT) {
+                    b.setDestroyed(<span class="kwrd">true</span>);
+                }
+            }
+        }
+    }
+
+    <span class="kwrd">public</span> <span class="kwrd">void</span> run() {
+
+        <span class="kwrd">long</span> beforeTime, timeDiff, sleep;
+
+        beforeTime = System.currentTimeMillis();
+
+        <span class="kwrd">while</span> (ingame) {
+            repaint();
+            animationCycle();
+
+            timeDiff = System.currentTimeMillis() - beforeTime;
+            sleep = DELAY - timeDiff;
+
+            <span class="kwrd">if</span> (sleep &lt; 0) 
+                sleep = 2;
+            <span class="kwrd">try</span> {
+                Thread.sleep(sleep);
+            } <span class="kwrd">catch</span> (InterruptedException e) {
+                System.<span class="kwrd">out</span>.println(<span class="str">"interrupted"</span>);
+            }
+            beforeTime = System.currentTimeMillis();
+        }
+        gameOver();
+    }
+
+    <span class="kwrd">private</span> <span class="kwrd">class</span> TAdapter extends KeyAdapter {
+
+        <span class="kwrd">public</span> <span class="kwrd">void</span> keyReleased(KeyEvent e) {
+            player.keyReleased(e);
+        }
+
+        <span class="kwrd">public</span> <span class="kwrd">void</span> keyPressed(KeyEvent e) {
+
+          player.keyPressed(e);
+
+          <span class="kwrd">int</span> x = player.getX();
+          <span class="kwrd">int</span> y = player.getY();
+
+          <span class="kwrd">if</span> (ingame)
+          {
+            <span class="kwrd">if</span> (e.isAltDown()) {
+                shot.afterCreated();
+                <span class="kwrd">if</span> (!shot.isVisible()){
+                    shot = <span class="kwrd">new</span> Shot(x, y, applet);
+                }
+            }
+          }
+        }
+    }
+}</pre>
+
+            <br/>
+            <br/>
+
+
+            <h5> Test </h5>
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre class="csharpcode">
+package spaceinvaders;
+
+import <span class="kwrd">static</span> org.junit.Assert.*;
+
+import java.applet.Applet;
+
+import org.junit.Test;
+
+<span class="kwrd">public</span> <span class="kwrd">class</span> TestSounds {
+
+  @Test
+  <span class="kwrd">public</span> <span class="kwrd">void</span> testShotSounds() {
+    Applet a = <span class="kwrd">new</span> Applet();
+    Shot s = <span class="kwrd">new</span> Shot(a);
+    assertEquals(s.hasDyingSound(), <span class="kwrd">false</span>);
+    assertEquals(s.hasInitiationSound(), <span class="kwrd">true</span>);
+  }
+
+}
+</pre>
+ <img src='midterm2/test_sound.png'></img>
+<br/>
+
+
+<br/>
+            <h5 class="sub">III. Screenshots</h5>
+            <img src='midterm2/screen1.png'></img>
+            <img src='midterm2/screen2.png'></img>
+
+        </div>
+
+
+        <div class="grid_12" style="height:500px;background-color:#111;">
+            <div style="text-align:center">
+                CS602 - Java Programming - Metin Yorulmaz
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

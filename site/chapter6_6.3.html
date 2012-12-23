@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>CS602 - Java Programming - Metin Yorulmaz</title>
+    <link href="public/stylesheets/reset.css" rel="stylesheet" type="text/css" />
+    <link href="public/stylesheets/960.css" rel="stylesheet" type="text/css" />
+    <link href="public/stylesheets/site.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    
+    <div class="container_12">
+        
+        <div class="grid_12">
+            <div id="header">
+                CS602 - Java Programming
+            </div>
+        </div>
+
+        <div class="grid_12">
+            <div id="menu_container">
+                <ul id="menu">
+                    <li>
+                       <a href="chapter1/assignment1.html"> Chapter 1 </a>
+                    </li>
+                    <li>
+                       <a href="chapter3.html"> Chapter 3 </a>
+                    </li>
+                    <li>
+                       <a href="chapter4_1.html"> Chapter 4 </a>
+                    </li>
+                    <li>
+                       <a href="chapter5a_4.9.html"> Chapter 5a </a>
+                    </li>
+                    <li>
+                       <a href="chapter5b_5.2.html"> Chapter 5b </a>
+                    </li>
+                    <li class="current">
+                       <a href="chapter6_6.3.html"> Chapter 6 </a>
+                    </li>
+                    <li>
+                       <a href="chapter7_7.6.html"> Chapter 7 </a>
+                    </li>
+                    <li>
+                       <a href="chapter8_8.5.html"> Chapter 8 </a>
+                    </li>
+                    <li>
+                       <a href="chapter9.html"> Chapter 9 </a>
+                    </li>
+                    <li>
+                       <a href="chapter10.html"> Chapter 10 </a>
+                    </li>
+                    <li>
+                       <a href="midterm1.html"> Exams </a>
+                    </li>
+                    <li>
+                       <a href="final.html"> Project </a>
+                    </li>
+
+                </ul>
+            </div>
+            <div id="submenu_container">
+                <ul class="submenu">
+                    <li class="current">
+                        <a href="chapter6_6.3.html"> Execise 6.3 </a>
+                    </li>
+                    <li>
+                        <a href="chapter6_6.5.html"> Execise 6.5 </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid_12" id="content" style="background-color:#f1f1f1;">
+            <br/>
+            <p>
+                Define an interface for a stack, whick supports the followong methods:
+            </p>
+            <ul>
+                <li> push </li>
+                <li> pop </li>
+                <li> size </li>
+                <li> top </li>
+            </ul>            
+            <p>
+                Formally specify the contract of each method.
+            </p>
+
+            <br/>
+            <b>Javadoc</b>
+            <br/>            
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>$&gt; javadoc -tag pre:cm:<span class="str">"Precondition:"</span> -tag post:cm:<span class="str">"Postcondition:"</span>  -version -author -d docs63 ex63/*.java</pre>
+</div>
+
+
+            <h4>
+                <a href='chapter6/docs63/index.html' target='_blank' title='It will open the javadoc generated document in a new browser window'>
+                    Javadocs
+                </a>
+            </h4>
+
+            <h5 class="sub">I. Timesheet</h5>
+
+            <img src='chapter6/timesheet.png'/>
+
+            <br/>
+
+            <h5 class="sub">II. Source Code</h5>
+            <h6>IStack.java</h6>
+
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre class="alt"><span class="lnum">   1:  </span>package ex63;</pre>
+<pre><span class="lnum">   2:  </span>&nbsp;</pre>
+<pre class="alt"><span class="lnum">   3:  </span>&nbsp;</pre>
+<pre><span class="lnum">   4:  </span><span class="rem">/**</span></pre>
+<pre class="alt"><span class="lnum">   5:  </span><span class="rem"> * @author Metin Yorulmaz</span></pre>
+<pre><span class="lnum">   6:  </span><span class="rem"> *</span></pre>
+<pre class="alt"><span class="lnum">   7:  </span><span class="rem"> */</span></pre>
+<pre><span class="lnum">   8:  </span><span class="kwrd">public</span> <span class="kwrd">interface</span> IStack {</pre>
+<pre class="alt"><span class="lnum">   9:  </span>    </pre>
+<pre><span class="lnum">  10:  </span>    <span class="rem">/**</span></pre>
+<pre class="alt"><span class="lnum">  11:  </span><span class="rem">     * Adds a new object onto top of the stack. </span></pre>
+<pre><span class="lnum">  12:  </span><span class="rem">     * </span></pre>
+<pre class="alt"><span class="lnum">  13:  </span><span class="rem">     * @pre item != null</span></pre>
+<pre><span class="lnum">  14:  </span><span class="rem">     * @post size() == size()@pre + 1</span></pre>
+<pre class="alt"><span class="lnum">  15:  </span><span class="rem">     * @post item@pre == top()</span></pre>
+<pre><span class="lnum">  16:  </span><span class="rem">     * @param item Item to be pushed to the top of the stack. </span></pre>
+<pre class="alt"><span class="lnum">  17:  </span><span class="rem">     */</span></pre>
+<pre><span class="lnum">  18:  </span>    <span class="kwrd">public</span> <span class="kwrd">void</span> push(Object item);</pre>
+<pre class="alt"><span class="lnum">  19:  </span>    </pre>
+<pre><span class="lnum">  20:  </span>    </pre>
+<pre class="alt"><span class="lnum">  21:  </span>    <span class="rem">/**</span></pre>
+<pre><span class="lnum">  22:  </span><span class="rem">     * Removes the object at the top of the stack and returns the object. </span></pre>
+<pre class="alt"><span class="lnum">  23:  </span><span class="rem">     * </span></pre>
+<pre><span class="lnum">  24:  </span><span class="rem">     * @pre size() &gt; 0</span></pre>
+<pre class="alt"><span class="lnum">  25:  </span><span class="rem">     * @post @result == top()@pre</span></pre>
+<pre><span class="lnum">  26:  </span><span class="rem">     * @post size() == size()@pre - 1</span></pre>
+<pre class="alt"><span class="lnum">  27:  </span><span class="rem">     * @return the object at the top of the stack, null if </span></pre>
+<pre><span class="lnum">  28:  </span><span class="rem">     *            this stack contains no elements</span></pre>
+<pre class="alt"><span class="lnum">  29:  </span><span class="rem">     */</span></pre>
+<pre><span class="lnum">  30:  </span>    <span class="kwrd">public</span> Object pop();</pre>
+<pre class="alt"><span class="lnum">  31:  </span>    </pre>
+<pre><span class="lnum">  32:  </span>&nbsp;</pre>
+<pre class="alt"><span class="lnum">  33:  </span>    <span class="rem">/**</span></pre>
+<pre><span class="lnum">  34:  </span><span class="rem">     * Returns the object at the top of the stack without removing it from </span></pre>
+<pre class="alt"><span class="lnum">  35:  </span><span class="rem">     * the stack</span></pre>
+<pre><span class="lnum">  36:  </span><span class="rem">     * </span></pre>
+<pre class="alt"><span class="lnum">  37:  </span><span class="rem">     * @pre size() &gt; 0</span></pre>
+<pre><span class="lnum">  38:  </span><span class="rem">     * @post @nochange</span></pre>
+<pre class="alt"><span class="lnum">  39:  </span><span class="rem">     * @return the object at the top of the stack, null if </span></pre>
+<pre><span class="lnum">  40:  </span><span class="rem">     *            this stack contains no elements</span></pre>
+<pre class="alt"><span class="lnum">  41:  </span><span class="rem">     */</span></pre>
+<pre><span class="lnum">  42:  </span>    <span class="kwrd">public</span> Object top();</pre>
+<pre class="alt"><span class="lnum">  43:  </span>    </pre>
+<pre><span class="lnum">  44:  </span>    </pre>
+<pre class="alt"><span class="lnum">  45:  </span>    <span class="rem">/**</span></pre>
+<pre><span class="lnum">  46:  </span><span class="rem">     * Returns the number of objects currently in the stack.</span></pre>
+<pre class="alt"><span class="lnum">  47:  </span><span class="rem">     * </span></pre>
+<pre><span class="lnum">  48:  </span><span class="rem">     * @pre true</span></pre>
+<pre class="alt"><span class="lnum">  49:  </span><span class="rem">     * @post @nochange</span></pre>
+<pre><span class="lnum">  50:  </span><span class="rem">     * @return number of items in the stack</span></pre>
+<pre class="alt"><span class="lnum">  51:  </span><span class="rem">     */</span></pre>
+<pre><span class="lnum">  52:  </span>    <span class="kwrd">public</span> <span class="kwrd">int</span> size();</pre>
+<pre class="alt"><span class="lnum">  53:  </span>    </pre>
+<pre><span class="lnum">  54:  </span>    </pre>
+<pre class="alt"><span class="lnum">  55:  </span>    <span class="rem">/**</span></pre>
+<pre><span class="lnum">  56:  </span><span class="rem">     * Returns true if this collection contains no elements.</span></pre>
+<pre class="alt"><span class="lnum">  57:  </span><span class="rem">     * This implementation returns size() == 0.</span></pre>
+<pre><span class="lnum">  58:  </span><span class="rem">     * </span></pre>
+<pre class="alt"><span class="lnum">  59:  </span><span class="rem">     * @pre true</span></pre>
+<pre><span class="lnum">  60:  </span><span class="rem">     * @post @nochange</span></pre>
+<pre class="alt"><span class="lnum">  61:  </span><span class="rem">     * @return true if this stack contains no elements</span></pre>
+<pre><span class="lnum">  62:  </span><span class="rem">     */</span></pre>
+<pre class="alt"><span class="lnum">  63:  </span>    <span class="kwrd">public</span> boolean isEmpty();</pre>
+<pre><span class="lnum">  64:  </span>}</pre>
+</div>
+
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+        </div>
+
+
+        <div class="grid_12" style="height:500px;background-color:#111;">
+            <div style="text-align:center">
+                CS602 - Java Programming - Metin Yorulmaz
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

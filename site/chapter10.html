@@ -1,0 +1,843 @@
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>CS602 - Java Programming - Metin Yorulmaz</title>
+    <link href="public/stylesheets/reset.css" rel="stylesheet" type="text/css" />
+    <link href="public/stylesheets/960.css" rel="stylesheet" type="text/css" />
+    <link href="public/stylesheets/site.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    
+    <div class="container_12">
+        
+        <div class="grid_12">
+            <div id="header">
+                CS602 - Java Programming
+            </div>
+        </div>
+
+        <div class="grid_12">
+            <div id="menu_container">
+                <ul id="menu">
+                    <li>
+                       <a href="chapter1/assignment1.html"> Chapter 1 </a>
+                    </li>
+                    <li>
+                       <a href="chapter3.html"> Chapter 3 </a>
+                    </li>
+                    <li>
+                       <a href="chapter4_1.html"> Chapter 4 </a>
+                    </li>
+                    <li>
+                       <a href="chapter5a_4.9.html"> Chapter 5a </a>
+                    </li>
+                    <li>
+                       <a href="chapter5b_5.2.html"> Chapter 5b </a>
+                    </li>
+                    <li>
+                       <a href="chapter6_6.3.html"> Chapter 6 </a>
+                    </li>
+                    <li>
+                       <a href="chapter7_7.6.html"> Chapter 7 </a>
+                    </li>
+                    <li>
+                       <a href="chapter8_8.5.html"> Chapter 8 </a>
+                    </li>
+                    <li>
+                       <a href="chapter9.html"> Chapter 9 </a>
+                    </li>
+                    <li class="current">
+                       <a href="chapter10.html"> Chapter 10 </a>
+                    </li>
+                    <li>
+                       <a href="midterm1.html"> Exams </a>
+                    </li>
+                    <li>
+                       <a href="final.html"> Project </a>
+                    </li>
+                </ul>
+            </div>
+            <div id="submenu_container">
+                <ul class="submenu">
+                    <li>
+                        <a href="chapter10.html"> Maze</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid_12" id="content" style="background-color:#fdfdfd;">
+            <br/>
+            <p>
+
+            </p>
+            <br/>
+
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre class="csharpcode">
+<span class="kwrd">&lt;</span><span class="html">APPLET</span> <span class="attr">codebase</span><span class="kwrd">="chapter10/"</span>  <span class="attr">code</span><span class="kwrd">="maze.MazeGameApplet"</span> <span class="attr">archive</span><span class="kwrd">='maze.jar'</span> <span class="attr">WIDTH</span><span class="kwrd">="500"</span> <span class="attr">HEIGHT</span><span class="kwrd">="400"</span><span class="kwrd">&gt;</span>
+  <span class="kwrd">&lt;</span><span class="html">param</span> <span class="attr">name</span><span class="kwrd">="theme"</span> <span class="attr">value</span><span class="kwrd">="Harry"</span><span class="kwrd">&gt;</span>
+<span class="kwrd">&lt;/</span><span class="html">APPLET</span><span class="kwrd">&gt;</span></pre>
+            <br/>
+
+            <APPLET codebase="chapter10/"  code="maze.MazeGameApplet" archive='maze.jar' WIDTH="500" HEIGHT="400">
+              <param name="theme" value="Harry">
+            </APPLET>
+              
+            <br/>
+
+            <h5 class="sub">I. Timesheet</h5>
+
+            <img src='chapter10/timesheet.png'/>
+
+            <br/>
+
+            <h5 class="sub">II. Planning</h5>
+
+            <br/><br/>
+            <p>
+                Converted to applet.
+            </p>
+            <p>
+                Increase number of rooms to 20. 4 rows 5 columns.
+            </p>
+            <p>
+                Added ability to open a closed door. Hitting enter after pushing the door will open the door.
+            </p>
+
+    
+<img src='chapter10/interaction.png'/>
+<br/>
+<a href='chapter10/interaction.pdf'>Download as PDF</a>
+
+            <h5 class="sub">II. Source Code (Changed or new classes only)</h5>
+            
+            <br/>
+
+
+
+            <br/>
+            <h6>MazeGameApplet.java</h6>
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre class="csharpcode">
+package maze;
+
+import java.applet.Applet;
+
+
+
+<span class="kwrd">public</span> <span class="kwrd">class</span> MazeGameApplet extends Applet{
+
+  <span class="rem">// This method must not be static</span>
+  <span class="kwrd">public</span> MazeGameApplet () {
+    
+  }
+  
+  <span class="kwrd">public</span> <span class="kwrd">void</span> init(){
+    Maze maze;
+    MazeGameCreator creator = <span class="kwrd">null</span>;
+    String theme = getParameter(<span class="str">"theme"</span>);
+    <span class="kwrd">if</span>(theme == <span class="kwrd">null</span>) theme = <span class="str">""</span>;
+    <span class="kwrd">if</span> (<span class="str">"Harry"</span>.equals(theme)) {
+      creator = <span class="kwrd">new</span> maze.harry.HarryPotterMazeGameCreator();
+    } <span class="kwrd">else</span> <span class="kwrd">if</span> (<span class="str">"Snow"</span>.equals(theme)) {
+      creator = <span class="kwrd">new</span> maze.snow.SnowWhiteMazeGameCreator();
+    }<span class="kwrd">else</span> {
+      creator = <span class="kwrd">new</span> MazeGameCreator();
+    }
+    maze = creator.createMaze();
+    maze.setCurrentRoom(8);
+    maze.addToComponent(<span class="kwrd">this</span>);
+  }
+}
+</pre>
+
+            <br/>
+            <br/>
+            <h6>MazeGameCreator.java</h6>
+
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre class="csharpcode">
+package maze; 
+
+import java.awt.*;
+import javax.swing.*;
+
+
+<span class="kwrd">public</span> <span class="kwrd">class</span> MazeGameCreator { 
+
+  <span class="rem">// This method must not be static</span>
+  <span class="kwrd">public</span> Maze createMaze() { 
+    Maze maze = makeMaze(); 
+    Room room1 = makeRoom(1); 
+    Room room2 = makeRoom(2); 
+    Room room3 = makeRoom(3); 
+    Room room4 = makeRoom(4); 
+    Room room5 = makeRoom(5); 
+
+    Door door12 = makeDoor(room1, room2);
+    Door door23 = makeDoor(room2, room3);
+    
+    room1.setSide(Direction.NORTH, makeWall());
+    room1.setSide(Direction.EAST, makeWall());
+    room1.setSide(Direction.SOUTH, makeWall());
+    room1.setSide(Direction.WEST, door12);
+
+    room2.setSide(Direction.NORTH, makeWall());
+    room2.setSide(Direction.EAST, door12);
+    room2.setSide(Direction.SOUTH, makeWall());
+    room2.setSide(Direction.WEST, door23);
+
+    room3.setSide(Direction.NORTH, makeWall());
+    room3.setSide(Direction.EAST, door23);
+    room3.setSide(Direction.SOUTH, makeWall());
+    room3.setSide(Direction.WEST, makeWall());
+
+    room4.setSide(Direction.NORTH, makeWall());
+    room4.setSide(Direction.EAST, makeWall());
+    room4.setSide(Direction.SOUTH, makeWall());
+    room4.setSide(Direction.WEST, makeWall());
+
+    room5.setSide(Direction.NORTH, makeWall());
+    room5.setSide(Direction.EAST, makeWall());
+    room5.setSide(Direction.SOUTH, makeWall());
+    room5.setSide(Direction.WEST, makeWall());
+    
+    Room room6 = makeRoom(6); 
+    Room room7 = makeRoom(7); 
+    Room room8 = makeRoom(8); 
+    Room room9 = makeRoom(9); 
+    Room room10 = makeRoom(10); 
+
+    Door door67 = makeDoor(room6, room7);
+    Door door78 = makeDoor(room7, room8);
+    Door door89 = makeDoor(room8, room9);
+    Door door910 = makeDoor(room9, room10);
+
+    room6.setSide(Direction.NORTH, makeWall());
+    room6.setSide(Direction.EAST, makeWall());
+    room6.setSide(Direction.SOUTH, makeWall());
+    room6.setSide(Direction.WEST, door67);
+
+    room7.setSide(Direction.NORTH, makeWall());
+    room7.setSide(Direction.EAST, door67);
+    room7.setSide(Direction.SOUTH, makeWall());
+    room7.setSide(Direction.WEST, door78);
+
+    room8.setSide(Direction.NORTH, makeWall());
+    room8.setSide(Direction.EAST, door78);
+    room8.setSide(Direction.SOUTH, makeWall());
+    room8.setSide(Direction.WEST, door89);
+    
+    room9.setSide(Direction.NORTH, makeWall());
+    room9.setSide(Direction.EAST, door89);
+    room9.setSide(Direction.SOUTH, makeWall());
+    room9.setSide(Direction.WEST, door910);
+
+    room10.setSide(Direction.NORTH, makeWall());
+    room10.setSide(Direction.EAST, door910);
+    room10.setSide(Direction.SOUTH, makeWall());
+    room10.setSide(Direction.WEST, makeWall());
+
+    Room room11 = makeRoom(11); 
+    Room room12 = makeRoom(12); 
+    Room room13 = makeRoom(13); 
+    Room room14 = makeRoom(14); 
+    Room room15 = makeRoom(15);
+    
+    Door door1112 = makeDoor(room11, room12);
+    Door door1213 = makeDoor(room12, room13);
+    Door door1314 = makeDoor(room13, room14);
+    Door door1415 = makeDoor(room14, room15);
+
+    room11.setSide(Direction.NORTH, makeWall());
+    room11.setSide(Direction.EAST, makeWall());
+    room11.setSide(Direction.SOUTH, makeWall());
+    room11.setSide(Direction.WEST, door1112);
+
+    room12.setSide(Direction.NORTH, makeWall());
+    room12.setSide(Direction.EAST, door1112);
+    room12.setSide(Direction.SOUTH, makeWall());
+    room12.setSide(Direction.WEST, door1213);
+    
+    room13.setSide(Direction.NORTH, makeWall());
+    room13.setSide(Direction.EAST, door1213);
+    room13.setSide(Direction.SOUTH, makeWall());
+    room13.setSide(Direction.WEST, door1314);
+
+    room14.setSide(Direction.NORTH, makeWall());
+    room14.setSide(Direction.EAST, door1314);
+    room14.setSide(Direction.SOUTH, makeWall());
+    room14.setSide(Direction.WEST, door1415);
+
+    room15.setSide(Direction.NORTH, makeWall());
+    room15.setSide(Direction.EAST, door1415);
+    room15.setSide(Direction.SOUTH, makeWall());
+    room15.setSide(Direction.WEST, makeWall());
+
+    Room room16 = makeRoom(16);
+    Room room17 = makeRoom(17); 
+    Room room18 = makeRoom(18); 
+    Room room19 = makeRoom(19); 
+    Room room20 = makeRoom(20); 
+
+    Door door1617 = makeDoor(room16, room17);
+    Door door1718 = makeDoor(room17, room18);
+    Door door1819 = makeDoor(room18, room19);
+    Door door1920 = makeDoor(room19, room20);
+
+    room16.setSide(Direction.NORTH, makeWall());
+    room16.setSide(Direction.EAST, makeWall());
+    room16.setSide(Direction.SOUTH, makeWall());
+    room16.setSide(Direction.WEST, door1617);
+
+    room17.setSide(Direction.NORTH, makeWall());
+    room17.setSide(Direction.EAST, door1617);
+    room17.setSide(Direction.SOUTH, makeWall());
+    room17.setSide(Direction.WEST, door1718);
+
+    room18.setSide(Direction.NORTH, makeWall());
+    room18.setSide(Direction.EAST, door1718);
+    room18.setSide(Direction.SOUTH, makeWall());
+    room18.setSide(Direction.WEST, door1819);
+
+    room19.setSide(Direction.NORTH, makeWall());
+    room19.setSide(Direction.EAST, door1819);
+    room19.setSide(Direction.SOUTH, makeWall());
+    room19.setSide(Direction.WEST, door1920);
+
+    room20.setSide(Direction.NORTH, makeWall());
+    room20.setSide(Direction.EAST, door1920);
+    room20.setSide(Direction.SOUTH, makeWall());
+    room20.setSide(Direction.WEST, makeWall());
+
+    door12.setOpen(<span class="kwrd">true</span>); 
+    door23.setOpen(<span class="kwrd">false</span>); 
+    door67.setOpen(<span class="kwrd">false</span>); 
+    door78.setOpen(<span class="kwrd">true</span>); 
+    door910.setOpen(<span class="kwrd">true</span>); 
+    door910.setOpen(<span class="kwrd">true</span>); 
+    door1112.setOpen(<span class="kwrd">true</span>); 
+    door1314.setOpen(<span class="kwrd">true</span>); 
+    door1415.setOpen(<span class="kwrd">true</span>); 
+    door1617.setOpen(<span class="kwrd">true</span>); 
+
+    Door door16 = makeDoor(room1, room6);
+    room1.setSide(Direction.NORTH, door16);
+    room6.setSide(Direction.SOUTH, door16);
+
+    Door door712 = makeDoor(room7, room12);
+    room7.setSide(Direction.NORTH, door712);
+    room12.setSide(Direction.SOUTH, door712);
+
+    Door door1318 = makeDoor(room13, room18);
+    room13.setSide(Direction.NORTH, door1318);
+    room18.setSide(Direction.SOUTH, door1318);
+
+    Door door510 = makeDoor(room5, room10);
+    room5.setSide(Direction.NORTH, door510);
+    room10.setSide(Direction.SOUTH, door510);
+
+    Door door49 = makeDoor(room4, room9);
+    room4.setSide(Direction.NORTH, door49);
+    room9.setSide(Direction.SOUTH, door49);
+    
+    door16.setOpen(<span class="kwrd">true</span>); 
+    door712.setOpen(<span class="kwrd">true</span>); 
+    door1318.setOpen(<span class="kwrd">true</span>); 
+
+    maze.addRoom(room1);
+    maze.addRoom(room2);
+    maze.addRoom(room3);
+    maze.addRoom(room4);
+    maze.addRoom(room5);
+    maze.addRoom(room6);
+    maze.addRoom(room7);
+    maze.addRoom(room8);
+    maze.addRoom(room9);
+    maze.addRoom(room10);
+    maze.addRoom(room11);
+    maze.addRoom(room12);
+    maze.addRoom(room13);
+    maze.addRoom(room14);
+    maze.addRoom(room15);
+    maze.addRoom(room16);
+    maze.addRoom(room17);
+    maze.addRoom(room18);
+    maze.addRoom(room19);
+    maze.addRoom(room20);
+    
+    <span class="kwrd">return</span> maze;
+  }
+
+  <span class="kwrd">public</span> Maze makeMaze() {
+    <span class="kwrd">return</span> <span class="kwrd">new</span> Maze(); 
+  }
+
+  <span class="kwrd">public</span> Wall makeWall() { 
+    <span class="kwrd">return</span> <span class="kwrd">new</span> Wall(); 
+  }
+
+  <span class="kwrd">public</span> Room makeRoom(<span class="kwrd">int</span> roomNumber) { 
+    <span class="kwrd">return</span> <span class="kwrd">new</span> Room(roomNumber); 
+  }
+
+  <span class="kwrd">public</span> Door makeDoor(Room room1, Room room2) { 
+    <span class="kwrd">return</span> <span class="kwrd">new</span> Door(room1, room2); 
+  }
+
+
+}</pre>
+
+            <br/>
+            <br/>
+            <h6>Maze.java</h6>
+
+
+                    <p>
+                      Changed to add door opener command. Capture Enter key action to open door. 
+                    </p>
+
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre class="csharpcode">
+package maze;
+
+import java.util.Stack;
+import java.util.List;
+import java.util.ArrayList;
+import java.awt.*;
+import java.awt.<span class="kwrd">event</span>.*;
+import javax.swing.*;
+
+<span class="kwrd">public</span> <span class="kwrd">class</span> Maze implements Cloneable {
+
+  <span class="kwrd">public</span> Object clone() throws CloneNotSupportedException {
+    <span class="kwrd">return</span> super.clone();
+  }
+
+  <span class="kwrd">public</span> <span class="kwrd">void</span> addRoom(Room room) {
+    <span class="kwrd">if</span> (room != <span class="kwrd">null</span>) {
+      rooms.add(room);
+    }
+  }
+
+  <span class="kwrd">public</span> Room findRoom(<span class="kwrd">int</span> roomNumber) {
+    <span class="kwrd">for</span> (<span class="kwrd">int</span> i = 0; i &lt; rooms.size(); i++) {
+      Room room = (Room) rooms.get(i);
+      <span class="kwrd">if</span> (roomNumber == room.getRoomNumber()) {
+        <span class="kwrd">return</span> room;
+      }
+    }
+    <span class="kwrd">return</span> <span class="kwrd">null</span>;
+  }
+
+  <span class="kwrd">public</span> <span class="kwrd">void</span> setCurrentRoom(<span class="kwrd">int</span> roomNumber) {
+    Room room = findRoom(roomNumber);
+    setCurrentRoom(room);
+  }
+
+  <span class="kwrd">public</span> <span class="kwrd">void</span> setCurrentRoom(Room room) {
+    <span class="kwrd">if</span> (room != curRoom) {
+      <span class="kwrd">if</span> (curRoom != <span class="kwrd">null</span>) {
+        curRoom.setInRoom(<span class="kwrd">false</span>);
+      }
+      <span class="kwrd">if</span> (room != <span class="kwrd">null</span>) {
+        room.setInRoom(<span class="kwrd">true</span>);
+        curRoom = room;
+      }
+      <span class="kwrd">if</span> (view != <span class="kwrd">null</span>) {
+        view.repaint();
+      }
+    }
+  }
+
+  <span class="kwrd">public</span> Room getCurrentRoom() {
+    <span class="kwrd">return</span> curRoom;
+  }
+
+  <span class="kwrd">public</span> <span class="kwrd">void</span> move(Direction direction) {
+    <span class="kwrd">if</span> (curRoom != <span class="kwrd">null</span>) {
+      MapSite side = curRoom.getSide(direction);
+      <span class="kwrd">if</span> (side != <span class="kwrd">null</span>) {
+        side.enter(<span class="kwrd">this</span>);
+      }
+    }
+  }
+ 
+
+  <span class="kwrd">public</span> <span class="kwrd">void</span> draw(Graphics g) {
+    <span class="kwrd">if</span> (dim == <span class="kwrd">null</span>) {
+      calculateDimension();
+    }
+    <span class="kwrd">int</span> dx = MARGIN + -offset.x * ROOM_SIZE;
+    <span class="kwrd">int</span> dy = MARGIN + -offset.y * ROOM_SIZE;
+
+    <span class="kwrd">if</span> (debug) {
+      System.<span class="kwrd">out</span>.println(<span class="str">"Maze.Draw(): offset="</span> + offset.x + <span class="str">", "</span> + offset.y);
+    }
+
+    <span class="rem">// draw rooms first</span>
+    <span class="kwrd">for</span> (<span class="kwrd">int</span> i = 0; i &lt; rooms.size(); i++) {
+      Room room = (Room) rooms.get(i);
+      <span class="kwrd">if</span> (room != <span class="kwrd">null</span>) {
+        Point location = room.getLocation();
+        <span class="kwrd">if</span> (location != <span class="kwrd">null</span>) {
+
+          <span class="kwrd">if</span> (debug) {
+            System.<span class="kwrd">out</span>.println(<span class="str">"Maze.Draw(): Room "</span> + room.getRoomNumber()
+                + <span class="str">" location: "</span> + location.x + <span class="str">", "</span> + location.y + <span class="str">"  ROOM COUNT:"</span> + rooms.size());
+          }
+          
+
+          room.draw(g, dx + location.x * ROOM_SIZE,
+              dy + location.y * ROOM_SIZE, ROOM_SIZE, ROOM_SIZE);
+        }
+      }
+    }
+    <span class="rem">// draw walls and doors</span>
+    <span class="kwrd">for</span> (<span class="kwrd">int</span> i = 0; i &lt; rooms.size(); i++) {
+      Room room = (Room) rooms.get(i);
+      <span class="kwrd">if</span> (room != <span class="kwrd">null</span>) {
+        Point location = room.getLocation();
+        <span class="kwrd">if</span> (location != <span class="kwrd">null</span>) {
+          <span class="kwrd">for</span> (Direction dir = Direction.first(); dir != <span class="kwrd">null</span>; dir = dir.next()) {
+            MapSite side = room.getSide(dir);
+            <span class="kwrd">if</span> (side != <span class="kwrd">null</span>) {
+              <span class="kwrd">if</span> (dir == Direction.NORTH) {
+                side.draw(g, dx + location.x * ROOM_SIZE - WALL_THICKNESS / 2,
+                    dy + location.y * ROOM_SIZE - WALL_THICKNESS / 2, ROOM_SIZE
+                        + WALL_THICKNESS, WALL_THICKNESS);
+              } <span class="kwrd">else</span> <span class="kwrd">if</span> (dir == Direction.EAST) {
+                side.draw(g, dx + location.x * ROOM_SIZE + ROOM_SIZE
+                    - WALL_THICKNESS / 2, dy + location.y * ROOM_SIZE
+                    - WALL_THICKNESS / 2, WALL_THICKNESS, ROOM_SIZE
+                    + WALL_THICKNESS);
+              } <span class="kwrd">else</span> <span class="kwrd">if</span> (dir == Direction.SOUTH) {
+                side.draw(g, dx + location.x * ROOM_SIZE - WALL_THICKNESS / 2,
+                    dy + location.y * ROOM_SIZE + ROOM_SIZE - WALL_THICKNESS
+                        / 2, ROOM_SIZE + WALL_THICKNESS, WALL_THICKNESS);
+              } <span class="kwrd">else</span> {
+                side.draw(g, dx + location.x * ROOM_SIZE - WALL_THICKNESS / 2,
+                    dy + location.y * ROOM_SIZE - WALL_THICKNESS / 2,
+                    WALL_THICKNESS, ROOM_SIZE + WALL_THICKNESS);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  <span class="kwrd">public</span> Dimension getDimension() {
+    <span class="kwrd">if</span> (dim == <span class="kwrd">null</span>) {
+      calculateDimension();
+    }
+    <span class="kwrd">return</span> dim;
+  }
+
+  <span class="kwrd">protected</span> <span class="kwrd">void</span> calculateDimension() {
+    <span class="kwrd">if</span> (rooms.size() &gt; 0) {
+      <span class="kwrd">int</span> minX = 0, maxX = 0, minY = 0, maxY = 0;
+      Room room = (Room) rooms.get(0);
+      room.setLocation(<span class="kwrd">new</span> Point(0, 0));
+      boolean changed = <span class="kwrd">true</span>;
+      <span class="kwrd">while</span> (changed &amp;&amp; !isAllRoomsSet()) {
+        changed = <span class="kwrd">false</span>;
+        <span class="kwrd">for</span> (<span class="kwrd">int</span> i = 0; i &lt; rooms.size(); i++) {
+          room = (Room) rooms.get(i);
+          Point location = room.getLocation();
+          <span class="kwrd">if</span> (location != <span class="kwrd">null</span>) {
+            <span class="kwrd">for</span> (Direction dir = Direction.first(); dir != <span class="kwrd">null</span>; dir = dir.next()) {
+              MapSite side = room.getSide(dir);
+              <span class="kwrd">if</span> (side instanceof Door) {
+                Door door = (Door) side;
+                Room otherSide = door.otherSideFrom(room);
+
+                <span class="kwrd">if</span> (otherSide != <span class="kwrd">null</span> &amp;&amp; otherSide.getLocation() == <span class="kwrd">null</span>) {
+                  <span class="kwrd">if</span> (dir == Direction.NORTH) {
+                    otherSide.setLocation(<span class="kwrd">new</span> Point(location.x, location.y - 1));
+                    minY = Math.min(minY, location.y - 1);
+                  } <span class="kwrd">else</span> <span class="kwrd">if</span> (dir == Direction.EAST) {
+                    otherSide.setLocation(<span class="kwrd">new</span> Point(location.x + 1, location.y));
+                    maxX = Math.max(maxX, location.x + 1);
+                  } <span class="kwrd">else</span> <span class="kwrd">if</span> (dir == Direction.SOUTH) {
+                    otherSide.setLocation(<span class="kwrd">new</span> Point(location.x, location.y + 1));
+                    maxY = Math.max(maxY, location.y + 1);
+                  } <span class="kwrd">else</span> {
+                    otherSide.setLocation(<span class="kwrd">new</span> Point(location.x - 1, location.y));
+                    minX = Math.min(minX, location.x - 1);
+                  }
+                  changed = <span class="kwrd">true</span>;
+                }
+              }
+            }
+          }
+        }
+      }
+      offset = <span class="kwrd">new</span> Point(minX, minY);
+      dim = <span class="kwrd">new</span> Dimension(maxX - minX + 1, maxY - minY + 1);
+    } <span class="kwrd">else</span> {
+      offset = <span class="kwrd">new</span> Point(0, 0);
+      dim = <span class="kwrd">new</span> Dimension(0, 0);
+    }
+  }
+
+  <span class="kwrd">protected</span> boolean isAllRoomsSet() {
+    <span class="kwrd">for</span> (<span class="kwrd">int</span> i = 0; i &lt; rooms.size(); i++) {
+      Room room = (Room) rooms.get(i);
+      <span class="kwrd">if</span> (room.getLocation() == <span class="kwrd">null</span>) {
+        <span class="kwrd">return</span> <span class="kwrd">false</span>;
+      }
+    }
+    <span class="kwrd">return</span> <span class="kwrd">true</span>;
+  }
+
+  <span class="kwrd">protected</span> <span class="kwrd">void</span> setView(Component view) {
+    <span class="kwrd">this</span>.view = view;
+  }
+
+  <span class="kwrd">protected</span> <span class="kwrd">void</span> doCommand(Command command) {
+    <span class="kwrd">if</span> (command != <span class="kwrd">null</span>) {
+      moves.push(command);
+      command.execute();
+    }
+  }
+
+  <span class="kwrd">protected</span> <span class="kwrd">void</span> undoCommand() {
+    <span class="kwrd">if</span> (!moves.empty()) {
+      Object top = moves.peek(); <span class="rem">// looking at the top element without popping</span>
+                                 <span class="rem">// it</span>
+      <span class="kwrd">if</span> (top instanceof UndoableCommand) {
+        moves.pop();
+        UndoableCommand undoableCommand = (UndoableCommand) top;
+        undoableCommand.undo();
+      }
+    }
+  }
+
+  <span class="kwrd">protected</span> List rooms = <span class="kwrd">new</span> ArrayList();
+  <span class="kwrd">protected</span> Dimension dim;
+  <span class="kwrd">protected</span> Point offset;
+  <span class="kwrd">protected</span> Room curRoom = <span class="kwrd">null</span>;
+  <span class="kwrd">protected</span> Stack moves = <span class="kwrd">new</span> Stack();
+  <span class="kwrd">protected</span> Direction lastDirection;
+
+  <span class="kwrd">protected</span> Component view;
+
+  <span class="kwrd">private</span> <span class="kwrd">static</span> final <span class="kwrd">int</span> ROOM_SIZE = 60;
+  <span class="kwrd">private</span> <span class="kwrd">static</span> final <span class="kwrd">int</span> WALL_THICKNESS = 10;
+  <span class="kwrd">private</span> <span class="kwrd">static</span> final <span class="kwrd">int</span> MARGIN = 30;
+
+  <span class="kwrd">private</span> <span class="kwrd">static</span> final boolean debug = <span class="kwrd">true</span>;
+
+  <span class="kwrd">protected</span> <span class="kwrd">void</span> showFrame(String frameTitle) {
+    JFrame frame;
+    frame = <span class="kwrd">new</span> JFrame(frameTitle);
+    frame.setContentPane(<span class="kwrd">new</span> Maze.MazePanel(<span class="kwrd">this</span>));
+    frame.pack();
+    Dimension frameDim = frame.getSize();
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    frame.setLocation(screenSize.width / 2 - frameDim.width / 2,
+        screenSize.height / 2 - frameDim.height / 2);
+    frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    frame.setVisible(<span class="kwrd">true</span>);
+  }
+
+  <span class="kwrd">protected</span> <span class="kwrd">void</span> addToComponent(Panel panel) {
+    panel.add(<span class="kwrd">new</span> Maze.MazePanel(<span class="kwrd">this</span>));
+  }
+  
+  <span class="kwrd">public</span> <span class="kwrd">static</span> <span class="kwrd">class</span> MazePanel extends JPanel {
+
+    <span class="kwrd">public</span> MazePanel(Maze maze) {
+      <span class="kwrd">this</span>.maze = maze;
+      <span class="kwrd">if</span> (maze != <span class="kwrd">null</span>) {
+        maze.setView(<span class="kwrd">this</span>);
+        Dimension d = maze.getDimension();
+        <span class="kwrd">if</span> (d != <span class="kwrd">null</span>) {
+          dim = <span class="kwrd">new</span> Dimension(d.width * ROOM_SIZE + 2 * MARGIN, d.height
+              * ROOM_SIZE + 2 * MARGIN);
+        }
+        addKeyListener(<span class="kwrd">new</span> MazeKeyListener(maze));
+      }
+    }
+
+    <span class="kwrd">public</span> <span class="kwrd">void</span> paint(Graphics g) {
+      Dimension d = getSize();
+      g.setColor(Color.white);
+      g.fillRect(0, 0, d.width, d.height);
+      <span class="kwrd">if</span> (maze != <span class="kwrd">null</span>) {
+        maze.draw(g);
+      }
+      requestFocus();
+    }
+
+    <span class="rem">// public boolean isFocusTraversable() { // pre 1.4</span>
+    <span class="kwrd">public</span> boolean isFocusable() { <span class="rem">// 1.4</span>
+      <span class="kwrd">return</span> <span class="kwrd">true</span>;
+    }
+
+    <span class="kwrd">public</span> Dimension getPreferredSize() {
+      <span class="kwrd">return</span> dim;
+    }
+
+    <span class="kwrd">public</span> Dimension getMinimumSize() {
+      <span class="kwrd">return</span> dim;
+    }
+
+    <span class="kwrd">private</span> Maze maze;
+    <span class="kwrd">private</span> Dimension dim;
+
+  }
+
+  <span class="kwrd">static</span> <span class="kwrd">class</span> MazeKeyListener extends KeyAdapter {
+
+    MazeKeyListener(Maze maze) {
+      <span class="kwrd">this</span>.maze = maze;
+    }
+
+    <span class="kwrd">public</span> <span class="kwrd">void</span> keyPressed(KeyEvent e) {
+      System.<span class="kwrd">out</span>.println(<span class="str">"Key pressed"</span>);
+      Command command = <span class="kwrd">null</span>;
+      <span class="kwrd">int</span> code = e.getKeyCode();
+      <span class="kwrd">switch</span> (code) {
+      <span class="kwrd">case</span> KeyEvent.VK_UP:
+        System.<span class="kwrd">out</span>.println(<span class="str">"Up key"</span>);
+        command = <span class="kwrd">new</span> MazeMoveCommand(maze, Direction.NORTH);
+        maze.lastDirection = Direction.NORTH;
+        <span class="kwrd">break</span>;
+      <span class="kwrd">case</span> KeyEvent.VK_DOWN:
+        System.<span class="kwrd">out</span>.println(<span class="str">"Down key"</span>);
+        command = <span class="kwrd">new</span> MazeMoveCommand(maze, Direction.SOUTH);
+        maze.lastDirection = Direction.SOUTH;
+        <span class="kwrd">break</span>;
+      <span class="kwrd">case</span> KeyEvent.VK_LEFT:
+        System.<span class="kwrd">out</span>.println(<span class="str">"Left key"</span>);
+        command = <span class="kwrd">new</span> MazeMoveCommand(maze, Direction.WEST);
+        maze.lastDirection = Direction.WEST;
+        <span class="kwrd">break</span>;
+      <span class="kwrd">case</span> KeyEvent.VK_RIGHT:
+        System.<span class="kwrd">out</span>.println(<span class="str">"Right key"</span>);
+        command = <span class="kwrd">new</span> MazeMoveCommand(maze, Direction.EAST);
+        maze.lastDirection = Direction.EAST;
+        <span class="kwrd">break</span>;
+      <span class="kwrd">case</span> KeyEvent.VK_ENTER:
+        System.<span class="kwrd">out</span>.println(<span class="str">"Enter key"</span>);
+        MapSite side = maze.curRoom.getSide(maze.lastDirection);
+        command = <span class="kwrd">new</span> MazeDoorCommand(side);
+        <span class="kwrd">break</span>;
+      <span class="kwrd">default</span>:
+        System.<span class="kwrd">out</span>.println(<span class="str">"Key press ignored"</span>);
+      }
+      <span class="kwrd">if</span> (command != <span class="kwrd">null</span>) {
+        maze.doCommand(command);
+        maze.view.repaint();
+      }
+    }
+
+    Maze maze;
+  }
+
+}
+</pre>
+
+
+            <br/>
+            <br/>
+
+
+
+
+
+            <h6>AudioUtility.java</h6>
+                <p>
+                    Changed to get audio files form harp.njit.edu.
+                </p>
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre class="csharpcode">
+package util;
+
+import java.applet.*;
+import java.net.*;
+
+<span class="kwrd">public</span> <span class="kwrd">class</span> AudioUtility {
+
+  <span class="kwrd">public</span> <span class="kwrd">static</span> final AudioClip getAudioClip(String filename) {
+    <span class="kwrd">if</span> (filename != <span class="kwrd">null</span>) {
+      <span class="kwrd">try</span> {
+        <span class="kwrd">return</span> Applet.newAudioClip(<span class="kwrd">new</span> URL(<span class="str">"http://harp.njit.edu/~my67/cs602/chapter10/"</span> + filename));
+      } <span class="kwrd">catch</span> (MalformedURLException e) {
+        System.err.println(e.getMessage());
+      }
+    }
+    <span class="kwrd">return</span> <span class="kwrd">null</span>;
+  }
+
+}
+</pre>
+
+
+            <br/>
+            <br/>
+            <h6>MazeDoorCommand.java</h6>
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre class="csharpcode">
+
+package maze;
+
+<span class="kwrd">public</span> <span class="kwrd">class</span> MazeDoorCommand implements UndoableCommand { 
+
+  <span class="kwrd">public</span> MazeDoorCommand(MapSite side) { 
+    <span class="kwrd">this</span>.side = side; 
+  }
+
+  <span class="kwrd">public</span> <span class="kwrd">void</span> execute() {
+    <span class="kwrd">if</span> ((side != <span class="kwrd">null</span>) &amp;&amp; (side instanceof Door)) {
+      Door d = (Door) side;
+      d.setOpen(<span class="kwrd">true</span>);
+    }
+  }
+
+  <span class="kwrd">public</span> <span class="kwrd">void</span> undo() {
+    <span class="kwrd">if</span> ((side != <span class="kwrd">null</span>) &amp;&amp; (side instanceof Door)) {
+      Door d = (Door) side;
+      d.setOpen(<span class="kwrd">false</span>);
+    }
+  }
+
+  <span class="kwrd">protected</span> MapSite side; 
+
+}
+</pre>
+            <br/>
+            <br/>
+
+
+
+            <br/>
+            <h5 class="sub">III. Screenshots</h5>
+            <h6>Initial</h6>
+            <img src='chapter10/initial.png'></img> <br/><br/>
+
+            <h6>Doors opened</h6>
+            <img src='chapter10/doors_opened.png'></img> <br/><br/>
+
+            <br/>
+            <br/>
+            <br/>
+
+        </div>
+
+
+        <div class="grid_12" style="height:500px;background-color:#111;">
+            <div style="text-align:center">
+                CS602 - Java Programming - Metin Yorulmaz
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

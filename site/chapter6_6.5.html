@@ -1,0 +1,556 @@
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>CS602 - Java Programming - Metin Yorulmaz</title>
+    <link href="public/stylesheets/reset.css" rel="stylesheet" type="text/css" />
+    <link href="public/stylesheets/960.css" rel="stylesheet" type="text/css" />
+    <link href="public/stylesheets/site.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    
+    <div class="container_12">
+        
+        <div class="grid_12">
+            <div id="header">
+                CS602 - Java Programming
+            </div>
+        </div>
+
+        <div class="grid_12">
+            <div id="menu_container">
+                <ul id="menu">
+                    <li>
+                       <a href="chapter1/assignment1.html"> Chapter 1 </a>
+                    </li>
+                    <li>
+                       <a href="chapter3.html"> Chapter 3 </a>
+                    </li>
+                    <li>
+                       <a href="chapter4_1.html"> Chapter 4 </a>
+                    </li>
+                    <li>
+                       <a href="chapter5a_4.9.html"> Chapter 5a </a>
+                    </li>
+                    <li>
+                       <a href="chapter5b_5.2.html"> Chapter 5b </a>
+                    </li>
+                    <li class="current">
+                       <a href="chapter6_6.3.html"> Chapter 6 </a>
+                    </li>
+                    <li>
+                       <a href="chapter7_7.6.html"> Chapter 7 </a>
+                    </li>
+                    <li>
+                       <a href="chapter8_8.5.html"> Chapter 8 </a>
+                    </li>
+                    <li>
+                       <a href="chapter9.html"> Chapter 9 </a>
+                    </li>
+                    <li>
+                       <a href="chapter10.html"> Chapter 10 </a>
+                    </li>
+                    <li>
+                       <a href="midterm1.html"> Exams </a>
+                    </li>
+                    <li>
+                       <a href="final.html"> Project </a>
+                    </li>
+                </ul>
+            </div>
+            <div id="submenu_container">
+                <ul class="submenu">
+                    <li>
+                        <a href="chapter6_6.3.html"> Execise 6.3 </a>
+                    </li>
+                    <li class="current">
+                        <a href="chapter6_6.5.html"> Execise 6.5 </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid_12" id="content" style="background-color:#f1f1f1;">
+            <br/>
+            <p>
+                Design and implement a class that implements the Stack interface defined in Exercise 6.3 using an array.
+            </p>
+            <br/>
+
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre class="alt"><span class="lnum">   1:  </span><span class="kwrd">&lt;</span><span class="html">APPLET</span> <span class="attr">codebase</span><span class="kwrd">="chapter6/"</span> <span class="attr">code</span><span class="kwrd">="ex65.StackApplet.class"</span> <span class="attr">WIDTH</span>=<span class="attr">600</span> <span class="attr">HEIGHT</span>=<span class="attr">500</span><span class="kwrd">&gt;</span></pre>
+<pre><span class="lnum">   2:  </span>&nbsp;</pre>
+<pre class="alt"><span class="lnum">   3:  </span><span class="kwrd">&lt;/</span><span class="html">APPLET</span><span class="kwrd">&gt;</span></pre>
+</div>
+
+            <APPLET codebase="chapter6/" code="ex65.StackApplet.class" WIDTH=600 HEIGHT=500>
+
+            </APPLET>
+
+
+            <br/>
+            <br/>
+            <b>How to generate javadoc?</b>
+            <br/>
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>$&gt;  javadoc -classpath .:/Applications/eclipse/plugins/org.junit_4.8.2.v4_8_2_v20110321-1705/junit.jar </pre>
+<pre><span class="lnum">   2:  </span>                        -tag pre:cm:<span class="str">"Precondition:"</span> -tag post:cm:<span class="str">"Postcondition:"</span> </pre>
+<pre><span class="lnum">   3:  </span>                        -version -author -d docs65 ex65/*.java</pre>
+</div>
+            <br/>
+            <h4>
+                <a href='chapter6/docs65/index.html' target='_blank' title='It will open the javadoc generated document in a new browser window'>
+                    Javadocs
+                </a>
+            </h4>
+
+            <h5 class="sub">I. Timesheet</h5>
+
+            <img src='chapter6/timesheet.png'/>
+
+            <br/>
+
+            <h5 class="sub">II. Source Code</h5>
+            
+            <br/>
+
+            <h6>Stack.java</h6>
+            <br/>
+
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>&nbsp;</pre>
+<pre><span class="lnum">   2:  </span><span class="rem">/**</span></pre>
+<pre><span class="lnum">   3:  </span><span class="rem"> * </span></pre>
+<pre><span class="lnum">   4:  </span><span class="rem"> */</span></pre>
+<pre><span class="lnum">   5:  </span>package ex65;</pre>
+<pre><span class="lnum">   6:  </span>&nbsp;</pre>
+<pre><span class="lnum">   7:  </span>import ex63.IStack;</pre>
+<pre><span class="lnum">   8:  </span>&nbsp;</pre>
+<pre><span class="lnum">   9:  </span><span class="rem">/**</span></pre>
+<pre><span class="lnum">  10:  </span><span class="rem"> * @author Metin Yorulmaz</span></pre>
+<pre><span class="lnum">  11:  </span><span class="rem"> *</span></pre>
+<pre><span class="lnum">  12:  </span><span class="rem"> * @invariant _wellformed()</span></pre>
+<pre><span class="lnum">  13:  </span><span class="rem"> */</span></pre>
+<pre><span class="lnum">  14:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> Stack implements IStack, Cloneable {</pre>
+<pre><span class="lnum">  15:  </span>&nbsp;</pre>
+<pre><span class="lnum">  16:  </span>    <span class="rem">/**</span></pre>
+<pre><span class="lnum">  17:  </span><span class="rem">     * Creates a stack with size of 200</span></pre>
+<pre><span class="lnum">  18:  </span><span class="rem">     */</span></pre>
+<pre><span class="lnum">  19:  </span>    <span class="kwrd">public</span> Stack(){</pre>
+<pre><span class="lnum">  20:  </span>        stackArray = <span class="kwrd">new</span> Object[200];</pre>
+<pre><span class="lnum">  21:  </span>        assert _wellformed();</pre>
+<pre><span class="lnum">  22:  </span>    }</pre>
+<pre><span class="lnum">  23:  </span>    </pre>
+<pre><span class="lnum">  24:  </span>    <span class="rem">/**</span></pre>
+<pre><span class="lnum">  25:  </span><span class="rem">     * Creates a stack with size of  @param stackSize</span></pre>
+<pre><span class="lnum">  26:  </span><span class="rem">     * </span></pre>
+<pre><span class="lnum">  27:  </span><span class="rem">     * @param stackSize Size of stack </span></pre>
+<pre><span class="lnum">  28:  </span><span class="rem">     */</span>    </pre>
+<pre><span class="lnum">  29:  </span>    <span class="kwrd">public</span> Stack(<span class="kwrd">int</span> stackSize){</pre>
+<pre><span class="lnum">  30:  </span>        stackArray = <span class="kwrd">new</span> Object[stackSize];</pre>
+<pre><span class="lnum">  31:  </span>        assert _wellformed();</pre>
+<pre><span class="lnum">  32:  </span>    }</pre>
+<pre><span class="lnum">  33:  </span>    </pre>
+<pre><span class="lnum">  34:  </span>&nbsp;</pre>
+<pre><span class="lnum">  35:  </span>    </pre>
+<pre><span class="lnum">  36:  </span>    <span class="rem">/**</span></pre>
+<pre><span class="lnum">  37:  </span><span class="rem">     * Adds a new object onto top of the stack. </span></pre>
+<pre><span class="lnum">  38:  </span><span class="rem">     * </span></pre>
+<pre><span class="lnum">  39:  </span><span class="rem">     * @pre item != null</span></pre>
+<pre><span class="lnum">  40:  </span><span class="rem">     * @post size() == size()@pre + 1</span></pre>
+<pre><span class="lnum">  41:  </span><span class="rem">     * @post item@pre == top()</span></pre>
+<pre><span class="lnum">  42:  </span><span class="rem">     * @param item Item to be pushed to the top of the stack. </span></pre>
+<pre><span class="lnum">  43:  </span><span class="rem">     */</span></pre>
+<pre><span class="lnum">  44:  </span>    <span class="kwrd">public</span> <span class="kwrd">void</span> push(Object item) {</pre>
+<pre><span class="lnum">  45:  </span>        assert _wellformed();</pre>
+<pre><span class="lnum">  46:  </span>        assert item!=<span class="kwrd">null</span>;</pre>
+<pre><span class="lnum">  47:  </span>        <span class="kwrd">int</span> preSize = size();</pre>
+<pre><span class="lnum">  48:  </span>        stackArray[size()] = item;</pre>
+<pre><span class="lnum">  49:  </span>        size++;</pre>
+<pre><span class="lnum">  50:  </span>        assert size() == preSize + 1;</pre>
+<pre><span class="lnum">  51:  </span>        assert item.equals(top());</pre>
+<pre><span class="lnum">  52:  </span>    }</pre>
+<pre><span class="lnum">  53:  </span>&nbsp;</pre>
+<pre><span class="lnum">  54:  </span>    </pre>
+<pre><span class="lnum">  55:  </span>    <span class="rem">/**</span></pre>
+<pre><span class="lnum">  56:  </span><span class="rem">     * Removes the object at the top of the stack and returns the object. </span></pre>
+<pre><span class="lnum">  57:  </span><span class="rem">     * </span></pre>
+<pre><span class="lnum">  58:  </span><span class="rem">     * @pre size() &gt; 0</span></pre>
+<pre><span class="lnum">  59:  </span><span class="rem">     * @post @result == top()@pre</span></pre>
+<pre><span class="lnum">  60:  </span><span class="rem">     * @post size() == size()@pre - 1</span></pre>
+<pre><span class="lnum">  61:  </span><span class="rem">     * @return the object at the top of the stack, null if </span></pre>
+<pre><span class="lnum">  62:  </span><span class="rem">     *            this stack contains no elements</span></pre>
+<pre><span class="lnum">  63:  </span><span class="rem">     */</span></pre>
+<pre><span class="lnum">  64:  </span>    <span class="kwrd">public</span> Object pop() {</pre>
+<pre><span class="lnum">  65:  </span>        assert _wellformed();</pre>
+<pre><span class="lnum">  66:  </span>        assert size() &gt; 0;</pre>
+<pre><span class="lnum">  67:  </span>        <span class="kwrd">int</span> preSize = size();</pre>
+<pre><span class="lnum">  68:  </span>        Object top = top();</pre>
+<pre><span class="lnum">  69:  </span>        Object item = <span class="kwrd">null</span>;</pre>
+<pre><span class="lnum">  70:  </span>        <span class="kwrd">if</span>(!isEmpty()){</pre>
+<pre><span class="lnum">  71:  </span>            item = stackArray[size()-1];</pre>
+<pre><span class="lnum">  72:  </span>            stackArray[size()-1] = <span class="kwrd">null</span>;</pre>
+<pre><span class="lnum">  73:  </span>            size--;</pre>
+<pre><span class="lnum">  74:  </span>            assert item.equals(top);</pre>
+<pre><span class="lnum">  75:  </span>            assert size() == preSize - 1;</pre>
+<pre><span class="lnum">  76:  </span>        }</pre>
+<pre><span class="lnum">  77:  </span>        <span class="kwrd">return</span> item;</pre>
+<pre><span class="lnum">  78:  </span>    }</pre>
+<pre><span class="lnum">  79:  </span>&nbsp;</pre>
+<pre><span class="lnum">  80:  </span>    <span class="rem">/**</span></pre>
+<pre><span class="lnum">  81:  </span><span class="rem">     * Returns the object at the top of the stack without removing it from </span></pre>
+<pre><span class="lnum">  82:  </span><span class="rem">     * the stack</span></pre>
+<pre><span class="lnum">  83:  </span><span class="rem">     * </span></pre>
+<pre><span class="lnum">  84:  </span><span class="rem">     * @pre size() &gt; 0</span></pre>
+<pre><span class="lnum">  85:  </span><span class="rem">     * @post @nochange</span></pre>
+<pre><span class="lnum">  86:  </span><span class="rem">     * @return the object at the top of the stack, null if </span></pre>
+<pre><span class="lnum">  87:  </span><span class="rem">     *            this stack contains no elements</span></pre>
+<pre><span class="lnum">  88:  </span><span class="rem">     */</span></pre>
+<pre><span class="lnum">  89:  </span>    <span class="kwrd">public</span> Object top() {</pre>
+<pre><span class="lnum">  90:  </span>        assert _wellformed();</pre>
+<pre><span class="lnum">  91:  </span>        assert size() &gt; 0;</pre>
+<pre><span class="lnum">  92:  </span>        <span class="kwrd">int</span> preSize = size();</pre>
+<pre><span class="lnum">  93:  </span>        Object item = <span class="kwrd">null</span>;</pre>
+<pre><span class="lnum">  94:  </span>        <span class="kwrd">if</span>(!isEmpty())</pre>
+<pre><span class="lnum">  95:  </span>            item = stackArray[size()-1];</pre>
+<pre><span class="lnum">  96:  </span>        assert preSize == size();</pre>
+<pre><span class="lnum">  97:  </span>        <span class="kwrd">return</span> item;</pre>
+<pre><span class="lnum">  98:  </span>    }    </pre>
+<pre><span class="lnum">  99:  </span>&nbsp;</pre>
+<pre><span class="lnum"> 100:  </span>    <span class="rem">/**</span></pre>
+<pre><span class="lnum"> 101:  </span><span class="rem">     * Returns the number of objects currently in the stack.</span></pre>
+<pre><span class="lnum"> 102:  </span><span class="rem">     * </span></pre>
+<pre><span class="lnum"> 103:  </span><span class="rem">     * @pre true</span></pre>
+<pre><span class="lnum"> 104:  </span><span class="rem">     * @post @nochange</span></pre>
+<pre><span class="lnum"> 105:  </span><span class="rem">     * @return number of items in the stack</span></pre>
+<pre><span class="lnum"> 106:  </span><span class="rem">     */</span></pre>
+<pre><span class="lnum"> 107:  </span>    <span class="kwrd">public</span> <span class="kwrd">int</span> size() {</pre>
+<pre><span class="lnum"> 108:  </span>        assert _wellformed();</pre>
+<pre><span class="lnum"> 109:  </span>        <span class="kwrd">return</span> size;</pre>
+<pre><span class="lnum"> 110:  </span>    }</pre>
+<pre><span class="lnum"> 111:  </span>&nbsp;</pre>
+<pre><span class="lnum"> 112:  </span>    <span class="rem">/**</span></pre>
+<pre><span class="lnum"> 113:  </span><span class="rem">     * Returns true if this collection contains no elements.</span></pre>
+<pre><span class="lnum"> 114:  </span><span class="rem">     * This implementation returns size() == 0.</span></pre>
+<pre><span class="lnum"> 115:  </span><span class="rem">     * </span></pre>
+<pre><span class="lnum"> 116:  </span><span class="rem">     * @pre true</span></pre>
+<pre><span class="lnum"> 117:  </span><span class="rem">     * @post @nochange</span></pre>
+<pre><span class="lnum"> 118:  </span><span class="rem">     * @return true if this stack contains no elements</span></pre>
+<pre><span class="lnum"> 119:  </span><span class="rem">     */</span>    </pre>
+<pre><span class="lnum"> 120:  </span>    <span class="kwrd">public</span> boolean isEmpty() {</pre>
+<pre><span class="lnum"> 121:  </span>        <span class="kwrd">return</span> size() == 0;</pre>
+<pre><span class="lnum"> 122:  </span>    }    </pre>
+<pre><span class="lnum"> 123:  </span>&nbsp;</pre>
+<pre><span class="lnum"> 124:  </span>    <span class="rem">/**</span></pre>
+<pre><span class="lnum"> 125:  </span><span class="rem">     * Compares this stack to the specified object. </span></pre>
+<pre><span class="lnum"> 126:  </span><span class="rem">     * The result is true if and only if the argument </span></pre>
+<pre><span class="lnum"> 127:  </span><span class="rem">     * is not null and is a stack object that </span></pre>
+<pre><span class="lnum"> 128:  </span><span class="rem">     * represents the same sequence of objects.</span></pre>
+<pre><span class="lnum"> 129:  </span><span class="rem">     * @param other object to compare</span></pre>
+<pre><span class="lnum"> 130:  </span><span class="rem">     * @return true it other stack is equal to this stack</span></pre>
+<pre><span class="lnum"> 131:  </span><span class="rem">     */</span></pre>
+<pre><span class="lnum"> 132:  </span>    <span class="kwrd">public</span> boolean equals(Object other){</pre>
+<pre><span class="lnum"> 133:  </span>        <span class="kwrd">if</span> (<span class="kwrd">this</span> == other) <span class="kwrd">return</span> <span class="kwrd">true</span>;</pre>
+<pre><span class="lnum"> 134:  </span>        <span class="kwrd">if</span>(other instanceof Stack){</pre>
+<pre><span class="lnum"> 135:  </span>            Stack otherStack = (Stack)other;</pre>
+<pre><span class="lnum"> 136:  </span>            <span class="kwrd">if</span>(otherStack.size() == <span class="kwrd">this</span>.size()){</pre>
+<pre><span class="lnum"> 137:  </span>                <span class="rem">//Compare items at the same index,</span></pre>
+<pre><span class="lnum"> 138:  </span>                <span class="rem">//Make sure they are equal</span></pre>
+<pre><span class="lnum"> 139:  </span>                <span class="kwrd">for</span>(<span class="kwrd">int</span> i=0; i &lt; size(); i++){</pre>
+<pre><span class="lnum"> 140:  </span>                    <span class="kwrd">if</span>(stackArray[i] != otherStack.stackArray[i])</pre>
+<pre><span class="lnum"> 141:  </span>                        <span class="kwrd">return</span> <span class="kwrd">false</span>;</pre>
+<pre><span class="lnum"> 142:  </span>                }</pre>
+<pre><span class="lnum"> 143:  </span>                <span class="kwrd">return</span> <span class="kwrd">true</span>;</pre>
+<pre><span class="lnum"> 144:  </span>            }</pre>
+<pre><span class="lnum"> 145:  </span>        }    </pre>
+<pre><span class="lnum"> 146:  </span>        <span class="kwrd">return</span> <span class="kwrd">false</span>;</pre>
+<pre><span class="lnum"> 147:  </span>    }</pre>
+<pre><span class="lnum"> 148:  </span>&nbsp;</pre>
+<pre><span class="lnum"> 149:  </span>    </pre>
+<pre><span class="lnum"> 150:  </span>    <span class="rem">/**</span></pre>
+<pre><span class="lnum"> 151:  </span><span class="rem">     * Returns a clone of this stack. The copy will contain a </span></pre>
+<pre><span class="lnum"> 152:  </span><span class="rem">     * reference to a clone of the internal array, </span></pre>
+<pre><span class="lnum"> 153:  </span><span class="rem">     * not a reference to the original array object.</span></pre>
+<pre><span class="lnum"> 154:  </span><span class="rem">     * @return a clone of this stack.</span></pre>
+<pre><span class="lnum"> 155:  </span><span class="rem">     */</span></pre>
+<pre><span class="lnum"> 156:  </span>    <span class="kwrd">public</span> Stack clone() throws CloneNotSupportedException{</pre>
+<pre><span class="lnum"> 157:  </span>        Stack clone = (Stack)super.clone();</pre>
+<pre><span class="lnum"> 158:  </span>        clone.stackArray = <span class="kwrd">new</span> Object[stackArray.length];</pre>
+<pre><span class="lnum"> 159:  </span>        <span class="kwrd">for</span>(<span class="kwrd">int</span> i=0; i &lt; size(); i++){</pre>
+<pre><span class="lnum"> 160:  </span>            clone.stackArray[i] = stackArray[i];</pre>
+<pre><span class="lnum"> 161:  </span>        }</pre>
+<pre><span class="lnum"> 162:  </span>        clone.size = <span class="kwrd">this</span>.size;</pre>
+<pre><span class="lnum"> 163:  </span>        <span class="kwrd">return</span> clone;        </pre>
+<pre><span class="lnum"> 164:  </span>    }</pre>
+<pre><span class="lnum"> 165:  </span>&nbsp;</pre>
+<pre><span class="lnum"> 166:  </span>    <span class="rem">/**</span></pre>
+<pre><span class="lnum"> 167:  </span><span class="rem">     * Invariants of the stack implementation</span></pre>
+<pre><span class="lnum"> 168:  </span><span class="rem">     * @return true if stack is well formed</span></pre>
+<pre><span class="lnum"> 169:  </span><span class="rem">     */</span></pre>
+<pre><span class="lnum"> 170:  </span>    <span class="kwrd">protected</span> boolean _wellformed(){</pre>
+<pre><span class="lnum"> 171:  </span>        <span class="kwrd">if</span> (stackArray == <span class="kwrd">null</span>) <span class="kwrd">return</span> <span class="kwrd">false</span>;        </pre>
+<pre><span class="lnum"> 172:  </span>        <span class="kwrd">return</span> <span class="kwrd">true</span>;</pre>
+<pre><span class="lnum"> 173:  </span>    }            </pre>
+<pre><span class="lnum"> 174:  </span>    </pre>
+<pre><span class="lnum"> 175:  </span>    <span class="rem">//Internal array to hold stack items</span></pre>
+<pre><span class="lnum"> 176:  </span>    <span class="kwrd">private</span> Object[] stackArray;</pre>
+<pre><span class="lnum"> 177:  </span>    <span class="kwrd">private</span> <span class="kwrd">int</span> size = 0;</pre>
+<pre><span class="lnum"> 178:  </span>    </pre>
+<pre><span class="lnum"> 179:  </span>}</pre>
+</div>
+
+            <br/>
+
+            <h6>StackTest.java</h6>
+            <br/>
+
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>&nbsp;</pre>
+<pre><span class="lnum">   2:  </span>package ex65;</pre>
+<pre><span class="lnum">   3:  </span>&nbsp;</pre>
+<pre><span class="lnum">   4:  </span>import ex63.IStack;</pre>
+<pre><span class="lnum">   5:  </span>import junit.framework.*;</pre>
+<pre><span class="lnum">   6:  </span>import java.util.*;</pre>
+<pre><span class="lnum">   7:  </span>&nbsp;</pre>
+<pre><span class="lnum">   8:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> StackTest extends TestCase {</pre>
+<pre><span class="lnum">   9:  </span>&nbsp;</pre>
+<pre><span class="lnum">  10:  </span>    <span class="kwrd">public</span> StackTest(String testName){</pre>
+<pre><span class="lnum">  11:  </span>        super(testName);</pre>
+<pre><span class="lnum">  12:  </span>    }</pre>
+<pre><span class="lnum">  13:  </span>    </pre>
+<pre><span class="lnum">  14:  </span>    <span class="kwrd">protected</span> <span class="kwrd">void</span> setUp() throws Exception {</pre>
+<pre><span class="lnum">  15:  </span>        super.setUp();</pre>
+<pre><span class="lnum">  16:  </span>    }</pre>
+<pre><span class="lnum">  17:  </span>&nbsp;</pre>
+<pre><span class="lnum">  18:  </span>    <span class="kwrd">protected</span> <span class="kwrd">void</span> tearDown() throws Exception {</pre>
+<pre><span class="lnum">  19:  </span>        super.tearDown();</pre>
+<pre><span class="lnum">  20:  </span>    }</pre>
+<pre><span class="lnum">  21:  </span>    </pre>
+<pre><span class="lnum">  22:  </span>    <span class="kwrd">public</span> <span class="kwrd">void</span> testPush(){</pre>
+<pre><span class="lnum">  23:  </span>        IStack s = <span class="kwrd">new</span> Stack();</pre>
+<pre><span class="lnum">  24:  </span>        Integer num1 = <span class="kwrd">new</span> Integer(1);</pre>
+<pre><span class="lnum">  25:  </span>        s.push(num1);</pre>
+<pre><span class="lnum">  26:  </span>        assertTrue(s.size() == 1);</pre>
+<pre><span class="lnum">  27:  </span>        assertTrue(s.top() == num1);    </pre>
+<pre><span class="lnum">  28:  </span>    }</pre>
+<pre><span class="lnum">  29:  </span>    </pre>
+<pre><span class="lnum">  30:  </span>    <span class="kwrd">public</span> <span class="kwrd">void</span> testPop(){</pre>
+<pre><span class="lnum">  31:  </span>        Stack s = <span class="kwrd">new</span> Stack();</pre>
+<pre><span class="lnum">  32:  </span>        Integer num1 = <span class="kwrd">new</span> Integer(1);</pre>
+<pre><span class="lnum">  33:  </span>        Integer num2 = <span class="kwrd">new</span> Integer(2);</pre>
+<pre><span class="lnum">  34:  </span>        Integer num3 = <span class="kwrd">new</span> Integer(3);</pre>
+<pre><span class="lnum">  35:  </span>        Integer num4 = <span class="kwrd">new</span> Integer(4);</pre>
+<pre><span class="lnum">  36:  </span>        s.push(num1);</pre>
+<pre><span class="lnum">  37:  </span>        s.push(num2);</pre>
+<pre><span class="lnum">  38:  </span>        s.push(num3);</pre>
+<pre><span class="lnum">  39:  </span>        s.push(num4);</pre>
+<pre><span class="lnum">  40:  </span>        </pre>
+<pre><span class="lnum">  41:  </span>        assertTrue(s.size() == 4);</pre>
+<pre><span class="lnum">  42:  </span>        assertTrue(s.top() == num4);</pre>
+<pre><span class="lnum">  43:  </span>        Integer top = (Integer)s.pop();</pre>
+<pre><span class="lnum">  44:  </span>        assertTrue(top == num4);</pre>
+<pre><span class="lnum">  45:  </span>        </pre>
+<pre><span class="lnum">  46:  </span>        assertTrue(s.size() == 3);</pre>
+<pre><span class="lnum">  47:  </span>        assertTrue(s.top() == num3);</pre>
+<pre><span class="lnum">  48:  </span>        top = (Integer)s.pop();</pre>
+<pre><span class="lnum">  49:  </span>        assertTrue(top == num3);</pre>
+<pre><span class="lnum">  50:  </span>        </pre>
+<pre><span class="lnum">  51:  </span>        assertTrue(s.size() == 2);</pre>
+<pre><span class="lnum">  52:  </span>        assertTrue(s.top() == num2);</pre>
+<pre><span class="lnum">  53:  </span>        top = (Integer)s.pop();</pre>
+<pre><span class="lnum">  54:  </span>        assertTrue(top == num2);</pre>
+<pre><span class="lnum">  55:  </span>    </pre>
+<pre><span class="lnum">  56:  </span>    }</pre>
+<pre><span class="lnum">  57:  </span>&nbsp;</pre>
+<pre><span class="lnum">  58:  </span>    <span class="kwrd">public</span> <span class="kwrd">void</span> testEmptyStack(){</pre>
+<pre><span class="lnum">  59:  </span>        IStack s = <span class="kwrd">new</span> Stack();</pre>
+<pre><span class="lnum">  60:  </span>        assertTrue(s.size() == 0);</pre>
+<pre><span class="lnum">  61:  </span>        assertTrue(s.top() == <span class="kwrd">null</span>);</pre>
+<pre><span class="lnum">  62:  </span>        assertTrue(s.pop() == <span class="kwrd">null</span>);</pre>
+<pre><span class="lnum">  63:  </span>    }</pre>
+<pre><span class="lnum">  64:  </span>&nbsp;</pre>
+<pre><span class="lnum">  65:  </span>    <span class="kwrd">public</span> <span class="kwrd">void</span> testCloneEquals() throws CloneNotSupportedException{</pre>
+<pre><span class="lnum">  66:  </span>        Stack s = <span class="kwrd">new</span> Stack();</pre>
+<pre><span class="lnum">  67:  </span>        Integer num1 = <span class="kwrd">new</span> Integer(1);</pre>
+<pre><span class="lnum">  68:  </span>        s.push(num1);</pre>
+<pre><span class="lnum">  69:  </span>        Integer num2 = <span class="kwrd">new</span> Integer(2);</pre>
+<pre><span class="lnum">  70:  </span>        s.push(num2);</pre>
+<pre><span class="lnum">  71:  </span>        Stack clone = s.clone();</pre>
+<pre><span class="lnum">  72:  </span>        assertTrue(s.size() == clone.size());</pre>
+<pre><span class="lnum">  73:  </span>        assertTrue(s.equals(clone));</pre>
+<pre><span class="lnum">  74:  </span>&nbsp;</pre>
+<pre><span class="lnum">  75:  </span>    }</pre>
+<pre><span class="lnum">  76:  </span>    </pre>
+<pre><span class="lnum">  77:  </span>    <span class="kwrd">public</span> <span class="kwrd">static</span> Test suite(){</pre>
+<pre><span class="lnum">  78:  </span>        <span class="kwrd">return</span> <span class="kwrd">new</span> TestSuite(StackTest.<span class="kwrd">class</span>);</pre>
+<pre><span class="lnum">  79:  </span>    }</pre>
+<pre><span class="lnum">  80:  </span>    </pre>
+<pre><span class="lnum">  81:  </span>}</pre>
+</div>
+            <br/>
+
+            <h6>StackApplet.java</h6>
+
+            <br/>
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>package ex65;</pre>
+<pre><span class="lnum">   2:  </span>&nbsp;</pre>
+<pre><span class="lnum">   3:  </span>import java.awt.*;</pre>
+<pre><span class="lnum">   4:  </span>import java.applet.*;</pre>
+<pre><span class="lnum">   5:  </span>import java.awt.<span class="kwrd">event</span>.*;</pre>
+<pre><span class="lnum">   6:  </span>import java.io.*;</pre>
+<pre><span class="lnum">   7:  </span>import java.net.*;</pre>
+<pre><span class="lnum">   8:  </span>&nbsp;</pre>
+<pre><span class="lnum">   9:  </span>import javax.swing.*;</pre>
+<pre><span class="lnum">  10:  </span>&nbsp;</pre>
+<pre><span class="lnum">  11:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> StackApplet extends Applet implements ActionListener</pre>
+<pre><span class="lnum">  12:  </span>{</pre>
+<pre><span class="lnum">  13:  </span>    JPanel stackContent;</pre>
+<pre><span class="lnum">  14:  </span>    Stack stack = <span class="kwrd">new</span> Stack();</pre>
+<pre><span class="lnum">  15:  </span>&nbsp;</pre>
+<pre><span class="lnum">  16:  </span>    DefaultListModel listModel = <span class="kwrd">new</span> DefaultListModel();  </pre>
+<pre><span class="lnum">  17:  </span>    JList stackList = <span class="kwrd">new</span> JList(listModel);</pre>
+<pre><span class="lnum">  18:  </span>    JTextField val = <span class="kwrd">new</span> JTextField(5);</pre>
+<pre><span class="lnum">  19:  </span>    JLabel topDisplay = <span class="kwrd">new</span> JLabel(<span class="str">"Top:"</span>);</pre>
+<pre><span class="lnum">  20:  </span>    JLabel sizeDisplay = <span class="kwrd">new</span> JLabel(<span class="str">"Size:"</span>);</pre>
+<pre><span class="lnum">  21:  </span>    <span class="kwrd">public</span> <span class="kwrd">void</span> init() {</pre>
+<pre><span class="lnum">  22:  </span>&nbsp;</pre>
+<pre><span class="lnum">  23:  </span>        GridBagLayout layout = <span class="kwrd">new</span> GridBagLayout();</pre>
+<pre><span class="lnum">  24:  </span>        </pre>
+<pre><span class="lnum">  25:  </span>        setLayout(layout);</pre>
+<pre><span class="lnum">  26:  </span>        </pre>
+<pre><span class="lnum">  27:  </span>        GridBagConstraints c = <span class="kwrd">new</span> GridBagConstraints();</pre>
+<pre><span class="lnum">  28:  </span>        c.gridx = 0; c.gridy = 0;</pre>
+<pre><span class="lnum">  29:  </span>       </pre>
+<pre><span class="lnum">  30:  </span>        add(val, c);</pre>
+<pre><span class="lnum">  31:  </span>        </pre>
+<pre><span class="lnum">  32:  </span>        c = <span class="kwrd">new</span> GridBagConstraints();</pre>
+<pre><span class="lnum">  33:  </span>        JButton btn = <span class="kwrd">new</span> JButton(<span class="str">"Push"</span>);</pre>
+<pre><span class="lnum">  34:  </span>        c.gridx = 0;c.gridy = 1;</pre>
+<pre><span class="lnum">  35:  </span>        c.gridwidth = 1;</pre>
+<pre><span class="lnum">  36:  </span>        c.fill = GridBagConstraints.BOTH;</pre>
+<pre><span class="lnum">  37:  </span>        add(btn, c);</pre>
+<pre><span class="lnum">  38:  </span>        btn.setActionCommand(<span class="str">"PUSH"</span>);</pre>
+<pre><span class="lnum">  39:  </span>        btn.addActionListener(<span class="kwrd">this</span>);</pre>
+<pre><span class="lnum">  40:  </span> </pre>
+<pre><span class="lnum">  41:  </span>        JButton btnClear = <span class="kwrd">new</span> JButton(<span class="str">"Clear Screen"</span>);</pre>
+<pre><span class="lnum">  42:  </span>        c.gridx = 0;c.gridy = 2;</pre>
+<pre><span class="lnum">  43:  </span>        c.gridwidth = 1;</pre>
+<pre><span class="lnum">  44:  </span>        c.fill = GridBagConstraints.BOTH;</pre>
+<pre><span class="lnum">  45:  </span>        add(btnClear, c);</pre>
+<pre><span class="lnum">  46:  </span>        btnClear.setActionCommand(<span class="str">"CLEAR_SCR"</span>);</pre>
+<pre><span class="lnum">  47:  </span>        btnClear.addActionListener(<span class="kwrd">this</span>);</pre>
+<pre><span class="lnum">  48:  </span> </pre>
+<pre><span class="lnum">  49:  </span>        c = <span class="kwrd">new</span> GridBagConstraints();        </pre>
+<pre><span class="lnum">  50:  </span>        c.fill = GridBagConstraints.HORIZONTAL;</pre>
+<pre><span class="lnum">  51:  </span>        c.gridx = 1;c.gridy = 0;</pre>
+<pre><span class="lnum">  52:  </span>        add(<span class="kwrd">new</span> JLabel(<span class="str">"Stack:"</span>));</pre>
+<pre><span class="lnum">  53:  </span>        </pre>
+<pre><span class="lnum">  54:  </span>        c = <span class="kwrd">new</span> GridBagConstraints();     </pre>
+<pre><span class="lnum">  55:  </span>        c.fill = GridBagConstraints.BOTH;</pre>
+<pre><span class="lnum">  56:  </span>        c.gridx = 1;c.gridy = 1;</pre>
+<pre><span class="lnum">  57:  </span>        c.gridheight = 3;</pre>
+<pre><span class="lnum">  58:  </span>        </pre>
+<pre><span class="lnum">  59:  </span>        stackList.setLayoutOrientation(JList.VERTICAL);</pre>
+<pre><span class="lnum">  60:  </span>        stackList.setVisibleRowCount(500);</pre>
+<pre><span class="lnum">  61:  </span>        </pre>
+<pre><span class="lnum">  62:  </span>        JScrollPane listScroller = <span class="kwrd">new</span> JScrollPane(stackList);</pre>
+<pre><span class="lnum">  63:  </span>        listScroller.setPreferredSize(<span class="kwrd">new</span> Dimension(250, 350));</pre>
+<pre><span class="lnum">  64:  </span>&nbsp;</pre>
+<pre><span class="lnum">  65:  </span>        add(listScroller, c);   </pre>
+<pre><span class="lnum">  66:  </span>&nbsp;</pre>
+<pre><span class="lnum">  67:  </span>        c = <span class="kwrd">new</span> GridBagConstraints();     </pre>
+<pre><span class="lnum">  68:  </span>        JButton btnPop = <span class="kwrd">new</span> JButton(<span class="str">"Pop"</span>);</pre>
+<pre><span class="lnum">  69:  </span>        c.gridx = 2;c.gridy = 0;</pre>
+<pre><span class="lnum">  70:  </span>        add(btnPop, c);</pre>
+<pre><span class="lnum">  71:  </span>        btnPop.setActionCommand(<span class="str">"POP"</span>);</pre>
+<pre><span class="lnum">  72:  </span>        btnPop.addActionListener(<span class="kwrd">this</span>);</pre>
+<pre><span class="lnum">  73:  </span>&nbsp;</pre>
+<pre><span class="lnum">  74:  </span>        c = <span class="kwrd">new</span> GridBagConstraints();     </pre>
+<pre><span class="lnum">  75:  </span>        c.gridx = 2;c.gridy = 1;</pre>
+<pre><span class="lnum">  76:  </span>        c.fill = GridBagConstraints.BOTH;</pre>
+<pre><span class="lnum">  77:  </span>        add(topDisplay, c);</pre>
+<pre><span class="lnum">  78:  </span>&nbsp;</pre>
+<pre><span class="lnum">  79:  </span>        c = <span class="kwrd">new</span> GridBagConstraints();     </pre>
+<pre><span class="lnum">  80:  </span>        c.gridx = 2;c.gridy = 2;</pre>
+<pre><span class="lnum">  81:  </span>        c.fill = GridBagConstraints.BOTH;</pre>
+<pre><span class="lnum">  82:  </span>        add(sizeDisplay, c);</pre>
+<pre><span class="lnum">  83:  </span>    }</pre>
+<pre><span class="lnum">  84:  </span>&nbsp;</pre>
+<pre><span class="lnum">  85:  </span>    <span class="kwrd">public</span> <span class="kwrd">void</span> actionPerformed(ActionEvent evt)</pre>
+<pre><span class="lnum">  86:  </span>    {    </pre>
+<pre><span class="lnum">  87:  </span>        <span class="kwrd">if</span>(evt.getActionCommand() == <span class="str">"PUSH"</span>)</pre>
+<pre><span class="lnum">  88:  </span>            push();</pre>
+<pre><span class="lnum">  89:  </span>        <span class="kwrd">else</span> <span class="kwrd">if</span>(evt.getActionCommand() == <span class="str">"CLEAR_SCR"</span>)</pre>
+<pre><span class="lnum">  90:  </span>            listModel.clear();</pre>
+<pre><span class="lnum">  91:  </span>        <span class="kwrd">else</span></pre>
+<pre><span class="lnum">  92:  </span>            pop();    </pre>
+<pre><span class="lnum">  93:  </span>    }</pre>
+<pre><span class="lnum">  94:  </span>    </pre>
+<pre><span class="lnum">  95:  </span>    <span class="kwrd">private</span> <span class="kwrd">void</span> push(){</pre>
+<pre><span class="lnum">  96:  </span>        <span class="kwrd">if</span>(!val.getText().isEmpty()){</pre>
+<pre><span class="lnum">  97:  </span>            stack.push(val.getText());</pre>
+<pre><span class="lnum">  98:  </span>            updateDisplay(stack.top() + <span class="str">" was pushed"</span>);</pre>
+<pre><span class="lnum">  99:  </span>            val.setText(<span class="str">""</span>);</pre>
+<pre><span class="lnum"> 100:  </span>        }</pre>
+<pre><span class="lnum"> 101:  </span>    }</pre>
+<pre><span class="lnum"> 102:  </span>&nbsp;</pre>
+<pre><span class="lnum"> 103:  </span>    <span class="kwrd">private</span> <span class="kwrd">void</span> pop(){</pre>
+<pre><span class="lnum"> 104:  </span>        <span class="kwrd">if</span>(!stack.isEmpty()){</pre>
+<pre><span class="lnum"> 105:  </span>            String s = (String)stack.pop();</pre>
+<pre><span class="lnum"> 106:  </span>            updateDisplay(s + <span class="str">" was popped."</span>);</pre>
+<pre><span class="lnum"> 107:  </span>        }</pre>
+<pre><span class="lnum"> 108:  </span>    }</pre>
+<pre><span class="lnum"> 109:  </span>    </pre>
+<pre><span class="lnum"> 110:  </span>    <span class="kwrd">private</span> <span class="kwrd">void</span> updateDisplay(String msg){</pre>
+<pre><span class="lnum"> 111:  </span>        listModel.addElement(msg);</pre>
+<pre><span class="lnum"> 112:  </span>        sizeDisplay.setText(<span class="str">"Size: "</span> + stack.size());</pre>
+<pre><span class="lnum"> 113:  </span>        topDisplay.setText(<span class="str">"Top:"</span> + stack.top());</pre>
+<pre><span class="lnum"> 114:  </span>    }</pre>
+<pre><span class="lnum"> 115:  </span>    </pre>
+<pre><span class="lnum"> 116:  </span>}</pre>
+</div>
+            <br/>
+            <br/>
+
+            <h5 class="sub">III. Screenshots</h5>
+            <h6>Empty stack</h6>
+            <img src='chapter6/screen1.png'></img> <br/><br/>
+            <h6>Full stack</h6>
+            <img src='chapter6/screen2.png'></img><br/><br/>
+            <h6>After 2 pops</h6>
+            <img src='chapter6/screen3.png'></img><br/><br/>
+            <h6>All popped</h6>
+            <img src='chapter6/screen4.png'></img><br/><br/>
+
+            <h6>JUnit in eclipse</h6>
+            <img src='chapter6/screen6.png'></img><br/><br/>
+
+            <h6>JUnit in console, one failure</h6>
+            <img src='chapter6/screen5.png'></img><br/><br/>
+
+            <h6>JUnit in console, successfull</h6>
+            <img src='chapter6/screen7.png'></img><br/><br/>
+<br/>
+<br/>
+<br/>
+
+        </div>
+
+
+        <div class="grid_12" style="height:500px;background-color:#111;">
+            <div style="text-align:center">
+                CS602 - Java Programming - Metin Yorulmaz
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,231 @@
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>CS602 - Java Programming - Metin Yorulmaz</title>
+    <link href="public/stylesheets/reset.css" rel="stylesheet" type="text/css" />
+    <link href="public/stylesheets/960.css" rel="stylesheet" type="text/css" />
+    <link href="public/stylesheets/site.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    
+    <div class="container_12">
+        
+        <div class="grid_12">
+            <div id="header">
+                CS602 - Java Programming
+            </div>
+        </div>
+
+        <div class="grid_12">
+            <div id="menu_container">
+                <ul id="menu">
+                    <li>
+                       <a href="chapter1/assignment1.html"> Chapter 1 </a>
+                    </li>
+                    <li>
+                       <a href="chapter3.html"> Chapter 3 </a>
+                    </li>
+                <li class="current">
+                   <a href="chapter4_1.html"> Chapter 4 </a>
+                </li>
+                <li>
+                   <a href="chapter5a_4.9.html"> Chapter 5a </a>
+                </li>
+                <li>
+                   <a href="chapter5b_5.2.html"> Chapter 5b </a>
+                </li>
+                <li>
+                   <a href="chapter6_6.3.html"> Chapter 6 </a>
+                </li>
+                <li>
+                   <a href="chapter7_7.6.html"> Chapter 7 </a>
+                </li>
+                <li>
+                   <a href="chapter8_8.5.html"> Chapter 8 </a>
+                </li>
+                <li>
+                   <a href="chapter9.html"> Chapter 9 </a>
+                </li>
+                <li>
+                   <a href="chapter10.html"> Chapter 10 </a>
+                </li>
+                <li>
+                   <a href="midterm1.html"> Exams </a>
+                </li>
+                <li>
+                   <a href="final.html"> Project </a>
+                </li>
+                </ul>
+            </div>
+            <div id="submenu_container">
+                <ul class="submenu">
+                    <li>
+                        <a href="chapter4_1.html"> Chapter 4.1 </a>
+                    </li>
+                    <li class="current">
+                        <a href="chapter4_2.html"> Chapter 4.2 </a>
+                    </li>
+                    <li> 
+                        <a href="chapter4_3.html"> Chapter 4.3 </a>
+                    </li>
+                    <li>
+                        <a href="chapter4_7a.html"> Chapter 4.7a </a>
+                    </li>
+                    <li>
+                        <a href="chapter4_8.html"> Chapter 4.8 </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid_12" id="content" style="background-color:#f1f1f1;">
+
+            <p>
+                Write a Java application to calculate the average of a list of integers. The input data is stored in a text file, in which each line contains a single integer.
+            </p>
+            <br/>
+
+            <APPLET codebase="chapter4/ex42/" code="Average.class" WIDTH=400 HEIGHT=320></APPLET>
+            <br/>
+            
+            <h5 class="sub">I. Timesheet</h5>
+
+            <img src='chapter4/timesheet.png'/>
+
+            <br/>
+
+            <h5 class="sub">II. Source Code</h5>
+
+<div class="csharpcode">
+<pre class="alt"><span class="lnum">   1:  </span>import java.awt.*;</pre>
+<pre><span class="lnum">   2:  </span>import java.applet.*;</pre>
+<pre class="alt"><span class="lnum">   3:  </span>import java.awt.<span class="kwrd">event</span>.*;</pre>
+<pre><span class="lnum">   4:  </span>import java.io.BufferedReader;</pre>
+<pre class="alt"><span class="lnum">   5:  </span>import java.io.IOException;</pre>
+<pre><span class="lnum">   6:  </span>import java.io.InputStream;</pre>
+<pre class="alt"><span class="lnum">   7:  </span>import java.io.InputStreamReader;</pre>
+<pre><span class="lnum">   8:  </span>import java.net.MalformedURLException;</pre>
+<pre class="alt"><span class="lnum">   9:  </span>import java.net.URL;</pre>
+<pre><span class="lnum">  10:  </span>import java.util.ArrayList;</pre>
+<pre class="alt"><span class="lnum">  11:  </span>&nbsp;</pre>
+<pre><span class="lnum">  12:  </span>@SuppressWarnings(<span class="str">"serial"</span>)</pre>
+<pre class="alt"><span class="lnum">  13:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> Average extends Applet implements ActionListener</pre>
+<pre><span class="lnum">  14:  </span>{</pre>
+<pre class="alt"><span class="lnum">  15:  </span>    TextField txtNum;</pre>
+<pre><span class="lnum">  16:  </span>    TextArea txtResult, txtNumbers;</pre>
+<pre class="alt"><span class="lnum">  17:  </span>    String numberSourceFile = <span class="str">"test.txt"</span>;</pre>
+<pre><span class="lnum">  18:  </span>    StringBuffer numberStream;</pre>
+<pre class="alt"><span class="lnum">  19:  </span>    <span class="kwrd">public</span> <span class="kwrd">void</span> init() {</pre>
+<pre><span class="lnum">  20:  </span>        GridBagLayout Layout = <span class="kwrd">new</span> GridBagLayout();</pre>
+<pre class="alt"><span class="lnum">  21:  </span>        setLayout (Layout);</pre>
+<pre><span class="lnum">  22:  </span>        </pre>
+<pre class="alt"><span class="lnum">  23:  </span>        GridBagConstraints c = <span class="kwrd">new</span> GridBagConstraints();</pre>
+<pre><span class="lnum">  24:  </span>&nbsp;</pre>
+<pre class="alt"><span class="lnum">  25:  </span>        c = <span class="kwrd">new</span> GridBagConstraints();</pre>
+<pre><span class="lnum">  26:  </span>        txtNumbers = <span class="kwrd">new</span> TextArea(6, 40);</pre>
+<pre class="alt"><span class="lnum">  27:  </span>        txtNumbers.setEditable(<span class="kwrd">false</span>);</pre>
+<pre><span class="lnum">  28:  </span>        c.fill = GridBagConstraints.HORIZONTAL;</pre>
+<pre class="alt"><span class="lnum">  29:  </span>        c.gridx = 0;c.gridy = 0;</pre>
+<pre><span class="lnum">  30:  </span>        add(txtNumbers, c);   </pre>
+<pre class="alt"><span class="lnum">  31:  </span>&nbsp;</pre>
+<pre><span class="lnum">  32:  </span>        Button btn = <span class="kwrd">new</span> Button(<span class="str">"Calculate"</span>);</pre>
+<pre class="alt"><span class="lnum">  33:  </span>        c.fill = GridBagConstraints.HORIZONTAL;</pre>
+<pre><span class="lnum">  34:  </span>        c.gridx = 0;c.gridy = 1;</pre>
+<pre class="alt"><span class="lnum">  35:  </span>        c.ipady = 20;</pre>
+<pre><span class="lnum">  36:  </span>        add(btn, c);</pre>
+<pre class="alt"><span class="lnum">  37:  </span>        btn.addActionListener(<span class="kwrd">this</span>);</pre>
+<pre><span class="lnum">  38:  </span>        </pre>
+<pre class="alt"><span class="lnum">  39:  </span>        txtResult = <span class="kwrd">new</span> TextArea(2, 40);</pre>
+<pre><span class="lnum">  40:  </span>        txtResult.setEditable(<span class="kwrd">false</span>);</pre>
+<pre class="alt"><span class="lnum">  41:  </span>        c.fill = GridBagConstraints.HORIZONTAL;</pre>
+<pre><span class="lnum">  42:  </span>        c.gridx = 0;c.gridy = 2;</pre>
+<pre class="alt"><span class="lnum">  43:  </span>        c.insets = <span class="kwrd">new</span> Insets(10,0,0,0); </pre>
+<pre><span class="lnum">  44:  </span>        add(txtResult, c);   </pre>
+<pre class="alt"><span class="lnum">  45:  </span>        readFile();</pre>
+<pre><span class="lnum">  46:  </span>    }</pre>
+<pre class="alt"><span class="lnum">  47:  </span>&nbsp;</pre>
+<pre><span class="lnum">  48:  </span>    <span class="kwrd">public</span> <span class="kwrd">void</span> actionPerformed(ActionEvent evt)</pre>
+<pre class="alt"><span class="lnum">  49:  </span>    {    </pre>
+<pre><span class="lnum">  50:  </span>        <span class="kwrd">try</span>{</pre>
+<pre class="alt"><span class="lnum">  51:  </span>            txtResult.append(<span class="str">"Reading file: "</span> + numberSourceFile);</pre>
+<pre><span class="lnum">  52:  </span>            txtResult.append(<span class="str">"\n"</span>);</pre>
+<pre class="alt"><span class="lnum">  53:  </span>            txtResult.append(<span class="str">"Number of integers: "</span>+Integer.toString(numberOfInegers()));</pre>
+<pre><span class="lnum">  54:  </span>            txtResult.append(<span class="str">"\n"</span>);</pre>
+<pre class="alt"><span class="lnum">  55:  </span>            txtResult.append(<span class="str">"Average: "</span>+Double.toString(calculateAverage()));</pre>
+<pre><span class="lnum">  56:  </span>            txtResult.append(<span class="str">"\n"</span>);</pre>
+<pre class="alt"><span class="lnum">  57:  </span>        }</pre>
+<pre><span class="lnum">  58:  </span>        <span class="kwrd">catch</span> (NumberFormatException nfe)</pre>
+<pre class="alt"><span class="lnum">  59:  </span>        {</pre>
+<pre><span class="lnum">  60:  </span>            </pre>
+<pre class="alt"><span class="lnum">  61:  </span>        }</pre>
+<pre><span class="lnum">  62:  </span>    }</pre>
+<pre class="alt"><span class="lnum">  63:  </span>    </pre>
+<pre><span class="lnum">  64:  </span>    <span class="kwrd">private</span> <span class="kwrd">double</span> calculateAverage(){</pre>
+<pre class="alt"><span class="lnum">  65:  </span>        <span class="kwrd">return</span> total()*1.0/numberOfInegers();</pre>
+<pre><span class="lnum">  66:  </span>    }    </pre>
+<pre class="alt"><span class="lnum">  67:  </span>    </pre>
+<pre><span class="lnum">  68:  </span>    <span class="kwrd">private</span> <span class="kwrd">int</span> numberOfInegers(){</pre>
+<pre class="alt"><span class="lnum">  69:  </span>        <span class="kwrd">return</span> numbers().size();</pre>
+<pre><span class="lnum">  70:  </span>    }</pre>
+<pre class="alt"><span class="lnum">  71:  </span>    </pre>
+<pre><span class="lnum">  72:  </span>    <span class="kwrd">private</span> <span class="kwrd">int</span> total(){</pre>
+<pre class="alt"><span class="lnum">  73:  </span>        ArrayList&lt;Integer&gt; numbers = numbers();</pre>
+<pre><span class="lnum">  74:  </span>        <span class="kwrd">int</span> result = 0;</pre>
+<pre class="alt"><span class="lnum">  75:  </span>        <span class="kwrd">for</span>(<span class="kwrd">int</span> i=0; i&lt;numbers.size(); i++)</pre>
+<pre><span class="lnum">  76:  </span>            result += numbers.get(i);   </pre>
+<pre class="alt"><span class="lnum">  77:  </span>        <span class="kwrd">return</span> result;</pre>
+<pre><span class="lnum">  78:  </span>    }</pre>
+<pre class="alt"><span class="lnum">  79:  </span>    </pre>
+<pre><span class="lnum">  80:  </span>    <span class="kwrd">private</span> ArrayList&lt;Integer&gt; numbers(){</pre>
+<pre class="alt"><span class="lnum">  81:  </span>        String[] vals = txtNumbers.getText().split(<span class="str">"\n"</span>);</pre>
+<pre><span class="lnum">  82:  </span>        ArrayList&lt;Integer&gt; numbers = <span class="kwrd">new</span> ArrayList&lt;Integer&gt;();</pre>
+<pre class="alt"><span class="lnum">  83:  </span>        <span class="kwrd">for</span>(<span class="kwrd">int</span> i=0; i&lt;vals.length; i++)</pre>
+<pre><span class="lnum">  84:  </span>            numbers.add(Integer.parseInt(vals[i]));</pre>
+<pre class="alt"><span class="lnum">  85:  </span>        <span class="kwrd">return</span> numbers; </pre>
+<pre><span class="lnum">  86:  </span>    }</pre>
+<pre class="alt"><span class="lnum">  87:  </span>&nbsp;</pre>
+<pre><span class="lnum">  88:  </span>    <span class="kwrd">private</span> <span class="kwrd">void</span> readFile(){</pre>
+<pre class="alt"><span class="lnum">  89:  </span>          String line;</pre>
+<pre><span class="lnum">  90:  </span>          URL url = <span class="kwrd">null</span>;</pre>
+<pre class="alt"><span class="lnum">  91:  </span>          <span class="kwrd">try</span>{</pre>
+<pre><span class="lnum">  92:  </span>              url = <span class="kwrd">new</span> URL(getCodeBase(), numberSourceFile);</pre>
+<pre class="alt"><span class="lnum">  93:  </span>          }</pre>
+<pre><span class="lnum">  94:  </span>          <span class="kwrd">catch</span>(MalformedURLException e){}</pre>
+<pre class="alt"><span class="lnum">  95:  </span>          </pre>
+<pre><span class="lnum">  96:  </span>          <span class="kwrd">try</span>{</pre>
+<pre class="alt"><span class="lnum">  97:  </span>              InputStream <span class="kwrd">in</span> = url.openStream();</pre>
+<pre><span class="lnum">  98:  </span>              BufferedReader bf = <span class="kwrd">new</span> BufferedReader(<span class="kwrd">new</span> InputStreamReader(<span class="kwrd">in</span>));</pre>
+<pre class="alt"><span class="lnum">  99:  </span>              </pre>
+<pre><span class="lnum"> 100:  </span>              numberStream = <span class="kwrd">new</span> StringBuffer();</pre>
+<pre class="alt"><span class="lnum"> 101:  </span>              <span class="kwrd">while</span>((line = bf.readLine()) != <span class="kwrd">null</span>){</pre>
+<pre><span class="lnum"> 102:  </span>                  numberStream.append(line + <span class="str">"\n"</span>);</pre>
+<pre class="alt"><span class="lnum"> 103:  </span>              }</pre>
+<pre><span class="lnum"> 104:  </span>              txtNumbers.append(numberStream.toString());</pre>
+<pre class="alt"><span class="lnum"> 105:  </span>          }</pre>
+<pre><span class="lnum"> 106:  </span>          <span class="kwrd">catch</span>(IOException e){</pre>
+<pre class="alt"><span class="lnum"> 107:  </span>              txtResult.append(<span class="str">"Could not read file."</span>);</pre>
+<pre><span class="lnum"> 108:  </span>          }</pre>
+<pre class="alt"><span class="lnum"> 109:  </span>    }</pre>
+<pre><span class="lnum"> 110:  </span>}</pre>
+</div>
+
+            <br/>
+
+            <h5 class="sub">III. Screenshots</h5>
+            <img src='chapter4/ex42/capture.png'></img>
+
+        </div>
+
+
+        <div class="grid_12" style="height:500px;background-color:#111;">
+            <div style="text-align:center">
+                CS602 - Java Programming - Metin Yorulmaz
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

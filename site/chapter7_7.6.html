@@ -1,0 +1,339 @@
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>CS602 - Java Programming - Metin Yorulmaz</title>
+    <link href="public/stylesheets/reset.css" rel="stylesheet" type="text/css" />
+    <link href="public/stylesheets/960.css" rel="stylesheet" type="text/css" />
+    <link href="public/stylesheets/site.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    
+    <div class="container_12">
+        
+        <div class="grid_12">
+            <div id="header">
+                CS602 - Java Programming
+            </div>
+        </div>
+
+        <div class="grid_12">
+            <div id="menu_container">
+                <ul id="menu">
+                    <li>
+                       <a href="chapter1/assignment1.html"> Chapter 1 </a>
+                    </li>
+                    <li>
+                       <a href="chapter3.html"> Chapter 3 </a>
+                    </li>
+                    <li>
+                       <a href="chapter4_1.html"> Chapter 4 </a>
+                    </li>
+                    <li>
+                       <a href="chapter5a_4.9.html"> Chapter 5a </a>
+                    </li>
+                    <li>
+                       <a href="chapter5b_5.2.html"> Chapter 5b </a>
+                    </li>
+                    <li>
+                       <a href="chapter6_6.3.html"> Chapter 6 </a>
+                    </li>
+                    <li class="current">
+                       <a href="chapter7_7.6.html"> Chapter 7 </a>
+                    </li>
+                    <li>
+                       <a href="chapter8_8.5.html"> Chapter 8 </a>
+                    </li>
+                    <li>
+                       <a href="chapter9.html"> Chapter 9 </a>
+                    </li>
+                    <li>
+                       <a href="chapter10.html"> Chapter 10 </a>
+                    </li>
+                    <li>
+                       <a href="midterm1.html"> Exams </a>
+                    </li>
+                    <li>
+                       <a href="final.html"> Project </a>
+                    </li>
+                </ul>
+            </div>
+            <div id="submenu_container">
+                <ul class="submenu">
+                    <li class="current">
+                        <a href="chapter7_7.6.html"> Execise 7.6 </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid_12" id="content" style="background-color:#f1f1f1;">
+            <br/>
+            <p>
+                Enhance the latest version of the animantion applet Sort3 by adding new algorithms and display strategies.
+            </p>
+            <br/>
+
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span><span class="kwrd">&lt;</span><span class="html">applet</span>  <span class="attr">codebase</span><span class="kwrd">="chapter7/"</span> <span class="attr">code</span>=<span class="attr">ex76</span>.<span class="attr">Sort3</span>.<span class="attr">class</span> <span class="attr">width</span>=<span class="attr">250</span> <span class="attr">height</span>=<span class="attr">100</span><span class="kwrd">&gt;</span></pre>
+<pre><span class="lnum">   2:  </span>    <span class="kwrd">&lt;</span><span class="html">param</span> <span class="attr">name</span><span class="kwrd">="alg"</span> <span class="attr">value</span><span class="kwrd">="InsertionSort"</span><span class="kwrd">&gt;</span></pre>
+<pre><span class="lnum">   3:  </span>    <span class="kwrd">&lt;</span><span class="html">param</span> <span class="attr">name</span><span class="kwrd">="dis"</span> <span class="attr">value</span><span class="kwrd">="line"</span><span class="kwrd">&gt;</span></pre>
+<pre><span class="lnum">   4:  </span><span class="kwrd">&lt;/</span><span class="html">applet</span><span class="kwrd">&gt;</span></pre>
+<pre><span class="lnum">   5:  </span>&nbsp;</pre>
+<pre><span class="lnum">   6:  </span><span class="kwrd">&lt;</span><span class="html">applet</span>  <span class="attr">codebase</span><span class="kwrd">="chapter7/"</span> <span class="attr">code</span>=<span class="attr">ex76</span>.<span class="attr">Sort3</span>.<span class="attr">class</span> <span class="attr">width</span>=<span class="attr">250</span> <span class="attr">height</span>=<span class="attr">100</span><span class="kwrd">&gt;</span></pre>
+<pre><span class="lnum">   7:  </span>    <span class="kwrd">&lt;</span><span class="html">param</span> <span class="attr">name</span><span class="kwrd">="alg"</span> <span class="attr">value</span><span class="kwrd">="InsertionSort"</span><span class="kwrd">&gt;</span></pre>
+<pre><span class="lnum">   8:  </span>    <span class="kwrd">&lt;</span><span class="html">param</span> <span class="attr">name</span><span class="kwrd">="dis"</span> <span class="attr">value</span><span class="kwrd">="bar"</span><span class="kwrd">&gt;&lt;/</span><span class="html">applet</span><span class="kwrd">&gt;</span></pre>
+<pre><span class="lnum">   9:  </span>    <span class="kwrd">&lt;</span><span class="html">strong</span><span class="kwrd">&gt;</span>Insertion Sort<span class="kwrd">&lt;/</span><span class="html">strong</span><span class="kwrd">&gt;</span></pre>
+<pre><span class="lnum">  10:  </span><span class="kwrd">&lt;</span><span class="html">br</span><span class="kwrd">/&gt;</span></pre>
+<pre><span class="lnum">  11:  </span>&nbsp;</pre>
+<pre><span class="lnum">  12:  </span><span class="kwrd">&lt;</span><span class="html">applet</span> <span class="attr">codebase</span><span class="kwrd">="chapter7/"</span> <span class="attr">code</span>=<span class="attr">ex76</span>.<span class="attr">Sort3</span>.<span class="attr">class</span> <span class="attr">width</span>=<span class="attr">250</span> <span class="attr">height</span>=<span class="attr">100</span><span class="kwrd">&gt;</span></pre>
+<pre><span class="lnum">  13:  </span>    <span class="kwrd">&lt;</span><span class="html">param</span> <span class="attr">name</span><span class="kwrd">="alg"</span> <span class="attr">value</span><span class="kwrd">="SelectionSort"</span><span class="kwrd">&gt;</span></pre>
+<pre><span class="lnum">  14:  </span>    <span class="kwrd">&lt;</span><span class="html">param</span> <span class="attr">name</span><span class="kwrd">="dis"</span> <span class="attr">value</span><span class="kwrd">="line"</span><span class="kwrd">&gt;</span></pre>
+<pre><span class="lnum">  15:  </span><span class="kwrd">&lt;/</span><span class="html">applet</span><span class="kwrd">&gt;</span></pre>
+<pre><span class="lnum">  16:  </span><span class="kwrd">&lt;</span><span class="html">applet</span> <span class="attr">codebase</span><span class="kwrd">="chapter7/"</span> <span class="attr">code</span>=<span class="attr">ex76</span>.<span class="attr">Sort3</span>.<span class="attr">class</span> <span class="attr">width</span>=<span class="attr">250</span> <span class="attr">height</span>=<span class="attr">100</span><span class="kwrd">&gt;</span></pre>
+<pre><span class="lnum">  17:  </span>    <span class="kwrd">&lt;</span><span class="html">param</span> <span class="attr">name</span><span class="kwrd">="alg"</span> <span class="attr">value</span><span class="kwrd">="SelectionSort"</span><span class="kwrd">&gt;</span></pre>
+<pre><span class="lnum">  18:  </span>    <span class="kwrd">&lt;</span><span class="html">param</span> <span class="attr">name</span><span class="kwrd">="dis"</span> <span class="attr">value</span><span class="kwrd">="bar"</span><span class="kwrd">&gt;</span></pre>
+<pre><span class="lnum">  19:  </span><span class="kwrd">&lt;/</span><span class="html">applet</span><span class="kwrd">&gt;</span></pre>
+<pre><span class="lnum">  20:  </span><span class="kwrd">&lt;</span><span class="html">strong</span><span class="kwrd">&gt;</span>Selection Sort<span class="kwrd">&lt;/</span><span class="html">strong</span><span class="kwrd">&gt;</span></pre>
+<pre><span class="lnum">  21:  </span><span class="kwrd">&lt;</span><span class="html">br</span><span class="kwrd">/&gt;</span></pre>
+<pre><span class="lnum">  22:  </span>&nbsp;</pre>
+<pre><span class="lnum">  23:  </span><span class="kwrd">&lt;</span><span class="html">applet</span> <span class="attr">codebase</span><span class="kwrd">="chapter7/"</span> <span class="attr">code</span>=<span class="attr">ex76</span>.<span class="attr">Sort3</span>.<span class="attr">class</span> <span class="attr">width</span>=<span class="attr">250</span> <span class="attr">height</span>=<span class="attr">100</span><span class="kwrd">&gt;</span></pre>
+<pre><span class="lnum">  24:  </span>    <span class="kwrd">&lt;</span><span class="html">param</span> <span class="attr">name</span><span class="kwrd">="alg"</span> <span class="attr">value</span><span class="kwrd">="BubbleSort"</span><span class="kwrd">&gt;</span></pre>
+<pre><span class="lnum">  25:  </span>    <span class="kwrd">&lt;</span><span class="html">param</span> <span class="attr">name</span><span class="kwrd">="dis"</span> <span class="attr">value</span><span class="kwrd">="line"</span><span class="kwrd">&gt;</span></pre>
+<pre><span class="lnum">  26:  </span><span class="kwrd">&lt;/</span><span class="html">applet</span><span class="kwrd">&gt;</span>     </pre>
+<pre><span class="lnum">  27:  </span>&nbsp;</pre>
+<pre><span class="lnum">  28:  </span><span class="kwrd">&lt;</span><span class="html">applet</span> <span class="attr">codebase</span><span class="kwrd">="chapter7/"</span> <span class="attr">code</span>=<span class="attr">ex76</span>.<span class="attr">Sort3</span>.<span class="attr">class</span> <span class="attr">width</span>=<span class="attr">250</span> <span class="attr">height</span>=<span class="attr">100</span><span class="kwrd">&gt;</span></pre>
+<pre><span class="lnum">  29:  </span>    <span class="kwrd">&lt;</span><span class="html">param</span> <span class="attr">name</span><span class="kwrd">="alg"</span> <span class="attr">value</span><span class="kwrd">="BubbleSort"</span><span class="kwrd">&gt;</span></pre>
+<pre><span class="lnum">  30:  </span>    <span class="kwrd">&lt;</span><span class="html">param</span> <span class="attr">name</span><span class="kwrd">="dis"</span> <span class="attr">value</span><span class="kwrd">="bar"</span><span class="kwrd">&gt;</span></pre>
+<pre><span class="lnum">  31:  </span><span class="kwrd">&lt;/</span><span class="html">applet</span><span class="kwrd">&gt;</span>     </pre>
+<pre><span class="lnum">  32:  </span><span class="kwrd">&lt;</span><span class="html">strong</span><span class="kwrd">&gt;</span>Bubble Sort<span class="kwrd">&lt;/</span><span class="html">strong</span><span class="kwrd">&gt;</span>  </pre>
+</div>
+
+<br/>
+
+<applet  codebase="chapter7/" code=ex76.Sort3.class width=250 height=100>
+    <param name="alg" value="InsertionSort">
+    <param name="dis" value="line">
+</applet>
+
+<applet  codebase="chapter7/" code=ex76.Sort3.class width=250 height=100>
+    <param name="alg" value="InsertionSort">
+    <param name="dis" value="bar"></applet>
+    <strong>Insertion Sort</strong>
+<br/>
+
+<applet codebase="chapter7/" code=ex76.Sort3.class width=250 height=100>
+    <param name="alg" value="SelectionSort">
+    <param name="dis" value="line">
+</applet>
+<applet codebase="chapter7/" code=ex76.Sort3.class width=250 height=100>
+    <param name="alg" value="SelectionSort">
+    <param name="dis" value="bar">
+</applet>
+<strong>Selection Sort</strong>
+<br/>
+
+<applet codebase="chapter7/" code=ex76.Sort3.class width=250 height=100>
+    <param name="alg" value="BubbleSort">
+    <param name="dis" value="line">
+</applet>     
+
+<applet codebase="chapter7/" code=ex76.Sort3.class width=250 height=100>
+    <param name="alg" value="BubbleSort">
+    <param name="dis" value="bar">
+</applet>     
+<strong>Bubble Sort</strong>      
+              
+            <br/>
+
+            <h5 class="sub">I. Timesheet</h5>
+
+            <img src='chapter7/timesheet.png'/>
+
+            <br/>
+
+            <h5 class="sub">II. Diagrams</h5>
+
+            <img src='chapter7/sequenced.jpg'/>
+
+            <br/>
+            <a href='chapter7/sequenced.pdf'>Download as PDF</a>
+            <br/>
+            <br/>
+
+            <br/>
+
+            <img src='chapter7/classd.jpg'/>
+
+            <br/>
+            <a href='chapter7/classd.pdf'> Download as PDF</a>
+            <br/>
+            <br/>
+
+            <br/>
+
+            <h5 class="sub">II. Source Code</h5>
+            
+            <br/>
+
+            <h6>InsertionSortAlgorithm.java</h6>
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>package ex76;</pre>
+<pre><span class="lnum">   2:  </span>&nbsp;</pre>
+<pre><span class="lnum">   3:  </span><span class="kwrd">class</span> InsertionSortAlgorithm extends SortAlgorithm {</pre>
+<pre><span class="lnum">   4:  </span>  <span class="kwrd">void</span> sort(<span class="kwrd">int</span> a[]) {</pre>
+<pre><span class="lnum">   5:  </span>    <span class="kwrd">for</span> (<span class="kwrd">int</span> i = 0; i &lt; a.length; i++ )</pre>
+<pre><span class="lnum">   6:  </span>      <span class="kwrd">for</span> (<span class="kwrd">int</span> j = i; j &gt; 0; j--) {</pre>
+<pre><span class="lnum">   7:  </span>        <span class="kwrd">if</span> (a[j-1] &gt; a[j])</pre>
+<pre><span class="lnum">   8:  </span>          swap(a, j-1, j);</pre>
+<pre><span class="lnum">   9:  </span>        pause();</pre>
+<pre><span class="lnum">  10:  </span>      }</pre>
+<pre><span class="lnum">  11:  </span>  }</pre>
+<pre><span class="lnum">  12:  </span>&nbsp;</pre>
+<pre><span class="lnum">  13:  </span>  <span class="kwrd">public</span> InsertionSortAlgorithm(AlgorithmAnimator animator) {</pre>
+<pre><span class="lnum">  14:  </span>    super(animator); </pre>
+<pre><span class="lnum">  15:  </span>  }</pre>
+<pre><span class="lnum">  16:  </span>}</pre>
+</div>
+            <br/>
+
+            <h6>SelectionSortAlgorithm.java</h6>
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>package ex76;</pre>
+<pre><span class="lnum">   2:  </span>&nbsp;</pre>
+<pre><span class="lnum">   3:  </span><span class="kwrd">class</span> SelectionSortAlgorithm extends SortAlgorithm {</pre>
+<pre><span class="lnum">   4:  </span>  <span class="kwrd">void</span> sort(<span class="kwrd">int</span> a[]) {</pre>
+<pre><span class="lnum">   5:  </span>    <span class="kwrd">for</span> (<span class="kwrd">int</span> i = 0; i &lt; a.length-1; i++ ){</pre>
+<pre><span class="lnum">   6:  </span>&nbsp;</pre>
+<pre><span class="lnum">   7:  </span>        <span class="kwrd">for</span> (<span class="kwrd">int</span> j = i+1; j &lt; a.length; j++) {</pre>
+<pre><span class="lnum">   8:  </span>            <span class="kwrd">if</span> (a[j] &lt; a[i]){</pre>
+<pre><span class="lnum">   9:  </span>                swap(a, j, i);</pre>
+<pre><span class="lnum">  10:  </span>            pause();</pre>
+<pre><span class="lnum">  11:  </span>            }</pre>
+<pre><span class="lnum">  12:  </span>        }</pre>
+<pre><span class="lnum">  13:  </span>    }</pre>
+<pre><span class="lnum">  14:  </span>    </pre>
+<pre><span class="lnum">  15:  </span>  }</pre>
+<pre><span class="lnum">  16:  </span>&nbsp;</pre>
+<pre><span class="lnum">  17:  </span>  <span class="kwrd">public</span> SelectionSortAlgorithm(AlgorithmAnimator animator) {</pre>
+<pre><span class="lnum">  18:  </span>    super(animator); </pre>
+<pre><span class="lnum">  19:  </span>  }</pre>
+<pre><span class="lnum">  20:  </span>}</pre>
+<pre><span class="lnum">  21:  </span>&nbsp;</pre>
+</div>
+            <br/>
+
+            <h6>LineSortDisplay.java</h6>
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>package ex76;</pre>
+<pre><span class="lnum">   2:  </span>&nbsp;</pre>
+<pre><span class="lnum">   3:  </span>import java.awt.*;</pre>
+<pre><span class="lnum">   4:  </span>&nbsp;</pre>
+<pre><span class="lnum">   5:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> LineSortDisplay implements SortDisplay {</pre>
+<pre><span class="lnum">   6:  </span>&nbsp;</pre>
+<pre><span class="lnum">   7:  </span>  <span class="kwrd">public</span> <span class="kwrd">int</span> getArraySize(Dimension d) {</pre>
+<pre><span class="lnum">   8:  </span>    <span class="kwrd">return</span> d.width / 3; </pre>
+<pre><span class="lnum">   9:  </span>  }</pre>
+<pre><span class="lnum">  10:  </span>  </pre>
+<pre><span class="lnum">  11:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> display(<span class="kwrd">int</span> a[], Graphics g, Dimension d) {</pre>
+<pre><span class="lnum">  12:  </span>    g.setColor(Color.white);</pre>
+<pre><span class="lnum">  13:  </span>    g.fillRect(0, 0, d.width, d.height);</pre>
+<pre><span class="lnum">  14:  </span>    <span class="kwrd">double</span> f = d.height / (<span class="kwrd">double</span>) a.length;    </pre>
+<pre><span class="lnum">  15:  </span>&nbsp;</pre>
+<pre><span class="lnum">  16:  </span>    <span class="kwrd">int</span> x = d.width - 3;</pre>
+<pre><span class="lnum">  17:  </span>    <span class="kwrd">for</span> (<span class="kwrd">int</span> i = a.length; --i &gt;= 0; x -= 3) {</pre>
+<pre><span class="lnum">  18:  </span>      g.setColor(Color.BLACK);</pre>
+<pre><span class="lnum">  19:  </span>      g.drawLine(x, d.height -(<span class="kwrd">int</span>)(a[i] * f), x+3, d.height -(<span class="kwrd">int</span>)(a[i] * f));</pre>
+<pre><span class="lnum">  20:  </span>    }</pre>
+<pre><span class="lnum">  21:  </span>  }   </pre>
+<pre><span class="lnum">  22:  </span>}</pre>
+</div>
+            <br/>
+
+            <h6>StaticAlgoFactory.java</h6>
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>package ex76;</pre>
+<pre><span class="lnum">   2:  </span>&nbsp;</pre>
+<pre><span class="lnum">   3:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> StaticAlgoFactory </pre>
+<pre><span class="lnum">   4:  </span>    implements SortAlgorithmFactory {</pre>
+<pre><span class="lnum">   5:  </span>  <span class="kwrd">public</span> SortAlgorithm makeSortAlgorithm(String algName) {</pre>
+<pre><span class="lnum">   6:  </span>    <span class="kwrd">if</span> (<span class="str">"BubbleSort"</span>.equals(algName))</pre>
+<pre><span class="lnum">   7:  </span>      <span class="kwrd">return</span> <span class="kwrd">new</span> BubbleSortAlgorithm(animator);       </pre>
+<pre><span class="lnum">   8:  </span>    <span class="kwrd">else</span> <span class="kwrd">if</span> (<span class="str">"QuickSort"</span>.equals(algName)) </pre>
+<pre><span class="lnum">   9:  </span>      <span class="kwrd">return</span> <span class="kwrd">new</span> QuickSortAlgorithm(animator); </pre>
+<pre><span class="lnum">  10:  </span>    <span class="kwrd">else</span> <span class="kwrd">if</span> (<span class="str">"InsertionSort"</span>.equals(algName)) </pre>
+<pre><span class="lnum">  11:  </span>        <span class="kwrd">return</span> <span class="kwrd">new</span> InsertionSortAlgorithm(animator); </pre>
+<pre><span class="lnum">  12:  </span>    <span class="kwrd">else</span> <span class="kwrd">if</span> (<span class="str">"SelectionSort"</span>.equals(algName))</pre>
+<pre><span class="lnum">  13:  </span>        <span class="kwrd">return</span> <span class="kwrd">new</span> SelectionSortAlgorithm(animator);</pre>
+<pre><span class="lnum">  14:  </span>    <span class="kwrd">else</span></pre>
+<pre><span class="lnum">  15:  </span>      <span class="kwrd">return</span> <span class="kwrd">new</span> BubbleSortAlgorithm(animator); </pre>
+<pre><span class="lnum">  16:  </span>  }</pre>
+<pre><span class="lnum">  17:  </span>&nbsp;</pre>
+<pre><span class="lnum">  18:  </span>  <span class="kwrd">protected</span> AlgorithmAnimator animator; </pre>
+<pre><span class="lnum">  19:  </span>  <span class="kwrd">public</span> StaticAlgoFactory(AlgorithmAnimator animator) {</pre>
+<pre><span class="lnum">  20:  </span>    <span class="kwrd">this</span>.animator = animator; </pre>
+<pre><span class="lnum">  21:  </span>  }</pre>
+<pre><span class="lnum">  22:  </span>}</pre>
+</div>
+            <br/>
+            
+            <h6>StaticSortDisplayFactory.java</h6>
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>package ex76;</pre>
+<pre><span class="lnum">   2:  </span>&nbsp;</pre>
+<pre><span class="lnum">   3:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> StaticSortDisplayFactory </pre>
+<pre><span class="lnum">   4:  </span>    implements SortDisplayFactory {</pre>
+<pre><span class="lnum">   5:  </span>  <span class="kwrd">public</span> SortDisplay makeSortDisplay(String name) {</pre>
+<pre><span class="lnum">   6:  </span>    <span class="kwrd">if</span> (<span class="str">"horizontal"</span>.equals(name)) </pre>
+<pre><span class="lnum">   7:  </span>      <span class="kwrd">return</span> <span class="kwrd">new</span> HSortDisplay(); </pre>
+<pre><span class="lnum">   8:  </span>    <span class="kwrd">else</span> <span class="kwrd">if</span> (<span class="str">"vertical"</span>.equals(name)) </pre>
+<pre><span class="lnum">   9:  </span>      <span class="kwrd">return</span> <span class="kwrd">new</span> VSortDisplay(); </pre>
+<pre><span class="lnum">  10:  </span>    <span class="kwrd">else</span> <span class="kwrd">if</span> (<span class="str">"bottom"</span>.equals(name)) </pre>
+<pre><span class="lnum">  11:  </span>      <span class="kwrd">return</span> <span class="kwrd">new</span> BSortDisplay(); </pre>
+<pre><span class="lnum">  12:  </span>    <span class="kwrd">else</span> <span class="kwrd">if</span> (<span class="str">"bar"</span>.equals(name)) </pre>
+<pre><span class="lnum">  13:  </span>      <span class="kwrd">return</span> <span class="kwrd">new</span> BarSortDisplay(); </pre>
+<pre><span class="lnum">  14:  </span>    <span class="kwrd">else</span> <span class="kwrd">if</span> (<span class="str">"line"</span>.equals(name)) </pre>
+<pre><span class="lnum">  15:  </span>        <span class="kwrd">return</span> <span class="kwrd">new</span> LineSortDisplay(); </pre>
+<pre><span class="lnum">  16:  </span>    <span class="kwrd">else</span> </pre>
+<pre><span class="lnum">  17:  </span>      <span class="kwrd">return</span> <span class="kwrd">new</span> HSortDisplay(); </pre>
+<pre><span class="lnum">  18:  </span>  }</pre>
+<pre><span class="lnum">  19:  </span>}</pre>
+</div>
+            <br/>
+
+            <h5 class="sub">III. Screenshots</h5>
+            <h6>Start</h6>
+            <img src='chapter7/screen1.png'></img> <br/><br/>
+            <h6>Progress</h6>
+            <img src='chapter7/screen2.png'></img><br/><br/>
+            <h6>Progress</h6>
+            <img src='chapter7/screen3.png'></img><br/><br/>
+            <h6>Finished</h6>
+            <img src='chapter7/screen4.png'></img><br/><br/>
+
+
+
+<br/>
+<br/>
+<br/>
+
+        </div>
+
+
+        <div class="grid_12" style="height:500px;background-color:#111;">
+            <div style="text-align:center">
+                CS602 - Java Programming - Metin Yorulmaz
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

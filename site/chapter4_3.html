@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>CS602 - Java Programming - Metin Yorulmaz</title>
+    <link href="public/stylesheets/reset.css" rel="stylesheet" type="text/css" />
+    <link href="public/stylesheets/960.css" rel="stylesheet" type="text/css" />
+    <link href="public/stylesheets/site.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    
+    <div class="container_12">
+        
+        <div class="grid_12">
+            <div id="header">
+                CS602 - Java Programming
+            </div>
+        </div>
+
+        <div class="grid_12">
+            <div id="menu_container">
+                <ul id="menu">
+                    <li>
+                       <a href="chapter1/assignment1.html"> Chapter 1 </a>
+                    </li>
+                    <li>
+                       <a href="chapter3.html"> Chapter 3 </a>
+                    </li>
+                <li class="current">
+                   <a href="chapter4_1.html"> Chapter 4 </a>
+                </li>
+                <li>
+                   <a href="chapter5a_4.9.html"> Chapter 5a </a>
+                </li>
+                <li>
+                   <a href="chapter5b_5.2.html"> Chapter 5b </a>
+                </li>
+                <li>
+                   <a href="chapter6_6.3.html"> Chapter 6 </a>
+                </li>
+                <li>
+                   <a href="chapter7_7.6.html"> Chapter 7 </a>
+                </li>
+                <li>
+                   <a href="chapter8_8.5.html"> Chapter 8 </a>
+                </li>
+                <li>
+                   <a href="chapter9.html"> Chapter 9 </a>
+                </li>
+                <li>
+                   <a href="chapter10.html"> Chapter 10 </a>
+                </li>
+                <li>
+                   <a href="midterm1.html"> Exams </a>
+                </li>
+                <li>
+                   <a href="final.html"> Project </a>
+                </li>
+
+                </ul>
+            </div>
+            <div id="submenu_container">
+                <ul class="submenu">
+                    <li>
+                        <a href="chapter4_1.html"> Chapter 4.1 </a>
+                    </li>
+                    <li>
+                        <a href="chapter4_2.html"> Chapter 4.2 </a>
+                    </li>
+                    <li class="current">
+                        <a href="chapter4_3.html"> Chapter 4.3 </a>
+                    </li>
+                    <li>
+                        <a href="chapter4_7a.html"> Chapter 4.7a </a>
+                    </li>
+                    <li>
+                        <a href="chapter4_8.html"> Chapter 4.8 </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid_12" id="content" style="background-color:#f1f1f1;">
+
+            <p>
+                Write a Java applicationthat uses data from a text file named students.txt to create a file called studentemail.txt.
+            </p>
+            <br/>
+
+            
+            <h5 class="sub">I. Timesheet</h5>
+
+            <img src='chapter4/timesheet.png'/>
+
+            <br/>
+
+            <h5 class="sub">II. Source Code</h5>
+
+
+<div class="csharpcode">
+<pre class="alt"><span class="lnum">   1:  </span>import java.io.*;</pre>
+<pre><span class="lnum">   2:  </span>import java.util.*;</pre>
+<pre class="alt"><span class="lnum">   3:  </span>&nbsp;</pre>
+<pre><span class="lnum">   4:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> StudentEmail</pre>
+<pre class="alt"><span class="lnum">   5:  </span>{</pre>
+<pre><span class="lnum">   6:  </span>    <span class="kwrd">public</span> <span class="kwrd">static</span> <span class="kwrd">void</span> main(String[] args) {</pre>
+<pre class="alt"><span class="lnum">   7:  </span>        <span class="kwrd">if</span>(args.length != 2)</pre>
+<pre><span class="lnum">   8:  </span>        {</pre>
+<pre class="alt"><span class="lnum">   9:  </span>            System.<span class="kwrd">out</span>.println(<span class="str">"Usage:"</span>);</pre>
+<pre><span class="lnum">  10:  </span>            System.<span class="kwrd">out</span>.println(<span class="str">"java StudentEmail students.txt studentemail.txt"</span>);</pre>
+<pre class="alt"><span class="lnum">  11:  </span>            System.exit(1);</pre>
+<pre><span class="lnum">  12:  </span>        }</pre>
+<pre class="alt"><span class="lnum">  13:  </span>        </pre>
+<pre><span class="lnum">  14:  </span>        <span class="kwrd">for</span> (String arg : args) {</pre>
+<pre class="alt"><span class="lnum">  15:  </span>            System.<span class="kwrd">out</span>.println(arg);</pre>
+<pre><span class="lnum">  16:  </span>        }</pre>
+<pre class="alt"><span class="lnum">  17:  </span>        convertFile(args[0], args[1]);</pre>
+<pre><span class="lnum">  18:  </span>    }</pre>
+<pre class="alt"><span class="lnum">  19:  </span>    </pre>
+<pre><span class="lnum">  20:  </span>    <span class="kwrd">public</span> <span class="kwrd">static</span> <span class="kwrd">void</span> convertFile(String srcFile, String destFile)</pre>
+<pre class="alt"><span class="lnum">  21:  </span>    {</pre>
+<pre><span class="lnum">  22:  </span>        ArrayList&lt;Student&gt; students = loadStudents(srcFile);</pre>
+<pre class="alt"><span class="lnum">  23:  </span>        createEmailsFile(destFile, students);</pre>
+<pre><span class="lnum">  24:  </span>    }</pre>
+<pre class="alt"><span class="lnum">  25:  </span>    </pre>
+<pre><span class="lnum">  26:  </span>    <span class="kwrd">public</span> <span class="kwrd">static</span> ArrayList&lt;Student&gt; loadStudents(String srcFile){</pre>
+<pre class="alt"><span class="lnum">  27:  </span>         ArrayList&lt;Student&gt; students = <span class="kwrd">new</span> ArrayList&lt;Student&gt;();</pre>
+<pre><span class="lnum">  28:  </span>&nbsp;</pre>
+<pre class="alt"><span class="lnum">  29:  </span>        <span class="kwrd">try</span>{</pre>
+<pre><span class="lnum">  30:  </span>              BufferedReader <span class="kwrd">in</span> = <span class="kwrd">new</span> BufferedReader(<span class="kwrd">new</span> BufferedReader(<span class="kwrd">new</span> FileReader(srcFile)));</pre>
+<pre class="alt"><span class="lnum">  31:  </span>              String strLine;</pre>
+<pre><span class="lnum">  32:  </span>              <span class="kwrd">while</span> ((strLine = <span class="kwrd">in</span>.readLine()) != <span class="kwrd">null</span>)   {</pre>
+<pre class="alt"><span class="lnum">  33:  </span>                  System.<span class="kwrd">out</span>.println (strLine);</pre>
+<pre><span class="lnum">  34:  </span>                  String[] vals = strLine.split(<span class="str">":"</span>);</pre>
+<pre class="alt"><span class="lnum">  35:  </span>                  students.add(<span class="kwrd">new</span> Student(vals[0], vals[1], vals[2]));</pre>
+<pre><span class="lnum">  36:  </span>              }</pre>
+<pre class="alt"><span class="lnum">  37:  </span>              <span class="kwrd">in</span>.close();</pre>
+<pre><span class="lnum">  38:  </span>        }<span class="kwrd">catch</span> (Exception e){<span class="rem">//Catch exception if any</span></pre>
+<pre class="alt"><span class="lnum">  39:  </span>            System.err.println(<span class="str">"Error: "</span> + e.getMessage());</pre>
+<pre><span class="lnum">  40:  </span>        }</pre>
+<pre class="alt"><span class="lnum">  41:  </span>&nbsp;</pre>
+<pre><span class="lnum">  42:  </span>         <span class="kwrd">return</span> students;</pre>
+<pre class="alt"><span class="lnum">  43:  </span>    }</pre>
+<pre><span class="lnum">  44:  </span>&nbsp;</pre>
+<pre class="alt"><span class="lnum">  45:  </span>    <span class="kwrd">public</span> <span class="kwrd">static</span> <span class="kwrd">void</span> createEmailsFile(String destFile,  ArrayList&lt;Student&gt; students){</pre>
+<pre><span class="lnum">  46:  </span>         </pre>
+<pre class="alt"><span class="lnum">  47:  </span>        <span class="kwrd">try</span> {</pre>
+<pre><span class="lnum">  48:  </span>            PrintWriter <span class="kwrd">out</span> = <span class="kwrd">new</span> PrintWriter(<span class="kwrd">new</span> BufferedWriter(<span class="kwrd">new</span> FileWriter(destFile)));</pre>
+<pre class="alt"><span class="lnum">  49:  </span>            <span class="kwrd">for</span> (Student s : students) {</pre>
+<pre><span class="lnum">  50:  </span>                <span class="kwrd">out</span>.println(s.generateEmail());</pre>
+<pre class="alt"><span class="lnum">  51:  </span>            }</pre>
+<pre><span class="lnum">  52:  </span>            <span class="kwrd">out</span>.flush();</pre>
+<pre class="alt"><span class="lnum">  53:  </span>            <span class="kwrd">out</span>.close();</pre>
+<pre><span class="lnum">  54:  </span>        } <span class="kwrd">catch</span> (IOException e) {</pre>
+<pre class="alt"><span class="lnum">  55:  </span>            e.printStackTrace();</pre>
+<pre><span class="lnum">  56:  </span>        }</pre>
+<pre class="alt"><span class="lnum">  57:  </span>    }</pre>
+<pre><span class="lnum">  58:  </span>}</pre>
+<pre class="alt"><span class="lnum">  59:  </span>&nbsp;</pre>
+<pre><span class="lnum">  60:  </span>&nbsp;</pre>
+<pre class="alt"><span class="lnum">  61:  </span><span class="kwrd">class</span> Student{</pre>
+<pre><span class="lnum">  62:  </span>    </pre>
+<pre class="alt"><span class="lnum">  63:  </span>    <span class="kwrd">public</span> String firstName, lastName, ssn; </pre>
+<pre><span class="lnum">  64:  </span>    <span class="kwrd">public</span> Student(){</pre>
+<pre class="alt"><span class="lnum">  65:  </span>        </pre>
+<pre><span class="lnum">  66:  </span>    }</pre>
+<pre class="alt"><span class="lnum">  67:  </span>    <span class="kwrd">public</span> Student(String fName, String lName, String socialn){</pre>
+<pre><span class="lnum">  68:  </span>        firstName = fName;</pre>
+<pre class="alt"><span class="lnum">  69:  </span>        lastName = lName; </pre>
+<pre><span class="lnum">  70:  </span>        ssn = socialn; </pre>
+<pre class="alt"><span class="lnum">  71:  </span>    }</pre>
+<pre><span class="lnum">  72:  </span>    </pre>
+<pre class="alt"><span class="lnum">  73:  </span>    <span class="kwrd">public</span> String generateEmail(){</pre>
+<pre><span class="lnum">  74:  </span>        String email = firstName.substring(0, 1).toLowerCase();</pre>
+<pre class="alt"><span class="lnum">  75:  </span>        email += lastName.substring(0, 1).toLowerCase();</pre>
+<pre><span class="lnum">  76:  </span>        email += ssn.substring(ssn.length()-4);</pre>
+<pre class="alt"><span class="lnum">  77:  </span>        email += <span class="str">"@se.depaul.edu"</span>;</pre>
+<pre><span class="lnum">  78:  </span>        <span class="kwrd">return</span> email;</pre>
+<pre class="alt"><span class="lnum">  79:  </span>    }</pre>
+<pre><span class="lnum">  80:  </span>}</pre>
+<pre class="alt"><span class="lnum">  81:  </span>&nbsp;</pre>
+<pre><span class="lnum">  82:  </span>&nbsp;</pre>
+</div>
+
+
+
+
+            <br/>
+            <h5 class="sub">III. Input/Output</h5>
+            <h6>students.txt</h6>
+
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre class="alt"><span class="lnum">   1:  </span>Owen:Michael:326502626</pre>
+<pre><span class="lnum">   2:  </span>John:Soe:121218976</pre>
+<pre class="alt"><span class="lnum">   3:  </span>Martin:o'connar:121210011</pre>
+<pre><span class="lnum">   4:  </span>Sweet:delgado:121212222</pre>
+</div>
+
+
+            <h6>studentemail.txt</h6>
+
+
+<div class="csharpcode">
+<pre class="alt"><span class="lnum">   1:  </span>om2626@se.depaul.edu</pre>
+<pre><span class="lnum">   2:  </span>jd8976@se.depaul.edu</pre>
+<pre class="alt"><span class="lnum">   3:  </span>mo0011@se.depaul.edu</pre>
+<pre><span class="lnum">   4:  </span>sd2222@se.depaul.edu</pre>
+</div>
+
+
+            <h5 class="sub">III. Screenshots</h5>
+            <img src='chapter4/ex43/capture.png'></img>
+
+        </div>
+
+
+        <div class="grid_12" style="height:500px;background-color:#111;">
+            <div style="text-align:center">
+                CS602 - Java Programming - Metin Yorulmaz
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

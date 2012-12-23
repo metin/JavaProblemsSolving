@@ -1,0 +1,499 @@
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>CS602 - Java Programming - Metin Yorulmaz</title>
+    <link href="public/stylesheets/reset.css" rel="stylesheet" type="text/css" />
+    <link href="public/stylesheets/960.css" rel="stylesheet" type="text/css" />
+    <link href="public/stylesheets/site.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    
+    <div class="container_12">
+        
+        <div class="grid_12">
+            <div id="header">
+                CS602 - Java Programming
+            </div>
+        </div>
+
+        <div class="grid_12">
+            <div id="menu_container">
+                <ul id="menu">
+                    <li>
+                       <a href="chapter1/assignment1.html"> Chapter 1 </a>
+                    </li>
+                    <li>
+                       <a href="chapter3.html"> Chapter 3 </a>
+                    </li>
+                    <li>
+                       <a href="chapter4_1.html"> Chapter 4 </a>
+                    </li>
+                    <li>
+                       <a href="chapter5a_4.9.html"> Chapter 5a </a>
+                    </li>
+                    <li>
+                       <a href="chapter5b_5.2.html"> Chapter 5b </a>
+                    </li>
+                    <li>
+                       <a href="chapter6_6.3.html"> Chapter 6 </a>
+                    </li>
+                    <li>
+                       <a href="chapter7_7.6.html"> Chapter 7 </a>
+                    </li>
+                    <li class="current">
+                       <a href="chapter8_8.5.html"> Chapter 8 </a>
+                    </li>
+                    <li>
+                       <a href="chapter9.html"> Chapter 9 </a>
+                    </li>
+                    <li>
+                       <a href="chapter10.html"> Chapter 10 </a>
+                    </li>
+                    <li>
+                       <a href="midterm1.html"> Exams </a>
+                    </li>
+                    <li>
+                       <a href="final.html"> Project </a>
+                    </li>
+                </ul>
+            </div>
+            <div id="submenu_container">
+                <ul class="submenu">
+                    <li class="current">
+                        <a href="chapter8_8.5.html"> Execise 8.5 </a>
+                    </li>
+                    <li>
+                        <a href="chapter8_8.7.html"> Execise 8.7 </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid_12" id="content" style="background-color:#f1f1f1;">
+            <br/>
+            <p>
+                Write a simple calculator applet.
+            </p>
+            <br/>
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span><span class="kwrd">&lt;</span><span class="html">applet</span>  <span class="attr">codebase</span><span class="kwrd">="chapter8/"</span> <span class="attr">code</span>=<span class="attr">ex85</span>.<span class="attr">Calculator</span>.<span class="attr">class</span> <span class="attr">width</span>=<span class="attr">400</span> <span class="attr">height</span>=<span class="attr">300</span><span class="kwrd">&gt;</span></pre>
+<pre><span class="lnum">   2:  </span><span class="kwrd">&lt;/</span><span class="html">applet</span><span class="kwrd">&gt;</span></pre>
+</div>
+<br/>
+<applet  codebase="chapter8/" code=ex85.Calculator.class width=400 height=300>
+</applet>
+
+
+
+
+
+<br/>   
+              
+            <br/>
+
+            <h5 class="sub">I. Timesheet</h5>
+
+            <img src='chapter8/timesheet.png'/>
+
+            <br/>
+
+            <h5 class="sub">II. Interaction Diagram</h5>
+
+            <img src='chapter8/ex85_interaction.png' style="width:900px;"/>
+
+            <br/>
+            <a href='chapter8/ex85_interaction.pdf'>Download as PDF</a>
+            <br/>
+            <br/>
+
+            <br/>
+
+            <br/>
+
+            <h5 class="sub">II. Source Code</h5>
+            
+            <br/>
+
+            <h6>Calculator.java</h6>
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>package ex85;</pre>
+<pre><span class="lnum">   2:  </span>&nbsp;</pre>
+<pre><span class="lnum">   3:  </span>import java.awt.*;</pre>
+<pre><span class="lnum">   4:  </span>import java.applet.*;</pre>
+<pre><span class="lnum">   5:  </span>import java.awt.<span class="kwrd">event</span>.*;</pre>
+<pre><span class="lnum">   6:  </span>import java.io.*;</pre>
+<pre><span class="lnum">   7:  </span>import java.net.*;</pre>
+<pre><span class="lnum">   8:  </span>&nbsp;</pre>
+<pre><span class="lnum">   9:  </span>import javax.swing.*;</pre>
+<pre><span class="lnum">  10:  </span>&nbsp;</pre>
+<pre><span class="lnum">  11:  </span>import sun.tools.tree.DoStatement;</pre>
+<pre><span class="lnum">  12:  </span>&nbsp;</pre>
+<pre><span class="lnum">  13:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> Calculator extends Applet</pre>
+<pre><span class="lnum">  14:  </span>{</pre>
+<pre><span class="lnum">  15:  </span>    JTextField display = <span class="kwrd">new</span> JTextField();</pre>
+<pre><span class="lnum">  16:  </span>    <span class="kwrd">public</span> Calculator() {</pre>
+<pre><span class="lnum">  17:  </span>        BorderLayout layout = <span class="kwrd">new</span> BorderLayout();</pre>
+<pre><span class="lnum">  18:  </span>        setLayout(layout);</pre>
+<pre><span class="lnum">  19:  </span>        </pre>
+<pre><span class="lnum">  20:  </span>        JPanel displayPanel = <span class="kwrd">new</span> JPanel(<span class="kwrd">new</span> BorderLayout(50, 50));</pre>
+<pre><span class="lnum">  21:  </span>        displayPanel.setBorder(BorderFactory.createEtchedBorder());</pre>
+<pre><span class="lnum">  22:  </span>        displayPanel.add(display, BorderLayout.CENTER);</pre>
+<pre><span class="lnum">  23:  </span>&nbsp;</pre>
+<pre><span class="lnum">  24:  </span>        Font newTextFieldFont = <span class="kwrd">new</span> Font(display.getFont().getName(), display.getFont().getStyle(), 20);  </pre>
+<pre><span class="lnum">  25:  </span>        </pre>
+<pre><span class="lnum">  26:  </span>        <span class="rem">//Set JTextField font using new created font  </span></pre>
+<pre><span class="lnum">  27:  </span>        display.setFont(newTextFieldFont);</pre>
+<pre><span class="lnum">  28:  </span>        </pre>
+<pre><span class="lnum">  29:  </span>        JPanel clearButtonPanel = <span class="kwrd">new</span> JPanel(<span class="kwrd">new</span> BorderLayout());</pre>
+<pre><span class="lnum">  30:  </span>&nbsp;</pre>
+<pre><span class="lnum">  31:  </span>        JButton btn = <span class="kwrd">new</span> JButton(<span class="str">"C"</span>);</pre>
+<pre><span class="lnum">  32:  </span>        btn.setActionCommand(<span class="str">"C"</span>);</pre>
+<pre><span class="lnum">  33:  </span>        clearButtonPanel.add(btn, BorderLayout.EAST);</pre>
+<pre><span class="lnum">  34:  </span>&nbsp;</pre>
+<pre><span class="lnum">  35:  </span>        btn = <span class="kwrd">new</span> JButton(<span class="str">"AC"</span>);</pre>
+<pre><span class="lnum">  36:  </span>        btn.setActionCommand(<span class="str">"AC"</span>);</pre>
+<pre><span class="lnum">  37:  </span>        clearButtonPanel.add(btn, BorderLayout.WEST);</pre>
+<pre><span class="lnum">  38:  </span>        displayPanel.add(clearButtonPanel, BorderLayout.EAST);</pre>
+<pre><span class="lnum">  39:  </span>        </pre>
+<pre><span class="lnum">  40:  </span>        add(displayPanel, BorderLayout.NORTH);</pre>
+<pre><span class="lnum">  41:  </span>        </pre>
+<pre><span class="lnum">  42:  </span>        JPanel numpad = <span class="kwrd">new</span> JPanel(<span class="kwrd">new</span> GridLayout(1, 4));</pre>
+<pre><span class="lnum">  43:  </span>&nbsp;</pre>
+<pre><span class="lnum">  44:  </span>        JPanel numpadCol1 = <span class="kwrd">new</span> JPanel(<span class="kwrd">new</span> GridLayout(4, 1));</pre>
+<pre><span class="lnum">  45:  </span>        btn = <span class="kwrd">new</span> JButton(<span class="str">"7"</span>);</pre>
+<pre><span class="lnum">  46:  </span>        btn.setActionCommand(<span class="str">"7"</span>);</pre>
+<pre><span class="lnum">  47:  </span>        numpadCol1.add(btn);</pre>
+<pre><span class="lnum">  48:  </span>        btn = <span class="kwrd">new</span> JButton(<span class="str">"4"</span>);</pre>
+<pre><span class="lnum">  49:  </span>        btn.setActionCommand(<span class="str">"4"</span>);</pre>
+<pre><span class="lnum">  50:  </span>        numpadCol1.add(btn);</pre>
+<pre><span class="lnum">  51:  </span>        btn = <span class="kwrd">new</span> JButton(<span class="str">"1"</span>);</pre>
+<pre><span class="lnum">  52:  </span>        btn.setActionCommand(<span class="str">"1"</span>);</pre>
+<pre><span class="lnum">  53:  </span>        numpadCol1.add(btn);</pre>
+<pre><span class="lnum">  54:  </span>        btn = <span class="kwrd">new</span> JButton(<span class="str">"0"</span>);</pre>
+<pre><span class="lnum">  55:  </span>        btn.setActionCommand(<span class="str">"0"</span>);</pre>
+<pre><span class="lnum">  56:  </span>        numpadCol1.add(btn);</pre>
+<pre><span class="lnum">  57:  </span>        numpad.add(numpadCol1);</pre>
+<pre><span class="lnum">  58:  </span>        </pre>
+<pre><span class="lnum">  59:  </span>        JPanel numpadCol2 = <span class="kwrd">new</span> JPanel(<span class="kwrd">new</span> GridLayout(4, 1));</pre>
+<pre><span class="lnum">  60:  </span>        btn = <span class="kwrd">new</span> JButton(<span class="str">"8"</span>);</pre>
+<pre><span class="lnum">  61:  </span>        btn.setActionCommand(<span class="str">"8"</span>);</pre>
+<pre><span class="lnum">  62:  </span>        numpadCol2.add(btn);</pre>
+<pre><span class="lnum">  63:  </span>        btn = <span class="kwrd">new</span> JButton(<span class="str">"5"</span>);</pre>
+<pre><span class="lnum">  64:  </span>        btn.setActionCommand(<span class="str">"5"</span>);</pre>
+<pre><span class="lnum">  65:  </span>        numpadCol2.add(btn);</pre>
+<pre><span class="lnum">  66:  </span>        btn = <span class="kwrd">new</span> JButton(<span class="str">"2"</span>);</pre>
+<pre><span class="lnum">  67:  </span>        btn.setActionCommand(<span class="str">"2"</span>);</pre>
+<pre><span class="lnum">  68:  </span>        numpadCol2.add(btn);</pre>
+<pre><span class="lnum">  69:  </span>        btn = <span class="kwrd">new</span> JButton(<span class="str">"."</span>);</pre>
+<pre><span class="lnum">  70:  </span>        btn.setActionCommand(<span class="str">"."</span>);</pre>
+<pre><span class="lnum">  71:  </span>        numpadCol2.add(btn);</pre>
+<pre><span class="lnum">  72:  </span>&nbsp;</pre>
+<pre><span class="lnum">  73:  </span>        numpad.add(numpadCol2);</pre>
+<pre><span class="lnum">  74:  </span>        JPanel numpadCol3 = <span class="kwrd">new</span> JPanel(<span class="kwrd">new</span> GridLayout(4, 1));</pre>
+<pre><span class="lnum">  75:  </span>        btn = <span class="kwrd">new</span> JButton(<span class="str">"9"</span>);</pre>
+<pre><span class="lnum">  76:  </span>        btn.setActionCommand(<span class="str">"9"</span>);</pre>
+<pre><span class="lnum">  77:  </span>        numpadCol3.add(btn);</pre>
+<pre><span class="lnum">  78:  </span>        btn = <span class="kwrd">new</span> JButton(<span class="str">"6"</span>);</pre>
+<pre><span class="lnum">  79:  </span>        btn.setActionCommand(<span class="str">"6"</span>);</pre>
+<pre><span class="lnum">  80:  </span>        numpadCol3.add(btn);</pre>
+<pre><span class="lnum">  81:  </span>        btn = <span class="kwrd">new</span> JButton(<span class="str">"3"</span>);</pre>
+<pre><span class="lnum">  82:  </span>        btn.setActionCommand(<span class="str">"3"</span>);</pre>
+<pre><span class="lnum">  83:  </span>        numpadCol3.add(btn);</pre>
+<pre><span class="lnum">  84:  </span>        btn = <span class="kwrd">new</span> JButton(<span class="str">"="</span>);</pre>
+<pre><span class="lnum">  85:  </span>        btn.setActionCommand(<span class="str">"="</span>);</pre>
+<pre><span class="lnum">  86:  </span>        numpadCol3.add(btn);</pre>
+<pre><span class="lnum">  87:  </span>        numpad.add(numpadCol3);</pre>
+<pre><span class="lnum">  88:  </span>        </pre>
+<pre><span class="lnum">  89:  </span>        JPanel numpadCol4 = <span class="kwrd">new</span> JPanel(<span class="kwrd">new</span> GridLayout(4, 1));</pre>
+<pre><span class="lnum">  90:  </span>        btn = <span class="kwrd">new</span> JButton(<span class="str">"/"</span>);</pre>
+<pre><span class="lnum">  91:  </span>        btn.setActionCommand(<span class="str">"d"</span>);</pre>
+<pre><span class="lnum">  92:  </span>        numpadCol4.add(btn);</pre>
+<pre><span class="lnum">  93:  </span>        btn = <span class="kwrd">new</span> JButton(<span class="str">"*"</span>);</pre>
+<pre><span class="lnum">  94:  </span>        btn.setActionCommand(<span class="str">"m"</span>);</pre>
+<pre><span class="lnum">  95:  </span>        numpadCol4.add(btn);</pre>
+<pre><span class="lnum">  96:  </span>        btn = <span class="kwrd">new</span> JButton(<span class="str">"-"</span>);</pre>
+<pre><span class="lnum">  97:  </span>        btn.setActionCommand(<span class="str">"s"</span>);</pre>
+<pre><span class="lnum">  98:  </span>        numpadCol4.add(btn);</pre>
+<pre><span class="lnum">  99:  </span>        btn = <span class="kwrd">new</span> JButton(<span class="str">"+"</span>);</pre>
+<pre><span class="lnum"> 100:  </span>        btn.setActionCommand(<span class="str">"a"</span>);</pre>
+<pre><span class="lnum"> 101:  </span>        numpadCol4.add(btn);</pre>
+<pre><span class="lnum"> 102:  </span>        numpad.add(numpadCol4);</pre>
+<pre><span class="lnum"> 103:  </span>        add(numpad, BorderLayout.CENTER);</pre>
+<pre><span class="lnum"> 104:  </span>        ButtonEventHandler bhandler = <span class="kwrd">new</span> ButtonEventHandler(); </pre>
+<pre><span class="lnum"> 105:  </span>        bhandler.beActionListener(<span class="kwrd">this</span>);</pre>
+<pre><span class="lnum"> 106:  </span>    }</pre>
+<pre><span class="lnum"> 107:  </span>    </pre>
+<pre><span class="lnum"> 108:  </span>    <span class="kwrd">class</span> ButtonEventHandler implements ActionListener {</pre>
+<pre><span class="lnum"> 109:  </span>        String nums = <span class="str">"1234567890."</span>;</pre>
+<pre><span class="lnum"> 110:  </span>        String ops = <span class="str">"asdm"</span>;</pre>
+<pre><span class="lnum"> 111:  </span>        Calculation calc = <span class="kwrd">null</span>;</pre>
+<pre><span class="lnum"> 112:  </span>        Boolean reset = <span class="kwrd">false</span>;</pre>
+<pre><span class="lnum"> 113:  </span>        String lastOperation = <span class="str">"+"</span>;</pre>
+<pre><span class="lnum"> 114:  </span>        Boolean executed = <span class="kwrd">false</span>;</pre>
+<pre><span class="lnum"> 115:  </span>        <span class="kwrd">public</span> <span class="kwrd">void</span> actionPerformed(ActionEvent <span class="kwrd">event</span>) {</pre>
+<pre><span class="lnum"> 116:  </span>          <span class="kwrd">if</span> (<span class="kwrd">event</span>!=<span class="kwrd">null</span>)</pre>
+<pre><span class="lnum"> 117:  </span>            System.<span class="kwrd">out</span>.println(<span class="str">"ActionPerformed: "</span> + <span class="kwrd">event</span>); </pre>
+<pre><span class="lnum"> 118:  </span>          JButton source = (JButton) <span class="kwrd">event</span>.getSource(); </pre>
+<pre><span class="lnum"> 119:  </span>          <span class="kwrd">if</span> (source != <span class="kwrd">null</span>){</pre>
+<pre><span class="lnum"> 120:  </span>              String cmd = source.getActionCommand();</pre>
+<pre><span class="lnum"> 121:  </span>              <span class="kwrd">if</span>(nums.indexOf(cmd) &gt; -1){</pre>
+<pre><span class="lnum"> 122:  </span>                  <span class="kwrd">if</span>(reset){</pre>
+<pre><span class="lnum"> 123:  </span>                      reset = <span class="kwrd">false</span>;</pre>
+<pre><span class="lnum"> 124:  </span>                      display.setText(<span class="str">""</span>);</pre>
+<pre><span class="lnum"> 125:  </span>                  }</pre>
+<pre><span class="lnum"> 126:  </span>                  display.setText(display.getText() + cmd); </pre>
+<pre><span class="lnum"> 127:  </span>              }<span class="kwrd">else</span> <span class="kwrd">if</span>(ops.indexOf(cmd) &gt; -1){</pre>
+<pre><span class="lnum"> 128:  </span>                  <span class="kwrd">if</span>(calc == <span class="kwrd">null</span>)</pre>
+<pre><span class="lnum"> 129:  </span>                      calc = <span class="kwrd">new</span> Add(<span class="kwrd">new</span> BaseOperation(), Float.parseFloat(display.getText()));</pre>
+<pre><span class="lnum"> 130:  </span>                  <span class="kwrd">else</span> <span class="kwrd">if</span>(!executed){</pre>
+<pre><span class="lnum"> 131:  </span>                      doOperation(cmd.trim());</pre>
+<pre><span class="lnum"> 132:  </span>                      display.setText( String.valueOf(calc.calculate()));</pre>
+<pre><span class="lnum"> 133:  </span>                  }</pre>
+<pre><span class="lnum"> 134:  </span>                  lastOperation = cmd;</pre>
+<pre><span class="lnum"> 135:  </span>                  reset = <span class="kwrd">true</span>;</pre>
+<pre><span class="lnum"> 136:  </span>                  executed = <span class="kwrd">false</span>;</pre>
+<pre><span class="lnum"> 137:  </span>              }<span class="kwrd">else</span> <span class="kwrd">if</span>(cmd == <span class="str">"="</span>){</pre>
+<pre><span class="lnum"> 138:  </span>                  doOperation(lastOperation);</pre>
+<pre><span class="lnum"> 139:  </span>                  display.setText( String.valueOf(calc.calculate()));</pre>
+<pre><span class="lnum"> 140:  </span>                  executed = <span class="kwrd">true</span>;</pre>
+<pre><span class="lnum"> 141:  </span>                  reset = <span class="kwrd">true</span>;</pre>
+<pre><span class="lnum"> 142:  </span>              }<span class="kwrd">else</span> <span class="kwrd">if</span>(cmd == <span class="str">"C"</span>){</pre>
+<pre><span class="lnum"> 143:  </span>                  display.setText(<span class="str">""</span>);</pre>
+<pre><span class="lnum"> 144:  </span>              }<span class="kwrd">else</span> <span class="kwrd">if</span>(cmd == <span class="str">"AC"</span>){</pre>
+<pre><span class="lnum"> 145:  </span>                  display.setText(<span class="str">""</span>);</pre>
+<pre><span class="lnum"> 146:  </span>                  calc = <span class="kwrd">null</span>;</pre>
+<pre><span class="lnum"> 147:  </span>              }</pre>
+<pre><span class="lnum"> 148:  </span>           }</pre>
+<pre><span class="lnum"> 149:  </span>        }</pre>
+<pre><span class="lnum"> 150:  </span>        </pre>
+<pre><span class="lnum"> 151:  </span>        <span class="kwrd">protected</span> <span class="kwrd">void</span> doOperation(String <span class="kwrd">operator</span>){</pre>
+<pre><span class="lnum"> 152:  </span>            <span class="kwrd">if</span>(<span class="kwrd">operator</span> == <span class="str">"a"</span>)</pre>
+<pre><span class="lnum"> 153:  </span>              calc = <span class="kwrd">new</span> Add(calc, Float.parseFloat(display.getText()));</pre>
+<pre><span class="lnum"> 154:  </span>          <span class="kwrd">else</span> <span class="kwrd">if</span> (<span class="kwrd">operator</span>.equals(<span class="str">"s"</span>))</pre>
+<pre><span class="lnum"> 155:  </span>              calc = <span class="kwrd">new</span> Subtract(calc, Float.parseFloat(display.getText()));</pre>
+<pre><span class="lnum"> 156:  </span>          <span class="kwrd">else</span> <span class="kwrd">if</span> (<span class="kwrd">operator</span>==<span class="str">"d"</span>)</pre>
+<pre><span class="lnum"> 157:  </span>              calc = <span class="kwrd">new</span> Divide(calc, Float.parseFloat(display.getText()));</pre>
+<pre><span class="lnum"> 158:  </span>          <span class="kwrd">else</span> <span class="kwrd">if</span> (<span class="kwrd">operator</span>==<span class="str">"m"</span>)</pre>
+<pre><span class="lnum"> 159:  </span>              calc = <span class="kwrd">new</span> Multiply(calc, Float.parseFloat(display.getText()));</pre>
+<pre><span class="lnum"> 160:  </span>          }</pre>
+<pre><span class="lnum"> 161:  </span>        </pre>
+<pre><span class="lnum"> 162:  </span>        <span class="kwrd">protected</span> <span class="kwrd">void</span> beActionListener(Component comp) {</pre>
+<pre><span class="lnum"> 163:  </span>          <span class="kwrd">if</span> (comp != <span class="kwrd">null</span>) {</pre>
+<pre><span class="lnum"> 164:  </span>            <span class="kwrd">if</span> (comp instanceof JButton) {</pre>
+<pre><span class="lnum"> 165:  </span>              JButton button = (JButton) comp;</pre>
+<pre><span class="lnum"> 166:  </span>              button.addActionListener(<span class="kwrd">this</span>);  </pre>
+<pre><span class="lnum"> 167:  </span>            } <span class="kwrd">else</span> <span class="kwrd">if</span> (comp instanceof Container) {</pre>
+<pre><span class="lnum"> 168:  </span>              Container container = (Container) comp; </pre>
+<pre><span class="lnum"> 169:  </span>              <span class="kwrd">int</span> n = container.getComponentCount();</pre>
+<pre><span class="lnum"> 170:  </span>              <span class="kwrd">for</span> (<span class="kwrd">int</span> i = 0; i &lt; n; i++)  </pre>
+<pre><span class="lnum"> 171:  </span>                beActionListener(container.getComponent(i));</pre>
+<pre><span class="lnum"> 172:  </span>            }        </pre>
+<pre><span class="lnum"> 173:  </span>          }</pre>
+<pre><span class="lnum"> 174:  </span>        }    </pre>
+<pre><span class="lnum"> 175:  </span>    }</pre>
+<pre><span class="lnum"> 176:  </span>&nbsp;</pre>
+<pre><span class="lnum"> 177:  </span>}</pre>
+</div>
+            <br/>
+
+            <h6>Calculation.java</h6>
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>package ex85;</pre>
+<pre><span class="lnum">   2:  </span>&nbsp;</pre>
+<pre><span class="lnum">   3:  </span><span class="kwrd">public</span> <span class="kwrd">interface</span> Calculation {</pre>
+<pre><span class="lnum">   4:  </span>&nbsp;</pre>
+<pre><span class="lnum">   5:  </span>  <span class="kwrd">public</span> <span class="kwrd">float</span> getValue();</pre>
+<pre><span class="lnum">   6:  </span>  <span class="kwrd">public</span> <span class="kwrd">float</span> calculate();</pre>
+<pre><span class="lnum">   7:  </span>&nbsp;</pre>
+<pre><span class="lnum">   8:  </span>}</pre>
+</div>
+            <br/>
+
+            <h6>BaseOperation.java</h6>
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>package ex85;</pre>
+<pre><span class="lnum">   2:  </span>&nbsp;</pre>
+<pre><span class="lnum">   3:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> BaseOperation implements Calculation{</pre>
+<pre><span class="lnum">   4:  </span>&nbsp;</pre>
+<pre><span class="lnum">   5:  </span>  <span class="kwrd">protected</span> <span class="kwrd">float</span> <span class="kwrd">value</span>;</pre>
+<pre><span class="lnum">   6:  </span>  <span class="kwrd">public</span> BaseOperation(){</pre>
+<pre><span class="lnum">   7:  </span>  }</pre>
+<pre><span class="lnum">   8:  </span>  <span class="kwrd">public</span> <span class="kwrd">float</span> getValue(){</pre>
+<pre><span class="lnum">   9:  </span>    <span class="kwrd">return</span> <span class="kwrd">value</span>;</pre>
+<pre><span class="lnum">  10:  </span>  }</pre>
+<pre><span class="lnum">  11:  </span>  </pre>
+<pre><span class="lnum">  12:  </span>  <span class="kwrd">public</span> <span class="kwrd">float</span> calculate() {</pre>
+<pre><span class="lnum">  13:  </span>    <span class="kwrd">return</span> 0;</pre>
+<pre><span class="lnum">  14:  </span>  }</pre>
+<pre><span class="lnum">  15:  </span>&nbsp;</pre>
+<pre><span class="lnum">  16:  </span>}</pre>
+<pre><span class="lnum">  17:  </span>&nbsp;</pre>
+</div>
+            <br/>
+
+            <h6>Add.java</h6>
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>package ex85;</pre>
+<pre><span class="lnum">   2:  </span>&nbsp;</pre>
+<pre><span class="lnum">   3:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> Add extends BaseOperation{</pre>
+<pre><span class="lnum">   4:  </span>&nbsp;</pre>
+<pre><span class="lnum">   5:  </span>  <span class="kwrd">protected</span> Calculation calc;</pre>
+<pre><span class="lnum">   6:  </span>  <span class="kwrd">public</span> Add(Calculation calc, <span class="kwrd">float</span> val){</pre>
+<pre><span class="lnum">   7:  </span>    <span class="kwrd">this</span>.<span class="kwrd">value</span> = val;</pre>
+<pre><span class="lnum">   8:  </span>    <span class="kwrd">this</span>.calc = calc;</pre>
+<pre><span class="lnum">   9:  </span>  }</pre>
+<pre><span class="lnum">  10:  </span>  </pre>
+<pre><span class="lnum">  11:  </span>  <span class="kwrd">public</span> <span class="kwrd">float</span> calculate() {</pre>
+<pre><span class="lnum">  12:  </span>    <span class="kwrd">return</span> calc.calculate() + <span class="kwrd">this</span>.getValue();</pre>
+<pre><span class="lnum">  13:  </span>  }</pre>
+<pre><span class="lnum">  14:  </span>}</pre>
+</div>
+            <br/>
+            
+            <h6>Subtract.java</h6>
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>package ex85;</pre>
+<pre><span class="lnum">   2:  </span>&nbsp;</pre>
+<pre><span class="lnum">   3:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> Subtract extends BaseOperation{</pre>
+<pre><span class="lnum">   4:  </span>&nbsp;</pre>
+<pre><span class="lnum">   5:  </span>  <span class="kwrd">protected</span> Calculation calc;</pre>
+<pre><span class="lnum">   6:  </span>  <span class="kwrd">public</span> Subtract(Calculation calc, <span class="kwrd">float</span> val){</pre>
+<pre><span class="lnum">   7:  </span>    <span class="kwrd">this</span>.<span class="kwrd">value</span> = val;</pre>
+<pre><span class="lnum">   8:  </span>    <span class="kwrd">this</span>.calc = calc;</pre>
+<pre><span class="lnum">   9:  </span>  }</pre>
+<pre><span class="lnum">  10:  </span>&nbsp;</pre>
+<pre><span class="lnum">  11:  </span>  <span class="kwrd">public</span> <span class="kwrd">float</span> calculate() {</pre>
+<pre><span class="lnum">  12:  </span>    <span class="kwrd">return</span> calc.calculate() - <span class="kwrd">this</span>.getValue();</pre>
+<pre><span class="lnum">  13:  </span>  }</pre>
+<pre><span class="lnum">  14:  </span>}</pre>
+</div>
+            <br/>
+
+            <h6>Divide.java</h6>
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>package ex85;</pre>
+<pre><span class="lnum">   2:  </span>&nbsp;</pre>
+<pre><span class="lnum">   3:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> Divide extends BaseOperation{</pre>
+<pre><span class="lnum">   4:  </span>&nbsp;</pre>
+<pre><span class="lnum">   5:  </span>  <span class="kwrd">protected</span> Calculation calc;</pre>
+<pre><span class="lnum">   6:  </span>  <span class="kwrd">public</span> Divide(Calculation calc, <span class="kwrd">float</span> val){</pre>
+<pre><span class="lnum">   7:  </span>    <span class="kwrd">this</span>.<span class="kwrd">value</span> = val;</pre>
+<pre><span class="lnum">   8:  </span>    <span class="kwrd">this</span>.calc = calc;</pre>
+<pre><span class="lnum">   9:  </span>  }</pre>
+<pre><span class="lnum">  10:  </span>&nbsp;</pre>
+<pre><span class="lnum">  11:  </span>  <span class="kwrd">public</span> <span class="kwrd">float</span> calculate() {</pre>
+<pre><span class="lnum">  12:  </span>    <span class="kwrd">return</span> calc.calculate() / <span class="kwrd">this</span>.getValue();</pre>
+<pre><span class="lnum">  13:  </span>  }</pre>
+<pre><span class="lnum">  14:  </span>}</pre>
+</div>
+
+            <br/>
+            <h6>Multiply.java</h6>
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>package ex85;</pre>
+<pre><span class="lnum">   2:  </span>&nbsp;</pre>
+<pre><span class="lnum">   3:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> Multiply extends BaseOperation{</pre>
+<pre><span class="lnum">   4:  </span>&nbsp;</pre>
+<pre><span class="lnum">   5:  </span>  <span class="kwrd">protected</span> Calculation calc;</pre>
+<pre><span class="lnum">   6:  </span>  <span class="kwrd">public</span> Multiply(Calculation calc, <span class="kwrd">float</span> val){</pre>
+<pre><span class="lnum">   7:  </span>    <span class="kwrd">this</span>.<span class="kwrd">value</span> = val;</pre>
+<pre><span class="lnum">   8:  </span>    <span class="kwrd">this</span>.calc = calc;</pre>
+<pre><span class="lnum">   9:  </span>  }</pre>
+<pre><span class="lnum">  10:  </span>&nbsp;</pre>
+<pre><span class="lnum">  11:  </span>  <span class="kwrd">public</span> <span class="kwrd">float</span> calculate() {</pre>
+<pre><span class="lnum">  12:  </span>    <span class="kwrd">return</span> calc.calculate() * <span class="kwrd">this</span>.getValue();</pre>
+<pre><span class="lnum">  13:  </span>  }</pre>
+<pre><span class="lnum">  14:  </span>&nbsp;</pre>
+<pre><span class="lnum">  15:  </span>&nbsp;</pre>
+<pre><span class="lnum">  16:  </span>}</pre>
+</div>
+            <br/>
+
+            <br/>
+            <h5>III. Test</h5>
+            <h6>CalculatorTest.java</h6>
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<img src='chapter8/ex85_test.png'></img> <br/><br/>
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>package ex85;</pre>
+<pre><span class="lnum">   2:  </span>&nbsp;</pre>
+<pre><span class="lnum">   3:  </span>import <span class="kwrd">static</span> org.junit.Assert.*;</pre>
+<pre><span class="lnum">   4:  </span>&nbsp;</pre>
+<pre><span class="lnum">   5:  </span>import org.junit.Test;</pre>
+<pre><span class="lnum">   6:  </span>&nbsp;</pre>
+<pre><span class="lnum">   7:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> CalculatorTest {</pre>
+<pre><span class="lnum">   8:  </span>&nbsp;</pre>
+<pre><span class="lnum">   9:  </span>  @Test</pre>
+<pre><span class="lnum">  10:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> testAddition() {</pre>
+<pre><span class="lnum">  11:  </span>    Calculation calc = <span class="kwrd">new</span> BaseOperation();</pre>
+<pre><span class="lnum">  12:  </span>    calc = <span class="kwrd">new</span> Add(calc, 10);</pre>
+<pre><span class="lnum">  13:  </span>    calc = <span class="kwrd">new</span> Add(calc, 12);</pre>
+<pre><span class="lnum">  14:  </span>    calc = <span class="kwrd">new</span> Add(calc, 5);</pre>
+<pre><span class="lnum">  15:  </span>    assertTrue(calc.calculate() == 27);    </pre>
+<pre><span class="lnum">  16:  </span>  }</pre>
+<pre><span class="lnum">  17:  </span>  </pre>
+<pre><span class="lnum">  18:  </span>  @Test</pre>
+<pre><span class="lnum">  19:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> testSubtraction() {</pre>
+<pre><span class="lnum">  20:  </span>    Calculation calc = <span class="kwrd">new</span> BaseOperation();</pre>
+<pre><span class="lnum">  21:  </span>    calc = <span class="kwrd">new</span> Add(calc, 10);</pre>
+<pre><span class="lnum">  22:  </span>    calc = <span class="kwrd">new</span> Subtract(calc, 3);</pre>
+<pre><span class="lnum">  23:  </span>    assertTrue(calc.calculate() == 7);    </pre>
+<pre><span class="lnum">  24:  </span>  }</pre>
+<pre><span class="lnum">  25:  </span>  </pre>
+<pre><span class="lnum">  26:  </span>  @Test</pre>
+<pre><span class="lnum">  27:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> testMultiplication() {</pre>
+<pre><span class="lnum">  28:  </span>    Calculation calc = <span class="kwrd">new</span> BaseOperation();</pre>
+<pre><span class="lnum">  29:  </span>    calc = <span class="kwrd">new</span> Add(calc, 10);</pre>
+<pre><span class="lnum">  30:  </span>    calc = <span class="kwrd">new</span> Add(calc, 5);</pre>
+<pre><span class="lnum">  31:  </span>    calc = <span class="kwrd">new</span> Multiply(calc, 2);</pre>
+<pre><span class="lnum">  32:  </span>    assertTrue(calc.calculate() == 30);    </pre>
+<pre><span class="lnum">  33:  </span>  }</pre>
+<pre><span class="lnum">  34:  </span>&nbsp;</pre>
+<pre><span class="lnum">  35:  </span>  @Test</pre>
+<pre><span class="lnum">  36:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> testDivision() {</pre>
+<pre><span class="lnum">  37:  </span>    Calculation calc = <span class="kwrd">new</span> BaseOperation();</pre>
+<pre><span class="lnum">  38:  </span>    calc = <span class="kwrd">new</span> Add(calc, 10);</pre>
+<pre><span class="lnum">  39:  </span>    calc = <span class="kwrd">new</span> Add(calc, 5);</pre>
+<pre><span class="lnum">  40:  </span>    calc = <span class="kwrd">new</span> Divide(calc, 3);</pre>
+<pre><span class="lnum">  41:  </span>    assertTrue(calc.calculate() == 5);    </pre>
+<pre><span class="lnum">  42:  </span>  }</pre>
+<pre><span class="lnum">  43:  </span>  </pre>
+<pre><span class="lnum">  44:  </span>}</pre>
+</div>
+            <h5 class="sub">IV. Screenshots</h5>
+            <img src='chapter8/ex85_1.png'></img> <br/><br/>
+            <img src='chapter8/ex85_2.png'></img> <br/><br/>
+            <img src='chapter8/ex85_3.png'></img> <br/><br/>
+            <img src='chapter8/ex85_4.png'></img> <br/><br/>
+            <img src='chapter8/ex85_5.png'></img> <br/><br/>
+            <img src='chapter8/ex85_6.png'></img> <br/><br/>
+            <img src='chapter8/ex85_7.png'></img> <br/><br/>
+
+
+
+<br/>
+<br/>
+<br/>
+
+        </div>
+
+
+        <div class="grid_12" style="height:500px;background-color:#111;">
+            <div style="text-align:center">
+                CS602 - Java Programming - Metin Yorulmaz
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,311 @@
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>CS602 - Java Programming - Metin Yorulmaz</title>
+    <link href="public/stylesheets/reset.css" rel="stylesheet" type="text/css" />
+    <link href="public/stylesheets/960.css" rel="stylesheet" type="text/css" />
+    <link href="public/stylesheets/site.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    
+    <div class="container_12">
+        
+        <div class="grid_12">
+            <div id="header">
+                CS602 - Java Programming
+            </div>
+        </div>
+
+        <div class="grid_12">
+            <div id="menu_container">
+                <ul id="menu">
+                    <li>
+                       <a href="chapter1/assignment1.html"> Chapter 1 </a>
+                    </li>
+                    <li>
+                       <a href="chapter3.html"> Chapter 3 </a>
+                    </li>
+                    <li>
+                       <a href="chapter4_1.html"> Chapter 4 </a>
+                    </li>
+                    <li>
+                       <a href="chapter5a_4.9.html"> Chapter 5a </a>
+                    </li>
+                    <li class="current">
+                       <a href="chapter5b_5.2.html"> Chapter 5b </a>
+                    </li>
+                    <li>
+                       <a href="chapter6_6.3.html"> Chapter 6 </a>
+                    </li>
+                    <li>
+                       <a href="chapter7_7.6.html"> Chapter 7 </a>
+                    </li>
+                    <li>
+                       <a href="chapter8_8.5.html"> Chapter 8 </a>
+                    </li>
+                    <li>
+                       <a href="chapter9.html"> Chapter 9 </a>
+                    </li>
+                    <li>
+                       <a href="chapter10.html"> Chapter 10 </a>
+                    </li>
+                    <li>
+                       <a href="midterm1.html"> Exams </a>
+                    </li>
+                    <li>
+                       <a href="final.html"> Project </a>
+                    </li>
+
+                </ul>
+            </div>
+            <div id="submenu_container">
+                <ul class="submenu">
+                    <li class="current">
+                        <a href="chapter5b_5.2.html"> Execise 5.2 </a>
+                    </li>
+                    <li>
+                        <a href="chapter5b_5.3.html"> Execise 5.3 </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid_12" id="content" style="background-color:#f1f1f1;">
+            <br/>
+            <p>
+                Add javadoc comments to Bouning Ball example.
+            </p>
+            <br/>
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre class="alt"><span class="lnum">   1:  </span><span class="kwrd">&lt;</span><span class="html">APPLET</span> <span class="attr">codebase</span><span class="kwrd">="chapter5b/ex52/"</span> <span class="attr">code</span><span class="kwrd">="ex52.BouncingBall.class"</span> <span class="attr">WIDTH</span>=<span class="attr">250</span> <span class="attr">HEIGHT</span>=<span class="attr">150</span><span class="kwrd">&gt;</span></pre>
+<pre><span class="lnum">   2:  </span>    <span class="kwrd">&lt;</span><span class="html">param</span> <span class="attr">name</span><span class="kwrd">="delay"</span> <span class="attr">value</span><span class="kwrd">="30"</span><span class="kwrd">&gt;</span></pre>
+<pre class="alt"><span class="lnum">   3:  </span><span class="kwrd">&lt;/</span><span class="html">APPLET</span><span class="kwrd">&gt;</span></pre>
+</div>
+
+            <APPLET codebase="chapter5b/ex52/" code="ex52.BouncingBall.class" WIDTH=250 HEIGHT=150>
+                <param name="delay" value="30">
+            </APPLET>
+            <br/>
+            <br/>
+            <b>How to generate javadoc?</b>
+            <p>
+                <div class="csharpcode">    
+                    <pre>
+                        $> javadoc -version -author -d docs ex52/*.java
+                    </pre>
+                </div>
+            </p>
+
+            <h4>
+                <a href='chapter5b/ex52/docs/index.html' target='_blank' title='It will open the javadoc generated document in a new browser window'>
+                    Javadocs
+                </a>
+            </h4>
+
+            <h5 class="sub">I. Timesheet</h5>
+
+            <img src='chapter5b/ex52/timesheet.png'/>
+
+            <br/>
+
+            <h5 class="sub">II. Source Code</h5>
+            <h6>package-info.java</h6>
+
+
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre class="alt"><span class="lnum">   1:  </span><span class="rem">/**</span></pre>
+<pre><span class="lnum">   2:  </span><span class="rem">* The ex52 package is package contains BouncingBall </span></pre>
+<pre class="alt"><span class="lnum">   3:  </span><span class="rem">* example applet from Xiaoping Jia's Object-Oriented </span></pre>
+<pre><span class="lnum">   4:  </span><span class="rem">* Software Development Using Java.</span></pre>
+<pre class="alt"><span class="lnum">   5:  </span><span class="rem">* This package summary is in a file named </span></pre>
+<pre><span class="lnum">   6:  </span><span class="rem">* &lt;code&gt;package-info.java&lt;/code&gt;.</span></pre>
+<pre class="alt"><span class="lnum">   7:  </span><span class="rem">* @version 1.1</span></pre>
+<pre><span class="lnum">   8:  </span><span class="rem">* @author Metin Yorulmaz</span></pre>
+<pre class="alt"><span class="lnum">   9:  </span><span class="rem">*/</span></pre>
+<pre><span class="lnum">  10:  </span>package ex52;</pre>
+</div>
+
+<br/>
+            <h6>BouncingBall.java</h6>
+
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre class="alt"><span class="lnum">   1:  </span>package ex52;</pre>
+<pre><span class="lnum">   2:  </span>import java.awt.*;</pre>
+<pre class="alt"><span class="lnum">   3:  </span>&nbsp;</pre>
+<pre><span class="lnum">   4:  </span><span class="rem">/** </span></pre>
+<pre class="alt"><span class="lnum">   5:  </span><span class="rem"> * BouncingBall animated applet.</span></pre>
+<pre><span class="lnum">   6:  </span><span class="rem"> * This is BouncingBall example applet from Xiaoping Jia's Object-Oriented </span></pre>
+<pre class="alt"><span class="lnum">   7:  </span><span class="rem"> * Software Development Using Java. </span></pre>
+<pre><span class="lnum">   8:  </span><span class="rem"> * Code slightly modified, javadoc comments added.</span></pre>
+<pre class="alt"><span class="lnum">   9:  </span><span class="rem"> * </span></pre>
+<pre><span class="lnum">  10:  </span><span class="rem"> * Bouncing ball demonstrates how to avoid flickering when working with </span></pre>
+<pre class="alt"><span class="lnum">  11:  </span><span class="rem"> * graphics. It uses a technique called off-screen drawing or double </span></pre>
+<pre><span class="lnum">  12:  </span><span class="rem"> * buffering. Instead of painting each frame directly to screen, it first</span></pre>
+<pre class="alt"><span class="lnum">  13:  </span><span class="rem"> * paints it in a temporary buffer in the memory then copies that </span></pre>
+<pre><span class="lnum">  14:  </span><span class="rem"> * frame to the screen.</span></pre>
+<pre class="alt"><span class="lnum">  15:  </span><span class="rem"> * </span></pre>
+<pre><span class="lnum">  16:  </span><span class="rem"> * @author    Xiaoping Jia</span></pre>
+<pre class="alt"><span class="lnum">  17:  </span><span class="rem"> * @author    Metin Yorulmaz</span></pre>
+<pre><span class="lnum">  18:  </span><span class="rem"> * @version   1.0.0</span></pre>
+<pre class="alt"><span class="lnum">  19:  </span><span class="rem"> * @since     2011-10-06</span></pre>
+<pre><span class="lnum">  20:  </span><span class="rem"> */</span></pre>
+<pre class="alt"><span class="lnum">  21:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> BouncingBall extends java.applet.Applet implements Runnable{</pre>
+<pre><span class="lnum">  22:  </span>    </pre>
+<pre class="alt"><span class="lnum">  23:  </span>    <span class="rem">/** Color of ball */</span></pre>
+<pre><span class="lnum">  24:  </span>    <span class="kwrd">protected</span> Color color = Color.green;</pre>
+<pre class="alt"><span class="lnum">  25:  </span>    </pre>
+<pre><span class="lnum">  26:  </span>    <span class="rem">/** Radius of ball */</span></pre>
+<pre class="alt"><span class="lnum">  27:  </span>    <span class="kwrd">protected</span> <span class="kwrd">int</span> radius = 20;</pre>
+<pre><span class="lnum">  28:  </span>    </pre>
+<pre class="alt"><span class="lnum">  29:  </span>    <span class="rem">/**Refresh rate of bouncing ball. </span></pre>
+<pre><span class="lnum">  30:  </span><span class="rem">     * Default value is 100 mills, but can </span></pre>
+<pre class="alt"><span class="lnum">  31:  </span><span class="rem">     * be set by applet parameter 'delay'*/</span></pre>
+<pre><span class="lnum">  32:  </span>    <span class="kwrd">protected</span> <span class="kwrd">int</span> delay = 100;</pre>
+<pre class="alt"><span class="lnum">  33:  </span>    </pre>
+<pre><span class="lnum">  34:  </span>    <span class="rem">/** X coordinate of center of the ball*/</span></pre>
+<pre class="alt"><span class="lnum">  35:  </span>    <span class="kwrd">protected</span> <span class="kwrd">int</span> x;</pre>
+<pre><span class="lnum">  36:  </span>    </pre>
+<pre class="alt"><span class="lnum">  37:  </span>    <span class="rem">/** Y coordinate of center of the ball*/</span></pre>
+<pre><span class="lnum">  38:  </span>    <span class="kwrd">protected</span> <span class="kwrd">int</span> y;</pre>
+<pre class="alt"><span class="lnum">  39:  </span>    </pre>
+<pre><span class="lnum">  40:  </span>    <span class="rem">/** Variable that determines pixel amount of </span></pre>
+<pre class="alt"><span class="lnum">  41:  </span><span class="rem">     * horizontal movement of the ball per delay time */</span></pre>
+<pre><span class="lnum">  42:  </span>    <span class="kwrd">protected</span> <span class="kwrd">int</span> dx=-1;</pre>
+<pre class="alt"><span class="lnum">  43:  </span>&nbsp;</pre>
+<pre><span class="lnum">  44:  </span>    <span class="rem">/** Variable that determines pixel amount of </span></pre>
+<pre class="alt"><span class="lnum">  45:  </span><span class="rem">     * vertical movement of the ball per delay time */</span></pre>
+<pre><span class="lnum">  46:  </span>    <span class="kwrd">protected</span> <span class="kwrd">int</span> dy=-5;</pre>
+<pre class="alt"><span class="lnum">  47:  </span>    </pre>
+<pre><span class="lnum">  48:  </span>    <span class="rem">/** Image to show actual ball.*/</span></pre>
+<pre class="alt"><span class="lnum">  49:  </span>    <span class="kwrd">protected</span> Image image;</pre>
+<pre><span class="lnum">  50:  </span>    </pre>
+<pre class="alt"><span class="lnum">  51:  </span>    <span class="rem">/** Graphics object used to implement off-screen drawing.*/</span></pre>
+<pre><span class="lnum">  52:  </span>    <span class="kwrd">protected</span> Graphics offscreen;</pre>
+<pre class="alt"><span class="lnum">  53:  </span>    </pre>
+<pre><span class="lnum">  54:  </span>    <span class="rem">/**Variable used to hold applet's dimensions.*/</span></pre>
+<pre class="alt"><span class="lnum">  55:  </span>    <span class="kwrd">protected</span> Dimension d;</pre>
+<pre><span class="lnum">  56:  </span>    </pre>
+<pre class="alt"><span class="lnum">  57:  </span>    <span class="rem">/**Thread that refreshes screen every delay seconds.*/</span></pre>
+<pre><span class="lnum">  58:  </span>    <span class="kwrd">protected</span> Thread bouncingThread;</pre>
+<pre class="alt"><span class="lnum">  59:  </span>    </pre>
+<pre><span class="lnum">  60:  </span>    <span class="rem">/**</span></pre>
+<pre class="alt"><span class="lnum">  61:  </span><span class="rem">     * Initial method called after applet initialized.</span></pre>
+<pre><span class="lnum">  62:  </span><span class="rem">     * Dimension of the applet screen is determined. </span></pre>
+<pre class="alt"><span class="lnum">  63:  </span><span class="rem">     * 'delay' parameter from applet parameters is read.</span></pre>
+<pre><span class="lnum">  64:  </span><span class="rem">     * @see java.applet.Applet</span></pre>
+<pre class="alt"><span class="lnum">  65:  </span><span class="rem">     */</span></pre>
+<pre><span class="lnum">  66:  </span>    <span class="kwrd">public</span> <span class="kwrd">void</span> init(){</pre>
+<pre class="alt"><span class="lnum">  67:  </span>        String att = getParameter(<span class="str">"delay"</span>);</pre>
+<pre><span class="lnum">  68:  </span>        <span class="kwrd">if</span>(att != <span class="kwrd">null</span>){</pre>
+<pre class="alt"><span class="lnum">  69:  </span>            delay = Integer.parseInt(att);</pre>
+<pre><span class="lnum">  70:  </span>        }</pre>
+<pre class="alt"><span class="lnum">  71:  </span>        d = getSize();</pre>
+<pre><span class="lnum">  72:  </span>        x = d.width * 2 / 3;</pre>
+<pre class="alt"><span class="lnum">  73:  </span>        y = d.height - radius;</pre>
+<pre><span class="lnum">  74:  </span>    }</pre>
+<pre class="alt"><span class="lnum">  75:  </span>    </pre>
+<pre><span class="lnum">  76:  </span>    <span class="rem">/**</span></pre>
+<pre class="alt"><span class="lnum">  77:  </span><span class="rem">     * Calculate the new location of the ball.</span></pre>
+<pre><span class="lnum">  78:  </span><span class="rem">     * Draws the off-screen Image in the memory first. </span></pre>
+<pre class="alt"><span class="lnum">  79:  </span><span class="rem">     * Then draws that image on the applet.</span></pre>
+<pre><span class="lnum">  80:  </span><span class="rem">     * Use {@link #createImage(int, int)} to generate off-screen image.     </span></pre>
+<pre class="alt"><span class="lnum">  81:  </span><span class="rem">     * @param  g Graphics object that rendering the off-screen image.</span></pre>
+<pre><span class="lnum">  82:  </span><span class="rem">     * @see java.applet.Applet </span></pre>
+<pre class="alt"><span class="lnum">  83:  </span><span class="rem">     * @see Graphics</span></pre>
+<pre><span class="lnum">  84:  </span><span class="rem">     * @see Image</span></pre>
+<pre class="alt"><span class="lnum">  85:  </span><span class="rem">     */</span></pre>
+<pre><span class="lnum">  86:  </span>    <span class="kwrd">public</span> <span class="kwrd">void</span> update(Graphics g){</pre>
+<pre class="alt"><span class="lnum">  87:  </span>        <span class="kwrd">if</span>(image == <span class="kwrd">null</span>){</pre>
+<pre><span class="lnum">  88:  </span>            image = createImage(d.width, d.height);</pre>
+<pre class="alt"><span class="lnum">  89:  </span>            offscreen = image.getGraphics();</pre>
+<pre><span class="lnum">  90:  </span>        }</pre>
+<pre class="alt"><span class="lnum">  91:  </span>        offscreen.setColor(Color.white);</pre>
+<pre><span class="lnum">  92:  </span>        offscreen.fillRect(0, 0, d.width, d.height);</pre>
+<pre class="alt"><span class="lnum">  93:  </span>        <span class="kwrd">if</span>(x &lt; radius || x &gt; d.width - radius){</pre>
+<pre><span class="lnum">  94:  </span>            dx = -dx;</pre>
+<pre class="alt"><span class="lnum">  95:  </span>        }</pre>
+<pre><span class="lnum">  96:  </span>        </pre>
+<pre class="alt"><span class="lnum">  97:  </span>        <span class="kwrd">if</span>(y &lt; radius || y &gt; d.height - radius){</pre>
+<pre><span class="lnum">  98:  </span>            dy = -dy;</pre>
+<pre class="alt"><span class="lnum">  99:  </span>        }</pre>
+<pre><span class="lnum"> 100:  </span>        x += dx;</pre>
+<pre class="alt"><span class="lnum"> 101:  </span>        y += dy;</pre>
+<pre><span class="lnum"> 102:  </span>        </pre>
+<pre class="alt"><span class="lnum"> 103:  </span>        offscreen.setColor(color);</pre>
+<pre><span class="lnum"> 104:  </span>        offscreen.fillOval(x-radius, y - radius, radius * 2, radius * 2);</pre>
+<pre class="alt"><span class="lnum"> 105:  </span>        g.drawImage(image, 0, 0, <span class="kwrd">this</span>);</pre>
+<pre><span class="lnum"> 106:  </span>    }</pre>
+<pre class="alt"><span class="lnum"> 107:  </span>    </pre>
+<pre><span class="lnum"> 108:  </span>    <span class="rem">/**</span></pre>
+<pre class="alt"><span class="lnum"> 109:  </span><span class="rem">     * This method is called implicitly by the thread that updates </span></pre>
+<pre><span class="lnum"> 110:  </span><span class="rem">     * screen to create animation. paint method is invoked when thread repaint </span></pre>
+<pre class="alt"><span class="lnum"> 111:  </span><span class="rem">     * method is called.</span></pre>
+<pre><span class="lnum"> 112:  </span><span class="rem">     * Use {@link #update(Graphics)} to animate.     </span></pre>
+<pre class="alt"><span class="lnum"> 113:  </span><span class="rem">     * @param  g Graphics object to update </span></pre>
+<pre><span class="lnum"> 114:  </span><span class="rem">     * @see java.applet.Applet </span></pre>
+<pre class="alt"><span class="lnum"> 115:  </span><span class="rem">     * @see Graphics</span></pre>
+<pre><span class="lnum"> 116:  </span><span class="rem">     */</span></pre>
+<pre class="alt"><span class="lnum"> 117:  </span>    <span class="kwrd">public</span> <span class="kwrd">void</span> paint(Graphics g){</pre>
+<pre><span class="lnum"> 118:  </span>        update(g);</pre>
+<pre class="alt"><span class="lnum"> 119:  </span>    }</pre>
+<pre><span class="lnum"> 120:  </span>        </pre>
+<pre class="alt"><span class="lnum"> 121:  </span>    <span class="rem">/**</span></pre>
+<pre><span class="lnum"> 122:  </span><span class="rem">     * Initializes animation by initializing bouncingThread and activating it.</span></pre>
+<pre class="alt"><span class="lnum"> 123:  </span><span class="rem">     * Called implicitly in lifecycle of applet.</span></pre>
+<pre><span class="lnum"> 124:  </span><span class="rem">     * @see java.applet.Applet</span></pre>
+<pre class="alt"><span class="lnum"> 125:  </span><span class="rem">     */</span></pre>
+<pre><span class="lnum"> 126:  </span>    <span class="kwrd">public</span> <span class="kwrd">void</span> start(){</pre>
+<pre class="alt"><span class="lnum"> 127:  </span>        bouncingThread = <span class="kwrd">new</span> Thread(<span class="kwrd">this</span>);</pre>
+<pre><span class="lnum"> 128:  </span>        bouncingThread.start();</pre>
+<pre class="alt"><span class="lnum"> 129:  </span>    }</pre>
+<pre><span class="lnum"> 130:  </span>    </pre>
+<pre class="alt"><span class="lnum"> 131:  </span>    <span class="rem">/**</span></pre>
+<pre><span class="lnum"> 132:  </span><span class="rem">     * Stop animation. Called implicitly in lifecycle of applet.</span></pre>
+<pre class="alt"><span class="lnum"> 133:  </span><span class="rem">     * Assign null to bouncingThread to stop it. It gets collected </span></pre>
+<pre><span class="lnum"> 134:  </span><span class="rem">     * by garbage collector. </span></pre>
+<pre class="alt"><span class="lnum"> 135:  </span><span class="rem">     * @see java.applet.Applet</span></pre>
+<pre><span class="lnum"> 136:  </span><span class="rem">     */</span>    </pre>
+<pre class="alt"><span class="lnum"> 137:  </span>    <span class="kwrd">public</span> <span class="kwrd">void</span> stop(){</pre>
+<pre><span class="lnum"> 138:  </span>        bouncingThread = <span class="kwrd">null</span>;</pre>
+<pre class="alt"><span class="lnum"> 139:  </span>    }</pre>
+<pre><span class="lnum"> 140:  </span>    </pre>
+<pre class="alt"><span class="lnum"> 141:  </span>    <span class="rem">/**</span></pre>
+<pre><span class="lnum"> 142:  </span><span class="rem">     * Runs an infinite loop. Wakes the thread up every delay milliseconds,</span></pre>
+<pre class="alt"><span class="lnum"> 143:  </span><span class="rem">     * animate screen (by calling repaint()) then sleep the worker thread.</span></pre>
+<pre><span class="lnum"> 144:  </span><span class="rem">     * Called implicitly when thread's start method is called. </span></pre>
+<pre class="alt"><span class="lnum"> 145:  </span><span class="rem">     * @see Thread</span></pre>
+<pre><span class="lnum"> 146:  </span><span class="rem">     */</span></pre>
+<pre class="alt"><span class="lnum"> 147:  </span>    <span class="kwrd">public</span> <span class="kwrd">void</span> run() {</pre>
+<pre><span class="lnum"> 148:  </span>        <span class="kwrd">while</span>(Thread.currentThread() == bouncingThread){</pre>
+<pre class="alt"><span class="lnum"> 149:  </span>            <span class="kwrd">try</span>{</pre>
+<pre><span class="lnum"> 150:  </span>                Thread.sleep(delay);                </pre>
+<pre class="alt"><span class="lnum"> 151:  </span>            }<span class="kwrd">catch</span>(InterruptedException e){}</pre>
+<pre><span class="lnum"> 152:  </span>            repaint();</pre>
+<pre class="alt"><span class="lnum"> 153:  </span>        }</pre>
+<pre><span class="lnum"> 154:  </span>        </pre>
+<pre class="alt"><span class="lnum"> 155:  </span>    }</pre>
+<pre><span class="lnum"> 156:  </span>    </pre>
+<pre class="alt"><span class="lnum"> 157:  </span>}</pre>
+</div>
+
+            <h5 class="sub">III. Screenshots</h5>
+            <img src='chapter5b/ex52/capture.png'></img>
+
+        </div>
+
+
+        <div class="grid_12" style="height:500px;background-color:#111;">
+            <div style="text-align:center">
+                CS602 - Java Programming - Metin Yorulmaz
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,1027 @@
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>CS602 - Java Programming - Metin Yorulmaz</title>
+    <link href="public/stylesheets/reset.css" rel="stylesheet" type="text/css" />
+    <link href="public/stylesheets/960.css" rel="stylesheet" type="text/css" />
+    <link href="public/stylesheets/site.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    
+    <div class="container_12">
+        
+        <div class="grid_12">
+            <div id="header">
+                CS602 - Java Programming
+            </div>
+        </div>
+
+        <div class="grid_12">
+            <div id="menu_container">
+                <ul id="menu">
+                    <li>
+                       <a href="chapter1/assignment1.html"> Chapter 1 </a>
+                    </li>
+                    <li>
+                       <a href="chapter3.html"> Chapter 3 </a>
+                    </li>
+                    <li>
+                       <a href="chapter4_1.html"> Chapter 4 </a>
+                    </li>
+                    <li>
+                       <a href="chapter5a_4.9.html"> Chapter 5a </a>
+                    </li>
+                    <li>
+                       <a href="chapter5b_5.2.html"> Chapter 5b </a>
+                    </li>
+                    <li>
+                       <a href="chapter6_6.3.html"> Chapter 6 </a>
+                    </li>
+                    <li>
+                       <a href="chapter7_7.6.html"> Chapter 7 </a>
+                    </li>
+                    <li>
+                       <a href="chapter8_8.5.html"> Chapter 8 </a>
+                    </li>
+                    <li>
+                       <a href="chapter9.html"> Chapter 9 </a>
+                    </li>
+                    <li>
+                       <a href="chapter10.html"> Chapter 10 </a>
+                    </li>
+                    <li>
+                       <a href="midterm1.html"> Exams </a>
+                    </li>
+                    <li class="current">
+                       <a href="final.html"> Project </a>
+                    </li>
+                </ul>
+            </div>
+            <div id="submenu_container">
+                <ul class="submenu">
+                    <li class="current">
+                        <a href="final.html"> Final </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid_12" id="content" style="background-color:#f1f1f1;">
+            <br/>
+            <p>
+                Beverage Maker
+                <ul>
+                    <li>
+                        Ability to chose different types of beverages.
+                    </li>
+                    <li>
+                        Add ingredients.
+                    </li>
+                    <li>
+                        Place order. Save order to database.
+                    </li>
+                    <li>
+                        Beverage types and ingredients are retrieved from database.
+                    </li>
+                </ul>
+            </p>
+            <p>
+                NOTE: Please make sure you are connected to NJIT network. This is needed for database to work.
+            </p>
+            <br/>
+
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span><span class="kwrd">&lt;</span><span class="html">APPLET</span>  <span class="attr">codebase</span><span class="kwrd">="final/"</span> <span class="attr">code</span><span class="kwrd">="OrderApplet.class"</span> <span class="attr">archive</span><span class="kwrd">='ojdbc6.jar,final.jar'</span> <span class="attr">WIDTH</span>=<span class="attr">700</span> <span class="attr">HEIGHT</span>=<span class="attr">400</span><span class="kwrd">&gt;</span></pre>
+<pre><span class="lnum">   2:  </span><span class="kwrd">&lt;/</span><span class="html">APPLET</span><span class="kwrd">&gt;</span></pre>
+</div>
+<br/>
+
+<APPLET  codebase="final/" code="OrderApplet.class" archive='ojdbc6.jar,final.jar' WIDTH=700 HEIGHT=400>
+</APPLET>
+
+<br/>
+<br/>
+<h5 class="sub">I. Documents</h5>
+<br/>
+<h6>Class Diagram</h6>
+<p>
+    This class diagram represent basic interaction between classes. To simpldy the deagram, some classes are not represented here.
+</p>
+
+<img src='final/classd.png'/>
+<br/>
+<a href='final/classd.pdf'>Download as PDF</a>
+
+<br/>
+<br/>
+<h6>Communication Diagram</h6>
+<p>
+    This communication diagram represent how database access is sturctured. To simpldy the deagram, this diagram displays Product component only. There are Order and Ingredient components which are using same architecture.
+</p>
+<img src='final/dbinteraction.png'/>
+<br/>
+<a href='final/dbinteraction.pdf'>Download as PDF</a>
+<br/>
+<br/>
+<h6>ER Diagram</h6>
+<p>
+    ER diagrams represents tables in the oracle database.
+</p>
+<img src='final/er.png'/>
+<br/>
+<img src='final/dbtree.png'/>
+<br/>
+
+
+<br/>
+            <h5 class="sub">II. Source Code</h5>
+            
+            <br/>
+            <h6>OrderApplet.java</h6>
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>&nbsp;</pre>
+<pre><span class="lnum">   2:  </span>import java.awt.*;</pre>
+<pre><span class="lnum">   3:  </span>&nbsp;</pre>
+<pre><span class="lnum">   4:  </span>import ui.*;</pre>
+<pre><span class="lnum">   5:  </span>&nbsp;</pre>
+<pre><span class="lnum">   6:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> OrderApplet extends java.applet.Applet</pre>
+<pre><span class="lnum">   7:  </span>{</pre>
+<pre><span class="lnum">   8:  </span>&nbsp;</pre>
+<pre><span class="lnum">   9:  </span>  <span class="rem">// Create the User Interface</span></pre>
+<pre><span class="lnum">  10:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> init ()</pre>
+<pre><span class="lnum">  11:  </span>  {</pre>
+<pre><span class="lnum">  12:  </span>    <span class="kwrd">this</span>.setLayout (<span class="kwrd">new</span> BorderLayout ());</pre>
+<pre><span class="lnum">  13:  </span>    Panel p = <span class="kwrd">new</span> ContentPanel(<span class="kwrd">this</span>);</pre>
+<pre><span class="lnum">  14:  </span>    <span class="kwrd">this</span>.add(p, BorderLayout.CENTER);</pre>
+<pre><span class="lnum">  15:  </span>  }</pre>
+<pre><span class="lnum">  16:  </span>&nbsp;</pre>
+<pre><span class="lnum">  17:  </span>}</pre>
+</div>
+            <br/>
+            <h6>ContetPanel.java</h6>
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>package ui;</pre>
+<pre><span class="lnum">   2:  </span>&nbsp;</pre>
+<pre><span class="lnum">   3:  </span>import java.applet.Applet;</pre>
+<pre><span class="lnum">   4:  </span>import java.applet.AudioClip;</pre>
+<pre><span class="lnum">   5:  </span>import java.awt.*;</pre>
+<pre><span class="lnum">   6:  </span>import java.awt.<span class="kwrd">event</span>.*;</pre>
+<pre><span class="lnum">   7:  </span>import java.sql.*;</pre>
+<pre><span class="lnum">   8:  </span>import java.util.*;</pre>
+<pre><span class="lnum">   9:  </span>&nbsp;</pre>
+<pre><span class="lnum">  10:  </span>import javax.swing.*;</pre>
+<pre><span class="lnum">  11:  </span>import models.*;</pre>
+<pre><span class="lnum">  12:  </span>import utils.*;</pre>
+<pre><span class="lnum">  13:  </span>&nbsp;</pre>
+<pre><span class="lnum">  14:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> ContentPanel extends Panel  {</pre>
+<pre><span class="lnum">  15:  </span>  <span class="kwrd">private</span> Panel leftPanel;</pre>
+<pre><span class="lnum">  16:  </span>  <span class="kwrd">private</span> Panel rightPanel;</pre>
+<pre><span class="lnum">  17:  </span>  <span class="kwrd">private</span> Choice selector;</pre>
+<pre><span class="lnum">  18:  </span>  <span class="kwrd">private</span> Choice ingredients;</pre>
+<pre><span class="lnum">  19:  </span>  <span class="kwrd">private</span> ArrayList&lt;Product&gt; allProducts = <span class="kwrd">null</span>;</pre>
+<pre><span class="lnum">  20:  </span>  <span class="kwrd">private</span> ArrayList&lt;Ingredient&gt; allIngredients = <span class="kwrd">null</span>;</pre>
+<pre><span class="lnum">  21:  </span>  <span class="kwrd">private</span> JLabel productImage;</pre>
+<pre><span class="lnum">  22:  </span>  <span class="kwrd">private</span> Applet applet;</pre>
+<pre><span class="lnum">  23:  </span>  <span class="kwrd">private</span> Order order;</pre>
+<pre><span class="lnum">  24:  </span>  <span class="kwrd">private</span> JLabel price;</pre>
+<pre><span class="lnum">  25:  </span>  <span class="kwrd">private</span> JLabel description;</pre>
+<pre><span class="lnum">  26:  </span>  DefaultListModel ordersListModel = <span class="kwrd">new</span> DefaultListModel();  </pre>
+<pre><span class="lnum">  27:  </span>  JList orderList = <span class="kwrd">new</span> JList(ordersListModel);</pre>
+<pre><span class="lnum">  28:  </span>  </pre>
+<pre><span class="lnum">  29:  </span>  <span class="kwrd">public</span> ContentPanel(Applet parent)</pre>
+<pre><span class="lnum">  30:  </span>  {</pre>
+<pre><span class="lnum">  31:  </span>    super();</pre>
+<pre><span class="lnum">  32:  </span>    order = <span class="kwrd">new</span> Order();</pre>
+<pre><span class="lnum">  33:  </span>    <span class="kwrd">this</span>.applet = parent;</pre>
+<pre><span class="lnum">  34:  </span>    setUI();</pre>
+<pre><span class="lnum">  35:  </span>    </pre>
+<pre><span class="lnum">  36:  </span>  }</pre>
+<pre><span class="lnum">  37:  </span>  </pre>
+<pre><span class="lnum">  38:  </span>  <span class="kwrd">private</span> <span class="kwrd">void</span> setUI()</pre>
+<pre><span class="lnum">  39:  </span>  {</pre>
+<pre><span class="lnum">  40:  </span>    <span class="kwrd">this</span>.setLayout(<span class="kwrd">new</span> BorderLayout());</pre>
+<pre><span class="lnum">  41:  </span>    add(<span class="kwrd">new</span> Label(<span class="str">"Drink Station"</span>, Label.CENTER) , BorderLayout.NORTH);</pre>
+<pre><span class="lnum">  42:  </span>    buildLeftPanel();</pre>
+<pre><span class="lnum">  43:  </span>    buildRightPanel();</pre>
+<pre><span class="lnum">  44:  </span>    buildSouthPanel();</pre>
+<pre><span class="lnum">  45:  </span>  }</pre>
+<pre><span class="lnum">  46:  </span>  </pre>
+<pre><span class="lnum">  47:  </span>  <span class="kwrd">private</span> <span class="kwrd">void</span> buildLeftPanel(){</pre>
+<pre><span class="lnum">  48:  </span>    leftPanel = <span class="kwrd">new</span> Panel();</pre>
+<pre><span class="lnum">  49:  </span>    GridLayout bl = <span class="kwrd">new</span> GridLayout(7, 1, 0, 0);</pre>
+<pre><span class="lnum">  50:  </span>    leftPanel.setLayout(bl);</pre>
+<pre><span class="lnum">  51:  </span>    selector = <span class="kwrd">new</span> Choice();</pre>
+<pre><span class="lnum">  52:  </span>    <span class="kwrd">try</span> {</pre>
+<pre><span class="lnum">  53:  </span>      allProducts = Product.findAll();</pre>
+<pre><span class="lnum">  54:  </span>    } <span class="kwrd">catch</span> (SQLException e) {</pre>
+<pre><span class="lnum">  55:  </span>      e.printStackTrace();</pre>
+<pre><span class="lnum">  56:  </span>    }</pre>
+<pre><span class="lnum">  57:  </span>    selector.add(<span class="str">""</span>);</pre>
+<pre><span class="lnum">  58:  </span>    <span class="kwrd">for</span> (Product p : allProducts) {</pre>
+<pre><span class="lnum">  59:  </span>      selector.add(p.getName());</pre>
+<pre><span class="lnum">  60:  </span>    }</pre>
+<pre><span class="lnum">  61:  </span>    leftPanel.add(<span class="kwrd">new</span> Label(<span class="str">"Chosee a drink:"</span>));  </pre>
+<pre><span class="lnum">  62:  </span>    leftPanel.add(selector);</pre>
+<pre><span class="lnum">  63:  </span>    </pre>
+<pre><span class="lnum">  64:  </span>    ingredients = <span class="kwrd">new</span> Choice();</pre>
+<pre><span class="lnum">  65:  </span>    <span class="kwrd">try</span> {</pre>
+<pre><span class="lnum">  66:  </span>      allIngredients = Ingredient.findAll();</pre>
+<pre><span class="lnum">  67:  </span>    } <span class="kwrd">catch</span> (SQLException e) {</pre>
+<pre><span class="lnum">  68:  </span>      e.printStackTrace();</pre>
+<pre><span class="lnum">  69:  </span>    }</pre>
+<pre><span class="lnum">  70:  </span>    ingredients.add(<span class="str">""</span>);</pre>
+<pre><span class="lnum">  71:  </span>    <span class="kwrd">for</span> (Ingredient i : allIngredients) {</pre>
+<pre><span class="lnum">  72:  </span>      ingredients.add(i.getName());</pre>
+<pre><span class="lnum">  73:  </span>    }</pre>
+<pre><span class="lnum">  74:  </span>&nbsp;</pre>
+<pre><span class="lnum">  75:  </span>    leftPanel.add(<span class="kwrd">new</span> Label(<span class="str">"Ingredients"</span>));  </pre>
+<pre><span class="lnum">  76:  </span>    leftPanel.add(ingredients);</pre>
+<pre><span class="lnum">  77:  </span>    </pre>
+<pre><span class="lnum">  78:  </span>&nbsp;</pre>
+<pre><span class="lnum">  79:  </span>    price = <span class="kwrd">new</span> JLabel();</pre>
+<pre><span class="lnum">  80:  </span>    leftPanel.add(price);</pre>
+<pre><span class="lnum">  81:  </span>    description = <span class="kwrd">new</span> JLabel();</pre>
+<pre><span class="lnum">  82:  </span>    description.setSize(500, 300);</pre>
+<pre><span class="lnum">  83:  </span>    leftPanel.add(description);</pre>
+<pre><span class="lnum">  84:  </span>    add(leftPanel, BorderLayout.CENTER);</pre>
+<pre><span class="lnum">  85:  </span>    selector.addItemListener(<span class="kwrd">new</span> ProductSelectorListener());</pre>
+<pre><span class="lnum">  86:  </span>    ingredients.addItemListener(<span class="kwrd">new</span> IngredientSelectorListener());</pre>
+<pre><span class="lnum">  87:  </span>  }</pre>
+<pre><span class="lnum">  88:  </span>  </pre>
+<pre><span class="lnum">  89:  </span>  <span class="kwrd">private</span> <span class="kwrd">void</span> buildRightPanel()</pre>
+<pre><span class="lnum">  90:  </span>  {</pre>
+<pre><span class="lnum">  91:  </span>    rightPanel = <span class="kwrd">new</span> Panel();</pre>
+<pre><span class="lnum">  92:  </span>    rightPanel.setLayout(<span class="kwrd">new</span> BorderLayout());</pre>
+<pre><span class="lnum">  93:  </span>    Image myPicture = <span class="kwrd">null</span>;</pre>
+<pre><span class="lnum">  94:  </span>    myPicture = applet.getImage(applet.getCodeBase(), <span class="str">"home.jpg"</span>); </pre>
+<pre><span class="lnum">  95:  </span>    productImage = <span class="kwrd">new</span> JLabel(<span class="kwrd">new</span> ImageIcon(myPicture));</pre>
+<pre><span class="lnum">  96:  </span>    rightPanel.add(productImage);</pre>
+<pre><span class="lnum">  97:  </span>    add(rightPanel, BorderLayout.EAST);</pre>
+<pre><span class="lnum">  98:  </span>  }</pre>
+<pre><span class="lnum">  99:  </span>  </pre>
+<pre><span class="lnum"> 100:  </span>  <span class="kwrd">private</span> <span class="kwrd">void</span> buildSouthPanel()</pre>
+<pre><span class="lnum"> 101:  </span>  {</pre>
+<pre><span class="lnum"> 102:  </span>    Panel southPanel = <span class="kwrd">new</span> Panel();</pre>
+<pre><span class="lnum"> 103:  </span>    southPanel.setLayout(<span class="kwrd">new</span> BorderLayout());</pre>
+<pre><span class="lnum"> 104:  </span>    Button brewBtn = <span class="kwrd">new</span> Button(<span class="str">"Prepare"</span>);</pre>
+<pre><span class="lnum"> 105:  </span>    southPanel.add(brewBtn, BorderLayout.NORTH);</pre>
+<pre><span class="lnum"> 106:  </span>    </pre>
+<pre><span class="lnum"> 107:  </span>    orderList.setLayoutOrientation(JList.VERTICAL);</pre>
+<pre><span class="lnum"> 108:  </span>    orderList.setVisibleRowCount(500);</pre>
+<pre><span class="lnum"> 109:  </span>    </pre>
+<pre><span class="lnum"> 110:  </span>    JScrollPane listScroller = <span class="kwrd">new</span> JScrollPane(orderList);</pre>
+<pre><span class="lnum"> 111:  </span>    listScroller.setPreferredSize(<span class="kwrd">new</span> Dimension(250, 100));</pre>
+<pre><span class="lnum"> 112:  </span>    southPanel.add(listScroller, BorderLayout.SOUTH);</pre>
+<pre><span class="lnum"> 113:  </span>    add(southPanel, BorderLayout.SOUTH);</pre>
+<pre><span class="lnum"> 114:  </span>    brewBtn.addActionListener(<span class="kwrd">new</span> BrewActionListener());</pre>
+<pre><span class="lnum"> 115:  </span>    </pre>
+<pre><span class="lnum"> 116:  </span>    ArrayList&lt;Order&gt; orders;</pre>
+<pre><span class="lnum"> 117:  </span>    <span class="kwrd">try</span> {</pre>
+<pre><span class="lnum"> 118:  </span>      orders = Order.findAll();</pre>
+<pre><span class="lnum"> 119:  </span>      <span class="kwrd">for</span> (Order i : orders) {</pre>
+<pre><span class="lnum"> 120:  </span>        ordersListModel.addElement(i.id + <span class="str">" - "</span> + i.description + <span class="str">" - "</span> + i.price); </pre>
+<pre><span class="lnum"> 121:  </span>      }</pre>
+<pre><span class="lnum"> 122:  </span>    } <span class="kwrd">catch</span> (SQLException e) {</pre>
+<pre><span class="lnum"> 123:  </span>      e.printStackTrace();</pre>
+<pre><span class="lnum"> 124:  </span>    }</pre>
+<pre><span class="lnum"> 125:  </span>  }</pre>
+<pre><span class="lnum"> 126:  </span>  </pre>
+<pre><span class="lnum"> 127:  </span>  <span class="rem">//Product selectior listener</span></pre>
+<pre><span class="lnum"> 128:  </span>  <span class="kwrd">class</span> ProductSelectorListener implements ItemListener {</pre>
+<pre><span class="lnum"> 129:  </span>    <span class="kwrd">public</span> <span class="kwrd">void</span> itemStateChanged(ItemEvent e) {</pre>
+<pre><span class="lnum"> 130:  </span>      <span class="kwrd">int</span> selection = selector.getSelectedIndex();</pre>
+<pre><span class="lnum"> 131:  </span>      <span class="kwrd">if</span>(selection==0) <span class="kwrd">return</span>;</pre>
+<pre><span class="lnum"> 132:  </span>      Product p = allProducts.get(selection-1);  </pre>
+<pre><span class="lnum"> 133:  </span>      order = <span class="kwrd">new</span> Order();</pre>
+<pre><span class="lnum"> 134:  </span>      Image myPicture = applet.getImage(applet.getCodeBase(), p.getImage()); </pre>
+<pre><span class="lnum"> 135:  </span>      order.decorate(p);</pre>
+<pre><span class="lnum"> 136:  </span>      productImage.setIcon(<span class="kwrd">new</span> ImageIcon(myPicture));</pre>
+<pre><span class="lnum"> 137:  </span>      price.setText(<span class="str">"Total:"</span> + order.total().toString());</pre>
+<pre><span class="lnum"> 138:  </span>      description.setText(order.description());</pre>
+<pre><span class="lnum"> 139:  </span>&nbsp;</pre>
+<pre><span class="lnum"> 140:  </span>    }</pre>
+<pre><span class="lnum"> 141:  </span>  }</pre>
+<pre><span class="lnum"> 142:  </span>&nbsp;</pre>
+<pre><span class="lnum"> 143:  </span>  <span class="kwrd">class</span> IngredientSelectorListener implements ItemListener {</pre>
+<pre><span class="lnum"> 144:  </span>    <span class="kwrd">public</span> <span class="kwrd">void</span> itemStateChanged(ItemEvent e) {</pre>
+<pre><span class="lnum"> 145:  </span>      <span class="kwrd">int</span> selection = ingredients.getSelectedIndex();</pre>
+<pre><span class="lnum"> 146:  </span>      <span class="kwrd">if</span>(selection==0) <span class="kwrd">return</span>;</pre>
+<pre><span class="lnum"> 147:  </span>      Ingredient p = allIngredients.get(selection-1);</pre>
+<pre><span class="lnum"> 148:  </span>      order.decorate(p);</pre>
+<pre><span class="lnum"> 149:  </span>      price.setText(<span class="str">"Total:"</span> + order.total().toString());</pre>
+<pre><span class="lnum"> 150:  </span>      description.setText(order.description());</pre>
+<pre><span class="lnum"> 151:  </span>    }</pre>
+<pre><span class="lnum"> 152:  </span>  }</pre>
+<pre><span class="lnum"> 153:  </span>&nbsp;</pre>
+<pre><span class="lnum"> 154:  </span>  <span class="kwrd">class</span> BrewActionListener implements ActionListener {</pre>
+<pre><span class="lnum"> 155:  </span>&nbsp;</pre>
+<pre><span class="lnum"> 156:  </span>    <span class="kwrd">public</span> <span class="kwrd">void</span> actionPerformed(ActionEvent arg0) {</pre>
+<pre><span class="lnum"> 157:  </span>      <span class="kwrd">if</span>(order==<span class="kwrd">null</span>) <span class="kwrd">return</span>; </pre>
+<pre><span class="lnum"> 158:  </span>      Image myPicture = applet.getImage(applet.getCodeBase(), <span class="str">"brewing1.gif"</span>); </pre>
+<pre><span class="lnum"> 159:  </span>      productImage.setIcon(<span class="kwrd">new</span> ImageIcon(myPicture));</pre>
+<pre><span class="lnum"> 160:  </span>      applet.repaint();</pre>
+<pre><span class="lnum"> 161:  </span>      <span class="kwrd">try</span> {</pre>
+<pre><span class="lnum"> 162:  </span>        order.save();</pre>
+<pre><span class="lnum"> 163:  </span>      } <span class="kwrd">catch</span> (SQLException e) {</pre>
+<pre><span class="lnum"> 164:  </span>        e.printStackTrace();</pre>
+<pre><span class="lnum"> 165:  </span>      }</pre>
+<pre><span class="lnum"> 166:  </span>      </pre>
+<pre><span class="lnum"> 167:  </span>      ordersListModel.clear();</pre>
+<pre><span class="lnum"> 168:  </span>      ArrayList&lt;Order&gt; orders = <span class="kwrd">null</span>;</pre>
+<pre><span class="lnum"> 169:  </span>      <span class="kwrd">try</span> {</pre>
+<pre><span class="lnum"> 170:  </span>        orders = Order.findAll();</pre>
+<pre><span class="lnum"> 171:  </span>        <span class="kwrd">for</span> (Order i : orders) {</pre>
+<pre><span class="lnum"> 172:  </span>          ordersListModel.addElement(i.id + <span class="str">" - "</span> + i.description + <span class="str">" - "</span> + i.price); </pre>
+<pre><span class="lnum"> 173:  </span>        }</pre>
+<pre><span class="lnum"> 174:  </span>      } <span class="kwrd">catch</span> (SQLException e) {</pre>
+<pre><span class="lnum"> 175:  </span>        e.printStackTrace();</pre>
+<pre><span class="lnum"> 176:  </span>      }</pre>
+<pre><span class="lnum"> 177:  </span>      myPicture = applet.getImage(applet.getCodeBase(), <span class="str">"home.jpg"</span>); </pre>
+<pre><span class="lnum"> 178:  </span>      productImage.setIcon(<span class="kwrd">new</span> ImageIcon(myPicture));</pre>
+<pre><span class="lnum"> 179:  </span>&nbsp;</pre>
+<pre><span class="lnum"> 180:  </span>      AudioClip audio = AudioUtility.getAudioClip(<span class="str">"audio/drip.au"</span>);</pre>
+<pre><span class="lnum"> 181:  </span>      audio.play();</pre>
+<pre><span class="lnum"> 182:  </span>      price.setText(<span class="str">"Order placed: "</span> + orders.get(0).id);</pre>
+<pre><span class="lnum"> 183:  </span>      description.setText(<span class="str">""</span>);</pre>
+<pre><span class="lnum"> 184:  </span>    }</pre>
+<pre><span class="lnum"> 185:  </span>  }</pre>
+<pre><span class="lnum"> 186:  </span>&nbsp;</pre>
+<pre><span class="lnum"> 187:  </span>}</pre>
+<pre><span class="lnum"> 188:  </span>&nbsp;</pre>
+</div>
+            <br/> 
+            <h6>db.Base.java</h6>
+            <p>
+                DB communication base class.
+            </p>
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>package db;</pre>
+<pre><span class="lnum">   2:  </span>&nbsp;</pre>
+<pre><span class="lnum">   3:  </span>import java.sql.*;</pre>
+<pre><span class="lnum">   4:  </span>&nbsp;</pre>
+<pre><span class="lnum">   5:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> Base {</pre>
+<pre><span class="lnum">   6:  </span>  </pre>
+<pre><span class="lnum">   7:  </span>  <span class="kwrd">private</span> String url = <span class="str">"jdbc:oracle:thin:@prophet.njit.edu:1521:course"</span>;</pre>
+<pre><span class="lnum">   8:  </span>  <span class="kwrd">private</span> String user = <span class="str">"****"</span>;</pre>
+<pre><span class="lnum">   9:  </span>  <span class="kwrd">private</span> String password = <span class="str">"****"</span>;</pre>
+<pre><span class="lnum">  10:  </span>&nbsp;</pre>
+<pre><span class="lnum">  11:  </span>  <span class="kwrd">protected</span> Connection connection;</pre>
+<pre><span class="lnum">  12:  </span>  </pre>
+<pre><span class="lnum">  13:  </span>  <span class="kwrd">public</span> Base(){</pre>
+<pre><span class="lnum">  14:  </span>    </pre>
+<pre><span class="lnum">  15:  </span>  }</pre>
+<pre><span class="lnum">  16:  </span>  </pre>
+<pre><span class="lnum">  17:  </span>  <span class="kwrd">protected</span> <span class="kwrd">void</span> connect() throws SQLException{</pre>
+<pre><span class="lnum">  18:  </span>    <span class="rem">// Load the Oracle JDBC driver</span></pre>
+<pre><span class="lnum">  19:  </span>    DriverManager.registerDriver(<span class="kwrd">new</span> oracle.jdbc.driver.OracleDriver());</pre>
+<pre><span class="lnum">  20:  </span>&nbsp;</pre>
+<pre><span class="lnum">  21:  </span>    <span class="rem">// Connect to the database</span></pre>
+<pre><span class="lnum">  22:  </span>    connection = DriverManager.getConnection (url, user, password);</pre>
+<pre><span class="lnum">  23:  </span>  }</pre>
+<pre><span class="lnum">  24:  </span>  </pre>
+<pre><span class="lnum">  25:  </span>  <span class="kwrd">public</span> Statement getStatement() throws SQLException{</pre>
+<pre><span class="lnum">  26:  </span>    <span class="kwrd">if</span>(connection == <span class="kwrd">null</span>)</pre>
+<pre><span class="lnum">  27:  </span>      connect();</pre>
+<pre><span class="lnum">  28:  </span>    <span class="kwrd">return</span> connection.createStatement ();</pre>
+<pre><span class="lnum">  29:  </span>  }</pre>
+<pre><span class="lnum">  30:  </span>&nbsp;</pre>
+<pre><span class="lnum">  31:  </span>&nbsp;</pre>
+<pre><span class="lnum">  32:  </span>  <span class="kwrd">public</span> String test() throws SQLException{</pre>
+<pre><span class="lnum">  33:  </span>&nbsp;</pre>
+<pre><span class="lnum">  34:  </span>    Statement stmt = getStatement();</pre>
+<pre><span class="lnum">  35:  </span>    ResultSet rset = stmt.executeQuery (<span class="str">"select SYSDATE from dual"</span>);</pre>
+<pre><span class="lnum">  36:  </span>    </pre>
+<pre><span class="lnum">  37:  </span>    String result = <span class="str">""</span>;</pre>
+<pre><span class="lnum">  38:  </span>    <span class="rem">// Print the result</span></pre>
+<pre><span class="lnum">  39:  </span>    <span class="kwrd">while</span> (rset.next ())</pre>
+<pre><span class="lnum">  40:  </span>      result = rset.getString (1);</pre>
+<pre><span class="lnum">  41:  </span>&nbsp;</pre>
+<pre><span class="lnum">  42:  </span>    <span class="rem">// Close the RseultSet</span></pre>
+<pre><span class="lnum">  43:  </span>    rset.close();</pre>
+<pre><span class="lnum">  44:  </span>&nbsp;</pre>
+<pre><span class="lnum">  45:  </span>    <span class="rem">// Close the Statement</span></pre>
+<pre><span class="lnum">  46:  </span>    stmt.close();</pre>
+<pre><span class="lnum">  47:  </span>&nbsp;</pre>
+<pre><span class="lnum">  48:  </span>    close();</pre>
+<pre><span class="lnum">  49:  </span>    <span class="kwrd">return</span> result;</pre>
+<pre><span class="lnum">  50:  </span>  }</pre>
+<pre><span class="lnum">  51:  </span>  </pre>
+<pre><span class="lnum">  52:  </span>  <span class="kwrd">private</span> <span class="kwrd">void</span> close() throws SQLException{</pre>
+<pre><span class="lnum">  53:  </span>    connection.close();</pre>
+<pre><span class="lnum">  54:  </span>  }</pre>
+<pre><span class="lnum">  55:  </span>  </pre>
+<pre><span class="lnum">  56:  </span>}</pre>
+</div>
+
+
+            <br/>
+            <h6> Pricing.java </h6>
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>package models;</pre>
+<pre><span class="lnum">   2:  </span>&nbsp;</pre>
+<pre><span class="lnum">   3:  </span><span class="kwrd">public</span> <span class="kwrd">interface</span> Pricing {</pre>
+<pre><span class="lnum">   4:  </span>&nbsp;</pre>
+<pre><span class="lnum">   5:  </span>  <span class="kwrd">public</span> <span class="kwrd">float</span> calculate();</pre>
+<pre><span class="lnum">   6:  </span>  <span class="kwrd">public</span> String description();</pre>
+<pre><span class="lnum">   7:  </span>  <span class="kwrd">public</span> Pricing getPricing();</pre>
+<pre><span class="lnum">   8:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> setPricing(Pricing p);</pre>
+<pre><span class="lnum">   9:  </span>}</pre>
+</div>
+
+
+            <br/>
+            <h6> BasePrice.java </h6>
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>package models;</pre>
+<pre><span class="lnum">   2:  </span>&nbsp;</pre>
+<pre><span class="lnum">   3:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> BasePrice implements Pricing{</pre>
+<pre><span class="lnum">   4:  </span>  </pre>
+<pre><span class="lnum">   5:  </span>  Pricing pricing;</pre>
+<pre><span class="lnum">   6:  </span>  </pre>
+<pre><span class="lnum">   7:  </span>  <span class="kwrd">public</span> BasePrice(){</pre>
+<pre><span class="lnum">   8:  </span>  }</pre>
+<pre><span class="lnum">   9:  </span>&nbsp;</pre>
+<pre><span class="lnum">  10:  </span>  <span class="kwrd">public</span> <span class="kwrd">float</span> calculate() {</pre>
+<pre><span class="lnum">  11:  </span>    <span class="kwrd">return</span> 0;</pre>
+<pre><span class="lnum">  12:  </span>  }</pre>
+<pre><span class="lnum">  13:  </span>&nbsp;</pre>
+<pre><span class="lnum">  14:  </span>  <span class="kwrd">public</span> String description() {</pre>
+<pre><span class="lnum">  15:  </span>    <span class="kwrd">return</span> <span class="str">""</span>;</pre>
+<pre><span class="lnum">  16:  </span>  }</pre>
+<pre><span class="lnum">  17:  </span>&nbsp;</pre>
+<pre><span class="lnum">  18:  </span>  <span class="kwrd">public</span> Pricing getPricing() {</pre>
+<pre><span class="lnum">  19:  </span>    <span class="kwrd">return</span> pricing;</pre>
+<pre><span class="lnum">  20:  </span>  }</pre>
+<pre><span class="lnum">  21:  </span>&nbsp;</pre>
+<pre><span class="lnum">  22:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> setPricing(Pricing p) {</pre>
+<pre><span class="lnum">  23:  </span>    pricing = p;</pre>
+<pre><span class="lnum">  24:  </span>  }</pre>
+<pre><span class="lnum">  25:  </span>  </pre>
+<pre><span class="lnum">  26:  </span>  </pre>
+<pre><span class="lnum">  27:  </span>}</pre>
+</div>
+
+            <br/>
+            <h6> Ingredient.java </h6>\
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>package models;</pre>
+<pre><span class="lnum">   2:  </span>&nbsp;</pre>
+<pre><span class="lnum">   3:  </span>import java.sql.SQLException;</pre>
+<pre><span class="lnum">   4:  </span>&nbsp;</pre>
+<pre><span class="lnum">   5:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> Ingredient extends IngredientData implements Pricing{</pre>
+<pre><span class="lnum">   6:  </span>  </pre>
+<pre><span class="lnum">   7:  </span>  <span class="kwrd">private</span> Pricing pricing;</pre>
+<pre><span class="lnum">   8:  </span>&nbsp;</pre>
+<pre><span class="lnum">   9:  </span>  <span class="kwrd">public</span> Ingredient(){</pre>
+<pre><span class="lnum">  10:  </span>  }</pre>
+<pre><span class="lnum">  11:  </span>&nbsp;</pre>
+<pre><span class="lnum">  12:  </span>  <span class="kwrd">public</span> Ingredient(<span class="kwrd">int</span> id) throws SQLException{</pre>
+<pre><span class="lnum">  13:  </span>    super(id);</pre>
+<pre><span class="lnum">  14:  </span>    find();</pre>
+<pre><span class="lnum">  15:  </span>  }</pre>
+<pre><span class="lnum">  16:  </span>&nbsp;</pre>
+<pre><span class="lnum">  17:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> setName(String name){</pre>
+<pre><span class="lnum">  18:  </span>    <span class="kwrd">this</span>.name = name;</pre>
+<pre><span class="lnum">  19:  </span>  }</pre>
+<pre><span class="lnum">  20:  </span>&nbsp;</pre>
+<pre><span class="lnum">  21:  </span>  <span class="kwrd">public</span> String getName(){</pre>
+<pre><span class="lnum">  22:  </span>    <span class="kwrd">return</span> <span class="kwrd">this</span>.name;</pre>
+<pre><span class="lnum">  23:  </span>  }</pre>
+<pre><span class="lnum">  24:  </span>  <span class="kwrd">public</span> Integer getId() {</pre>
+<pre><span class="lnum">  25:  </span>    <span class="kwrd">return</span> id;</pre>
+<pre><span class="lnum">  26:  </span>  }</pre>
+<pre><span class="lnum">  27:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> setId(Integer id) {</pre>
+<pre><span class="lnum">  28:  </span>    <span class="kwrd">this</span>.id = id;</pre>
+<pre><span class="lnum">  29:  </span>  }</pre>
+<pre><span class="lnum">  30:  </span>&nbsp;</pre>
+<pre><span class="lnum">  31:  </span>  <span class="kwrd">public</span> String getColor() {</pre>
+<pre><span class="lnum">  32:  </span>    <span class="kwrd">return</span> color;</pre>
+<pre><span class="lnum">  33:  </span>  }</pre>
+<pre><span class="lnum">  34:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> setColot(String color) {</pre>
+<pre><span class="lnum">  35:  </span>    <span class="kwrd">this</span>.color = color;</pre>
+<pre><span class="lnum">  36:  </span>  }</pre>
+<pre><span class="lnum">  37:  </span>&nbsp;</pre>
+<pre><span class="lnum">  38:  </span>  <span class="kwrd">public</span> Float getPrice() {</pre>
+<pre><span class="lnum">  39:  </span>    <span class="kwrd">return</span> price;</pre>
+<pre><span class="lnum">  40:  </span>  }</pre>
+<pre><span class="lnum">  41:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> setPrice(Float price) {</pre>
+<pre><span class="lnum">  42:  </span>    <span class="kwrd">this</span>.price = price;</pre>
+<pre><span class="lnum">  43:  </span>  }</pre>
+<pre><span class="lnum">  44:  </span>&nbsp;</pre>
+<pre><span class="lnum">  45:  </span>  <span class="kwrd">public</span> Pricing getPricing() {</pre>
+<pre><span class="lnum">  46:  </span>    <span class="kwrd">return</span> pricing;</pre>
+<pre><span class="lnum">  47:  </span>  }</pre>
+<pre><span class="lnum">  48:  </span>&nbsp;</pre>
+<pre><span class="lnum">  49:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> setPricing(Pricing pricing) {</pre>
+<pre><span class="lnum">  50:  </span>    <span class="kwrd">this</span>.pricing = pricing;</pre>
+<pre><span class="lnum">  51:  </span>  }</pre>
+<pre><span class="lnum">  52:  </span>  </pre>
+<pre><span class="lnum">  53:  </span>  <span class="kwrd">public</span> <span class="kwrd">float</span> calculate() {</pre>
+<pre><span class="lnum">  54:  </span>    System.<span class="kwrd">out</span>.println(<span class="str">"Ingredient calc"</span>);</pre>
+<pre><span class="lnum">  55:  </span>    <span class="kwrd">return</span> pricing.calculate() + getPrice();</pre>
+<pre><span class="lnum">  56:  </span>  }</pre>
+<pre><span class="lnum">  57:  </span>&nbsp;</pre>
+<pre><span class="lnum">  58:  </span>  <span class="kwrd">public</span> String description() {</pre>
+<pre><span class="lnum">  59:  </span>    <span class="kwrd">return</span>  pricing.description() + <span class="str">" with "</span> + getName();</pre>
+<pre><span class="lnum">  60:  </span>  }</pre>
+<pre><span class="lnum">  61:  </span>}</pre>
+</div>
+
+            <br/>
+            <h6> IngredientData.java </h6>
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>package models;</pre>
+<pre><span class="lnum">   2:  </span>&nbsp;</pre>
+<pre><span class="lnum">   3:  </span>import java.sql.*;</pre>
+<pre><span class="lnum">   4:  </span>import java.util.*;</pre>
+<pre><span class="lnum">   5:  </span>&nbsp;</pre>
+<pre><span class="lnum">   6:  </span>import db.*;</pre>
+<pre><span class="lnum">   7:  </span>&nbsp;</pre>
+<pre><span class="lnum">   8:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> IngredientData extends db.Base {</pre>
+<pre><span class="lnum">   9:  </span>  <span class="kwrd">protected</span> Integer id;</pre>
+<pre><span class="lnum">  10:  </span>  <span class="kwrd">protected</span> String name;</pre>
+<pre><span class="lnum">  11:  </span>  <span class="kwrd">protected</span> Float price;</pre>
+<pre><span class="lnum">  12:  </span>  <span class="kwrd">protected</span> String color;</pre>
+<pre><span class="lnum">  13:  </span>  </pre>
+<pre><span class="lnum">  14:  </span>&nbsp;</pre>
+<pre><span class="lnum">  15:  </span>  <span class="kwrd">public</span> IngredientData(){</pre>
+<pre><span class="lnum">  16:  </span>    </pre>
+<pre><span class="lnum">  17:  </span>  }</pre>
+<pre><span class="lnum">  18:  </span>  <span class="kwrd">public</span> IngredientData(Integer id){</pre>
+<pre><span class="lnum">  19:  </span>    <span class="kwrd">this</span>.id = id;</pre>
+<pre><span class="lnum">  20:  </span>  }  </pre>
+<pre><span class="lnum">  21:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> find() throws SQLException{</pre>
+<pre><span class="lnum">  22:  </span>    <span class="kwrd">this</span>.connect();</pre>
+<pre><span class="lnum">  23:  </span>    PreparedStatement pstmt = connection.prepareStatement (<span class="str">"SELECT * FROM INGREDIENTS WHERE INGREDIENT_ID = ? "</span>);</pre>
+<pre><span class="lnum">  24:  </span>    pstmt.setInt (1, <span class="kwrd">this</span>.id);</pre>
+<pre><span class="lnum">  25:  </span>    ResultSet rs = pstmt.executeQuery();</pre>
+<pre><span class="lnum">  26:  </span>    <span class="kwrd">while</span> (rs.next()) {</pre>
+<pre><span class="lnum">  27:  </span>      <span class="kwrd">this</span>.name = rs.getString(<span class="str">"INGREDIENT_NAME"</span>);</pre>
+<pre><span class="lnum">  28:  </span>      <span class="kwrd">this</span>.price  = rs.getFloat(<span class="str">"PRICE"</span>);</pre>
+<pre><span class="lnum">  29:  </span>      <span class="kwrd">this</span>.color  = rs.getString(<span class="str">"COLOR"</span>);</pre>
+<pre><span class="lnum">  30:  </span>    }</pre>
+<pre><span class="lnum">  31:  </span>    rs.close();</pre>
+<pre><span class="lnum">  32:  </span>    pstmt.close();</pre>
+<pre><span class="lnum">  33:  </span>    connection.close();</pre>
+<pre><span class="lnum">  34:  </span>  }</pre>
+<pre><span class="lnum">  35:  </span>&nbsp;</pre>
+<pre><span class="lnum">  36:  </span>  <span class="kwrd">public</span> <span class="kwrd">static</span> ArrayList&lt;Ingredient&gt; findAll() throws SQLException{</pre>
+<pre><span class="lnum">  37:  </span>    ArrayList&lt;Ingredient&gt; all = <span class="kwrd">new</span> ArrayList&lt;Ingredient&gt;();</pre>
+<pre><span class="lnum">  38:  </span>    Ingredient <span class="kwrd">base</span> = <span class="kwrd">new</span> Ingredient();</pre>
+<pre><span class="lnum">  39:  </span>    <span class="kwrd">base</span>.connect();</pre>
+<pre><span class="lnum">  40:  </span>    PreparedStatement pstmt = <span class="kwrd">base</span>.connection.prepareStatement(<span class="str">"SELECT * FROM INGREDIENTS"</span>);</pre>
+<pre><span class="lnum">  41:  </span>    ResultSet rs = pstmt.executeQuery();</pre>
+<pre><span class="lnum">  42:  </span>    <span class="kwrd">while</span> (rs.next()) {</pre>
+<pre><span class="lnum">  43:  </span>      Ingredient p = <span class="kwrd">new</span> Ingredient();</pre>
+<pre><span class="lnum">  44:  </span>      p.id = rs.getInt(<span class="str">"INGREDIENT_ID"</span>);</pre>
+<pre><span class="lnum">  45:  </span>      p.name = rs.getString(<span class="str">"INGREDIENT_NAME"</span>);</pre>
+<pre><span class="lnum">  46:  </span>      p.price  = rs.getFloat(<span class="str">"PRICE"</span>);</pre>
+<pre><span class="lnum">  47:  </span>      p.color  = rs.getString(<span class="str">"COLOR"</span>);</pre>
+<pre><span class="lnum">  48:  </span>      all.add(p);</pre>
+<pre><span class="lnum">  49:  </span>    }</pre>
+<pre><span class="lnum">  50:  </span>    rs.close();</pre>
+<pre><span class="lnum">  51:  </span>    pstmt.close();</pre>
+<pre><span class="lnum">  52:  </span>    <span class="kwrd">base</span>.connection.close();</pre>
+<pre><span class="lnum">  53:  </span>    <span class="kwrd">return</span> all;</pre>
+<pre><span class="lnum">  54:  </span>  }</pre>
+<pre><span class="lnum">  55:  </span>&nbsp;</pre>
+<pre><span class="lnum">  56:  </span>}</pre>
+</div>
+
+            <br/>
+            <h6> Order.java </h6>
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>package models;</pre>
+<pre><span class="lnum">   2:  </span>&nbsp;</pre>
+<pre><span class="lnum">   3:  </span>import java.sql.SQLException;</pre>
+<pre><span class="lnum">   4:  </span>&nbsp;</pre>
+<pre><span class="lnum">   5:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> Order extends OrderData{</pre>
+<pre><span class="lnum">   6:  </span>  Pricing order;</pre>
+<pre><span class="lnum">   7:  </span>  </pre>
+<pre><span class="lnum">   8:  </span>  <span class="kwrd">public</span> Order(){</pre>
+<pre><span class="lnum">   9:  </span>    </pre>
+<pre><span class="lnum">  10:  </span>  }</pre>
+<pre><span class="lnum">  11:  </span>  </pre>
+<pre><span class="lnum">  12:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> decorate(Pricing ingredient){</pre>
+<pre><span class="lnum">  13:  </span>    <span class="kwrd">if</span>(order != <span class="kwrd">null</span>)</pre>
+<pre><span class="lnum">  14:  </span>      ingredient.setPricing(order);</pre>
+<pre><span class="lnum">  15:  </span>    order = ingredient;</pre>
+<pre><span class="lnum">  16:  </span>  }</pre>
+<pre><span class="lnum">  17:  </span>  </pre>
+<pre><span class="lnum">  18:  </span>  <span class="kwrd">public</span> String description(){</pre>
+<pre><span class="lnum">  19:  </span>    <span class="kwrd">return</span> order.description();</pre>
+<pre><span class="lnum">  20:  </span>  }</pre>
+<pre><span class="lnum">  21:  </span>  </pre>
+<pre><span class="lnum">  22:  </span>  <span class="kwrd">public</span> Float total(){</pre>
+<pre><span class="lnum">  23:  </span>    <span class="kwrd">return</span> order.calculate();</pre>
+<pre><span class="lnum">  24:  </span>  }</pre>
+<pre><span class="lnum">  25:  </span>  </pre>
+<pre><span class="lnum">  26:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> save() throws SQLException</pre>
+<pre><span class="lnum">  27:  </span>  {</pre>
+<pre><span class="lnum">  28:  </span>    <span class="kwrd">if</span>(order==<span class="kwrd">null</span>) <span class="kwrd">return</span>;</pre>
+<pre><span class="lnum">  29:  </span>    <span class="kwrd">this</span>.price = order.calculate();</pre>
+<pre><span class="lnum">  30:  </span>    <span class="kwrd">this</span>.description = order.description();</pre>
+<pre><span class="lnum">  31:  </span>    super.save();</pre>
+<pre><span class="lnum">  32:  </span>  }</pre>
+<pre><span class="lnum">  33:  </span>}</pre>
+</div>
+
+            <br/>
+            <h6> OrderData.java </h6>
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>package models;</pre>
+<pre><span class="lnum">   2:  </span>&nbsp;</pre>
+<pre><span class="lnum">   3:  </span>import java.sql.*;</pre>
+<pre><span class="lnum">   4:  </span>import java.util.*;</pre>
+<pre><span class="lnum">   5:  </span>&nbsp;</pre>
+<pre><span class="lnum">   6:  </span>import db.*;</pre>
+<pre><span class="lnum">   7:  </span>&nbsp;</pre>
+<pre><span class="lnum">   8:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> OrderData extends db.Base {</pre>
+<pre><span class="lnum">   9:  </span>  <span class="kwrd">public</span> Integer id;</pre>
+<pre><span class="lnum">  10:  </span>  <span class="kwrd">public</span> Float price;</pre>
+<pre><span class="lnum">  11:  </span>  <span class="kwrd">public</span> String description;</pre>
+<pre><span class="lnum">  12:  </span>  </pre>
+<pre><span class="lnum">  13:  </span>&nbsp;</pre>
+<pre><span class="lnum">  14:  </span>  <span class="kwrd">public</span> OrderData(){</pre>
+<pre><span class="lnum">  15:  </span>    </pre>
+<pre><span class="lnum">  16:  </span>  }</pre>
+<pre><span class="lnum">  17:  </span>  <span class="kwrd">public</span> OrderData(Integer id){</pre>
+<pre><span class="lnum">  18:  </span>    <span class="kwrd">this</span>.id = id;</pre>
+<pre><span class="lnum">  19:  </span>  }  </pre>
+<pre><span class="lnum">  20:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> find() throws SQLException{</pre>
+<pre><span class="lnum">  21:  </span>    <span class="kwrd">this</span>.connect();</pre>
+<pre><span class="lnum">  22:  </span>    PreparedStatement pstmt = connection.prepareStatement (<span class="str">"SELECT * FROM ORDERS WHERE ORDER_ID = ? "</span>);</pre>
+<pre><span class="lnum">  23:  </span>    pstmt.setInt (1, <span class="kwrd">this</span>.id);</pre>
+<pre><span class="lnum">  24:  </span>    ResultSet rs = pstmt.executeQuery();</pre>
+<pre><span class="lnum">  25:  </span>    <span class="kwrd">while</span> (rs.next()) {</pre>
+<pre><span class="lnum">  26:  </span>      <span class="kwrd">this</span>.price = rs.getFloat(<span class="str">"PRICE"</span>);</pre>
+<pre><span class="lnum">  27:  </span>      <span class="kwrd">this</span>.description = rs.getString(<span class="str">"DESCRIPTION"</span>);</pre>
+<pre><span class="lnum">  28:  </span>    }</pre>
+<pre><span class="lnum">  29:  </span>    rs.close();</pre>
+<pre><span class="lnum">  30:  </span>    pstmt.close();</pre>
+<pre><span class="lnum">  31:  </span>    connection.close();</pre>
+<pre><span class="lnum">  32:  </span>  }</pre>
+<pre><span class="lnum">  33:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> save() throws SQLException{</pre>
+<pre><span class="lnum">  34:  </span>    <span class="kwrd">this</span>.connect();</pre>
+<pre><span class="lnum">  35:  </span>    PreparedStatement pstmt = </pre>
+<pre><span class="lnum">  36:  </span>        connection.prepareStatement(<span class="str">"insert into ORDERS "</span></pre>
+<pre><span class="lnum">  37:  </span>                                  + <span class="str">"(ORDER_ID, DESCRIPTION, PRICE)"</span></pre>
+<pre><span class="lnum">  38:  </span>                                  + <span class="str">"values (ORDER_SQ.NEXTVAL, ?, ?)"</span>);</pre>
+<pre><span class="lnum">  39:  </span>    pstmt.setString(1, <span class="kwrd">this</span>.description);</pre>
+<pre><span class="lnum">  40:  </span>    pstmt.setFloat(2, <span class="kwrd">this</span>.price);</pre>
+<pre><span class="lnum">  41:  </span>    pstmt.execute();</pre>
+<pre><span class="lnum">  42:  </span>    pstmt.close();</pre>
+<pre><span class="lnum">  43:  </span>    connection.close();</pre>
+<pre><span class="lnum">  44:  </span>  }</pre>
+<pre><span class="lnum">  45:  </span>&nbsp;</pre>
+<pre><span class="lnum">  46:  </span>  <span class="kwrd">public</span> <span class="kwrd">static</span> ArrayList&lt;Order&gt; findAll() throws SQLException{</pre>
+<pre><span class="lnum">  47:  </span>    ArrayList&lt;Order&gt; all = <span class="kwrd">new</span> ArrayList&lt;Order&gt;();</pre>
+<pre><span class="lnum">  48:  </span>    Order <span class="kwrd">base</span> = <span class="kwrd">new</span> Order();</pre>
+<pre><span class="lnum">  49:  </span>    <span class="kwrd">base</span>.connect();</pre>
+<pre><span class="lnum">  50:  </span>    PreparedStatement pstmt = <span class="kwrd">base</span>.connection.prepareStatement(<span class="str">"SELECT * FROM ORDERS ORDER BY ORDER_ID DESC"</span>);</pre>
+<pre><span class="lnum">  51:  </span>    ResultSet rs = pstmt.executeQuery();</pre>
+<pre><span class="lnum">  52:  </span>    <span class="kwrd">while</span> (rs.next()) {</pre>
+<pre><span class="lnum">  53:  </span>      Order p = <span class="kwrd">new</span> Order();</pre>
+<pre><span class="lnum">  54:  </span>      p.id = rs.getInt(<span class="str">"ORDER_ID"</span>);</pre>
+<pre><span class="lnum">  55:  </span>      p.description = rs.getString(<span class="str">"DESCRIPTION"</span>);</pre>
+<pre><span class="lnum">  56:  </span>      p.price  = rs.getFloat(<span class="str">"PRICE"</span>);</pre>
+<pre><span class="lnum">  57:  </span>      all.add(p);</pre>
+<pre><span class="lnum">  58:  </span>    }</pre>
+<pre><span class="lnum">  59:  </span>    rs.close();</pre>
+<pre><span class="lnum">  60:  </span>    pstmt.close();</pre>
+<pre><span class="lnum">  61:  </span>    <span class="kwrd">base</span>.connection.close();</pre>
+<pre><span class="lnum">  62:  </span>    <span class="kwrd">return</span> all;</pre>
+<pre><span class="lnum">  63:  </span>  }</pre>
+<pre><span class="lnum">  64:  </span>  </pre>
+<pre><span class="lnum">  65:  </span>}</pre>
+</div>
+            <br/>
+            <h6> Product.java </h6>
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>package models;</pre>
+<pre><span class="lnum">   2:  </span>&nbsp;</pre>
+<pre><span class="lnum">   3:  </span>import java.sql.SQLException;</pre>
+<pre><span class="lnum">   4:  </span>&nbsp;</pre>
+<pre><span class="lnum">   5:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> Product extends ProductData implements Pricing{</pre>
+<pre><span class="lnum">   6:  </span>  <span class="kwrd">private</span> Pricing pricing = <span class="kwrd">new</span> BasePrice();</pre>
+<pre><span class="lnum">   7:  </span>  </pre>
+<pre><span class="lnum">   8:  </span>  <span class="kwrd">public</span> Product(){</pre>
+<pre><span class="lnum">   9:  </span>&nbsp;</pre>
+<pre><span class="lnum">  10:  </span>  }</pre>
+<pre><span class="lnum">  11:  </span>&nbsp;</pre>
+<pre><span class="lnum">  12:  </span>  <span class="kwrd">public</span> Product(<span class="kwrd">int</span> id) throws SQLException{</pre>
+<pre><span class="lnum">  13:  </span>    super(id);</pre>
+<pre><span class="lnum">  14:  </span>    find();</pre>
+<pre><span class="lnum">  15:  </span>  }</pre>
+<pre><span class="lnum">  16:  </span>&nbsp;</pre>
+<pre><span class="lnum">  17:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> setName(String name){</pre>
+<pre><span class="lnum">  18:  </span>    <span class="kwrd">this</span>.name = name;</pre>
+<pre><span class="lnum">  19:  </span>  }</pre>
+<pre><span class="lnum">  20:  </span>&nbsp;</pre>
+<pre><span class="lnum">  21:  </span>  <span class="kwrd">public</span> String getName(){</pre>
+<pre><span class="lnum">  22:  </span>    <span class="kwrd">return</span> <span class="kwrd">this</span>.name;</pre>
+<pre><span class="lnum">  23:  </span>  }</pre>
+<pre><span class="lnum">  24:  </span>  <span class="kwrd">public</span> Integer getId() {</pre>
+<pre><span class="lnum">  25:  </span>    <span class="kwrd">return</span> id;</pre>
+<pre><span class="lnum">  26:  </span>  }</pre>
+<pre><span class="lnum">  27:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> setId(Integer id) {</pre>
+<pre><span class="lnum">  28:  </span>    <span class="kwrd">this</span>.id = id;</pre>
+<pre><span class="lnum">  29:  </span>  }</pre>
+<pre><span class="lnum">  30:  </span>  <span class="kwrd">public</span> Float getPrice() {</pre>
+<pre><span class="lnum">  31:  </span>    <span class="kwrd">return</span> price;</pre>
+<pre><span class="lnum">  32:  </span>  }</pre>
+<pre><span class="lnum">  33:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> setPrice(Float price) {</pre>
+<pre><span class="lnum">  34:  </span>    <span class="kwrd">this</span>.price = price;</pre>
+<pre><span class="lnum">  35:  </span>  }</pre>
+<pre><span class="lnum">  36:  </span>  <span class="kwrd">public</span> String getImage() {</pre>
+<pre><span class="lnum">  37:  </span>    <span class="kwrd">return</span> image;</pre>
+<pre><span class="lnum">  38:  </span>  }</pre>
+<pre><span class="lnum">  39:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> setImage(String image) {</pre>
+<pre><span class="lnum">  40:  </span>    <span class="kwrd">this</span>.image = image;</pre>
+<pre><span class="lnum">  41:  </span>  }</pre>
+<pre><span class="lnum">  42:  </span>&nbsp;</pre>
+<pre><span class="lnum">  43:  </span>  <span class="kwrd">public</span> Pricing getPricing() {</pre>
+<pre><span class="lnum">  44:  </span>    <span class="kwrd">return</span> pricing;</pre>
+<pre><span class="lnum">  45:  </span>  }</pre>
+<pre><span class="lnum">  46:  </span>&nbsp;</pre>
+<pre><span class="lnum">  47:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> setPricing(Pricing pricing) {</pre>
+<pre><span class="lnum">  48:  </span>    <span class="kwrd">this</span>.pricing = pricing;</pre>
+<pre><span class="lnum">  49:  </span>  }</pre>
+<pre><span class="lnum">  50:  </span>  </pre>
+<pre><span class="lnum">  51:  </span>  <span class="kwrd">public</span> <span class="kwrd">float</span> calculate() {</pre>
+<pre><span class="lnum">  52:  </span>    System.<span class="kwrd">out</span>.println(<span class="str">"Product calc"</span>);</pre>
+<pre><span class="lnum">  53:  </span>    <span class="kwrd">return</span> pricing.calculate() + getPrice();</pre>
+<pre><span class="lnum">  54:  </span>  }</pre>
+<pre><span class="lnum">  55:  </span>&nbsp;</pre>
+<pre><span class="lnum">  56:  </span>  <span class="kwrd">public</span> String description() {</pre>
+<pre><span class="lnum">  57:  </span>    <span class="kwrd">return</span> getName();</pre>
+<pre><span class="lnum">  58:  </span>  }</pre>
+<pre><span class="lnum">  59:  </span>}</pre>
+</div>
+
+            <br/>
+            <h6>ProductData.java</h6>
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>package models;</pre>
+<pre><span class="lnum">   2:  </span>&nbsp;</pre>
+<pre><span class="lnum">   3:  </span>import java.sql.*;</pre>
+<pre><span class="lnum">   4:  </span>import java.util.*;</pre>
+<pre><span class="lnum">   5:  </span>&nbsp;</pre>
+<pre><span class="lnum">   6:  </span>import db.*;</pre>
+<pre><span class="lnum">   7:  </span>&nbsp;</pre>
+<pre><span class="lnum">   8:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> ProductData extends db.Base {</pre>
+<pre><span class="lnum">   9:  </span>  <span class="kwrd">protected</span> Integer id;</pre>
+<pre><span class="lnum">  10:  </span>  <span class="kwrd">protected</span> String name;</pre>
+<pre><span class="lnum">  11:  </span>  <span class="kwrd">protected</span> Float price;</pre>
+<pre><span class="lnum">  12:  </span>  <span class="kwrd">protected</span> String image;</pre>
+<pre><span class="lnum">  13:  </span>  </pre>
+<pre><span class="lnum">  14:  </span>&nbsp;</pre>
+<pre><span class="lnum">  15:  </span>  <span class="kwrd">public</span> ProductData(){</pre>
+<pre><span class="lnum">  16:  </span>    </pre>
+<pre><span class="lnum">  17:  </span>  }</pre>
+<pre><span class="lnum">  18:  </span>  <span class="kwrd">public</span> ProductData(Integer id){</pre>
+<pre><span class="lnum">  19:  </span>    <span class="kwrd">this</span>.id = id;</pre>
+<pre><span class="lnum">  20:  </span>  }  </pre>
+<pre><span class="lnum">  21:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> find() throws SQLException{</pre>
+<pre><span class="lnum">  22:  </span>    <span class="kwrd">this</span>.connect();</pre>
+<pre><span class="lnum">  23:  </span>    PreparedStatement pstmt = connection.prepareStatement (<span class="str">"SELECT * FROM PRODUCTS WHERE PRODUCT_ID = ? "</span>);</pre>
+<pre><span class="lnum">  24:  </span>    pstmt.setInt (1, <span class="kwrd">this</span>.id);</pre>
+<pre><span class="lnum">  25:  </span>    ResultSet rs = pstmt.executeQuery();</pre>
+<pre><span class="lnum">  26:  </span>    <span class="kwrd">while</span> (rs.next()) {</pre>
+<pre><span class="lnum">  27:  </span>      <span class="kwrd">this</span>.name = rs.getString(<span class="str">"PRODUCT_NAME"</span>);</pre>
+<pre><span class="lnum">  28:  </span>      <span class="kwrd">this</span>.price  = rs.getFloat(<span class="str">"PRICE"</span>);</pre>
+<pre><span class="lnum">  29:  </span>      <span class="kwrd">this</span>.image  = rs.getString(<span class="str">"IMAGE_FILE"</span>);</pre>
+<pre><span class="lnum">  30:  </span>    }</pre>
+<pre><span class="lnum">  31:  </span>    rs.close();</pre>
+<pre><span class="lnum">  32:  </span>    pstmt.close();</pre>
+<pre><span class="lnum">  33:  </span>    connection.close();</pre>
+<pre><span class="lnum">  34:  </span>  }</pre>
+<pre><span class="lnum">  35:  </span>&nbsp;</pre>
+<pre><span class="lnum">  36:  </span>  <span class="kwrd">public</span> <span class="kwrd">static</span> ArrayList&lt;Product&gt; findAll() throws SQLException{</pre>
+<pre><span class="lnum">  37:  </span>    ArrayList&lt;Product&gt; all = <span class="kwrd">new</span> ArrayList&lt;Product&gt;();</pre>
+<pre><span class="lnum">  38:  </span>    Product <span class="kwrd">base</span> = <span class="kwrd">new</span> Product();</pre>
+<pre><span class="lnum">  39:  </span>    <span class="kwrd">base</span>.connect();</pre>
+<pre><span class="lnum">  40:  </span>    PreparedStatement pstmt = <span class="kwrd">base</span>.connection.prepareStatement(<span class="str">"SELECT * FROM PRODUCTS"</span>);</pre>
+<pre><span class="lnum">  41:  </span>    ResultSet rs = pstmt.executeQuery();</pre>
+<pre><span class="lnum">  42:  </span>    <span class="kwrd">while</span> (rs.next()) {</pre>
+<pre><span class="lnum">  43:  </span>      Product p = <span class="kwrd">new</span> Product();</pre>
+<pre><span class="lnum">  44:  </span>      p.id = rs.getInt(<span class="str">"PRODUCT_ID"</span>);</pre>
+<pre><span class="lnum">  45:  </span>      p.name = rs.getString(<span class="str">"PRODUCT_NAME"</span>);</pre>
+<pre><span class="lnum">  46:  </span>      p.price  = rs.getFloat(<span class="str">"PRICE"</span>);</pre>
+<pre><span class="lnum">  47:  </span>      p.image  = rs.getString(<span class="str">"IMAGE_FILE"</span>);</pre>
+<pre><span class="lnum">  48:  </span>      all.add(p);</pre>
+<pre><span class="lnum">  49:  </span>    }</pre>
+<pre><span class="lnum">  50:  </span>    rs.close();</pre>
+<pre><span class="lnum">  51:  </span>    pstmt.close();</pre>
+<pre><span class="lnum">  52:  </span>    <span class="kwrd">base</span>.connection.close();</pre>
+<pre><span class="lnum">  53:  </span>    <span class="kwrd">return</span> all;</pre>
+<pre><span class="lnum">  54:  </span>  }</pre>
+<pre><span class="lnum">  55:  </span>&nbsp;</pre>
+<pre><span class="lnum">  56:  </span>}</pre>
+</div>
+
+            <br/>
+            <h6>AudioUtility.java</h6>
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>package utils;</pre>
+<pre><span class="lnum">   2:  </span>&nbsp;</pre>
+<pre><span class="lnum">   3:  </span>import java.applet.*;</pre>
+<pre><span class="lnum">   4:  </span>import java.net.*;</pre>
+<pre><span class="lnum">   5:  </span>&nbsp;</pre>
+<pre><span class="lnum">   6:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> AudioUtility {</pre>
+<pre><span class="lnum">   7:  </span>&nbsp;</pre>
+<pre><span class="lnum">   8:  </span>  <span class="kwrd">public</span> <span class="kwrd">static</span> final AudioClip getAudioClip(String filename) {</pre>
+<pre><span class="lnum">   9:  </span>    <span class="kwrd">if</span> (filename != <span class="kwrd">null</span>) {</pre>
+<pre><span class="lnum">  10:  </span>      <span class="kwrd">try</span> {</pre>
+<pre><span class="lnum">  11:  </span>        <span class="kwrd">return</span> Applet.newAudioClip(<span class="kwrd">new</span> URL(<span class="str">"http://harp.njit.edu/~my67/cs602/chapter10/"</span> + filename));</pre>
+<pre><span class="lnum">  12:  </span>      } <span class="kwrd">catch</span> (MalformedURLException e) {</pre>
+<pre><span class="lnum">  13:  </span>        System.err.println(e.getMessage());</pre>
+<pre><span class="lnum">  14:  </span>      }</pre>
+<pre><span class="lnum">  15:  </span>    }</pre>
+<pre><span class="lnum">  16:  </span>    <span class="kwrd">return</span> <span class="kwrd">null</span>;</pre>
+<pre><span class="lnum">  17:  </span>  }</pre>
+<pre><span class="lnum">  18:  </span>&nbsp;</pre>
+<pre><span class="lnum">  19:  </span>}</pre>
+</div>
+     
+            <br/>
+            <br/>
+
+            <br/>
+
+            <h5> III.Test </h5>
+            <br/>
+
+            <h6>ProductTest.java</h6>
+
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>package tests;</pre>
+<pre><span class="lnum">   2:  </span>import java.sql.SQLException;</pre>
+<pre><span class="lnum">   3:  </span>import java.util.ArrayList;</pre>
+<pre><span class="lnum">   4:  </span>import models.*;</pre>
+<pre><span class="lnum">   5:  </span>import <span class="kwrd">static</span> org.junit.Assert.*;</pre>
+<pre><span class="lnum">   6:  </span>import org.junit.Test;</pre>
+<pre><span class="lnum">   7:  </span>&nbsp;</pre>
+<pre><span class="lnum">   8:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> ProductTest {</pre>
+<pre><span class="lnum">   9:  </span>&nbsp;</pre>
+<pre><span class="lnum">  10:  </span>  @Test</pre>
+<pre><span class="lnum">  11:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> testProductFind() {</pre>
+<pre><span class="lnum">  12:  </span>    Product p = <span class="kwrd">null</span>;</pre>
+<pre><span class="lnum">  13:  </span>    <span class="kwrd">try</span> {</pre>
+<pre><span class="lnum">  14:  </span>      p = <span class="kwrd">new</span> Product(1);</pre>
+<pre><span class="lnum">  15:  </span>    } <span class="kwrd">catch</span> (SQLException e) {</pre>
+<pre><span class="lnum">  16:  </span>      e.printStackTrace();</pre>
+<pre><span class="lnum">  17:  </span>    }</pre>
+<pre><span class="lnum">  18:  </span>    </pre>
+<pre><span class="lnum">  19:  </span>    assertFalse(p==<span class="kwrd">null</span>);</pre>
+<pre><span class="lnum">  20:  </span>    assertFalse(p.getImage() == <span class="kwrd">null</span>);</pre>
+<pre><span class="lnum">  21:  </span>    assertFalse(p.getImage() == <span class="str">""</span>);</pre>
+<pre><span class="lnum">  22:  </span>    assertEquals(p.getPrice(), 0.99, 0.001);</pre>
+<pre><span class="lnum">  23:  </span>&nbsp;</pre>
+<pre><span class="lnum">  24:  </span>  }</pre>
+<pre><span class="lnum">  25:  </span>&nbsp;</pre>
+<pre><span class="lnum">  26:  </span>  @Test</pre>
+<pre><span class="lnum">  27:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> testProductFindAll() {</pre>
+<pre><span class="lnum">  28:  </span>    ArrayList&lt;Product&gt; p = <span class="kwrd">null</span>;</pre>
+<pre><span class="lnum">  29:  </span>    <span class="kwrd">try</span> {</pre>
+<pre><span class="lnum">  30:  </span>      p = Product.findAll();</pre>
+<pre><span class="lnum">  31:  </span>    } <span class="kwrd">catch</span> (SQLException e) {</pre>
+<pre><span class="lnum">  32:  </span>      e.printStackTrace();</pre>
+<pre><span class="lnum">  33:  </span>    }</pre>
+<pre><span class="lnum">  34:  </span>    </pre>
+<pre><span class="lnum">  35:  </span>    assertFalse(p.size() == 0);</pre>
+<pre><span class="lnum">  36:  </span>    assertFalse(p == <span class="kwrd">null</span>);</pre>
+<pre><span class="lnum">  37:  </span>  }</pre>
+<pre><span class="lnum">  38:  </span>}</pre>
+</div>
+            <br/>
+
+ <img src='final/product_test.png'></img>
+            <br/>
+<br/>
+
+            <h6>IngredientTest.java</h6>
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>package tests;</pre>
+<pre><span class="lnum">   2:  </span>import java.sql.SQLException;</pre>
+<pre><span class="lnum">   3:  </span>import java.util.ArrayList;</pre>
+<pre><span class="lnum">   4:  </span>import models.*;</pre>
+<pre><span class="lnum">   5:  </span>import <span class="kwrd">static</span> org.junit.Assert.*;</pre>
+<pre><span class="lnum">   6:  </span>import org.junit.Test;</pre>
+<pre><span class="lnum">   7:  </span>&nbsp;</pre>
+<pre><span class="lnum">   8:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> IngredientTest {</pre>
+<pre><span class="lnum">   9:  </span>&nbsp;</pre>
+<pre><span class="lnum">  10:  </span>  @Test</pre>
+<pre><span class="lnum">  11:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> testIngredientFind() {</pre>
+<pre><span class="lnum">  12:  </span>    Ingredient p = <span class="kwrd">null</span>;</pre>
+<pre><span class="lnum">  13:  </span>    <span class="kwrd">try</span> {</pre>
+<pre><span class="lnum">  14:  </span>      p = <span class="kwrd">new</span> Ingredient(1);</pre>
+<pre><span class="lnum">  15:  </span>    } <span class="kwrd">catch</span> (SQLException e) {</pre>
+<pre><span class="lnum">  16:  </span>      e.printStackTrace();</pre>
+<pre><span class="lnum">  17:  </span>    }</pre>
+<pre><span class="lnum">  18:  </span>    </pre>
+<pre><span class="lnum">  19:  </span>    assertFalse(p==<span class="kwrd">null</span>);</pre>
+<pre><span class="lnum">  20:  </span>    assertFalse(p.getColor() == <span class="kwrd">null</span>);</pre>
+<pre><span class="lnum">  21:  </span>    assertFalse(p.getColor() == <span class="str">""</span>);</pre>
+<pre><span class="lnum">  22:  </span>  }</pre>
+<pre><span class="lnum">  23:  </span>&nbsp;</pre>
+<pre><span class="lnum">  24:  </span>  @Test</pre>
+<pre><span class="lnum">  25:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> testIngredientFindAll() {</pre>
+<pre><span class="lnum">  26:  </span>    ArrayList&lt;Ingredient&gt; p = <span class="kwrd">null</span>;</pre>
+<pre><span class="lnum">  27:  </span>    <span class="kwrd">try</span> {</pre>
+<pre><span class="lnum">  28:  </span>      p = Ingredient.findAll();</pre>
+<pre><span class="lnum">  29:  </span>    } <span class="kwrd">catch</span> (SQLException e) {</pre>
+<pre><span class="lnum">  30:  </span>      e.printStackTrace();</pre>
+<pre><span class="lnum">  31:  </span>    }</pre>
+<pre><span class="lnum">  32:  </span>    </pre>
+<pre><span class="lnum">  33:  </span>    assertFalse(p.size() == 0);</pre>
+<pre><span class="lnum">  34:  </span>    assertFalse(p == <span class="kwrd">null</span>);</pre>
+<pre><span class="lnum">  35:  </span>  }</pre>
+<pre><span class="lnum">  36:  </span>}</pre>
+</div>
+            <br/>
+ <img src='final/ingredient_test.png'></img>
+
+            <br/>
+            <br/>
+
+            <h6>OrderTest.java</h6>
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>&nbsp;</pre>
+<pre><span class="lnum">   2:  </span>package tests;</pre>
+<pre><span class="lnum">   3:  </span>import java.sql.SQLException;</pre>
+<pre><span class="lnum">   4:  </span>import java.util.ArrayList;</pre>
+<pre><span class="lnum">   5:  </span>import models.*;</pre>
+<pre><span class="lnum">   6:  </span>import <span class="kwrd">static</span> org.junit.Assert.*;</pre>
+<pre><span class="lnum">   7:  </span>import org.junit.Test;</pre>
+<pre><span class="lnum">   8:  </span>&nbsp;</pre>
+<pre><span class="lnum">   9:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> OrderTest {</pre>
+<pre><span class="lnum">  10:  </span>&nbsp;</pre>
+<pre><span class="lnum">  11:  </span>  @Test</pre>
+<pre><span class="lnum">  12:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> testOrder() {</pre>
+<pre><span class="lnum">  13:  </span>    Order order = <span class="kwrd">new</span> Order();</pre>
+<pre><span class="lnum">  14:  </span>&nbsp;</pre>
+<pre><span class="lnum">  15:  </span>    Product p = <span class="kwrd">null</span>;</pre>
+<pre><span class="lnum">  16:  </span>    <span class="kwrd">try</span> {</pre>
+<pre><span class="lnum">  17:  </span>      p = <span class="kwrd">new</span> Product(1);</pre>
+<pre><span class="lnum">  18:  </span>    } <span class="kwrd">catch</span> (SQLException e) {</pre>
+<pre><span class="lnum">  19:  </span>      e.printStackTrace();</pre>
+<pre><span class="lnum">  20:  </span>    }</pre>
+<pre><span class="lnum">  21:  </span> </pre>
+<pre><span class="lnum">  22:  </span>    Ingredient ing = <span class="kwrd">null</span>;</pre>
+<pre><span class="lnum">  23:  </span>    <span class="kwrd">try</span> {</pre>
+<pre><span class="lnum">  24:  </span>      ing = <span class="kwrd">new</span> Ingredient(1);</pre>
+<pre><span class="lnum">  25:  </span>    } <span class="kwrd">catch</span> (SQLException e) {</pre>
+<pre><span class="lnum">  26:  </span>      e.printStackTrace();</pre>
+<pre><span class="lnum">  27:  </span>    }</pre>
+<pre><span class="lnum">  28:  </span>    </pre>
+<pre><span class="lnum">  29:  </span>    assertEquals(p.getPrice(), 0.99, 0.001);</pre>
+<pre><span class="lnum">  30:  </span>&nbsp;</pre>
+<pre><span class="lnum">  31:  </span>    order.decorate(p);</pre>
+<pre><span class="lnum">  32:  </span>    order.decorate(ing);</pre>
+<pre><span class="lnum">  33:  </span>&nbsp;</pre>
+<pre><span class="lnum">  34:  </span>    assertEquals(order.total(), 1.19, 0.001);</pre>
+<pre><span class="lnum">  35:  </span>&nbsp;</pre>
+<pre><span class="lnum">  36:  </span>  }</pre>
+<pre><span class="lnum">  37:  </span>&nbsp;</pre>
+<pre><span class="lnum">  38:  </span>}</pre>
+</div>
+            <br/>
+<img src='final/order_test.png'></img>
+            <br/>
+            <br/>
+
+            <br/>
+            <h5 class="sub">IV. Screenshots</h5>
+            <img src='final/screen.png'></img>
+
+        </div>
+
+
+        <div class="grid_12" style="height:500px;background-color:#111;">
+            <div style="text-align:center">
+                CS602 - Java Programming - Metin Yorulmaz
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

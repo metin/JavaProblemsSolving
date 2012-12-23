@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>CS602 - Java Programming - Metin Yorulmaz</title>
+    <link href="public/stylesheets/reset.css" rel="stylesheet" type="text/css" />
+    <link href="public/stylesheets/960.css" rel="stylesheet" type="text/css" />
+    <link href="public/stylesheets/site.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    
+    <div class="container_12">
+        
+        <div class="grid_12">
+            <div id="header">
+                CS602 - Java Programming
+            </div>
+        </div>
+
+        <div class="grid_12">
+            <div id="menu_container">
+                <ul id="menu">
+                    <li>
+                       <a href="chapter1/assignment1.html"> Chapter 1 </a>
+                    </li>
+                    <li>
+                       <a href="chapter3.html"> Chapter 3 </a>
+                    </li>
+                <li class="current">
+                   <a href="chapter4_1.html"> Chapter 4 </a>
+                </li>
+                <li>
+                   <a href="chapter5a_4.9.html"> Chapter 5a </a>
+                </li>
+                <li>
+                   <a href="chapter5b_5.2.html"> Chapter 5b </a>
+                </li>
+                <li>
+                   <a href="chapter6_6.3.html"> Chapter 6 </a>
+                </li>
+                <li>
+                   <a href="chapter7_7.6.html"> Chapter 7 </a>
+                </li>
+                <li>
+                   <a href="chapter8_8.5.html"> Chapter 8 </a>
+                </li>
+                <li>
+                   <a href="chapter9.html"> Chapter 9 </a>
+                </li>
+                <li>
+                   <a href="chapter10.html"> Chapter 10 </a>
+                </li>
+                <li>
+                   <a href="midterm1.html"> Exams </a>
+                </li>
+                <li>
+                   <a href="final.html"> Project </a>
+                </li>
+                    
+                </ul>
+            </div>
+            <div id="submenu_container">
+                <ul class="submenu">
+                    <li>
+                        <a href="chapter4_1.html"> Chapter 4.1 </a>
+                    </li>
+                    <li>
+                        <a href="chapter4_2.html"> Chapter 4.2 </a>
+                    </li>
+                    <li> 
+                        <a href="chapter4_3.html"> Chapter 4.3 </a>
+                    </li>
+                    <li>
+                        <a href="chapter4_7a.html"> Chapter 4.7a </a>
+                    </li>
+                    <li class="current">
+                        <a href="chapter4_8.html"> Chapter 4.8 </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid_12" id="content" style="background-color:#f1f1f1;">
+
+            <p>
+                Run the Java application in Excercise 4.2 with invalid input.
+            </p>
+            <br/>
+
+            <p>
+                I added FILENAME paremeter to be able to run with different files. This is how to read parameters in the applet class.
+            </p>
+            <p>
+                <div class="csharpcode">    
+                <pre>
+                    String paramFile = getParameter("FILENAME");
+                    if (!paramFile.isEmpty())
+                        numberSourceFile = paramFile;
+                </pre>
+                </div>
+            </p>
+
+            <p>
+                Another change is to catch possible exceptions.
+            </p>
+            <ul>
+                <li>
+                    Cached IOException when trying to open the file.
+                    <div class="csharpcode">
+                    <pre>
+                        try{
+                            .
+                            .
+                            .
+                        }
+                        catch(IOException e){
+                            txtResult.append("\nCould not read file " + numberSourceFile);
+                        }
+                    </pre>
+                    </div>
+                </li>
+
+                <li>
+                    Cached exception when trying to convert a line in the file to string.
+                    <div class="csharpcode">
+                    <pre>
+                        try{
+                            .
+                            .
+                            .
+                        }
+                        catch (NumberFormatException nfe)
+                        {
+                            txtResult.append(numberSourceFile+" contains invalid data.");
+                            txtResult.append("\n");
+                        }
+                    </pre>
+                    </div>
+                </li>
+            </ul>
+
+
+            <h5 class="sub">I. Timesheet</h5>
+
+            <img src='chapter4/timesheet.png'/>
+
+            <br/>
+
+            <h5 class="sub">a. Provide an incorrect filename.</h5>
+
+
+            <div class="csharpcode">
+                <pre class="alt"><span class="lnum">   1:  </span>            <span class="kwrd">&lt;</span><span class="html">APPLET</span> <span class="attr">codebase</span><span class="kwrd">="chapter4/ex48/"</span> <span class="attr">code</span><span class="kwrd">="Average.class"</span> <span class="attr">WIDTH</span>=<span class="attr">400</span> <span class="attr">HEIGHT</span>=<span class="attr">320</span><span class="kwrd">&gt;</span></pre>
+                <pre><span class="lnum">   2:  </span>                <span class="kwrd">&lt;</span><span class="html">param</span> <span class="attr">name</span><span class="kwrd">="FILENAME"</span> <span class="attr">value</span><span class="kwrd">="none.txt"</span><span class="kwrd">&gt;</span></pre>
+                <pre class="alt"><span class="lnum">   3:  </span>            <span class="kwrd">&lt;/</span><span class="html">APPLET</span><span class="kwrd">&gt;</span></pre>
+            </div>
+            <APPLET codebase="chapter4/ex48/" code="Average.class" WIDTH=400 HEIGHT=320>
+                <param name="FILENAME" value="none.txt">
+            </APPLET>
+            <br/>
+
+
+            <br/>
+            <h5 class="sub">b. Provide a correct filename, but the input file contains invalid contents.</h5>
+            <APPLET codebase="chapter4/ex48/" code="Average.class" WIDTH=400 HEIGHT=320>
+                <param name="FILENAME" value="invalid.txt">
+            </APPLET>
+
+            <div class="csharpcode">
+                <pre class="alt"><span class="lnum">   1:  </span>            <span class="kwrd">&lt;</span><span class="html">APPLET</span> <span class="attr">codebase</span><span class="kwrd">="chapter4/ex48/"</span> <span class="attr">code</span><span class="kwrd">="Average.class"</span> <span class="attr">WIDTH</span>=<span class="attr">400</span> <span class="attr">HEIGHT</span>=<span class="attr">320</span><span class="kwrd">&gt;</span></pre>
+                <pre><span class="lnum">   2:  </span>                <span class="kwrd">&lt;</span><span class="html">param</span> <span class="attr">name</span><span class="kwrd">="FILENAME"</span> <span class="attr">value</span><span class="kwrd">="invalid.txt"</span><span class="kwrd">&gt;</span></pre>
+                <pre class="alt"><span class="lnum">   3:  </span>            <span class="kwrd">&lt;/</span><span class="html">APPLET</span><span class="kwrd">&gt;</span></pre>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,885 @@
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>CS602 - Java Programming - Metin Yorulmaz</title>
+    <link href="public/stylesheets/reset.css" rel="stylesheet" type="text/css" />
+    <link href="public/stylesheets/960.css" rel="stylesheet" type="text/css" />
+    <link href="public/stylesheets/site.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    
+    <div class="container_12">
+        
+        <div class="grid_12">
+            <div id="header">
+                CS602 - Java Programming
+            </div>
+        </div>
+
+        <div class="grid_12">
+            <div id="menu_container">
+                <ul id="menu">
+                    <li>
+                       <a href="chapter1/assignment1.html"> Chapter 1 </a>
+                    </li>
+                    <li>
+                       <a href="chapter3.html"> Chapter 3 </a>
+                    </li>
+                    <li>
+                       <a href="chapter4_1.html"> Chapter 4 </a>
+                    </li>
+                    <li>
+                       <a href="chapter5a_4.9.html"> Chapter 5a </a>
+                    </li>
+                    <li>
+                       <a href="chapter5b_5.2.html"> Chapter 5b </a>
+                    </li>
+                    <li>
+                       <a href="chapter6_6.3.html"> Chapter 6 </a>
+                    </li>
+                    <li>
+                       <a href="chapter7_7.6.html"> Chapter 7 </a>
+                    </li>
+                    <li>
+                       <a href="chapter8_8.5.html"> Chapter 8 </a>
+                    </li>
+                    <li class="current">
+                       <a href="chapter9.html"> Chapter 9 </a>
+                    </li>
+                    <li>
+                       <a href="chapter10.html"> Chapter 10 </a>
+                    </li>
+                    <li>
+                       <a href="midterm1.html"> Exams </a>
+                    </li>
+                    <li>
+                       <a href="final.html"> Project </a>
+                    </li>
+                </ul>
+            </div>
+            <div id="submenu_container">
+                <ul class="submenu">
+                    <li>
+                        <a href="chapter9.html"> Drawing Pad</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid_12" id="content" style="background-color:#fdfdfd;">
+            <br/>
+            <p>
+                Prepare and document at least one JUnit test case and a planning document for a feature that you will add to the Drawing Pad application.
+            </p>
+            <br/>
+
+            <applet  codebase="chapter9/" archive='drawingpad.jar' code="draw4.DrawingPad.class" width="600" height="500">
+            </applet>
+
+              
+            <br/>
+
+            <h5 class="sub">I. Timesheet</h5>
+
+            <img src='chapter9/timesheet.png'/>
+
+            <br/>
+
+            <h5 class="sub">II. Documents</h5>
+
+Added 2 features.
+
+<h6>Line Thickness</h6>
+<p>
+Added ability to change thickness of line. Thickness is supported by Graphics2D. All Grapgics references need to be casted to Graphics2D to support thickness.
+</p>
+<p>
+    Changed ScribbleCanvas to make it aware of thickness option, added following methods.<br/>
+    getCurThickness()  <br/>
+    setCurThickness(Float thickness) <br/>
+</p>
+
+<p>
+Implement new menu options by inheriting form drawing3.DrawingPad.
+</p>
+<p>
+Modify TwoEndsShapeTool to make it aware of current selected thickness. 
+</p>
+<p>
+Modify TwoEndsTool to add set thickness of new shapes when adding a new shape.
+</p>
+<p>
+Modify Shape class to support thickness, add following methods.<br/> 
+setThickness(BasicStroke thickness) <br/>
+BasicStroke getThickness()<br/>
+<p>
+
+<p>
+Modify Stroke and StrokeTool to support thicknes.
+</p>
+<img src='chapter9/thicknessinteraction.png'/>
+<br/>
+<a href='chapter9/thicknessinteraction.pdf'>Download as PDF</a>
+
+
+<h6>Eraser</h6>
+<p>
+Added new eraser tool by inheriting form drawing3.DrawingPad and overriding initTools() method 
+Eraser works as a rectangle. Erases area begind the rectangle shape.
+<p>
+
+<img src='chapter9/eraserplanning.png'/>
+<br/>
+<a href='chapter9/eraserplanning.pdf'>Download as PDF</a>
+<br/><br/>
+Known issue about JFileChooser<br/>
+<a href="http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=7036025">http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=7036025</a>
+<br/>
+<a href="http://stackoverflow.com/questions/7558442/cannot-access-applet-containing-jfilechooser-from-jsp">http://stackoverflow.com/questions/7558442/cannot-access-applet-containing-jfilechooser-from-jsp</a>
+
+
+
+
+            <h5 class="sub">II. Source Code (Changed or new classes only)</h5>
+            
+            <br/>
+
+            <h6>scribble3/ScribbleCanvas.java</h6>
+
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>package scribble3;</pre>
+<pre><span class="lnum">   2:  </span>&nbsp;</pre>
+<pre><span class="lnum">   3:  </span>import java.awt.BasicStroke;</pre>
+<pre><span class="lnum">   4:  </span>import java.awt.Color;</pre>
+<pre><span class="lnum">   5:  </span>import java.awt.Dimension;</pre>
+<pre><span class="lnum">   6:  </span>import java.awt.Graphics;</pre>
+<pre><span class="lnum">   7:  </span>import java.awt.Point;</pre>
+<pre><span class="lnum">   8:  </span>import java.util.*;</pre>
+<pre><span class="lnum">   9:  </span>import java.io.*;</pre>
+<pre><span class="lnum">  10:  </span>import java.awt.<span class="kwrd">event</span>.*;</pre>
+<pre><span class="lnum">  11:  </span>import java.util.EventListener;</pre>
+<pre><span class="lnum">  12:  </span>import javax.swing.*;</pre>
+<pre><span class="lnum">  13:  </span>&nbsp;</pre>
+<pre><span class="lnum">  14:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> ScribbleCanvas extends JPanel {</pre>
+<pre><span class="lnum">  15:  </span>&nbsp;</pre>
+<pre><span class="lnum">  16:  </span>  <span class="kwrd">public</span> ScribbleCanvas() {</pre>
+<pre><span class="lnum">  17:  </span>    <span class="rem">// calling factory method</span></pre>
+<pre><span class="lnum">  18:  </span>    listener = makeCanvasListener();</pre>
+<pre><span class="lnum">  19:  </span>    addMouseListener((MouseListener) listener);</pre>
+<pre><span class="lnum">  20:  </span>    addMouseMotionListener((MouseMotionListener) listener);</pre>
+<pre><span class="lnum">  21:  </span>  }</pre>
+<pre><span class="lnum">  22:  </span>&nbsp;</pre>
+<pre><span class="lnum">  23:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> setCurColor(Color curColor) {</pre>
+<pre><span class="lnum">  24:  </span>    <span class="kwrd">this</span>.curColor = curColor;</pre>
+<pre><span class="lnum">  25:  </span>  }</pre>
+<pre><span class="lnum">  26:  </span>&nbsp;</pre>
+<pre><span class="lnum">  27:  </span>  <span class="kwrd">public</span> Color getCurColor() {</pre>
+<pre><span class="lnum">  28:  </span>    <span class="kwrd">return</span> curColor;</pre>
+<pre><span class="lnum">  29:  </span>  }</pre>
+<pre><span class="lnum">  30:  </span>&nbsp;</pre>
+<pre><span class="lnum">  31:  </span>  <span class="kwrd">public</span> BasicStroke getCurThickness() {</pre>
+<pre><span class="lnum">  32:  </span>    <span class="kwrd">return</span> <span class="kwrd">this</span>.curThickness;</pre>
+<pre><span class="lnum">  33:  </span>  }</pre>
+<pre><span class="lnum">  34:  </span>&nbsp;</pre>
+<pre><span class="lnum">  35:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> setCurThickness(Float thickness){</pre>
+<pre><span class="lnum">  36:  </span>    System.<span class="kwrd">out</span>.println(<span class="str">"Set cur thickness"</span>);</pre>
+<pre><span class="lnum">  37:  </span>    curThickness = <span class="kwrd">new</span> BasicStroke(thickness);</pre>
+<pre><span class="lnum">  38:  </span>  }</pre>
+<pre><span class="lnum">  39:  </span>  </pre>
+<pre><span class="lnum">  40:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> addShape(Shape shape) {</pre>
+<pre><span class="lnum">  41:  </span>    <span class="kwrd">if</span> (shape != <span class="kwrd">null</span>) {</pre>
+<pre><span class="lnum">  42:  </span>      shapes.add(shape);</pre>
+<pre><span class="lnum">  43:  </span>    }</pre>
+<pre><span class="lnum">  44:  </span>  }</pre>
+<pre><span class="lnum">  45:  </span>&nbsp;</pre>
+<pre><span class="lnum">  46:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> paint(Graphics g) {</pre>
+<pre><span class="lnum">  47:  </span>    Dimension dim = getSize();</pre>
+<pre><span class="lnum">  48:  </span>    g.setColor(Color.white);</pre>
+<pre><span class="lnum">  49:  </span>    g.fillRect(0, 0, dim.width, dim.height);</pre>
+<pre><span class="lnum">  50:  </span>    g.setColor(Color.black);</pre>
+<pre><span class="lnum">  51:  </span>    <span class="kwrd">if</span> (shapes != <span class="kwrd">null</span>) {</pre>
+<pre><span class="lnum">  52:  </span>      Iterator iter = shapes.iterator();</pre>
+<pre><span class="lnum">  53:  </span>      <span class="kwrd">while</span> (iter.hasNext()) {</pre>
+<pre><span class="lnum">  54:  </span>        Shape shape = (Shape) iter.next();</pre>
+<pre><span class="lnum">  55:  </span>        <span class="kwrd">if</span> (shape != <span class="kwrd">null</span>) {</pre>
+<pre><span class="lnum">  56:  </span>          shape.draw(g);</pre>
+<pre><span class="lnum">  57:  </span>        }</pre>
+<pre><span class="lnum">  58:  </span>      }</pre>
+<pre><span class="lnum">  59:  </span>    }</pre>
+<pre><span class="lnum">  60:  </span>  }</pre>
+<pre><span class="lnum">  61:  </span>&nbsp;</pre>
+<pre><span class="lnum">  62:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> newFile() {</pre>
+<pre><span class="lnum">  63:  </span>    shapes.clear();</pre>
+<pre><span class="lnum">  64:  </span>    repaint();</pre>
+<pre><span class="lnum">  65:  </span>  }</pre>
+<pre><span class="lnum">  66:  </span>&nbsp;</pre>
+<pre><span class="lnum">  67:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> openFile(String filename) {</pre>
+<pre><span class="lnum">  68:  </span>    <span class="kwrd">try</span> {</pre>
+<pre><span class="lnum">  69:  </span>      ObjectInputStream <span class="kwrd">in</span> = <span class="kwrd">new</span> ObjectInputStream(</pre>
+<pre><span class="lnum">  70:  </span>          <span class="kwrd">new</span> FileInputStream(filename));</pre>
+<pre><span class="lnum">  71:  </span>      shapes = (List) <span class="kwrd">in</span>.readObject();</pre>
+<pre><span class="lnum">  72:  </span>      <span class="kwrd">in</span>.close();</pre>
+<pre><span class="lnum">  73:  </span>      repaint();</pre>
+<pre><span class="lnum">  74:  </span>    } <span class="kwrd">catch</span> (IOException e1) {</pre>
+<pre><span class="lnum">  75:  </span>      System.<span class="kwrd">out</span>.println(<span class="str">"Unable to open file: "</span> + filename);</pre>
+<pre><span class="lnum">  76:  </span>    } <span class="kwrd">catch</span> (ClassNotFoundException e2) {</pre>
+<pre><span class="lnum">  77:  </span>      System.<span class="kwrd">out</span>.println(e2);</pre>
+<pre><span class="lnum">  78:  </span>    }</pre>
+<pre><span class="lnum">  79:  </span>  }</pre>
+<pre><span class="lnum">  80:  </span>&nbsp;</pre>
+<pre><span class="lnum">  81:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> saveFile(String filename) {</pre>
+<pre><span class="lnum">  82:  </span>    <span class="kwrd">try</span> {</pre>
+<pre><span class="lnum">  83:  </span>      ObjectOutputStream <span class="kwrd">out</span> = <span class="kwrd">new</span> ObjectOutputStream(<span class="kwrd">new</span> FileOutputStream(</pre>
+<pre><span class="lnum">  84:  </span>          filename));</pre>
+<pre><span class="lnum">  85:  </span>      <span class="kwrd">out</span>.writeObject(shapes);</pre>
+<pre><span class="lnum">  86:  </span>      <span class="kwrd">out</span>.close();</pre>
+<pre><span class="lnum">  87:  </span>      System.<span class="kwrd">out</span>.println(<span class="str">"Save drawing to "</span> + filename);</pre>
+<pre><span class="lnum">  88:  </span>    } <span class="kwrd">catch</span> (IOException e) {</pre>
+<pre><span class="lnum">  89:  </span>      System.<span class="kwrd">out</span>.println(<span class="str">"Unable to write file: "</span> + filename);</pre>
+<pre><span class="lnum">  90:  </span>    }</pre>
+<pre><span class="lnum">  91:  </span>  }</pre>
+<pre><span class="lnum">  92:  </span>&nbsp;</pre>
+<pre><span class="lnum">  93:  </span>  <span class="rem">// factory method</span></pre>
+<pre><span class="lnum">  94:  </span>  <span class="kwrd">protected</span> EventListener makeCanvasListener() {</pre>
+<pre><span class="lnum">  95:  </span>    <span class="kwrd">return</span> <span class="kwrd">new</span> ScribbleCanvasListener(<span class="kwrd">this</span>);</pre>
+<pre><span class="lnum">  96:  </span>  }</pre>
+<pre><span class="lnum">  97:  </span>&nbsp;</pre>
+<pre><span class="lnum">  98:  </span>  <span class="rem">// The list of shapes of the drawing</span></pre>
+<pre><span class="lnum">  99:  </span>  <span class="rem">// The elements are instances of Stroke</span></pre>
+<pre><span class="lnum"> 100:  </span>  <span class="kwrd">protected</span> List shapes = <span class="kwrd">new</span> ArrayList();</pre>
+<pre><span class="lnum"> 101:  </span>  <span class="kwrd">protected</span> BasicStroke curThickness = <span class="kwrd">new</span> BasicStroke();</pre>
+<pre><span class="lnum"> 102:  </span>  <span class="kwrd">protected</span> Color curColor = Color.black;</pre>
+<pre><span class="lnum"> 103:  </span>&nbsp;</pre>
+<pre><span class="lnum"> 104:  </span>  <span class="kwrd">protected</span> EventListener listener;</pre>
+<pre><span class="lnum"> 105:  </span>&nbsp;</pre>
+<pre><span class="lnum"> 106:  </span>  <span class="kwrd">public</span> boolean mouseButtonDown = <span class="kwrd">false</span>;</pre>
+<pre><span class="lnum"> 107:  </span>  <span class="kwrd">public</span> <span class="kwrd">int</span> x, y;</pre>
+<pre><span class="lnum"> 108:  </span>&nbsp;</pre>
+<pre><span class="lnum"> 109:  </span>}</pre>
+</div>
+
+<br/>
+<h6>scribble3/ScribbleTool.java</h6>
+
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>&nbsp;</pre>
+<pre><span class="lnum">   2:  </span>&nbsp;</pre>
+<pre><span class="lnum">   3:  </span>package scribble3; </pre>
+<pre><span class="lnum">   4:  </span>&nbsp;</pre>
+<pre><span class="lnum">   5:  </span>import java.awt.*;</pre>
+<pre><span class="lnum">   6:  </span>&nbsp;</pre>
+<pre><span class="lnum">   7:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> ScribbleTool extends AbstractTool { </pre>
+<pre><span class="lnum">   8:  </span>&nbsp;</pre>
+<pre><span class="lnum">   9:  </span>  <span class="kwrd">public</span> ScribbleTool(ScribbleCanvas canvas, String name) {</pre>
+<pre><span class="lnum">  10:  </span>    super(canvas, name);</pre>
+<pre><span class="lnum">  11:  </span>  }</pre>
+<pre><span class="lnum">  12:  </span>&nbsp;</pre>
+<pre><span class="lnum">  13:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> startShape(Point p) {</pre>
+<pre><span class="lnum">  14:  </span>    curStroke = <span class="kwrd">new</span> Stroke(canvas.getCurColor()); </pre>
+<pre><span class="lnum">  15:  </span>    curStroke.setThickness(canvas.getCurThickness());</pre>
+<pre><span class="lnum">  16:  </span>    curStroke.addPoint(p); </pre>
+<pre><span class="lnum">  17:  </span>  }</pre>
+<pre><span class="lnum">  18:  </span>&nbsp;</pre>
+<pre><span class="lnum">  19:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> addPointToShape(Point p) {</pre>
+<pre><span class="lnum">  20:  </span>    <span class="kwrd">if</span> (curStroke != <span class="kwrd">null</span>) { </pre>
+<pre><span class="lnum">  21:  </span>      curStroke.addPoint(p); </pre>
+<pre><span class="lnum">  22:  </span>      Graphics g = canvas.getGraphics();</pre>
+<pre><span class="lnum">  23:  </span>      Graphics2D g2 = (Graphics2D)g;</pre>
+<pre><span class="lnum">  24:  </span>      g2.setStroke(canvas.getCurThickness());</pre>
+<pre><span class="lnum">  25:  </span>      g2.setColor(canvas.getCurColor());</pre>
+<pre><span class="lnum">  26:  </span>      g2.drawLine(canvas.x, canvas.y, p.x, p.y);</pre>
+<pre><span class="lnum">  27:  </span>    }</pre>
+<pre><span class="lnum">  28:  </span>  }</pre>
+<pre><span class="lnum">  29:  </span>&nbsp;</pre>
+<pre><span class="lnum">  30:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> endShape(Point p) {</pre>
+<pre><span class="lnum">  31:  </span>    <span class="kwrd">if</span> (curStroke != <span class="kwrd">null</span>) { </pre>
+<pre><span class="lnum">  32:  </span>      curStroke.addPoint(p); </pre>
+<pre><span class="lnum">  33:  </span>      canvas.addShape(curStroke); </pre>
+<pre><span class="lnum">  34:  </span>      curStroke = <span class="kwrd">null</span>; </pre>
+<pre><span class="lnum">  35:  </span>    }</pre>
+<pre><span class="lnum">  36:  </span>  }</pre>
+<pre><span class="lnum">  37:  </span>&nbsp;</pre>
+<pre><span class="lnum">  38:  </span>  <span class="kwrd">protected</span> Stroke curStroke = <span class="kwrd">null</span>; </pre>
+<pre><span class="lnum">  39:  </span>&nbsp;</pre>
+<pre><span class="lnum">  40:  </span>}</pre>
+</div>
+
+<br/>
+<h6>scribble3/Shape.java</h6>
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>&nbsp;</pre>
+<pre><span class="lnum">   2:  </span>&nbsp;</pre>
+<pre><span class="lnum">   3:  </span>package scribble3; </pre>
+<pre><span class="lnum">   4:  </span>&nbsp;</pre>
+<pre><span class="lnum">   5:  </span>import java.awt.*;</pre>
+<pre><span class="lnum">   6:  </span>import java.io.Serializable;</pre>
+<pre><span class="lnum">   7:  </span>&nbsp;</pre>
+<pre><span class="lnum">   8:  </span><span class="kwrd">public</span> <span class="kwrd">abstract</span> <span class="kwrd">class</span> Shape implements Serializable { </pre>
+<pre><span class="lnum">   9:  </span>&nbsp;</pre>
+<pre><span class="lnum">  10:  </span>  <span class="kwrd">public</span> Shape() {} </pre>
+<pre><span class="lnum">  11:  </span>  </pre>
+<pre><span class="lnum">  12:  </span>  <span class="kwrd">public</span> Shape(Color color) {</pre>
+<pre><span class="lnum">  13:  </span>    <span class="kwrd">this</span>.color = color; </pre>
+<pre><span class="lnum">  14:  </span>  } </pre>
+<pre><span class="lnum">  15:  </span>&nbsp;</pre>
+<pre><span class="lnum">  16:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> setColor(Color color) {</pre>
+<pre><span class="lnum">  17:  </span>    <span class="kwrd">this</span>.color = color; </pre>
+<pre><span class="lnum">  18:  </span>  } </pre>
+<pre><span class="lnum">  19:  </span>&nbsp;</pre>
+<pre><span class="lnum">  20:  </span>  <span class="kwrd">public</span> Color getColor() {</pre>
+<pre><span class="lnum">  21:  </span>    <span class="kwrd">return</span> color; </pre>
+<pre><span class="lnum">  22:  </span>  }</pre>
+<pre><span class="lnum">  23:  </span>&nbsp;</pre>
+<pre><span class="lnum">  24:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> setThickness(BasicStroke thickness) {</pre>
+<pre><span class="lnum">  25:  </span>    <span class="kwrd">this</span>.thickness = thickness; </pre>
+<pre><span class="lnum">  26:  </span>  } </pre>
+<pre><span class="lnum">  27:  </span>&nbsp;</pre>
+<pre><span class="lnum">  28:  </span>  <span class="kwrd">public</span> BasicStroke getThickness() {</pre>
+<pre><span class="lnum">  29:  </span>    <span class="kwrd">return</span> thickness; </pre>
+<pre><span class="lnum">  30:  </span>  }</pre>
+<pre><span class="lnum">  31:  </span>  </pre>
+<pre><span class="lnum">  32:  </span>  <span class="kwrd">public</span> <span class="kwrd">abstract</span> <span class="kwrd">void</span> draw(Graphics g); </pre>
+<pre><span class="lnum">  33:  </span>&nbsp;</pre>
+<pre><span class="lnum">  34:  </span>  <span class="kwrd">protected</span> Color color = Color.black; </pre>
+<pre><span class="lnum">  35:  </span>  <span class="kwrd">protected</span> BasicStroke thickness;</pre>
+<pre><span class="lnum">  36:  </span>&nbsp;</pre>
+<pre><span class="lnum">  37:  </span>&nbsp;</pre>
+<pre><span class="lnum">  38:  </span>}</pre>
+</div>
+
+
+<br/>
+<h6>scribble3/Stroke.java</h6>
+
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>&nbsp;</pre>
+<pre><span class="lnum">   2:  </span>&nbsp;</pre>
+<pre><span class="lnum">   3:  </span>package scribble3; </pre>
+<pre><span class="lnum">   4:  </span>&nbsp;</pre>
+<pre><span class="lnum">   5:  </span>import java.util.*;</pre>
+<pre><span class="lnum">   6:  </span>import java.awt.Graphics2D;</pre>
+<pre><span class="lnum">   7:  </span>import java.awt.Point;</pre>
+<pre><span class="lnum">   8:  </span>import java.awt.Color;</pre>
+<pre><span class="lnum">   9:  </span>import java.awt.Graphics;</pre>
+<pre><span class="lnum">  10:  </span>&nbsp;</pre>
+<pre><span class="lnum">  11:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> Stroke extends Shape { </pre>
+<pre><span class="lnum">  12:  </span>&nbsp;</pre>
+<pre><span class="lnum">  13:  </span>  <span class="kwrd">public</span> Stroke() {} </pre>
+<pre><span class="lnum">  14:  </span>  </pre>
+<pre><span class="lnum">  15:  </span>  <span class="kwrd">public</span> Stroke(Color color) {</pre>
+<pre><span class="lnum">  16:  </span>    super(color); </pre>
+<pre><span class="lnum">  17:  </span>  } </pre>
+<pre><span class="lnum">  18:  </span>&nbsp;</pre>
+<pre><span class="lnum">  19:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> addPoint(Point p) {</pre>
+<pre><span class="lnum">  20:  </span>    <span class="kwrd">if</span> (p != <span class="kwrd">null</span>) { </pre>
+<pre><span class="lnum">  21:  </span>      points.add(p); </pre>
+<pre><span class="lnum">  22:  </span>    }</pre>
+<pre><span class="lnum">  23:  </span>  }</pre>
+<pre><span class="lnum">  24:  </span>&nbsp;</pre>
+<pre><span class="lnum">  25:  </span>  <span class="kwrd">public</span> List getPoints() { </pre>
+<pre><span class="lnum">  26:  </span>    <span class="kwrd">return</span> points; </pre>
+<pre><span class="lnum">  27:  </span>  }</pre>
+<pre><span class="lnum">  28:  </span>&nbsp;</pre>
+<pre><span class="lnum">  29:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> draw(Graphics g) {</pre>
+<pre><span class="lnum">  30:  </span>    Graphics2D g2 = (Graphics2D)g;</pre>
+<pre><span class="lnum">  31:  </span>    <span class="kwrd">if</span> (color != <span class="kwrd">null</span>) {</pre>
+<pre><span class="lnum">  32:  </span>      g2.setColor(color);</pre>
+<pre><span class="lnum">  33:  </span>    }</pre>
+<pre><span class="lnum">  34:  </span>    <span class="kwrd">if</span> (thickness != <span class="kwrd">null</span>) {</pre>
+<pre><span class="lnum">  35:  </span>      g2.setStroke(thickness);</pre>
+<pre><span class="lnum">  36:  </span>    }</pre>
+<pre><span class="lnum">  37:  </span>&nbsp;</pre>
+<pre><span class="lnum">  38:  </span>    Point prev = <span class="kwrd">null</span>; </pre>
+<pre><span class="lnum">  39:  </span>    Iterator iter = points.iterator(); </pre>
+<pre><span class="lnum">  40:  </span>    <span class="kwrd">while</span> (iter.hasNext()) { </pre>
+<pre><span class="lnum">  41:  </span>      Point cur = (Point) iter.next(); </pre>
+<pre><span class="lnum">  42:  </span>      <span class="kwrd">if</span> (prev != <span class="kwrd">null</span>) {</pre>
+<pre><span class="lnum">  43:  </span>        g2.drawLine(prev.x, prev.y, cur.x, cur.y); </pre>
+<pre><span class="lnum">  44:  </span>      }</pre>
+<pre><span class="lnum">  45:  </span>      prev = cur; </pre>
+<pre><span class="lnum">  46:  </span>    }</pre>
+<pre><span class="lnum">  47:  </span>  }</pre>
+<pre><span class="lnum">  48:  </span>&nbsp;</pre>
+<pre><span class="lnum">  49:  </span>  <span class="rem">// The list of points on the stroke</span></pre>
+<pre><span class="lnum">  50:  </span>  <span class="rem">// elements are instances of java.awt.Point </span></pre>
+<pre><span class="lnum">  51:  </span>  <span class="kwrd">protected</span> List points = <span class="kwrd">new</span> ArrayList();  </pre>
+<pre><span class="lnum">  52:  </span>  </pre>
+<pre><span class="lnum">  53:  </span>}</pre>
+</div>
+
+
+<br/>
+<h6>draw1/LineShape.java</h6>
+
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>package draw1; </pre>
+<pre><span class="lnum">   2:  </span>&nbsp;</pre>
+<pre><span class="lnum">   3:  </span>import java.awt.*; </pre>
+<pre><span class="lnum">   4:  </span>&nbsp;</pre>
+<pre><span class="lnum">   5:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> LineShape extends TwoEndsShape {</pre>
+<pre><span class="lnum">   6:  </span>&nbsp;</pre>
+<pre><span class="lnum">   7:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> draw(Graphics g) {</pre>
+<pre><span class="lnum">   8:  </span>    super.beforDraw(g);</pre>
+<pre><span class="lnum">   9:  </span>    Graphics2D g2 = (Graphics2D)g;</pre>
+<pre><span class="lnum">  10:  </span>    g2.drawLine(x1, y1, x2, y2); </pre>
+<pre><span class="lnum">  11:  </span>  }</pre>
+<pre><span class="lnum">  12:  </span>&nbsp;</pre>
+<pre><span class="lnum">  13:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> drawOutline(Graphics g, <span class="kwrd">int</span> x1, <span class="kwrd">int</span> y1, <span class="kwrd">int</span> x2, <span class="kwrd">int</span> y2) {</pre>
+<pre><span class="lnum">  14:  </span>    g.drawLine(x1, y1, x2, y2); </pre>
+<pre><span class="lnum">  15:  </span>  }</pre>
+<pre><span class="lnum">  16:  </span>&nbsp;</pre>
+<pre><span class="lnum">  17:  </span>}</pre>
+</div>
+
+
+<br/>
+<h6>draw1/OvalShape.java</h6>
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>&nbsp;</pre>
+<pre><span class="lnum">   2:  </span>&nbsp;</pre>
+<pre><span class="lnum">   3:  </span>package draw1; </pre>
+<pre><span class="lnum">   4:  </span>&nbsp;</pre>
+<pre><span class="lnum">   5:  </span>import java.awt.*; </pre>
+<pre><span class="lnum">   6:  </span>&nbsp;</pre>
+<pre><span class="lnum">   7:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> OvalShape extends TwoEndsShape {</pre>
+<pre><span class="lnum">   8:  </span>&nbsp;</pre>
+<pre><span class="lnum">   9:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> draw(Graphics g) {</pre>
+<pre><span class="lnum">  10:  </span>    super.beforDraw(g);</pre>
+<pre><span class="lnum">  11:  </span>    Graphics2D g2 = (Graphics2D)g;</pre>
+<pre><span class="lnum">  12:  </span>&nbsp;</pre>
+<pre><span class="lnum">  13:  </span>    <span class="kwrd">int</span> x = Math.min(x1, x2); </pre>
+<pre><span class="lnum">  14:  </span>    <span class="kwrd">int</span> y = Math.min(y1, y2); </pre>
+<pre><span class="lnum">  15:  </span>    <span class="kwrd">int</span> w = Math.abs(x1 - x2) + 1; </pre>
+<pre><span class="lnum">  16:  </span>    <span class="kwrd">int</span> h = Math.abs(y1 - y2) + 1;     </pre>
+<pre><span class="lnum">  17:  </span>&nbsp;</pre>
+<pre><span class="lnum">  18:  </span>    g2.drawOval(x, y, w, h);</pre>
+<pre><span class="lnum">  19:  </span>  }</pre>
+<pre><span class="lnum">  20:  </span>&nbsp;</pre>
+<pre><span class="lnum">  21:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> drawOutline(Graphics g, <span class="kwrd">int</span> x1, <span class="kwrd">int</span> y1, <span class="kwrd">int</span> x2, <span class="kwrd">int</span> y2) {</pre>
+<pre><span class="lnum">  22:  </span>    <span class="kwrd">int</span> x = Math.min(x1, x2); </pre>
+<pre><span class="lnum">  23:  </span>    <span class="kwrd">int</span> y = Math.min(y1, y2); </pre>
+<pre><span class="lnum">  24:  </span>    <span class="kwrd">int</span> w = Math.abs(x1 - x2) + 1; </pre>
+<pre><span class="lnum">  25:  </span>    <span class="kwrd">int</span> h = Math.abs(y1 - y2) + 1;     </pre>
+<pre><span class="lnum">  26:  </span>    g.drawOval(x, y, w, h);</pre>
+<pre><span class="lnum">  27:  </span>  }</pre>
+<pre><span class="lnum">  28:  </span>&nbsp;</pre>
+<pre><span class="lnum">  29:  </span>}</pre>
+</div>
+
+
+
+<br/>
+<h6>draw1/RectangleShape.java</h6>
+
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>&nbsp;</pre>
+<pre><span class="lnum">   2:  </span>&nbsp;</pre>
+<pre><span class="lnum">   3:  </span>package draw1; </pre>
+<pre><span class="lnum">   4:  </span>&nbsp;</pre>
+<pre><span class="lnum">   5:  </span>import java.awt.*; </pre>
+<pre><span class="lnum">   6:  </span>&nbsp;</pre>
+<pre><span class="lnum">   7:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> RectangleShape extends TwoEndsShape {</pre>
+<pre><span class="lnum">   8:  </span>&nbsp;</pre>
+<pre><span class="lnum">   9:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> draw(Graphics g) {</pre>
+<pre><span class="lnum">  10:  </span>    super.beforDraw(g);</pre>
+<pre><span class="lnum">  11:  </span>    Graphics2D g2 = (Graphics2D)g;</pre>
+<pre><span class="lnum">  12:  </span>    <span class="kwrd">int</span> x = Math.min(x1, x2); </pre>
+<pre><span class="lnum">  13:  </span>    <span class="kwrd">int</span> y = Math.min(y1, y2); </pre>
+<pre><span class="lnum">  14:  </span>    <span class="kwrd">int</span> w = Math.abs(x1 - x2) + 1; </pre>
+<pre><span class="lnum">  15:  </span>    <span class="kwrd">int</span> h = Math.abs(y1 - y2) + 1;     </pre>
+<pre><span class="lnum">  16:  </span>&nbsp;</pre>
+<pre><span class="lnum">  17:  </span>    g2.drawRect(x, y, w, h);</pre>
+<pre><span class="lnum">  18:  </span>  }</pre>
+<pre><span class="lnum">  19:  </span>&nbsp;</pre>
+<pre><span class="lnum">  20:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> drawOutline(Graphics g, <span class="kwrd">int</span> x1, <span class="kwrd">int</span> y1, <span class="kwrd">int</span> x2, <span class="kwrd">int</span> y2) {</pre>
+<pre><span class="lnum">  21:  </span>    <span class="kwrd">int</span> x = Math.min(x1, x2); </pre>
+<pre><span class="lnum">  22:  </span>    <span class="kwrd">int</span> y = Math.min(y1, y2); </pre>
+<pre><span class="lnum">  23:  </span>    <span class="kwrd">int</span> w = Math.abs(x1 - x2) + 1; </pre>
+<pre><span class="lnum">  24:  </span>    <span class="kwrd">int</span> h = Math.abs(y1 - y2) + 1;     </pre>
+<pre><span class="lnum">  25:  </span>    g.drawRect(x, y, w, h);</pre>
+<pre><span class="lnum">  26:  </span>  }</pre>
+<pre><span class="lnum">  27:  </span>&nbsp;</pre>
+<pre><span class="lnum">  28:  </span>}</pre>
+</div>
+
+
+<br/>
+<h6>draw1/TwoEndsTool.java</h6>
+
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>&nbsp;</pre>
+<pre><span class="lnum">   2:  </span>&nbsp;</pre>
+<pre><span class="lnum">   3:  </span>package draw1; </pre>
+<pre><span class="lnum">   4:  </span>&nbsp;</pre>
+<pre><span class="lnum">   5:  </span>import java.awt.*; </pre>
+<pre><span class="lnum">   6:  </span>&nbsp;</pre>
+<pre><span class="lnum">   7:  </span>import scribble3.*; </pre>
+<pre><span class="lnum">   8:  </span>&nbsp;</pre>
+<pre><span class="lnum">   9:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> TwoEndsTool extends AbstractTool {</pre>
+<pre><span class="lnum">  10:  </span>&nbsp;</pre>
+<pre><span class="lnum">  11:  </span>  <span class="kwrd">public</span> <span class="kwrd">static</span> final <span class="kwrd">int</span> LINE = 0; </pre>
+<pre><span class="lnum">  12:  </span>  <span class="kwrd">public</span> <span class="kwrd">static</span> final <span class="kwrd">int</span> OVAL = 1; </pre>
+<pre><span class="lnum">  13:  </span>  <span class="kwrd">public</span> <span class="kwrd">static</span> final <span class="kwrd">int</span> RECT = 2; </pre>
+<pre><span class="lnum">  14:  </span>&nbsp;</pre>
+<pre><span class="lnum">  15:  </span>  <span class="kwrd">public</span> TwoEndsTool(ScribbleCanvas canvas, String name, <span class="kwrd">int</span> shape) {</pre>
+<pre><span class="lnum">  16:  </span>    super(canvas, name);</pre>
+<pre><span class="lnum">  17:  </span>    <span class="kwrd">this</span>.shape = shape; </pre>
+<pre><span class="lnum">  18:  </span>  }</pre>
+<pre><span class="lnum">  19:  </span> </pre>
+<pre><span class="lnum">  20:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> startShape(Point p) {</pre>
+<pre><span class="lnum">  21:  </span>    canvas.mouseButtonDown = <span class="kwrd">true</span>;</pre>
+<pre><span class="lnum">  22:  </span>    xStart = canvas.x = p.x; </pre>
+<pre><span class="lnum">  23:  </span>    yStart = canvas.y = p.y; </pre>
+<pre><span class="lnum">  24:  </span>    Graphics g = canvas.getGraphics();</pre>
+<pre><span class="lnum">  25:  </span>    g.setXORMode(Color.darkGray); </pre>
+<pre><span class="lnum">  26:  </span>    g.setColor(Color.lightGray); </pre>
+<pre><span class="lnum">  27:  </span>    <span class="kwrd">switch</span> (shape) {</pre>
+<pre><span class="lnum">  28:  </span>    <span class="kwrd">case</span> LINE:</pre>
+<pre><span class="lnum">  29:  </span>      drawLine(g, xStart, yStart, xStart, yStart);            </pre>
+<pre><span class="lnum">  30:  </span>      <span class="kwrd">break</span>; </pre>
+<pre><span class="lnum">  31:  </span>    <span class="kwrd">case</span> OVAL:</pre>
+<pre><span class="lnum">  32:  </span>      drawOval(g, xStart, yStart, 1, 1);            </pre>
+<pre><span class="lnum">  33:  </span>      <span class="kwrd">break</span>; </pre>
+<pre><span class="lnum">  34:  </span>    <span class="kwrd">case</span> RECT:</pre>
+<pre><span class="lnum">  35:  </span>      drawRect(g, xStart, yStart, 1, 1); </pre>
+<pre><span class="lnum">  36:  </span>      <span class="kwrd">break</span>; </pre>
+<pre><span class="lnum">  37:  </span>    }</pre>
+<pre><span class="lnum">  38:  </span>  }</pre>
+<pre><span class="lnum">  39:  </span>&nbsp;</pre>
+<pre><span class="lnum">  40:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> addPointToShape(Point p) {</pre>
+<pre><span class="lnum">  41:  </span>    <span class="kwrd">if</span> (canvas.mouseButtonDown) {</pre>
+<pre><span class="lnum">  42:  </span>      Graphics g = canvas.getGraphics();</pre>
+<pre><span class="lnum">  43:  </span>      g.setXORMode(Color.darkGray); </pre>
+<pre><span class="lnum">  44:  </span>      g.setColor(Color.lightGray); </pre>
+<pre><span class="lnum">  45:  </span>      <span class="kwrd">switch</span> (shape) {</pre>
+<pre><span class="lnum">  46:  </span>      <span class="kwrd">case</span> LINE:</pre>
+<pre><span class="lnum">  47:  </span>        drawLine(g, xStart, yStart, canvas.x, canvas.y); </pre>
+<pre><span class="lnum">  48:  </span>        drawLine(g, xStart, yStart, p.x, p.y); </pre>
+<pre><span class="lnum">  49:  </span>        <span class="kwrd">break</span>; </pre>
+<pre><span class="lnum">  50:  </span>      <span class="kwrd">case</span> OVAL:</pre>
+<pre><span class="lnum">  51:  </span>        drawOval(g, xStart, yStart, canvas.x - xStart + 1, canvas.y - yStart + 1); </pre>
+<pre><span class="lnum">  52:  </span>        drawOval(g, xStart, yStart, p.x - xStart + 1, p.y - yStart + 1);  </pre>
+<pre><span class="lnum">  53:  </span>        <span class="kwrd">break</span>; </pre>
+<pre><span class="lnum">  54:  </span>      <span class="kwrd">case</span> RECT:</pre>
+<pre><span class="lnum">  55:  </span>        drawRect(g, xStart, yStart, canvas.x - xStart + 1, canvas.y - yStart + 1);  </pre>
+<pre><span class="lnum">  56:  </span>        drawRect(g, xStart, yStart, p.x - xStart + 1, p.y - yStart + 1); </pre>
+<pre><span class="lnum">  57:  </span>        <span class="kwrd">break</span>; </pre>
+<pre><span class="lnum">  58:  </span>      }</pre>
+<pre><span class="lnum">  59:  </span>      canvas.x = p.x; </pre>
+<pre><span class="lnum">  60:  </span>      canvas.y = p.y; </pre>
+<pre><span class="lnum">  61:  </span>    } </pre>
+<pre><span class="lnum">  62:  </span>  }</pre>
+<pre><span class="lnum">  63:  </span>&nbsp;</pre>
+<pre><span class="lnum">  64:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> endShape(Point p) {</pre>
+<pre><span class="lnum">  65:  </span>    canvas.mouseButtonDown = <span class="kwrd">false</span>; </pre>
+<pre><span class="lnum">  66:  </span>    TwoEndsShape newShape = <span class="kwrd">null</span>; </pre>
+<pre><span class="lnum">  67:  </span>    <span class="kwrd">switch</span> (shape) {</pre>
+<pre><span class="lnum">  68:  </span>    <span class="kwrd">case</span> LINE:</pre>
+<pre><span class="lnum">  69:  </span>      newShape = <span class="kwrd">new</span> LineShape(); </pre>
+<pre><span class="lnum">  70:  </span>      <span class="kwrd">break</span>; </pre>
+<pre><span class="lnum">  71:  </span>    <span class="kwrd">case</span> OVAL:</pre>
+<pre><span class="lnum">  72:  </span>      newShape = <span class="kwrd">new</span> OvalShape(); </pre>
+<pre><span class="lnum">  73:  </span>      <span class="kwrd">break</span>;</pre>
+<pre><span class="lnum">  74:  </span>    <span class="kwrd">case</span> RECT:</pre>
+<pre><span class="lnum">  75:  </span>      newShape = <span class="kwrd">new</span> RectangleShape(); </pre>
+<pre><span class="lnum">  76:  </span>    }</pre>
+<pre><span class="lnum">  77:  </span>    <span class="kwrd">if</span> (newShape != <span class="kwrd">null</span>) { </pre>
+<pre><span class="lnum">  78:  </span>      newShape.setThickness(canvas.getCurThickness());</pre>
+<pre><span class="lnum">  79:  </span>      newShape.setColor(canvas.getCurColor());</pre>
+<pre><span class="lnum">  80:  </span>      newShape.setEnds(xStart, yStart, p.x, p.y); </pre>
+<pre><span class="lnum">  81:  </span>      canvas.addShape(newShape);</pre>
+<pre><span class="lnum">  82:  </span>    } </pre>
+<pre><span class="lnum">  83:  </span>    Graphics g = canvas.getGraphics();</pre>
+<pre><span class="lnum">  84:  </span>    g.setPaintMode();</pre>
+<pre><span class="lnum">  85:  </span>    canvas.repaint();</pre>
+<pre><span class="lnum">  86:  </span>  }</pre>
+<pre><span class="lnum">  87:  </span>&nbsp;</pre>
+<pre><span class="lnum">  88:  </span>  <span class="kwrd">protected</span> <span class="kwrd">int</span> shape = LINE; </pre>
+<pre><span class="lnum">  89:  </span>  <span class="kwrd">protected</span> <span class="kwrd">int</span> xStart, yStart; </pre>
+<pre><span class="lnum">  90:  </span>&nbsp;</pre>
+<pre><span class="lnum">  91:  </span>  <span class="rem">// helper methods </span></pre>
+<pre><span class="lnum">  92:  </span>  <span class="kwrd">public</span> <span class="kwrd">static</span> <span class="kwrd">void</span> drawLine(Graphics g, <span class="kwrd">int</span> x1, <span class="kwrd">int</span> y1, <span class="kwrd">int</span> x2, <span class="kwrd">int</span> y2) {</pre>
+<pre><span class="lnum">  93:  </span>    g.drawLine(x1, y1, x2, y2); </pre>
+<pre><span class="lnum">  94:  </span>  } </pre>
+<pre><span class="lnum">  95:  </span>&nbsp;</pre>
+<pre><span class="lnum">  96:  </span>  <span class="kwrd">public</span> <span class="kwrd">static</span> <span class="kwrd">void</span> drawRect(Graphics g, <span class="kwrd">int</span> x, <span class="kwrd">int</span> y, <span class="kwrd">int</span> w, <span class="kwrd">int</span> h) {</pre>
+<pre><span class="lnum">  97:  </span>    <span class="kwrd">if</span> (w &lt; 0) {</pre>
+<pre><span class="lnum">  98:  </span>      x = x + w; </pre>
+<pre><span class="lnum">  99:  </span>      w = -w; </pre>
+<pre><span class="lnum"> 100:  </span>    }</pre>
+<pre><span class="lnum"> 101:  </span>    <span class="kwrd">if</span> (h &lt; 0) {</pre>
+<pre><span class="lnum"> 102:  </span>      y = y + h;</pre>
+<pre><span class="lnum"> 103:  </span>      h = -h;</pre>
+<pre><span class="lnum"> 104:  </span>    }</pre>
+<pre><span class="lnum"> 105:  </span>    g.drawRect(x, y, w, h); </pre>
+<pre><span class="lnum"> 106:  </span>  }</pre>
+<pre><span class="lnum"> 107:  </span>  </pre>
+<pre><span class="lnum"> 108:  </span>  <span class="kwrd">public</span> <span class="kwrd">static</span> <span class="kwrd">void</span> drawOval(Graphics g, <span class="kwrd">int</span> x, <span class="kwrd">int</span> y, <span class="kwrd">int</span> w, <span class="kwrd">int</span> h) {</pre>
+<pre><span class="lnum"> 109:  </span>    <span class="kwrd">if</span> (w &lt; 0) {</pre>
+<pre><span class="lnum"> 110:  </span>      x = x + w; </pre>
+<pre><span class="lnum"> 111:  </span>      w = -w; </pre>
+<pre><span class="lnum"> 112:  </span>    }</pre>
+<pre><span class="lnum"> 113:  </span>    <span class="kwrd">if</span> (h &lt; 0) {</pre>
+<pre><span class="lnum"> 114:  </span>      y = y + h;</pre>
+<pre><span class="lnum"> 115:  </span>      h = -h;</pre>
+<pre><span class="lnum"> 116:  </span>    }</pre>
+<pre><span class="lnum"> 117:  </span>    g.drawOval(x, y, w, h); </pre>
+<pre><span class="lnum"> 118:  </span>  } </pre>
+<pre><span class="lnum"> 119:  </span>&nbsp;</pre>
+<pre><span class="lnum"> 120:  </span>}</pre>
+</div>
+
+<br/>
+<h6>draw2/TwoEndsShapeTool.java</h6>
+
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>package draw2;</pre>
+<pre><span class="lnum">   2:  </span>&nbsp;</pre>
+<pre><span class="lnum">   3:  </span>import java.awt.*;</pre>
+<pre><span class="lnum">   4:  </span>import scribble3.*;</pre>
+<pre><span class="lnum">   5:  </span>import draw1.*;</pre>
+<pre><span class="lnum">   6:  </span>&nbsp;</pre>
+<pre><span class="lnum">   7:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> TwoEndsShapeTool extends AbstractTool {</pre>
+<pre><span class="lnum">   8:  </span>&nbsp;</pre>
+<pre><span class="lnum">   9:  </span>  <span class="kwrd">public</span> TwoEndsShapeTool(ScribbleCanvas canvas, String name,</pre>
+<pre><span class="lnum">  10:  </span>      TwoEndsShape prototype) {</pre>
+<pre><span class="lnum">  11:  </span>    super(canvas, name);</pre>
+<pre><span class="lnum">  12:  </span>    <span class="kwrd">this</span>.prototype = prototype;</pre>
+<pre><span class="lnum">  13:  </span>  }</pre>
+<pre><span class="lnum">  14:  </span>&nbsp;</pre>
+<pre><span class="lnum">  15:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> startShape(Point p) {</pre>
+<pre><span class="lnum">  16:  </span>    <span class="kwrd">if</span> (prototype != <span class="kwrd">null</span>) {</pre>
+<pre><span class="lnum">  17:  </span>      canvas.mouseButtonDown = <span class="kwrd">true</span>;</pre>
+<pre><span class="lnum">  18:  </span>      xStart = canvas.x = p.x;</pre>
+<pre><span class="lnum">  19:  </span>      yStart = canvas.y = p.y;</pre>
+<pre><span class="lnum">  20:  </span>      Graphics g = canvas.getGraphics();</pre>
+<pre><span class="lnum">  21:  </span>      g.setXORMode(Color.darkGray);</pre>
+<pre><span class="lnum">  22:  </span>      g.setColor(Color.lightGray);</pre>
+<pre><span class="lnum">  23:  </span>      prototype.drawOutline(g, xStart, yStart, xStart, yStart);</pre>
+<pre><span class="lnum">  24:  </span>    }</pre>
+<pre><span class="lnum">  25:  </span>  }</pre>
+<pre><span class="lnum">  26:  </span>&nbsp;</pre>
+<pre><span class="lnum">  27:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> addPointToShape(Point p) {</pre>
+<pre><span class="lnum">  28:  </span>    <span class="kwrd">if</span> (prototype != <span class="kwrd">null</span> &amp;&amp; canvas.mouseButtonDown) {</pre>
+<pre><span class="lnum">  29:  </span>      Graphics g = canvas.getGraphics();</pre>
+<pre><span class="lnum">  30:  </span>      g.setXORMode(Color.darkGray);</pre>
+<pre><span class="lnum">  31:  </span>      g.setColor(Color.lightGray);</pre>
+<pre><span class="lnum">  32:  </span>      prototype.drawOutline(g, xStart, yStart, canvas.x, canvas.y);</pre>
+<pre><span class="lnum">  33:  </span>      prototype.drawOutline(g, xStart, yStart, p.x, p.y);</pre>
+<pre><span class="lnum">  34:  </span>    }</pre>
+<pre><span class="lnum">  35:  </span>  }</pre>
+<pre><span class="lnum">  36:  </span>&nbsp;</pre>
+<pre><span class="lnum">  37:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> endShape(Point p) {</pre>
+<pre><span class="lnum">  38:  </span>    canvas.mouseButtonDown = <span class="kwrd">false</span>;</pre>
+<pre><span class="lnum">  39:  </span>    <span class="kwrd">if</span> (prototype != <span class="kwrd">null</span>) {</pre>
+<pre><span class="lnum">  40:  </span>      <span class="kwrd">try</span> {</pre>
+<pre><span class="lnum">  41:  </span>        TwoEndsShape newShape = (TwoEndsShape) prototype.clone();</pre>
+<pre><span class="lnum">  42:  </span>        newShape.setColor(canvas.getCurColor());</pre>
+<pre><span class="lnum">  43:  </span>        newShape.setThickness(canvas.getCurThickness());</pre>
+<pre><span class="lnum">  44:  </span>        newShape.setEnds(xStart, yStart, p.x, p.y);</pre>
+<pre><span class="lnum">  45:  </span>        canvas.addShape(newShape);</pre>
+<pre><span class="lnum">  46:  </span>      } <span class="kwrd">catch</span> (CloneNotSupportedException e) {</pre>
+<pre><span class="lnum">  47:  </span>      }</pre>
+<pre><span class="lnum">  48:  </span>      Graphics g = canvas.getGraphics();</pre>
+<pre><span class="lnum">  49:  </span>      g.setPaintMode();</pre>
+<pre><span class="lnum">  50:  </span>      canvas.repaint();</pre>
+<pre><span class="lnum">  51:  </span>    }</pre>
+<pre><span class="lnum">  52:  </span>  }</pre>
+<pre><span class="lnum">  53:  </span>  </pre>
+<pre><span class="lnum">  54:  </span>  <span class="kwrd">public</span> TwoEndsShape getCurrentShape(){</pre>
+<pre><span class="lnum">  55:  </span>    <span class="kwrd">return</span> prototype;</pre>
+<pre><span class="lnum">  56:  </span>  }</pre>
+<pre><span class="lnum">  57:  </span>  <span class="kwrd">protected</span> <span class="kwrd">int</span> xStart, yStart;</pre>
+<pre><span class="lnum">  58:  </span>  <span class="kwrd">protected</span> TwoEndsShape prototype;</pre>
+<pre><span class="lnum">  59:  </span>&nbsp;</pre>
+<pre><span class="lnum">  60:  </span>}</pre>
+</div>
+
+<br/>
+<h6>draw4/DrawingPad.java</h6>
+
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>package draw4;</pre>
+<pre><span class="lnum">   2:  </span>&nbsp;</pre>
+<pre><span class="lnum">   3:  </span>import java.awt.*;</pre>
+<pre><span class="lnum">   4:  </span>import java.awt.<span class="kwrd">event</span>.*;</pre>
+<pre><span class="lnum">   5:  </span>import java.io.*;</pre>
+<pre><span class="lnum">   6:  </span>import javax.swing.*;</pre>
+<pre><span class="lnum">   7:  </span>&nbsp;</pre>
+<pre><span class="lnum">   8:  </span>import draw1.LineShape;</pre>
+<pre><span class="lnum">   9:  </span>import draw1.OvalShape;</pre>
+<pre><span class="lnum">  10:  </span>import draw1.RectangleShape;</pre>
+<pre><span class="lnum">  11:  </span>import draw1.ToolKit;</pre>
+<pre><span class="lnum">  12:  </span>import draw2.*;</pre>
+<pre><span class="lnum">  13:  </span>import draw3.KeyboardDrawingCanvas;</pre>
+<pre><span class="lnum">  14:  </span>import scribble3.*;</pre>
+<pre><span class="lnum">  15:  </span>&nbsp;</pre>
+<pre><span class="lnum">  16:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> DrawingPad extends draw3.DrawingPad {</pre>
+<pre><span class="lnum">  17:  </span>&nbsp;</pre>
+<pre><span class="lnum">  18:  </span>  <span class="kwrd">public</span> DrawingPad() {</pre>
+<pre><span class="lnum">  19:  </span>    super();</pre>
+<pre><span class="lnum">  20:  </span>    JMenu optionMenu = menuBar.getMenu(2);</pre>
+<pre><span class="lnum">  21:  </span>    addLineOptions(optionMenu);</pre>
+<pre><span class="lnum">  22:  </span>  }</pre>
+<pre><span class="lnum">  23:  </span>&nbsp;</pre>
+<pre><span class="lnum">  24:  </span>  <span class="kwrd">protected</span> <span class="kwrd">void</span> initTools() {</pre>
+<pre><span class="lnum">  25:  </span>    super.initTools();</pre>
+<pre><span class="lnum">  26:  </span>    toolkit.addTool(<span class="kwrd">new</span> TwoEndsShapeTool(canvas, <span class="str">"Eraser"</span>, <span class="kwrd">new</span> Eraser()));</pre>
+<pre><span class="lnum">  27:  </span>  }</pre>
+<pre><span class="lnum">  28:  </span>&nbsp;</pre>
+<pre><span class="lnum">  29:  </span>&nbsp;</pre>
+<pre><span class="lnum">  30:  </span>  <span class="kwrd">protected</span> <span class="kwrd">void</span> addLineOptions(JMenu optionMenu) {</pre>
+<pre><span class="lnum">  31:  </span>    String[] lineThicknesses = { <span class="str">"0.1"</span>, <span class="str">"2"</span>, <span class="str">"8"</span>, <span class="str">"15"</span>, <span class="str">"30"</span> };</pre>
+<pre><span class="lnum">  32:  </span>&nbsp;</pre>
+<pre><span class="lnum">  33:  </span>    ActionListener lineThicknessAction = <span class="kwrd">new</span> ActionListener() {</pre>
+<pre><span class="lnum">  34:  </span>      <span class="kwrd">public</span> <span class="kwrd">void</span> actionPerformed(ActionEvent <span class="kwrd">event</span>) {</pre>
+<pre><span class="lnum">  35:  </span>        Object source = <span class="kwrd">event</span>.getSource();</pre>
+<pre><span class="lnum">  36:  </span>        <span class="kwrd">if</span> (source instanceof JCheckBoxMenuItem) {</pre>
+<pre><span class="lnum">  37:  </span>          JCheckBoxMenuItem mi = (JCheckBoxMenuItem) source;</pre>
+<pre><span class="lnum">  38:  </span>          String name = mi.getText();</pre>
+<pre><span class="lnum">  39:  </span>          drawingCanvas.setCurThickness(Float.parseFloat(name));</pre>
+<pre><span class="lnum">  40:  </span>        }</pre>
+<pre><span class="lnum">  41:  </span>      }</pre>
+<pre><span class="lnum">  42:  </span>    };</pre>
+<pre><span class="lnum">  43:  </span>    JMenu lineStyleMenu = <span class="kwrd">new</span> JMenu(<span class="str">"Line Thicknes"</span>);</pre>
+<pre><span class="lnum">  44:  </span>    ButtonGroup group = <span class="kwrd">new</span> ButtonGroup();</pre>
+<pre><span class="lnum">  45:  </span>    <span class="kwrd">for</span> (<span class="kwrd">int</span> i = 0; i &lt; lineThicknesses.length; i++) {</pre>
+<pre><span class="lnum">  46:  </span>      JCheckBoxMenuItem mi = <span class="kwrd">new</span> JCheckBoxMenuItem(lineThicknesses[i]);</pre>
+<pre><span class="lnum">  47:  </span>      lineStyleMenu.add(mi);</pre>
+<pre><span class="lnum">  48:  </span>      mi.addActionListener(lineThicknessAction);</pre>
+<pre><span class="lnum">  49:  </span>      group.add(mi);</pre>
+<pre><span class="lnum">  50:  </span>    }</pre>
+<pre><span class="lnum">  51:  </span>    optionMenu.add(lineStyleMenu);</pre>
+<pre><span class="lnum">  52:  </span>&nbsp;</pre>
+<pre><span class="lnum">  53:  </span>  }</pre>
+<pre><span class="lnum">  54:  </span>&nbsp;</pre>
+<pre><span class="lnum">  55:  </span>&nbsp;</pre>
+<pre><span class="lnum">  56:  </span>}</pre>
+</div>
+
+
+<br/>
+<h6>draw4/Eraser.java</h6>
+
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>&nbsp;</pre>
+<pre><span class="lnum">   2:  </span>&nbsp;</pre>
+<pre><span class="lnum">   3:  </span>package draw4; </pre>
+<pre><span class="lnum">   4:  </span>&nbsp;</pre>
+<pre><span class="lnum">   5:  </span>import java.awt.*; </pre>
+<pre><span class="lnum">   6:  </span>import draw1.*;</pre>
+<pre><span class="lnum">   7:  </span>&nbsp;</pre>
+<pre><span class="lnum">   8:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> Eraser extends RectangleShape {</pre>
+<pre><span class="lnum">   9:  </span>&nbsp;</pre>
+<pre><span class="lnum">  10:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> draw(Graphics g) {</pre>
+<pre><span class="lnum">  11:  </span>    <span class="kwrd">int</span> x = Math.min(x1, x2); </pre>
+<pre><span class="lnum">  12:  </span>    <span class="kwrd">int</span> y = Math.min(y1, y2); </pre>
+<pre><span class="lnum">  13:  </span>    <span class="kwrd">int</span> w = Math.abs(x1 - x2) + 1; </pre>
+<pre><span class="lnum">  14:  </span>    <span class="kwrd">int</span> h = Math.abs(y1 - y2) + 1;</pre>
+<pre><span class="lnum">  15:  </span>    g.setColor(Color.WHITE);</pre>
+<pre><span class="lnum">  16:  </span>    g.fillRect(x, y, w, h);</pre>
+<pre><span class="lnum">  17:  </span>  }</pre>
+<pre><span class="lnum">  18:  </span>&nbsp;</pre>
+<pre><span class="lnum">  19:  </span>}</pre>
+</div>
+
+<br/>
+
+<br/>
+<h5 class="sub">III. Tests</h5>
+
+<br/>
+<h6>TestThickness.java</h6>
+
+<img src='chapter9/test_thickness.png'></img> <br/><br/>
+
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>package draw4;</pre>
+<pre><span class="lnum">   2:  </span>&nbsp;</pre>
+<pre><span class="lnum">   3:  </span>import <span class="kwrd">static</span> org.junit.Assert.*;</pre>
+<pre><span class="lnum">   4:  </span>import java.awt.BasicStroke;</pre>
+<pre><span class="lnum">   5:  </span>import org.junit.Test;</pre>
+<pre><span class="lnum">   6:  </span>import scribble3.ScribbleCanvas;</pre>
+<pre><span class="lnum">   7:  </span>&nbsp;</pre>
+<pre><span class="lnum">   8:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> TestThickness {</pre>
+<pre><span class="lnum">   9:  </span>&nbsp;</pre>
+<pre><span class="lnum">  10:  </span>  @Test</pre>
+<pre><span class="lnum">  11:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> test() {</pre>
+<pre><span class="lnum">  12:  </span>    ScribbleCanvas canvas = <span class="kwrd">new</span> ScribbleCanvas();</pre>
+<pre><span class="lnum">  13:  </span>    canvas.setCurThickness(<span class="kwrd">new</span> Float(5));</pre>
+<pre><span class="lnum">  14:  </span>    assertTrue(canvas.getCurThickness().equals(<span class="kwrd">new</span> BasicStroke(5)));</pre>
+<pre><span class="lnum">  15:  </span>  }</pre>
+<pre><span class="lnum">  16:  </span>&nbsp;</pre>
+<pre><span class="lnum">  17:  </span>}</pre>
+</div>
+
+<br/>
+<h6>TestEraser.java</h6>
+
+            <img src='chapter9/test_eraser.png'></img> <br/><br/>
+
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>package draw4;</pre>
+<pre><span class="lnum">   2:  </span>&nbsp;</pre>
+<pre><span class="lnum">   3:  </span>import <span class="kwrd">static</span> org.junit.Assert.*;</pre>
+<pre><span class="lnum">   4:  </span>import org.junit.Test;</pre>
+<pre><span class="lnum">   5:  </span>import draw2.*;</pre>
+<pre><span class="lnum">   6:  </span>import scribble3.*;</pre>
+<pre><span class="lnum">   7:  </span>&nbsp;</pre>
+<pre><span class="lnum">   8:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> TestEraser {</pre>
+<pre><span class="lnum">   9:  </span>&nbsp;</pre>
+<pre><span class="lnum">  10:  </span>  @Test</pre>
+<pre><span class="lnum">  11:  </span>  <span class="kwrd">public</span> <span class="kwrd">void</span> test() {</pre>
+<pre><span class="lnum">  12:  </span>    ScribbleCanvas canvas = <span class="kwrd">new</span> ScribbleCanvas();</pre>
+<pre><span class="lnum">  13:  </span>    TwoEndsShapeTool eraserTool = <span class="kwrd">new</span> TwoEndsShapeTool(canvas, <span class="str">"Eraser"</span>, <span class="kwrd">new</span> Eraser());</pre>
+<pre><span class="lnum">  14:  </span>    assertTrue(eraserTool.getCurrentShape() instanceof Eraser);</pre>
+<pre><span class="lnum">  15:  </span>  }</pre>
+<pre><span class="lnum">  16:  </span>&nbsp;</pre>
+<pre><span class="lnum">  17:  </span>}</pre>
+</div>
+
+<br/>
+
+
+
+            <br/>
+            <h5 class="sub">IV. Screenshots</h5>
+            <h6>Thickness Menu</h6>
+            <img src='chapter9/thickness_menu.png'></img> <br/><br/>
+            <img src='chapter9/different_thickness.png'></img> <br/><br/>
+
+            <h6>Erased</h6>
+            <img src='chapter9/erased.png'></img> <br/><br/>
+
+<br/>
+<br/>
+<br/>
+
+        </div>
+
+
+        <div class="grid_12" style="height:500px;background-color:#111;">
+            <div style="text-align:center">
+                CS602 - Java Programming - Metin Yorulmaz
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>CS602 - Java Programming - Metin Yorulmaz</title>
+    <link href="public/stylesheets/reset.css" rel="stylesheet" type="text/css" />
+    <link href="public/stylesheets/960.css" rel="stylesheet" type="text/css" />
+    <link href="public/stylesheets/site.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    
+    <div class="container_12">
+        
+        <div class="grid_12">
+            <div id="header">
+                CS602 - Java Programming
+            </div>
+        </div>
+
+        <div class="grid_12">
+            <div id="menu_container">
+                <ul id="menu">
+                    <li>
+                       <a href="chapter1/assignment1.html"> Chapter 1 </a>
+                    </li>
+                    <li>
+                       <a href="chapter3.html"> Chapter 3 </a>
+                    </li>
+                <li class="current">
+                   <a href="chapter4_1.html"> Chapter 4 </a>
+                </li>
+                <li>
+                   <a href="chapter5a_4.9.html"> Chapter 5a </a>
+                </li>
+                <li>
+                   <a href="chapter5b_5.2.html"> Chapter 5b </a>
+                </li>
+                <li>
+                   <a href="chapter6_6.3.html"> Chapter 6 </a>
+                </li>
+                <li>
+                   <a href="chapter7_7.6.html"> Chapter 7 </a>
+                </li>
+                <li>
+                   <a href="chapter8_8.5.html"> Chapter 8 </a>
+                </li>
+                <li>
+                   <a href="chapter9.html"> Chapter 9 </a>
+                </li>
+                <li>
+                   <a href="chapter10.html"> Chapter 10 </a>
+                </li>
+                <li>
+                   <a href="midterm1.html"> Exams </a>
+                </li>
+                <li>
+                   <a href="final.html"> Project </a>
+                </li>
+                </ul>
+            </div>
+            <div id="submenu_container">
+                <ul class="submenu">
+                    <li class="current">
+                        <a href="chapter4_1.html"> Chapter 4.1 </a>
+                    </li>
+                    <li>
+                        <a href="chapter4_2.html"> Chapter 4.2 </a>
+                    </li>
+                    <li> 
+                        <a href="chapter4_3.html"> Chapter 4.3 </a>
+                    </li>
+                    <li>
+                        <a href="chapter4_7a.html"> Chapter 4.7a </a>
+                    </li>
+                    <li>
+                        <a href="chapter4_8.html"> Chapter 4.8 </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid_12" id="content" style="background-color:#f1f1f1;">
+
+            <p>
+                Write a Java application to calculate the factorial of an interger n, using iteration(not recursion).
+            </p>
+            <br/>
+
+            <APPLET codebase="chapter4/ex41/" code="Factorial.class" WIDTH=300 HEIGHT=320></APPLET>
+            <br/>
+            
+            <h5 class="sub">I. Timesheet</h5>
+
+            <img src='chapter4/timesheet.png'/>
+
+            <br/>
+
+            <h5 class="sub">II. Source Code</h5>
+
+
+                <div class="csharpcode">
+                    <pre class="alt"><span class="lnum">   1:  </span>import java.awt.*;</pre>
+                    <pre><span class="lnum">   2:  </span>import java.applet.*;</pre>
+                    <pre class="alt"><span class="lnum">   3:  </span>import java.awt.<span class="kwrd">event</span>.*;</pre>
+                    <pre><span class="lnum">   4:  </span>&nbsp;</pre>
+                    <pre class="alt"><span class="lnum">   5:  </span>@SuppressWarnings(<span class="str">"serial"</span>)</pre>
+                    <pre><span class="lnum">   6:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> Factorial extends Applet implements ActionListener</pre>
+                    <pre class="alt"><span class="lnum">   7:  </span>{</pre>
+                    <pre><span class="lnum">   8:  </span>    TextField txtNum;</pre>
+                    <pre class="alt"><span class="lnum">   9:  </span>    Label lblResult;</pre>
+                    <pre><span class="lnum">  10:  </span>    <span class="kwrd">public</span> <span class="kwrd">void</span> init() {</pre>
+                    <pre class="alt"><span class="lnum">  11:  </span>        GridBagLayout Layout = <span class="kwrd">new</span> GridBagLayout();</pre>
+                    <pre><span class="lnum">  12:  </span>        setLayout (Layout);</pre>
+                    <pre class="alt"><span class="lnum">  13:  </span>        </pre>
+                    <pre><span class="lnum">  14:  </span>        GridBagConstraints c = <span class="kwrd">new</span> GridBagConstraints();</pre>
+                    <pre class="alt"><span class="lnum">  15:  </span>        txtNum = <span class="kwrd">new</span> TextField();</pre>
+                    <pre><span class="lnum">  16:  </span>        txtNum.setSize(400, 30);</pre>
+                    <pre class="alt"><span class="lnum">  17:  </span>        c.fill = GridBagConstraints.HORIZONTAL;</pre>
+                    <pre><span class="lnum">  18:  </span>        c.gridx = 0;</pre>
+                    <pre class="alt"><span class="lnum">  19:  </span>        c.gridy = 0;</pre>
+                    <pre><span class="lnum">  20:  </span>        c.ipadx = 30;</pre>
+                    <pre class="alt"><span class="lnum">  21:  </span>        c.weightx = 2;</pre>
+                    <pre><span class="lnum">  22:  </span>        add(txtNum, c);</pre>
+                    <pre class="alt"><span class="lnum">  23:  </span>        </pre>
+                    <pre><span class="lnum">  24:  </span>        c = <span class="kwrd">new</span> GridBagConstraints();</pre>
+                    <pre class="alt"><span class="lnum">  25:  </span>        Button btn = <span class="kwrd">new</span> Button(<span class="str">"Calculate"</span>);</pre>
+                    <pre><span class="lnum">  26:  </span>        c.fill = GridBagConstraints.HORIZONTAL;</pre>
+                    <pre class="alt"><span class="lnum">  27:  </span>        c.gridx = 1;</pre>
+                    <pre><span class="lnum">  28:  </span>        c.gridy = 0;</pre>
+                    <pre class="alt"><span class="lnum">  29:  </span>        add(btn, c);</pre>
+                    <pre><span class="lnum">  30:  </span>        btn.addActionListener(<span class="kwrd">this</span>);</pre>
+                    <pre class="alt"><span class="lnum">  31:  </span>&nbsp;</pre>
+                    <pre><span class="lnum">  32:  </span>        c = <span class="kwrd">new</span> GridBagConstraints();</pre>
+                    <pre class="alt"><span class="lnum">  33:  </span>        lblResult = <span class="kwrd">new</span> Label(<span class="str">"Result:"</span>);</pre>
+                    <pre><span class="lnum">  34:  </span>        lblResult.setSize(200, 30);</pre>
+                    <pre class="alt"><span class="lnum">  35:  </span>        c.fill = GridBagConstraints.HORIZONTAL;</pre>
+                    <pre><span class="lnum">  36:  </span>        c.gridx = 0;</pre>
+                    <pre class="alt"><span class="lnum">  37:  </span>        c.gridy = 1;</pre>
+                    <pre><span class="lnum">  38:  </span>        c.gridwidth = 2;</pre>
+                    <pre class="alt"><span class="lnum">  39:  </span>        c.insets = <span class="kwrd">new</span> Insets(10,0,0,0); </pre>
+                    <pre><span class="lnum">  40:  </span>        add(lblResult, c);   </pre>
+                    <pre class="alt"><span class="lnum">  41:  </span>    }</pre>
+                    <pre><span class="lnum">  42:  </span>&nbsp;</pre>
+                    <pre class="alt"><span class="lnum">  43:  </span>    <span class="kwrd">public</span> <span class="kwrd">void</span> actionPerformed(ActionEvent evt)</pre>
+                    <pre><span class="lnum">  44:  </span>    {    </pre>
+                    <pre class="alt"><span class="lnum">  45:  </span>        <span class="kwrd">try</span>{</pre>
+                    <pre><span class="lnum">  46:  </span>            <span class="kwrd">if</span>(isValidInput()){</pre>
+                    <pre class="alt"><span class="lnum">  47:  </span>                <span class="kwrd">int</span> val = calculate();</pre>
+                    <pre><span class="lnum">  48:  </span>                lblResult.setText(<span class="str">"Result:"</span>+Integer.toString(val));</pre>
+                    <pre class="alt"><span class="lnum">  49:  </span>            }<span class="kwrd">else</span>{</pre>
+                    <pre><span class="lnum">  50:  </span>                lblResult.setText(<span class="str">"Error:Not valit input"</span>);</pre>
+                    <pre class="alt"><span class="lnum">  51:  </span>            }</pre>
+                    <pre><span class="lnum">  52:  </span>        }</pre>
+                    <pre class="alt"><span class="lnum">  53:  </span>        <span class="kwrd">catch</span> (NumberFormatException nfe)</pre>
+                    <pre><span class="lnum">  54:  </span>        {</pre>
+                    <pre class="alt"><span class="lnum">  55:  </span>            lblResult.setText(<span class="str">"Error:Colud not calculate."</span>);</pre>
+                    <pre><span class="lnum">  56:  </span>        }</pre>
+                    <pre class="alt"><span class="lnum">  57:  </span>    }</pre>
+                    <pre><span class="lnum">  58:  </span>    </pre>
+                    <pre class="alt"><span class="lnum">  59:  </span>&nbsp;</pre>
+                    <pre><span class="lnum">  60:  </span>    <span class="kwrd">private</span> <span class="kwrd">int</span> calculate()</pre>
+                    <pre class="alt"><span class="lnum">  61:  </span>    {    </pre>
+                    <pre><span class="lnum">  62:  </span>        <span class="kwrd">int</span> result = 1;</pre>
+                    <pre class="alt"><span class="lnum">  63:  </span>        <span class="kwrd">int</span> val = Integer.parseInt(txtNum.getText());</pre>
+                    <pre><span class="lnum">  64:  </span>        <span class="kwrd">while</span>(val &gt; 0){</pre>
+                    <pre class="alt"><span class="lnum">  65:  </span>            result *= val--;</pre>
+                    <pre><span class="lnum">  66:  </span>        }</pre>
+                    <pre class="alt"><span class="lnum">  67:  </span>        <span class="kwrd">return</span> result;</pre>
+                    <pre><span class="lnum">  68:  </span>    }</pre>
+                    <pre class="alt"><span class="lnum">  69:  </span>    </pre>
+                    <pre><span class="lnum">  70:  </span>    <span class="kwrd">private</span> boolean isValidInput()</pre>
+                    <pre class="alt"><span class="lnum">  71:  </span>    {</pre>
+                    <pre><span class="lnum">  72:  </span>        String val = txtNum.getText();</pre>
+                    <pre class="alt"><span class="lnum">  73:  </span>        <span class="kwrd">if</span>(val == <span class="kwrd">null</span> || val.isEmpty())</pre>
+                    <pre><span class="lnum">  74:  </span>            <span class="kwrd">return</span> <span class="kwrd">false</span>;</pre>
+                    <pre class="alt"><span class="lnum">  75:  </span>        <span class="kwrd">return</span> <span class="kwrd">true</span>;</pre>
+                    <pre><span class="lnum">  76:  </span>    }</pre>
+                    <pre class="alt"><span class="lnum">  77:  </span>}</pre>
+                </div>
+            <br/>
+
+            <h5 class="sub">III. Screenshots</h5>
+            <img src='chapter4/ex41/capture.png'></img>
+
+        </div>
+
+
+        <div class="grid_12" style="height:500px;background-color:#111;">
+            <div style="text-align:center">
+                CS602 - Java Programming - Metin Yorulmaz
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
