@@ -4484,3 +4484,29 @@ Java Model Exception: Java Model Status [Operation not supported for specified e
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1410)
 !SUBENTRY 1 org.eclipse.jdt.core 4 967 2011-12-10 12:09:09.032
 !MESSAGE Operation not supported for specified element type(s):<project root> [in demos]
+!SESSION 2011-12-17 14:39:45.494 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.6.0_29
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product -keyring /Users/metin/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86 -product org.eclipse.epp.package.java.product -keyring /Users/metin/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2011-12-17 14:40:09.344
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.epp.usagedata.recording 1 0 2011-12-17 14:40:27.473
+!MESSAGE Usage data uploaded to http://udc.eclipse.org/upload.php in 1365 milliseconds.
+!SESSION 2012-04-25 20:23:54.345 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.6.0_29
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product -keyring /Users/metin/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86 -product org.eclipse.epp.package.java.product -keyring /Users/metin/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2012-04-25 20:24:16.770
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.epp.usagedata.recording 1 0 2012-04-25 20:24:29.488
+!MESSAGE Usage data uploaded to http://udc.eclipse.org/upload.php in 935 milliseconds.

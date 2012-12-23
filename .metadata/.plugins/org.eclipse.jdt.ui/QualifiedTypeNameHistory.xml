@@ -1,24 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.awt.Panel"/>
-<fullyQualifiedTypeName name="javax.swing.BorderFactory"/>
-<fullyQualifiedTypeName name="javax.swing.JButton"/>
-<fullyQualifiedTypeName name="BouncingBall"/>
-<fullyQualifiedTypeName name="BouncingObject"/>
-<fullyQualifiedTypeName name="BouncingObjectFactory"/>
-<fullyQualifiedTypeName name="java.awt.Dimension"/>
-<fullyQualifiedTypeName name="midterm1.AnimationApplet"/>
-<fullyQualifiedTypeName name="java.awt.Image"/>
-<fullyQualifiedTypeName name="midterm1.BouncingBall3"/>
-<fullyQualifiedTypeName name="midterm1.BouncingObjectFactory"/>
-<fullyQualifiedTypeName name="midterm1.BouncingCircle"/>
-<fullyQualifiedTypeName name="midterm1.BouncingSquare"/>
-<fullyQualifiedTypeName name="midterm1.BouncingImage"/>
-<fullyQualifiedTypeName name="com.sun.org.apache.xpath.internal.operations.Operation"/>
-<fullyQualifiedTypeName name="junit.framework.Assert"/>
-<fullyQualifiedTypeName name="com.sun.source.tree.AssertTree"/>
-<fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
-<fullyQualifiedTypeName name="java.awt.event.ActionEvent"/>
 <fullyQualifiedTypeName name="sun.tools.tree.DoStatement"/>
 <fullyQualifiedTypeName name="ex85.Calculation"/>
 <fullyQualifiedTypeName name="java.lang.Integer"/>
@@ -43,7 +24,6 @@
 <fullyQualifiedTypeName name="java.io.IOException"/>
 <fullyQualifiedTypeName name="javax.swing.event.ChangeListener"/>
 <fullyQualifiedTypeName name="javax.swing.event.ChangeEvent"/>
-<fullyQualifiedTypeName name="java.awt.BorderLayout"/>
 <fullyQualifiedTypeName name="java.awt.Color"/>
 <fullyQualifiedTypeName name="scribble3.Stroke"/>
 <fullyQualifiedTypeName name="java.awt.Stroke"/>
@@ -57,7 +37,27 @@
 <fullyQualifiedTypeName name="java.security.PrivilegedAction"/>
 <fullyQualifiedTypeName name="sun.reflect.ReflectionFactory.GetReflectionFactoryAction"/>
 <fullyQualifiedTypeName name="spaceinvaders.Board"/>
-<fullyQualifiedTypeName name="javax.swing.ImageIcon"/>
-<fullyQualifiedTypeName name="java.applet.Applet"/>
 <fullyQualifiedTypeName name="spaceinvaders.Shot"/>
+<fullyQualifiedTypeName name="java.awt.Panel"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.awt.Image"/>
+<fullyQualifiedTypeName name="javax.swing.JLabel"/>
+<fullyQualifiedTypeName name="javax.swing.ImageIcon"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="javax.imageio.ImageIO"/>
+<fullyQualifiedTypeName name="java.awt.image.BufferedImage"/>
+<fullyQualifiedTypeName name="java.applet.Applet"/>
+<fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
+<fullyQualifiedTypeName name="ui.ContentPanel.ProductSelectorListener"/>
+<fullyQualifiedTypeName name="models.BasePrice"/>
+<fullyQualifiedTypeName name="models.Pricing"/>
+<fullyQualifiedTypeName name="javax.swing.BoxLayout"/>
+<fullyQualifiedTypeName name="java.awt.GridLayout"/>
+<fullyQualifiedTypeName name="java.awt.event.ItemListener"/>
+<fullyQualifiedTypeName name="java.awt.event.ItemEvent"/>
+<fullyQualifiedTypeName name="ui.ContentPanel.BrewActionListener"/>
+<fullyQualifiedTypeName name="javax.swing.JScrollPane"/>
+<fullyQualifiedTypeName name="java.awt.BorderLayout"/>
+<fullyQualifiedTypeName name="java.applet.AudioClip"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
 </qualifiedTypeNameHistroy>

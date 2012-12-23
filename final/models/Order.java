@@ -1,6 +1,8 @@
 package models;
 
-public class Order {
+import java.sql.SQLException;
+
+public class Order extends OrderData{
   Pricing order;
   
   public Order(){
@@ -19,5 +21,13 @@ public class Order {
   
   public Float total(){
     return order.calculate();
+  }
+  
+  public void save() throws SQLException
+  {
+    if(order==null) return;
+    this.price = order.calculate();
+    this.description = order.description();
+    super.save();
   }
 }

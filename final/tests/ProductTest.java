@@ -1,11 +1,8 @@
 package tests;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import models.*;
-
 import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 public class ProductTest {

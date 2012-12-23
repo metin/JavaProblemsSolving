@@ -34,7 +34,7 @@ class jdbcTest
 
     // Select the SYSDATE column from the dual table
     ResultSet rset = stmt.executeQuery ("select SYSDATE from dual");
-
+    //ResultSet rset = stmt.executeQuery ("select ORDER_SQ.NEXTVAL from DUAL");
     // Print the result
     while (rset.next ())
     System.out.println (rset.getString (1));

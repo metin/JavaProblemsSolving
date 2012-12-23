@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+	<section name="PreferencesImportWizard">
+		<item value="/Users/metin/Downloads/theme-66.epf" key=""/>
+		<list key="WizardPreferencesExportPage1.STORE_DESTINATION_NAMES_ID">
+			<item value="/Users/metin/Downloads/theme-66.epf"/>
+		</list>
+	</section>
 	<section name="WorkbenchPreferenceDialogSettings">
 		<item value="19" key="DIALOG_Y_ORIGIN"/>
 		<item value="649" key="DIALOG_X_ORIGIN"/>
@@ -16,7 +22,7 @@
 		</list>
 	</section>
 	<section name="ImportExportAction">
-		<item value="org.eclipse.ui.wizards.import.ExternalProject" key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID"/>
+		<item value="org.eclipse.ui.wizards.import.Preferences" key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID"/>
 		<list key="ImportExportPage.STORE_EXPANDED_IMPORT_CATEGORIES">
 			<item value="org.eclipse.ui.Basic"/>
 		</list>
